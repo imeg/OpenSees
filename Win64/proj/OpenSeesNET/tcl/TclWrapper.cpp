@@ -1,15 +1,20 @@
 #include "stdafx.h"
 #include "TclWrapper.h"
 
+
 using namespace OpenSees::Tcl;
 using namespace System::Runtime::InteropServices;
-TclWrapper::TclWrapper()
+TclWrapper::TclWrapper(RedirectStreamWrapper^ opsStream)
 {
+	this->_opsStream = opsStream;
+	this->commandPtr = NULL;
+	this->lastResult = gcnew TclExecutionResult(TclExecutionStatus::Init);
 }
 
 int
 TclWrapper::Init() {
 	this->interp = Tcl_CreateInterp();
+	opserrPtr = this->_opsStream->_OPS_StreamPtr;
 	int ret = OpenSeesAppInit(this->interp);
 	if (ret != 0)
 		return ret;
@@ -35,9 +40,7 @@ TclWrapper::TclEval(String^ command)
 
 DomainWrapper^
 TclWrapper::GetActiveDomain() {
-	//Domain* domain = ops_TheActiveDomain;
-	DomainWrapper^ dw = gcnew DomainWrapper();
-	dw->_Domain = ops_TheActiveDomain;
+	DomainWrapper^ dw = gcnew DomainWrapper(ops_TheActiveDomain);
 	return dw;
 }
 
@@ -47,6 +50,11 @@ TclWrapper::~TclWrapper()
 	{
 		Tcl_Eval(this->interp, "quit");
 		delete this->interp;
+	}
+
+	if (this->commandPtr != 0)
+	{
+		delete this->commandPtr;
 	}
 }
 

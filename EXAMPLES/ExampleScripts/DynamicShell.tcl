@@ -1,4 +1,4 @@
-model basic -ndm 3 -ndf 6
+﻿model basic -ndm 3 -ndf 6
 
 # create the material
 section ElasticMembranePlateSection 1 3.0e3 0.25 1.175 1.27
@@ -91,3 +91,5 @@ puts "eigen values at start of transient: [eigen -Umfpack 2]"
 puts [getTime]
 wipe
 
+
+        

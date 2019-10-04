@@ -163,7 +163,7 @@ void PrincipalAxis::setExperimentalPointRule(ExperimentalPointRule1D * pExperime
 		valuesOnAxis->Zero();
 	}
 	else{
-		opserr<<"unknown type of ExperimentalPointRule";
+		opserr<<"unknow type of ExperimentalPointRule";
 		exit(-1);
 	}
 }

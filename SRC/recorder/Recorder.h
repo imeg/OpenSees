@@ -55,7 +55,14 @@ class Recorder: public MovableObject, public TaggedObject
     virtual int sendSelf(int commitTag, Channel &theChannel);  
     virtual int recvSelf(int commitTag, Channel &theChannel, 
 			 FEM_ObjectBroker &theBroker);
-
+#if _DLL
+	virtual OPS_Stream* getOutputHandler() {
+		return 0;
+	}
+	virtual const char* getOutputHandlerFilename() {
+		return 0;
+	}
+#endif
     virtual void Print(OPS_Stream &s, int flag); 
 	virtual double getRecordedValue(int clmnId, int rowOffset, bool reset) { return 0; } //added by SAJalali
 

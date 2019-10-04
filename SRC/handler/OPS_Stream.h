@@ -26,6 +26,13 @@
 #define _OPS_Stream
 
 #include <MovableObject.h>
+
+
+#if _DLL
+#include <fstream>
+using std::string;
+#endif
+
 enum openMode  {OVERWRITE, APPEND};
 enum floatField {FIXEDD, SCIENTIFIC};
 class Vector;
@@ -77,19 +84,36 @@ class OPS_Stream:  public MovableObject
   virtual OPS_Stream& operator<<(double n);
   virtual OPS_Stream& operator<<(float n);
 
+#if _DLL
+  virtual inline const char* getStreamHeader() { return 0; }
+#endif
+
   // parallel stuff
   virtual void setAddCommon(int);
   virtual int setOrder(const ID &order);
   virtual int sendSelf(int commitTag, Channel &theChannel) =0;  
   virtual int recvSelf(int commitTag, Channel &theChannel, 
 		       FEM_ObjectBroker &theBroker) =0;
-
+#if _DLL
+  virtual int closeHandler() {
+	  return 0;
+  }
+  virtual int handlerIsOpen() {
+	  return 0;
+  }
+  virtual const char* getOutputFilename() {
+	  return 0;
+  }
+#endif
  protected:
   int addCommonFlag;
-
+#if _DLL
+  std::string headers;
+#endif
  private:
   void indent();
   int numIndent;
+
 };
 
 #endif

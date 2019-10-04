@@ -1,6 +1,9 @@
 #ifndef DomainWrapper_H
 #define DomainWrapper_H
 #pragma once
+#include <TaggedObject.h>
+#include <DomainComponent.h>
+#include <RigidRod.h>
 #include <Domain.h>
 #include <Node.h>
 #include <NodeIter.h>
@@ -23,6 +26,7 @@
 #include "../patterns/LoadPatternWrapper.h"
 #include "../nodes/NodeWrapper.h"
 #include "../../taggeds/TaggedObjectWrapper.h"
+#include "DomainEvent.h"
 
 using namespace System;
 using namespace OpenSees::Elements;
@@ -34,18 +38,19 @@ using namespace OpenSees::Recorders;
 namespace OpenSees {
 	namespace Components {
 
+		delegate int DomainEventAddNode(Node* node);
 		public ref class DomainWrapper : BaseDomainWrapper
 		{
 		public:
 			DomainWrapper();
 			~DomainWrapper();
-			bool^ AddNode(array<NodeWrapper^> ^nodes);
+			bool^ AddNode(array<NodeWrapper^>^ nodes);
 			bool^ AddNode(NodeWrapper^ node);
-			bool^ AddElement(array<ElementWrapper^> ^elements);
+			bool^ AddElement(array<ElementWrapper^>^ elements);
 			bool^ AddElement(ElementWrapper^ element);
-			bool^ AddSP_Constraint(array<SP_ConstraintWrapper^> ^sps);
+			bool^ AddSP_Constraint(array<SP_ConstraintWrapper^>^ sps);
 			bool^ AddSP_Constraint(SP_ConstraintWrapper^ sP_Constraint);
-			bool^ AddMP_Constraint(array<MP_ConstraintWrapper^> ^mps);
+			bool^ AddMP_Constraint(array<MP_ConstraintWrapper^>^ mps);
 			bool^ AddMP_Constraint(MP_ConstraintWrapper^ sP_Constraint);
 			bool^ AddLoadPattern(LoadPatternWrapper^ loadPattern);
 			bool^ AddNodalLoad(NodalLoadWrapper^ nodalLoad, int loadPatternTag);
@@ -66,9 +71,11 @@ namespace OpenSees {
 				else
 					return false;
 			}
+
 			void ClearAll() {
 				_Domain->clearAll();
 			}
+
 			ElementWrapper^ RemoveElement(int tag) {
 				Element* ret = _Domain->removeElement(tag);
 				if (ret == 0) return nullptr;
@@ -77,6 +84,7 @@ namespace OpenSees {
 				wret->_TaggedObject = ret;
 				return wret;
 			}
+
 			NodeWrapper^ RemoveNode(int tag) {
 				Node* ret = _Domain->removeNode(tag);
 				if (ret == 0) return nullptr;
@@ -114,7 +122,7 @@ namespace OpenSees {
 				{
 					ElementWrapper^ _ele = gcnew ElementWrapper();
 					_ele->_Element = ele;
-					_ele->_TaggedObject= ele;
+					_ele->_TaggedObject = ele;
 					return _ele;
 				}
 				else
@@ -135,7 +143,7 @@ namespace OpenSees {
 			}
 
 			int GetNumNodes() { return _Domain->getNumNodes(); }
-			
+
 			array<NodeWrapper^>^ GetNodes() {
 				int num = _Domain->getNumNodes();
 				array<NodeWrapper^>^ _nodes = gcnew array<NodeWrapper^>(num);
@@ -152,8 +160,20 @@ namespace OpenSees {
 				return _nodes;
 			}
 
+			array<RecorderWrapper^>^ GetRecorders() {
+				int num = _Domain->numRecorders;
+				if (num == 0) return nullptr;
+				Recorder** recorders = _Domain->theRecorders;
+				array<RecorderWrapper^>^ _recorders = gcnew array<RecorderWrapper^>(num);
+				for (int i = 0; i < num; i++)
+				{
+					_recorders[i] = gcnew RecorderWrapper(recorders[i]);
+				}
+				return _recorders;
+			}
+
 			int GetNumElements() { return _Domain->getNumElements(); }
-			
+
 			array<ElementWrapper^>^ GetElements() {
 				int num = _Domain->getNumElements();
 				array<ElementWrapper^>^ _elements = gcnew array<ElementWrapper^>(num);
@@ -171,7 +191,7 @@ namespace OpenSees {
 			}
 
 			int GetNumLoadPatterns() { return _Domain->getNumLoadPatterns(); }
-			
+
 			array<LoadPatternWrapper^>^ GetLoadPatterns() {
 				int num = _Domain->getNumLoadPatterns();
 				array<LoadPatternWrapper^>^ _patterns = gcnew array<LoadPatternWrapper^>(num);
@@ -187,7 +207,6 @@ namespace OpenSees {
 				}
 				return _patterns;
 			}
-
 
 			void RevertToStart() {
 				_Domain->revertToStart();
@@ -282,17 +301,38 @@ namespace OpenSees {
 					_vec[i] = vec[i];
 				return _vec;
 			}
-			
-			delegate void DomainChanged(int^);
-			event EventHandler^ AddNodeEventHandler;
+
+			//delegate void DomainChanged(int^);
+			event EventHandler<DomainAddNodeEventArgs^>^ AddNodeEventHandler;
 
 
 		internal:
+			DomainWrapper(Domain* domain) {
+				_Domain = domain;
+				InitEvents();
+			};
+
+			int AddNodeEvent(Node* node) {
+				AddNodeEventHandler(this, gcnew DomainAddNodeEventArgs(gcnew NodeWrapper(node)));
+				return 0;
+			}
+
 			void SetDomain(Domain* theDomain) {
 				_Domain = theDomain;
 			}
 		private:
-			
+			void InitEvents() {
+				static IntPtr ip;
+
+				if (_Domain != 0) {
+					DomainEventAddNode^ _DomainEventAddNode = gcnew DomainEventAddNode(this, &DomainWrapper::AddNodeEvent);
+					gc_DomainEventAddNode = GCHandle::Alloc(_DomainEventAddNode);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddNode);
+					_Domain->_DomainEvent_AddNode = static_cast<DomainEvent_AddNode>(ip.ToPointer());
+				}
+			}
+
+			GCHandle gc_DomainEventAddNode;
 		};
 	}
 }

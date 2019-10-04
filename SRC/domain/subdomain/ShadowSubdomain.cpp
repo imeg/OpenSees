@@ -1606,7 +1606,7 @@ ShadowSubdomain::getElementResponse(int tag, const char **argv, int argc)
 
   int msgLength = 0;
   for (int i=0; i<argc; i++) 
-    msgLength += strlen(argv[i])+1; // add 1 for terminating character
+    msgLength += strlen(argv[i])+1; // add 1 for teminating character
 
   msgData(3) = msgLength;
 

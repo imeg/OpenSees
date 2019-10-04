@@ -29,6 +29,9 @@
 
 #include <fstream>
 using std::ofstream;
+#if _DLL
+using std::string;
+#endif
 
 class Matrix;
 
@@ -42,6 +45,15 @@ class DataFileStream : public OPS_Stream
   int setFile(const char *fileName, openMode mode = OVERWRITE);
   int open(void);
   int close(void);
+#if _DLL
+  int closeHandler() {
+	  return this->close();
+  }
+  const char* getStreamHeader();
+  const char* getOutputFilename() {
+	  return getFileName();
+  }
+#endif
 
   int setPrecision(int precision);
   int setFloatField(floatField);
@@ -99,6 +111,20 @@ class DataFileStream : public OPS_Stream
   int numIndent;
   char *indentString;
 
+#if _DLL
+  bool attributeMode;
+  int numTag;
+  int sizeTags;
+  char** tags;
+
+  int xmlOrderProcessed; // -1 waiting, 1 processed, 2 processed
+  char* xmlString;
+  int xmlStringLength;
+
+  int numXMLTags;
+  ID* xmlColumns;
+#endif
+
   int sendSelfCount;
   Channel **theChannels;
   int numDataRows;
@@ -117,6 +143,7 @@ class DataFileStream : public OPS_Stream
   bool doScientific;
 
   ID *commonColumns;
+
 };
 
 #endif

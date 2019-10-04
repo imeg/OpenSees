@@ -36,6 +36,7 @@
 #ifndef Domain_h
 #define Domain_h
 
+
 #include <OPS_Stream.h>
 #include <Vector.h>
 
@@ -74,6 +75,8 @@ class Channel;
 class FEM_ObjectBroker;
 
 class TaggedObjectStorage;
+
+typedef int(__stdcall* DomainEvent_AddNode) (Node* node);
 
 class Domain
 {
@@ -233,13 +236,19 @@ class Domain
     virtual int calculateNodalReactions(int flag);
 	Recorder* getRecorder(int tag);	//by SAJalali
 
+	DomainEvent_AddNode _DomainEvent_AddNode;
+#if _DLL
+	Recorder** theRecorders;
+	int numRecorders;
+#endif
   protected:    
 
     virtual int buildEleGraph(Graph *theEleGraph);
     virtual int buildNodeGraph(Graph *theNodeGraph);
-
+#if !_DLL
     Recorder **theRecorders;
     int numRecorders;    
+#endif
 
   private:
     double currentTime;               // current pseudo time

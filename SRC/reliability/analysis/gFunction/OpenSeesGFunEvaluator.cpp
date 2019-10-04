@@ -60,7 +60,7 @@ OpenSeesGFunEvaluator::OpenSeesGFunEvaluator(Tcl_Interp *passedTclInterp,
   :GFunEvaluator(), theTclInterp(passedTclInterp), theReliabilityDomain(passedReliabilityDomain),
    theOpenSeesDomain(passedOpenSeesDomain), g(0.0)
 {
-	// here the user has provided a file with the analysis commands
+	// here the user has provided a file with the analysis commmands
 	strcpy(fileName,passedFileName);
 	nsteps = 0;
 	dt = 0.0;
@@ -93,7 +93,7 @@ OpenSeesGFunEvaluator::setTclRandomVariables(const Vector &x)
   double xval;
   RandomVariable *theRV;
 	
-  // Set values of random variables in the Tcl interpreter
+  // Set values of random variables in the Tcl intepreter
   int nrv = theReliabilityDomain->getNumberOfRandomVariables();
 
   int lsf = theReliabilityDomain->getTagOfActiveLimitStateFunction();

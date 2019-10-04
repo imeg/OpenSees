@@ -63,6 +63,14 @@ class ElementRecorder: public Recorder
 
     ~ElementRecorder();
 
+#if _DLL
+	OPS_Stream* getOutputHandler() {
+		return theOutputHandler;
+	}
+	const char* getOutputHandlerFilename() {
+		return theOutputHandler->getOutputFilename();
+	}
+#endif
     int record(int commitTag, double timeStamp);
     int restart(void);    
 

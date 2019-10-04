@@ -305,8 +305,11 @@ StandardStream::operator<<(const void *p)
 OPS_Stream& 
 StandardStream::operator<<(int n)
 {
-  if (echoApplication == true)
-    cerr <<  n;
+	if (echoApplication == true)
+	{
+		cerr << n;
+		cerr.flush();
+	}
 
   if (fileOpen != 0)
     theFile << n;

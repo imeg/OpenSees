@@ -30,6 +30,10 @@ namespace OpenSees {
 				return this->_Node->getNumberDOF();
 			};
 
+			virtual int GetTag() override {
+				return _TaggedObject->getTag();
+			}
+
 			VectorWrapper^ GetCrdsVector()
 			{
 				return VectorWrapper::GetVectorWrapper(_Node->getCrds());

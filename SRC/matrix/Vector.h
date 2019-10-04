@@ -87,6 +87,7 @@ class Vector
 		opserr << "]" << endln;
 	}
 #endif
+    
     // overloaded operators
     inline double operator()(int x) const;
     inline double &operator()(int x);

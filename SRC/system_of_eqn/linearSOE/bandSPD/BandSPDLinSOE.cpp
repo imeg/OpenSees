@@ -24,7 +24,7 @@
                                                                         
                                                                         
 // Written: fmk 
-// Created: February 1997
+// Created: Febuary 1997
 
 // Description: This file contains the implementation for BandSPDLinSOE
 
@@ -384,7 +384,7 @@ BandSPDLinSOE::setB(const Vector &v, double fact)
 
     if (v.Size() != size) {
 	opserr << "WARNING BandGenLinSOE::setB() -";
-	opserr << " incompatible sizes " << size << " and " << v.Size() << endln;
+	opserr << " incomptable sizes " << size << " and " << v.Size() << endln;
 	return -1;
     }
     

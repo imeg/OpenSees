@@ -26,7 +26,7 @@
 // File: ~/system_of_eqn/linearSOE/profileSPD/ProfileSPDLinDirectThreadSolver.h
 //
 // Written: fmk 
-// Created: February 1997
+// Created: Febuary 1997
 // Revision: A
 //
 // Description: This file contains the class definition for 

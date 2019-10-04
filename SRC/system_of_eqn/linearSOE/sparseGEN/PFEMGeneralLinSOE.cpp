@@ -121,7 +121,7 @@ PFEMGeneralLinSOE::setMatIDs(Graph& theGraph, int Ssize, int Fsize,
 	    end++;
 	}
 
-	// sort row indices of this column
+	// sort row indices of this colum
 	std::sort(rowInd.begin()+start, rowInd.begin()+end);
 
 	// add new column

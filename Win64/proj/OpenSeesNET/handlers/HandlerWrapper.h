@@ -4,6 +4,7 @@
 #include <BinaryFileStream.h>
 #include <XmlFileStream.h>
 #include <TCP_Stream.h>
+#include <RedirectStream.h>
 
 #include "../actors/IMovableObjectWrapper.h"
 #include "../matrix/VectorWrapper.h"
@@ -11,6 +12,7 @@
 
 using namespace System;
 using namespace OpenSees;
+using namespace System::IO;
 
 namespace OpenSees {
 	namespace Handlers {
@@ -73,12 +75,33 @@ namespace OpenSees {
 				return _OPS_StreamPtr->write(*vec->_Vector);
 			};
 
+			String^ GetStreamHeader() {
+				const char* headerChar = _OPS_StreamPtr->getStreamHeader();
+				if (headerChar == 0)
+					return nullptr;
+				else
+				{
+					String^ header = gcnew String(headerChar);
+					return header;
+				}
+			}
+
+			int CloseStreamHeader() {
+				if (_OPS_StreamPtr != 0)
+					return _OPS_StreamPtr->closeHandler();
+				else
+					return -1;	
+			}
+
 			~OPS_StreamWrapper() {
 				if (_OPS_StreamPtr != 0)
 					delete _OPS_StreamPtr;
 			};
 		internal:
-			OPS_Stream * _OPS_StreamPtr;
+			OPS_StreamWrapper(OPS_Stream* opsstr) {
+				_OPS_StreamPtr = opsstr;
+			};
+			OPS_Stream* _OPS_StreamPtr;
 		private:
 
 		};
@@ -130,6 +153,160 @@ namespace OpenSees {
 				if (_OPS_StreamPtr != 0)
 					delete _OPS_StreamPtr;
 			};
+		};
+
+		delegate void RedirectStreamOperatorConstCharString(const char* s);
+		delegate void RedirectStreamOperatorDouble(double d);
+		delegate void RedirectStreamWriteVector(Vector&);
+		delegate void RedirectStreamWriteConstCharString(const char* s, int n);
+		delegate void RedirectStreamWriteConstUnsignedCharString(const unsigned char* s, int n);
+		delegate void RedirectStreamWriteSignedCharString(const signed char* s, int n);
+		delegate void RedirectStreamOperatorChar(char c);
+		delegate void RedirectStreamOperatorUnsignedChar(unsigned char c);
+		delegate void RedirectStreamOperatorSignedChar(signed char c);
+		delegate void RedirectStreamOperatorConstUnsignedCharString(const unsigned char* s);
+		delegate void RedirectStreamOperatorConstSignedCharString(const signed char* s);
+		delegate void RedirectStreamOperatorInt(int n);
+		delegate void RedirectStreamOperatorUnsignedInt(unsigned int n);
+		delegate void RedirectStreamOperatorShortInt(short int n);
+		delegate void RedirectStreamOperatorUnsignedShortInt(unsigned short int n);
+		delegate void RedirectStreamOperatorLong(long n);
+		delegate void RedirectStreamOperatorUnsignedLong(unsigned long n);
+		delegate void RedirectStreamOperatorBool(bool b);
+		delegate void RedirectStreamOperatorFloat(float f);
+
+		public ref class RedirectStreamWrapper : OPS_StreamWrapper {
+		public:
+			RedirectStreamWrapper(TextWriter^ writer);
+			~RedirectStreamWrapper() {
+				if (_OPS_StreamPtr != 0)
+					delete _OPS_StreamPtr;
+				gc_RedirectStreamWriteVector.Free();
+				gc_RedirectStreamWriteConstCharString.Free();
+				gc_RedirectStreamWriteConstUnsignedCharString.Free();
+				gc_RedirectStreamWriteSignedCharString.Free();
+				gc_RedirectStreamOperatorChar.Free();
+				gc_RedirectStreamOperatorUnsignedChar.Free();
+				gc_RedirectStreamOperatorSignedChar.Free();
+				gc_RedirectStreamOperatorConstCharString.Free();
+				gc_RedirectStreamOperatorConstUnsignedCharString.Free();
+				gc_RedirectStreamOperatorConstSignedCharString.Free();
+				gc_RedirectStreamOperatorInt.Free();
+				gc_RedirectStreamOperatorUnsignedInt.Free();
+				gc_RedirectStreamOperatorShortInt.Free();
+				gc_RedirectStreamOperatorUnsignedShortInt.Free();
+				gc_RedirectStreamOperatorLong.Free();
+				gc_RedirectStreamOperatorUnsignedLong.Free();
+				gc_RedirectStreamOperatorBool.Free();
+				gc_RedirectStreamOperatorDouble.Free();
+				gc_RedirectStreamOperatorFloat.Free();
+			};
+		internal:
+			void WriteVector(Vector& vec) {
+				if (vec == 0 || vec.Size() == 0) return;
+				double* data = vec.GetData();
+				String^ response = "";
+				for (size_t i = 0; i < vec.Size(); i++)
+				{
+					response += (data[i]).ToString() + " ";
+				}
+				_writer->Write(response);
+			}
+			void WriteConstCharString(const char* s, int n) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(s);
+				_writer->Write(clistr);
+			}
+			void WriteConstUnsignedCharString(const unsigned char* s, int n) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(reinterpret_cast<const char*>(s));
+				_writer->Write(clistr);
+			}
+			void WriteSignedCharString(const signed char* s, int n) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(reinterpret_cast<const char*>(s));
+				_writer->Write(clistr);
+			}
+			void OperatorChar(char c) {
+				if (c == 0) return;
+				String^ clistr = c.ToString();
+				_writer->Write(clistr);
+			}
+			void OperatorUnsignedChar(unsigned char c) {
+				if (c == 0) return;
+				String^ clistr = c.ToString();
+				_writer->Write(clistr);
+			}
+			void OperatorSignedChar(signed char c) {
+				if (c == 0) return;
+				String^ clistr = c.ToString();
+				_writer->Write(clistr);
+			}
+			void OperatorConstCharString(const char* s) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(s);
+				_writer->Write(clistr);
+			}
+			void OperatorConstUnsignedCharString(const unsigned char* s) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(reinterpret_cast<const char*>(s));
+				_writer->Write(clistr);
+			}
+			void OperatorConstSignedCharString(const signed char* s) {
+				if (s == 0) return;
+				String^ clistr = gcnew String(reinterpret_cast<const char*>(s));
+				_writer->Write(clistr);
+			}
+			void OperatorInt(int n) {
+				_writer->Write(n);
+			}
+			void OperatorUnsignedInt(unsigned int n) {
+				_writer->Write(n);
+			}
+			void OperatorShortInt(short int n) {
+				_writer->Write(n);
+			}
+			void OperatorUnsignedShortInt(unsigned short int n) {
+				_writer->Write(n);
+			}
+			void OperatorLong(long n) {
+				_writer->Write(n);
+			}
+			void OperatorUnsignedLong(unsigned long n) {
+				_writer->Write(n*1.0);
+			}
+			void OperatorBool(bool b) {
+				_writer->Write(b);
+			}
+			void OperatorDouble(double d) {
+				_writer->Write(d);
+			}
+			void OperatorFloat(float f) {
+				_writer->Write(f);
+			}
+			
+
+		private:
+			TextWriter^ _writer;
+			GCHandle gc_RedirectStreamWriteVector;
+			GCHandle gc_RedirectStreamWriteConstCharString;
+			GCHandle gc_RedirectStreamWriteConstUnsignedCharString;
+			GCHandle gc_RedirectStreamWriteSignedCharString;
+			GCHandle gc_RedirectStreamOperatorChar;
+			GCHandle gc_RedirectStreamOperatorUnsignedChar;
+			GCHandle gc_RedirectStreamOperatorSignedChar;
+			GCHandle gc_RedirectStreamOperatorConstCharString;
+			GCHandle gc_RedirectStreamOperatorConstUnsignedCharString;
+			GCHandle gc_RedirectStreamOperatorConstSignedCharString;
+			GCHandle gc_RedirectStreamOperatorInt;
+			GCHandle gc_RedirectStreamOperatorUnsignedInt;
+			GCHandle gc_RedirectStreamOperatorShortInt;
+			GCHandle gc_RedirectStreamOperatorUnsignedShortInt;
+			GCHandle gc_RedirectStreamOperatorLong;
+			GCHandle gc_RedirectStreamOperatorUnsignedLong;
+			GCHandle gc_RedirectStreamOperatorBool;
+			GCHandle gc_RedirectStreamOperatorDouble;
+			GCHandle gc_RedirectStreamOperatorFloat;
 		};
 	}
 }

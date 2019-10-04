@@ -45,7 +45,11 @@ class TCP_Stream : public OPS_Stream
     int setFile(const char *fileName, openMode mode = OVERWRITE);
     int open(void);
     int close(void);
-    
+#if _DLL
+	int closeHandler() {
+		return this->close();
+	}
+#endif
     // xml stuff
     int tag(const char *);
     int tag(const char *, const char *);

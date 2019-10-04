@@ -34,12 +34,39 @@ namespace OpenSees {
 	namespace Recorders {
 		
 
-		public ref class RecorderWrapper abstract : TaggedObjectWrapper, IMovableObjectWrapper
+		public ref class RecorderWrapper : TaggedObjectWrapper, IMovableObjectWrapper
 		{
 		public:
 			RecorderWrapper() {};
 			~RecorderWrapper() {};
+			String^ GetStreamHeader() {
+				if(_Recorder == 0)
+					return nullptr;
+				else
+				{
+					OPS_Stream* opsstrptr = _Recorder->getOutputHandler();
+					if(opsstrptr == 0) return nullptr;
+
+					OPS_StreamWrapper^ opsstr = gcnew OPS_StreamWrapper(opsstrptr);
+					return opsstr->GetStreamHeader();
+				}
+			}
+			int CloseOutputStreamHandler() {
+				OPS_Stream* opsstrptr = _Recorder->getOutputHandler();
+				if (opsstrptr == 0) return -1;
+				OPS_StreamWrapper^ opsstr = gcnew OPS_StreamWrapper(opsstrptr);
+				return opsstr->CloseStreamHeader();
+			}
+
+			String^ GetFilename() {
+				const char* filename = _Recorder->getOutputHandlerFilename();
+				if (filename == 0) return nullptr;
+				return gcnew String(filename);
+			}
 		internal:
+			RecorderWrapper(Recorder* recorder) {
+				this->_Recorder = recorder;
+			};
 			Recorder * _Recorder;
 		private:
 

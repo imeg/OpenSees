@@ -327,7 +327,6 @@ NodeRecorder::NodeRecorder(const ID &dofs,
  initializationDone(false), numValidNodes(0), addColumnInfo(0), 
  theTimeSeries(theSeries), timeSeriesValues(0)
 {
-
   //
   // store copy of dof's to be recorder, verifying dof are valid, i.e. >= 0
   //
@@ -1129,8 +1128,6 @@ NodeRecorder::initialize(void)
   if (echoTimeFlag == true)
     timeOffset = 1;
 
-
-
   int numValidResponse = numValidNodes*theDofs->Size() + timeOffset;
   if (dataFlag == 10000 || dataFlag == 10002) {
       numValidResponse = numValidNodes + timeOffset;
@@ -1231,13 +1228,23 @@ NodeRecorder::initialize(void)
   char nodeCrdData[20];
   sprintf(nodeCrdData,"coord");
 
+#if _DLL
   if (echoTimeFlag == true) {
-    if (theNodalTags != 0 && addColumnInfo == 1) {
-      theOutputHandler->tag("TimeOutput");
-      theOutputHandler->tag("ResponseType", "time");
-      theOutputHandler->endTag();
-    }
+	  if (theNodalTags != 0) {
+		  theOutputHandler->tag("TimeOutput");
+		  theOutputHandler->tag("ResponseType", "time");
+		  theOutputHandler->endTag();
+	  }
   }
+#else 
+  if (echoTimeFlag == true) {
+	  if (theNodalTags != 0 && addColumnInfo == 1) {
+		  theOutputHandler->tag("TimeOutput");
+		  theOutputHandler->tag("ResponseType", "time");
+		  theOutputHandler->endTag();
+	  }
+  }
+#endif
 
   for (int i=0; i<numValidNodes; i++) {
     int nodeTag = theNodes[i]->getTag();

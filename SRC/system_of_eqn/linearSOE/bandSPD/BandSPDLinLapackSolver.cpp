@@ -125,7 +125,7 @@ BandSPDLinLapackSolver::solve(void)
     }
 #endif    
 
-    // check if successful
+    // check if successfull
     if (info != 0) {
 	opserr << "WARNING BandSPDLinLapackSolver::solve() - the LAPACK";
 	opserr << " routines returned " << info << endln;

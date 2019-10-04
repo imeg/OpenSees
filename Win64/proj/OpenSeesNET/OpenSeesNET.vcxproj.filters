@@ -438,10 +438,13 @@
     <ClInclude Include="recorders\ResponseWrapper_all.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tcl\TclWrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="tcl\stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="tcl\TclWrapper.h">
+    <ClInclude Include="domains\domain\DomainEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -693,6 +696,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tcl\TclWrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="domains\domain\DomainEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

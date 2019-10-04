@@ -477,6 +477,12 @@ Domain::addNode(Node * node)
   bool result = theNodes->addComponent(node);
   if (result == true) {
       node->setDomain(this);
+	  if (_DomainEvent_AddNode != 0)
+	  {
+		  int tag = 1; //node->getTag();
+		  _DomainEvent_AddNode(node);
+	  }
+
       this->domainChange();
       
       // see if the physical bounds are changed
@@ -2445,7 +2451,7 @@ Domain::buildEleGraph(Graph *theEleGraph)
       if (theEleToVertexMapEle == theEleToVertexMap.end()) {
         theEleToVertexMap.insert(MAP_INT_TYPE(eleTag, count));
 
-        // check if successfully added
+        // check if sucessfully added
         theEleToVertexMapEle = theEleToVertexMap.find(eleTag);
         if (theEleToVertexMapEle == theEleToVertexMap.end()) {
           opserr << "Domain::buildEleGraph - map STL failed to add object with tag : " << eleTag << endln;
@@ -2457,11 +2463,11 @@ Domain::buildEleGraph(Graph *theEleGraph)
     }
 
     //
-    // We now need to determine which elements are associated with each node.
+    // We now need to determine which elements are asssociated with each node.
     // As this info is not in the Node interface we must build it;
     //
     // again we will use an stl map, index will be nodeTag, object will be Vertex
-    // do using vertices for each node, when we addVertex at these nodes we
+    // do using vertices for each node, when we addVertex at thes nodes we
     // will not be adding vertices but element tags.
     //
 
@@ -2488,7 +2494,7 @@ Domain::buildEleGraph(Graph *theEleGraph)
       if (theNodeEle == theNodeToVertexMap.end()) {
         theNodeToVertexMap.insert(MAP_ID_TYPE(nodeTag, eleTags));
 
-        // check if successfully added
+        // check if sucessfully added
         theNodeEle = theNodeToVertexMap.find(nodeTag);
         if (theNodeEle == theNodeToVertexMap.end()) {
           opserr << "Domain::buildEleGraph - map STL failed to add object with tag : " << nodeTag << endln;
@@ -2752,7 +2758,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
 
     // we do the same for elements as we did for nodes above .. see comments
-    // for nodes if you can't figure what's going on!
+    // for nodes if you can't figure whats going on!
 
     if (numEle != 0) {
       ID elementData(numEle*2);
@@ -2782,7 +2788,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
 
     // we do the same for SP_Constraints as for Nodes above .. see comments
-    // for nodes if you can't figure what's going on!    
+    // for nodes if you can't figure whats going on!    
     
     if (numSPs != 0) {
       ID spData(numSPs*2);
@@ -2811,7 +2817,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
 
     // we do the same for Pressure_Constraints as for Nodes above .. see comments
-    // for nodes if you can't figure what's going on!    
+    // for nodes if you can't figure whats going on!    
     
     if (numPCs != 0) {
         ID pData(numPCs*2);
@@ -2840,7 +2846,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
 
     // we do the same for MP_Constraints as for Nodes above .. see comments
-    // for nodes if you can't figure what's going on!    
+    // for nodes if you can't figure whats going on!    
     
     if (numMPs != 0) {
       ID mpData(numMPs*2);
@@ -2869,7 +2875,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
 
     // we do the same for LoadPatterns as we did for Nodes above .. see comments
-    // for nodes if you can't figure what's going on!    
+    // for nodes if you can't figure whats going on!    
 
 
     if (numLPs != 0) {
@@ -3009,7 +3015,7 @@ Domain::sendSelf(int cTag, Channel &theChannel)
     }
   }  
 
-  // if get here we were successful
+  // if get here we were successfull
   return commitTag;
 }
 
@@ -3039,7 +3045,7 @@ Domain::recvSelf(int cTag, Channel &theChannel, FEM_ObjectBroker &theBroker)
   committedTime = currentTime;
 
   // 
-  // now if the currentGeoTag does not agree with what's in the domain
+  // now if the currentGeoTag does not agree with whats in the domain
   // we must wipe everything in the domain and recreate the domain based on the info from the channel
   //
 
@@ -3442,7 +3448,7 @@ Domain::recvSelf(int cTag, Channel &theChannel, FEM_ObjectBroker &theBroker)
   // now set the domains lastGeoSendTag and currentDomainChangedFlag
   lastGeoSendTag = currentGeoTag;  
 
-  // if get here we were successful
+  // if get here we were successfull
   return 0;
 }
 

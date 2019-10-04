@@ -40,7 +40,11 @@ class FileStream : public OPS_Stream
   int setFile(const char *fileName, openMode mode = OVERWRITE);
   int open(void);
   int close(void);
-
+#if _DLL
+  int closeHandler() {
+	  return this->close();
+  }
+#endif
   int setPrecision(int precision);
   int setFloatField(floatField);
   int precision(int precision) {return 0;};

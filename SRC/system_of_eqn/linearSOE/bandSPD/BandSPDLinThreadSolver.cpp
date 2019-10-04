@@ -184,7 +184,7 @@ BandSPDLinThreadSolver::solve(void)
     dpbtrs_("U",&n,&kd,&nrhs,Aptr,&ldA,Xptr,&ldB,&info);
     
 
-    // check if successful
+    // check if successfull
     if (info != 0)
 	return info;
 

@@ -115,7 +115,7 @@ FunctionEvaluator::setTclRandomVariables(const Vector &x)
 	double xval;
 	RandomVariable *theRV;
 	
-	// Set values of random variables in the Tcl interpreter
+	// Set values of random variables in the Tcl intepreter
 	int nrv = theReliabilityDomain->getNumberOfRandomVariables();
 	//RandomVariableIter theRViter = theReliabilityDomain->getRandomVariables();
 	//while ((theRV = theRViter()) != 0) {

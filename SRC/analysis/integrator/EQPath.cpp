@@ -532,4 +532,3 @@ EQPath::Print(OPS_Stream &s, int flag)
     } else 
 	s << "\t EQPath - no associated AnalysisModel\n";
 }
-

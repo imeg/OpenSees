@@ -3,7 +3,7 @@ include ../../../../Makefile.def
 OBJS       = 	FunctionEvaluator.o \
 	TclEvaluator.o
 
-# Compilation control
+# Compilation contol
 all:         $(OBJS)
 
 # Miscellaneous

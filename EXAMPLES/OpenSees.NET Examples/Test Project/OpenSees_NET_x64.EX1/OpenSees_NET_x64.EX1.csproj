@@ -41,9 +41,9 @@
     <OutputPath>bin\x64\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenSees.NET.x64">
-      <HintPath>..\..\..\..\..\..\Git Projects\OpenSees.NET\Win64\bin\OpenSees.NET.x64.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="OpenSees.NET.x64, Version=1.0.7191.30363, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Win64\bin\Debug\OpenSees.NET.x64.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

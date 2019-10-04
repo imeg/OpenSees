@@ -413,6 +413,7 @@ AxialCurve::checkElementState(double springForce)
 					Tcl_Eval(theTclInterp, tclAssignment);
 #endif
 
+
 				}
 			}
 			else // inside failure surface

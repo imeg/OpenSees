@@ -1280,6 +1280,7 @@ void MultiYieldSurfaceClay::setUpSurfaces (double * gredu)
 	  ofstream out("init_surface.out");
 	  out << "strain             stress" << endln;
 #endif
+
 	  for (int ii=1; ii<=numOfSurfaces; ii++){
         stress1 = ii * stressInc; 
 				stress2 = stress1 + stressInc;

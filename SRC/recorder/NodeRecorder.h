@@ -60,7 +60,14 @@ class NodeRecorder: public Recorder
 		 TimeSeries **timeSeries = 0); 
     
     ~NodeRecorder();
-
+#if _DLL
+	OPS_Stream* getOutputHandler() {
+		return theOutputHandler;
+	}
+	const char* getOutputHandlerFilename() {
+		return theOutputHandler->getOutputFilename();
+	}
+#endif
     int record(int commitTag, double timeStamp);
 
     int domainChanged(void);    

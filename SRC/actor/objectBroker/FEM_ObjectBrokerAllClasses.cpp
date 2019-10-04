@@ -1448,7 +1448,7 @@ FEM_ObjectBrokerAllClasses::getNewNDMaterial(int classTag)
 
 #if !_DLL
   case ND_TAG_stressDensity:
-      return new stressDensity();
+	  return new stressDensity();
 #endif
   case ND_TAG_CycLiqCP3D:
       return new CycLiqCP3D(); 

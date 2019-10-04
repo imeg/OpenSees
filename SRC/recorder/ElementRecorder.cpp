@@ -402,8 +402,10 @@ ElementRecorder::record(int commitTag, double timeStamp)
       nextTimeStampToRecord = timeStamp + deltaT;
 
     int loc = 0;
-    if (echoTimeFlag == true) 
-      (*data)(loc++) = timeStamp;
+	if (echoTimeFlag == true)
+	{
+		(*data)(loc++) = timeStamp;
+	}
     
     //
     // for each element if responses exist, put them in response vector
@@ -778,6 +780,7 @@ ElementRecorder::initialize(void)
       responseCount =1;
     }
 
+
     // loop over ele & set Reponses
     for (i=0; i<numEle; i++) {
       Element *theEle = theDomain->getElement((*eleID)(i));
@@ -799,6 +802,8 @@ ElementRecorder::initialize(void)
       theOutputHandler->endTag(); // TimeOutput
       numDbColumns += 1;
     }
+
+
 
     //
     // if we have an eleID we know Reponse size so allocate Response holder & loop over & ask each element

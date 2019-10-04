@@ -12,6 +12,7 @@ using namespace OpenSees::Components::Loads;
 DomainWrapper::DomainWrapper()
 {
 	_Domain = new Domain();
+	InitEvents();	
 }
 
 DomainWrapper::~DomainWrapper()
@@ -21,6 +22,7 @@ DomainWrapper::~DomainWrapper()
 		_Domain->~Domain();
 		delete _Domain;
 	}
+	gc_DomainEventAddNode.Free();
 }
 
 bool ^ 
@@ -124,3 +126,4 @@ DomainWrapper::AddNodalLoad(array<NodalLoadWrapper^>^ nodalLoads, int loadPatter
 	}
 	return true;
 }
+

@@ -792,16 +792,16 @@ Hessian size = numRV-1                                           not used
     
 			token = strtok( NULL, seps );
 			
-			char extension[5]=".";
+			char extention[5]=".";
 			if (token !=NULL)    
-				strcat(extension, token);
+				strcat(extention, token);
 			else
-				strcat(extension, "out");
+				strcat(extention, "out");
    			char theStr[3];
 
 			itoa(ii+1,theStr,10);
 			strcat(fileName, theStr);
-			strcat(fileName, extension);
+			strcat(fileName, extention);
     			
 			ofstream output_vis( fileName, ios::out );
 

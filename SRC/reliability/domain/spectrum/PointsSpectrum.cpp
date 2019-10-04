@@ -46,10 +46,10 @@ PointsSpectrum::PointsSpectrum(int tag, const Vector &freq, const Vector &ampl)
 		opserr << "Number of points to PointsSpectrum is not consistent!" << endln;
 	}
 
-	// Check that the frequencies are consecutive
+	// Check that the frequencies are consequtive
 	for (int i=1; i<freq.Size(); i++) {
 		if (freq(i-1)>freq(i)) {
-			opserr << "ERROR: The given Spectrum frequencies are not consecutive!" << endln;
+			opserr << "ERROR: The given Spectrum frequencies are not consequtive!" << endln;
 		}
 	}
 

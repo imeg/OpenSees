@@ -43,7 +43,18 @@ class XmlFileStream : public OPS_Stream
   int setFile(const char *fileName, openMode mode = OVERWRITE);
   int open(void);
   int close(void);
-
+#if _DLL
+  int closeHandler() {
+	  return this->close();
+  }
+  int handlerIsOpen() {
+	  return this->fileOpen;
+  }
+  const char* getStreamHeader();
+  const char* getOutputFilename() {
+	  return getFileName();
+  }
+#endif
   int setPrecision(int precision);
   int setFloatField(floatField);
   int precision(int precision) {return 0;};

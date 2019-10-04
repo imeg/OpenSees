@@ -145,7 +145,7 @@ int MultiDimVisPrincPlane::analyze()
 {
 
 // --- type =0:   Limit state surface -----
-// --- type =1:   Limit function -------
+// --- type =1:   Limit fuction -------
 	if (type ==0){
 		opserr<<"not implemented yet."<<endln;
 		exit(-1);
@@ -428,18 +428,18 @@ int MultiDimVisPrincPlane::analyze()
 			token = strtok( NULL, seps );
 			
 
-			char extension[5]=".";
+			char extention[5]=".";
 			if (token !=NULL)    
-				strcat(extension, token);
+				strcat(extention, token);
 			else
-				strcat(extension, "out");
+				strcat(extention, "out");
    			char theStr[3];
 
 				// 4.1 -- open file to write
 
 				itoa(ii+1,theStr,10);
 				strcat(fileName, theStr);
-				strcat(fileName, extension);
+				strcat(fileName, extention);
     			
 				ofstream output( fileName, ios::out );
 
@@ -527,22 +527,22 @@ int MultiDimVisPrincPlane::analyze()
 			token = strtok( NULL, seps );
 			
 			
-			char extension[5]=".";
+			char extention[5]=".";
 
 			if (token !=NULL) 
-				strcat(extension, token);
+				strcat(extention, token);
 			else
-				strcat(extension, "out");
+				strcat(extention, "out");
    			char theStr[3];
 
 				// 4.1 -- open file to write
 
 				itoa(ii+1,theStr,10);
 				strcat(fileName, theStr);
-				strcat(fileName, extension);
+				strcat(fileName, extention);
 
 				strcat(fileName2, theStr);
-				strcat(fileName2, extension);
+				strcat(fileName2, extention);
     			
 				ofstream output( fileName, ios::out );
 				ofstream output2( fileName2, ios::out );

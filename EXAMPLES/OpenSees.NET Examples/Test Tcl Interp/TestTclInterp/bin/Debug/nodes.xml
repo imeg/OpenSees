@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <OpenSees
+  xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation = "http://OpenSees.berkeley.edu/xml-schema/xmlns/OpenSees.xsd">
+    <TimeOutput>
+        <ResponseType>time</ResponseType>
+    </TimeOutput>
+    <NodeOutput nodeTag="1" coord1="0" coord2="0" coord3="0">
+        <ResponseType>V1</ResponseType>
+        <ResponseType>V2</ResponseType>
+    </NodeOutput>
+    <NodeOutput nodeTag="2" coord1="144" coord2="0" coord3="0">
+        <ResponseType>V1</ResponseType>
+        <ResponseType>V2</ResponseType>
+    </NodeOutput>
+    <NodeOutput nodeTag="3" coord1="168" coord2="0" coord3="0">
+        <ResponseType>V1</ResponseType>
+        <ResponseType>V2</ResponseType>
+    </NodeOutput>
+    <NodeOutput nodeTag="4" coord1="72" coord2="96" coord3="0">
+        <ResponseType>V1</ResponseType>
+        <ResponseType>V2</ResponseType>
+    </NodeOutput>
+    <Data>
+        1 0 0 0 0 0 0 0 0 
+        2 0 0 0 0 0 0 0 0 
+        3 0 0 0 0 0 0 0 0 
+        4 0 0 0 0 0 0 0 0 
+        5 0 0 0 0 0 0 0 0 
+        6 0 0 0 0 0 0 0 0 
+        7 0 0 0 0 0 0 0 0 
+        8 0 0 0 0 0 0 0 0 
+        9 0 0 0 0 0 0 0 0 
+        10 0 0 0 0 0 0 0 0 
+        </Data>
+</OpenSees>
