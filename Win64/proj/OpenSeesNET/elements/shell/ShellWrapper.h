@@ -55,7 +55,7 @@ namespace OpenSees {
 				int node1,
 				int node2,
 				int node3,
-				SectionForceDeformationWrapper^ theMaterial);
+				SectionForceDeformationWrapper^ theMaterial, double b1, double b2, double b3);
 			~ShellDKGTWrapper() {
 				if (_Element != 0)
 					delete _Element;

@@ -36,13 +36,13 @@ ShellDKGTWrapper::ShellDKGTWrapper(int tag,
 	int node1,
 	int node2,
 	int node3,
-	SectionForceDeformationWrapper^ theMaterial)
+	SectionForceDeformationWrapper^ theMaterial, double b1, double b2, double b3)
 {
 	_Element = new ShellDKGT(tag,
 		node1,
 		node2,
 		node3,
-		*theMaterial->_SectionForceDeformation);
+		*theMaterial->_SectionForceDeformation, b1, b2, b3);
 }
 
 ShellMITC4Wrapper::ShellMITC4Wrapper(int tag,

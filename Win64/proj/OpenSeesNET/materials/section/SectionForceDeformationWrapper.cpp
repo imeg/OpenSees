@@ -69,7 +69,7 @@ FiberSection3dWrapper::FiberSection3dWrapper(int tag, array<FiberWrapper^>^ fibe
 	if (GJ != nullptr)
 		_GJ = GJ->_UniaxialMaterial;
 
-	_SectionForceDeformation = new FiberSection3d(tag, fibers->Length, array2pointer6(fibers), _GJ);
+	_SectionForceDeformation = new FiberSection3d(tag, fibers->Length, array2pointer6(fibers), *_GJ);
 }
 
 FiberSection3dWrapper::FiberSection3dWrapper(int tag, FiberSectionReprWrapper ^ fiberSectionRepr,
@@ -137,7 +137,7 @@ FiberSection3dWrapper::FiberSection3dWrapper(int tag, FiberSectionReprWrapper ^ 
 
 
 	_GJ = GJ->_UniaxialMaterial;
-	_SectionForceDeformation = new FiberSection3d(tag, numFibers, _fibers, _GJ);
+	_SectionForceDeformation = new FiberSection3d(tag, numFibers, _fibers, *_GJ);
 }
 
 

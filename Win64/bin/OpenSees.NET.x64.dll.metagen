@@ -3286,7 +3286,7 @@ Class OpenSees.Elements.ShellDKGQWrapper: AutoLayout, AnsiClass, Class, Public, 
     Void .ctor(Int32, Int32, Int32, Int32, Int32, OpenSees.Materials.Sections.SectionForceDeformationWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class OpenSees.Elements.ShellDKGTWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Elements.ElementWrapper
-    Void .ctor(Int32, Int32, Int32, Int32, OpenSees.Materials.Sections.SectionForceDeformationWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(Int32, Int32, Int32, Int32, OpenSees.Materials.Sections.SectionForceDeformationWrapper, Double, Double, Double): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class OpenSees.Elements.ShellMITC4Wrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Elements.ElementWrapper
     Void .ctor(Int32, Int32, Int32, Int32, Int32, OpenSees.Materials.Sections.SectionForceDeformationWrapper, Boolean): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
