@@ -41,6 +41,12 @@
 .vs
 obj
 
+# log & exp
+*.exp
+*.log
+*.tlog
+
+
 # OTHER
 Makefile.def
 PlainConcrete.f

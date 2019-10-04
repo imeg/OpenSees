@@ -1228,6 +1228,7 @@ NodeRecorder::initialize(void)
   char nodeCrdData[20];
   sprintf(nodeCrdData,"coord");
 
+  // fixing TimeOutput for node recorder
 #if _DLL
   if (echoTimeFlag == true) {
 	  if (theNodalTags != 0) {
