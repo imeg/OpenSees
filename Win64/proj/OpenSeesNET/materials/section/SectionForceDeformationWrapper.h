@@ -71,6 +71,10 @@ namespace OpenSees {
 			public:
 				SectionForceDeformationWrapper();
 
+				virtual int GetTag() override {
+					return _SectionForceDeformation->getTag();
+				}
+
 				VectorWrapper^ GetSectionDeformation() {
 					Vector vec = _SectionForceDeformation->getSectionDeformation();
 					return VectorWrapper::GetVectorWrapper(&vec);
@@ -110,6 +114,9 @@ namespace OpenSees {
 						delete _SectionForceDeformation;
 				};
 			internal:
+				SectionForceDeformationWrapper(SectionForceDeformation* sectionForceDeformation) {
+					_SectionForceDeformation = sectionForceDeformation;
+				}
 				SectionForceDeformation * _SectionForceDeformation;
 			};
 

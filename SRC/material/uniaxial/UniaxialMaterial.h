@@ -41,6 +41,9 @@
 #define NEG_INF_STRAIN       -1.0e16
 
 #include <Material.h>
+#if _DLL
+#include <ModelBuilderUniaxialMaterialEventHandler.h>
+#endif
 class ID;
 class Vector;
 class Matrix;
@@ -92,7 +95,6 @@ class UniaxialMaterial : public Material
     // AddingSensitivity:END ///////////////////////////////////////////
 	//by SAJalali
 	virtual double getEnergy(void) { return 0; }
-
  protected:
     
  private:
@@ -103,5 +105,7 @@ extern UniaxialMaterial *OPS_getUniaxialMaterial(int tag);
 extern bool OPS_removeUniaxialMaterial(int tag);
 extern void OPS_clearAllUniaxialMaterial(void);
 extern void OPS_printUniaxialMaterial(OPS_Stream &s, int flag = 0);
-
+#if _DLL
+extern void OPSDLL_SetUniaxialMaterialEventHandlers(ModelBuilder_AddUniaxialMaterial add, ModelBuilder_RemoveUniaxialMaterial remove, ModelBuilder_ClearAllUniaxialMaterial clear);
+#endif
 #endif

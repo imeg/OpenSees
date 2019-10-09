@@ -27,7 +27,6 @@
 #include "../nodes/NodeWrapper.h"
 #include "../../taggeds/TaggedObjectWrapper.h"
 #include "DomainEvent.h"
-
 using namespace System;
 using namespace OpenSees::Elements;
 using namespace OpenSees::Components;
@@ -39,6 +38,18 @@ namespace OpenSees {
 	namespace Components {
 
 		delegate int DomainEventAddNode(Node* node);
+		delegate int DomainEventRemoveNode(Node* node);
+		delegate int DomainEventAddElement(Element* element);
+		delegate int DomainEventRemoveElement(Element* element);
+		delegate int DomainEventAddSP(SP_Constraint* sp);
+		delegate int DomainEventRemoveSP(SP_Constraint* sp);
+		delegate int DomainEventAddMP(MP_Constraint* mp);
+		delegate int DomainEventRemoveMP(MP_Constraint* mp);
+		delegate int DomainEventAddLoadPattern(LoadPattern* lp);
+		delegate int DomainEventRemoveLoadPattern(LoadPattern* lp);
+		delegate int DomainEventAddRecorder(Recorder* rec);
+		delegate int DomainEventRemoveRecorder(Recorder* rec);
+		delegate int DomainEventClearAll();
 		public ref class DomainWrapper : BaseDomainWrapper
 		{
 		public:
@@ -64,18 +75,20 @@ namespace OpenSees {
 				else
 					return false;
 			}
-
 			bool^ RemoveRecorders() {
 				if (_Domain->removeRecorders() == 0)
 					return true;
 				else
 					return false;
 			}
-
+			VectorWrapper^ GetPhysicalBounds() {
+				Vector vec = _Domain->getPhysicalBounds();
+				VectorWrapper^ nvec = gcnew VectorWrapper(vec.GetData(), vec.Size());
+				return nvec;
+			}
 			void ClearAll() {
 				_Domain->clearAll();
 			}
-
 			ElementWrapper^ RemoveElement(int tag) {
 				Element* ret = _Domain->removeElement(tag);
 				if (ret == 0) return nullptr;
@@ -84,7 +97,6 @@ namespace OpenSees {
 				wret->_TaggedObject = ret;
 				return wret;
 			}
-
 			NodeWrapper^ RemoveNode(int tag) {
 				Node* ret = _Domain->removeNode(tag);
 				if (ret == 0) return nullptr;
@@ -93,7 +105,6 @@ namespace OpenSees {
 				wret->_TaggedObject = ret;
 				return wret;
 			}
-
 			LoadPatternWrapper^ RemoveLoadPattern(int tag) {
 				LoadPattern* ret = _Domain->removeLoadPattern(tag);
 				if (ret == 0) return nullptr;
@@ -102,7 +113,6 @@ namespace OpenSees {
 				wret->_TaggedObject = ret;
 				return wret;
 			}
-
 			NodeWrapper^ GetNode(int tag) {
 				Node* node = _Domain->getNode(tag);
 				if (node != 0)
@@ -115,7 +125,6 @@ namespace OpenSees {
 				else
 					return nullptr;
 			}
-
 			ElementWrapper^ GetElement(int tag) {
 				Element* ele = _Domain->getElement(tag);
 				if (ele != 0)
@@ -128,7 +137,6 @@ namespace OpenSees {
 				else
 					return nullptr;
 			}
-
 			LoadPatternWrapper^ GetLoadPattern(int tag) {
 				LoadPattern* pattern = _Domain->getLoadPattern(tag);
 				if (pattern != 0)
@@ -141,9 +149,7 @@ namespace OpenSees {
 				else
 					return nullptr;
 			}
-
 			int GetNumNodes() { return _Domain->getNumNodes(); }
-
 			array<NodeWrapper^>^ GetNodes() {
 				int num = _Domain->getNumNodes();
 				array<NodeWrapper^>^ _nodes = gcnew array<NodeWrapper^>(num);
@@ -159,7 +165,6 @@ namespace OpenSees {
 				}
 				return _nodes;
 			}
-
 			array<RecorderWrapper^>^ GetRecorders() {
 				int num = _Domain->numRecorders;
 				if (num == 0) return nullptr;
@@ -171,9 +176,7 @@ namespace OpenSees {
 				}
 				return _recorders;
 			}
-
 			int GetNumElements() { return _Domain->getNumElements(); }
-
 			array<ElementWrapper^>^ GetElements() {
 				int num = _Domain->getNumElements();
 				array<ElementWrapper^>^ _elements = gcnew array<ElementWrapper^>(num);
@@ -189,9 +192,7 @@ namespace OpenSees {
 				}
 				return _elements;
 			}
-
 			int GetNumLoadPatterns() { return _Domain->getNumLoadPatterns(); }
-
 			array<LoadPatternWrapper^>^ GetLoadPatterns() {
 				int num = _Domain->getNumLoadPatterns();
 				array<LoadPatternWrapper^>^ _patterns = gcnew array<LoadPatternWrapper^>(num);
@@ -207,15 +208,12 @@ namespace OpenSees {
 				}
 				return _patterns;
 			}
-
 			void RevertToStart() {
 				_Domain->revertToStart();
 			}
-
 			void RevertToLastCommit() {
 				_Domain->revertToLastCommit();
 			}
-
 			array<SP_ConstraintWrapper^>^ GetSPs() {
 				int numNodes = _Domain->getNumSPs();
 				array<SP_ConstraintWrapper^>^ _sps = gcnew array<SP_ConstraintWrapper^>(numNodes);
@@ -232,7 +230,6 @@ namespace OpenSees {
 				}
 				return _sps;
 			}
-
 			array<MP_ConstraintWrapper^>^ GetMPs() {
 				int numNodes = _Domain->getNumSPs();
 				array<MP_ConstraintWrapper^>^ _mps = gcnew array<MP_ConstraintWrapper^>(numNodes);
@@ -248,7 +245,6 @@ namespace OpenSees {
 				}
 				return _mps;
 			}
-
 			void CreateRigidDiaphragm(int nodeR, IDWrapper^ nodeC, int perpDirnToPlaneConstrained) {
 				RigidDiaphragm* rb = new RigidDiaphragm(*this->_Domain, nodeR, *nodeC->_ID, perpDirnToPlaneConstrained);
 			};
@@ -258,7 +254,6 @@ namespace OpenSees {
 			void CreateRigidRod(int nodeR, int nodeC) {
 				RigidRod* rb = new RigidRod(*this->_Domain, nodeR, nodeC);
 			};
-
 			void Print(int flag)
 			{
 				_Domain->Print(opserr, flag);
@@ -304,6 +299,18 @@ namespace OpenSees {
 
 			//delegate void DomainChanged(int^);
 			event EventHandler<DomainAddNodeEventArgs^>^ AddNodeEventHandler;
+			event EventHandler<DomainRemoveNodeEventArgs^>^ RemoveNodeEventHandler;
+			event EventHandler<DomainAddElementEventArgs^>^ AddElementEventHandler;
+			event EventHandler<DomainRemoveElementEventArgs^>^ RemoveElementEventHandler;
+			event EventHandler<DomainAddSPEventArgs^>^ AddSPEventHandler;
+			event EventHandler<DomainRemoveSPEventArgs^>^ RemoveSPEventHandler;
+			event EventHandler<DomainAddMPEventArgs^>^ AddMPEventHandler;
+			event EventHandler<DomainRemoveMPEventArgs^>^ RemoveMPEventHandler;
+			event EventHandler<DomainAddLoadPatternEventArgs^>^ AddLoadPatternEventHandler;
+			event EventHandler<DomainRemoveLoadPatternEventArgs^>^ RemoveLoadPatternEventHandler;
+			event EventHandler<DomainAddRecorderEventArgs^>^ AddRecorderEventHandler;
+			event EventHandler<DomainRemoveRecorderEventArgs^>^ RemoveRecorderEventHandler;
+			event EventHandler<DomainClearAllArgs^>^ ClearAllHandler;
 
 
 		internal:
@@ -311,28 +318,177 @@ namespace OpenSees {
 				_Domain = domain;
 				InitEvents();
 			};
-
+			void SetDomain(Domain* theDomain) {
+				_Domain = theDomain;
+			}
 			int AddNodeEvent(Node* node) {
 				AddNodeEventHandler(this, gcnew DomainAddNodeEventArgs(gcnew NodeWrapper(node)));
 				return 0;
 			}
-
-			void SetDomain(Domain* theDomain) {
-				_Domain = theDomain;
+			int RemoveNodeEvent(Node* node) {
+				RemoveNodeEventHandler(this, 
+					gcnew DomainRemoveNodeEventArgs(gcnew NodeWrapper(node)));
+				return 0;
 			}
+			int AddElementEvent(Element* element) {
+				AddElementEventHandler(this, gcnew DomainAddElementEventArgs(gcnew ElementWrapper(element)));
+				return 0;
+			}
+			int RemoveElementEvent(Element* element) {
+				RemoveElementEventHandler(this, gcnew DomainRemoveElementEventArgs(gcnew ElementWrapper(element)));
+				return 0;
+			}
+			int AddSPEvent(SP_Constraint* SP) {
+				AddSPEventHandler(this, gcnew DomainAddSPEventArgs(gcnew SP_ConstraintWrapper(SP)));
+				return 0;
+			}
+			int RemoveSPEvent(SP_Constraint* SP)
+			{
+				RemoveSPEventHandler(this, gcnew DomainRemoveSPEventArgs(gcnew SP_ConstraintWrapper(SP)));
+				return 0;
+			}
+			int AddMPEvent(MP_Constraint* MP) {
+				AddMPEventHandler(this, gcnew DomainAddMPEventArgs(gcnew MP_ConstraintWrapper(MP)));
+				return 0;
+			}
+			int RemoveMPEvent(MP_Constraint* MP)
+			{
+				RemoveMPEventHandler(this, gcnew DomainRemoveMPEventArgs(gcnew MP_ConstraintWrapper(MP)));
+				return 0;
+			}
+			int AddLoadPatternEvent(LoadPattern* LoadPattern) {
+				AddLoadPatternEventHandler(this, gcnew DomainAddLoadPatternEventArgs(gcnew LoadPatternWrapper(LoadPattern)));
+				return 0;
+			}
+			int RemoveLoadPatternEvent(LoadPattern* LoadPattern)
+			{
+				RemoveLoadPatternEventHandler(this, gcnew DomainRemoveLoadPatternEventArgs(gcnew LoadPatternWrapper(LoadPattern)));
+				return 0;
+			}
+			int AddRecorderEvent(Recorder* Recorder) {
+				AddRecorderEventHandler(this, gcnew DomainAddRecorderEventArgs(gcnew RecorderWrapper(Recorder)));
+				return 0;
+			}
+			int RemoveRecorderEvent(Recorder* Recorder)
+			{
+				RemoveRecorderEventHandler(this, gcnew DomainRemoveRecorderEventArgs(gcnew RecorderWrapper(Recorder)));
+				return 0;
+			}
+			int ClearAllEvent() {
+				ClearAllHandler(this, gcnew DomainClearAllArgs());
+				return 0;
+			}
+
 		private:
 			void InitEvents() {
 				static IntPtr ip;
-
 				if (_Domain != 0) {
-					DomainEventAddNode^ _DomainEventAddNode = gcnew DomainEventAddNode(this, &DomainWrapper::AddNodeEvent);
+					// add node
+					DomainEventAddNode^ _DomainEventAddNode = gcnew DomainEventAddNode(this, 
+						&DomainWrapper::AddNodeEvent);
 					gc_DomainEventAddNode = GCHandle::Alloc(_DomainEventAddNode);
 					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddNode);
 					_Domain->_DomainEvent_AddNode = static_cast<DomainEvent_AddNode>(ip.ToPointer());
+
+					// remove node
+					DomainEventRemoveNode^ _DomainEventRemoveNode = gcnew DomainEventRemoveNode(this, 
+						&DomainWrapper::RemoveNodeEvent);
+					gc_DomainEventRemoveNode = GCHandle::Alloc(_DomainEventRemoveNode);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveNode);
+					_Domain->_DomainEvent_RemoveNode = static_cast<DomainEvent_RemoveNode>(ip.ToPointer());
+
+					// add element
+					DomainEventAddElement^ _DomainEventAddElement = gcnew DomainEventAddElement(this,
+						&DomainWrapper::AddElementEvent);
+					gc_DomainEventAddElement = GCHandle::Alloc(_DomainEventAddElement);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddElement);
+					_Domain->_DomainEvent_AddElement = static_cast<DomainEvent_AddElement>(ip.ToPointer());
+
+					// remove element
+					DomainEventRemoveElement^ _DomainEventRemoveElement = gcnew DomainEventRemoveElement(this,
+						&DomainWrapper::RemoveElementEvent);
+					gc_DomainEventRemoveElement = GCHandle::Alloc(_DomainEventRemoveElement);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveElement);
+					_Domain->_DomainEvent_RemoveElement = static_cast<DomainEvent_RemoveElement>(ip.ToPointer());
+
+					// add sp
+					DomainEventAddSP^ _DomainEventAddSP = gcnew DomainEventAddSP(this,
+						&DomainWrapper::AddSPEvent);
+					gc_DomainEventAddSP = GCHandle::Alloc(_DomainEventAddSP);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddSP);
+					_Domain->_DomainEvent_AddSP = static_cast<DomainEvent_AddSP>(ip.ToPointer());
+
+					// remove sp
+					DomainEventRemoveSP^ _DomainEventRemoveSP = gcnew DomainEventRemoveSP(this,
+						&DomainWrapper::RemoveSPEvent);
+					gc_DomainEventRemoveSP = GCHandle::Alloc(_DomainEventRemoveSP);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveSP);
+					_Domain->_DomainEvent_RemoveSP = static_cast<DomainEvent_RemoveSP>(ip.ToPointer());
+
+
+					// add mp
+					DomainEventAddMP^ _DomainEventAddMP = gcnew DomainEventAddMP(this,
+						&DomainWrapper::AddMPEvent);
+					gc_DomainEventAddMP = GCHandle::Alloc(_DomainEventAddMP);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddMP);
+					_Domain->_DomainEvent_AddMP = static_cast<DomainEvent_AddMP>(ip.ToPointer());
+
+					// remove mp
+					DomainEventRemoveMP^ _DomainEventRemoveMP = gcnew DomainEventRemoveMP(this,
+						&DomainWrapper::RemoveMPEvent);
+					gc_DomainEventRemoveMP = GCHandle::Alloc(_DomainEventRemoveMP);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveMP);
+					_Domain->_DomainEvent_RemoveMP = static_cast<DomainEvent_RemoveMP>(ip.ToPointer());
+
+					// add lp
+					DomainEventAddLoadPattern^ _DomainEventAddLoadPattern = gcnew DomainEventAddLoadPattern(this,
+						&DomainWrapper::AddLoadPatternEvent);
+					gc_DomainEventAddLoadPattern = GCHandle::Alloc(_DomainEventAddLoadPattern);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddLoadPattern);
+					_Domain->_DomainEvent_AddLoadPattern = static_cast<DomainEvent_AddLoadPattern>(ip.ToPointer());
+
+					// remove lp
+					DomainEventRemoveLoadPattern^ _DomainEventRemoveLoadPattern = gcnew DomainEventRemoveLoadPattern(this,
+						&DomainWrapper::RemoveLoadPatternEvent);
+					gc_DomainEventRemoveLoadPattern = GCHandle::Alloc(_DomainEventRemoveLoadPattern);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveLoadPattern);
+					_Domain->_DomainEvent_RemoveLoadPattern = static_cast<DomainEvent_RemoveLoadPattern>(ip.ToPointer());
+
+					// add rec
+					DomainEventAddRecorder^ _DomainEventAddRecorder = gcnew DomainEventAddRecorder(this,
+						&DomainWrapper::AddRecorderEvent);
+					gc_DomainEventAddRecorder = GCHandle::Alloc(_DomainEventAddRecorder);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddRecorder);
+					_Domain->_DomainEvent_AddRecorder = static_cast<DomainEvent_AddRecorder>(ip.ToPointer());
+
+					// remove rec
+					DomainEventRemoveRecorder^ _DomainEventRemoveRecorder = gcnew DomainEventRemoveRecorder(this,
+						&DomainWrapper::RemoveRecorderEvent);
+					gc_DomainEventRemoveRecorder = GCHandle::Alloc(_DomainEventRemoveRecorder);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveRecorder);
+					_Domain->_DomainEvent_RemoveRecorder = static_cast<DomainEvent_RemoveRecorder>(ip.ToPointer());
+
+					// clear all
+					DomainEventClearAll^ _DomainEventClearAll = gcnew DomainEventClearAll(this, &DomainWrapper::ClearAllEvent);
+					gc_DomainEventClearAll = GCHandle::Alloc(_DomainEventClearAll);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventClearAll);
+					_Domain->_DomainEvent_ClearAll = static_cast<DomainEvent_ClearAll>(ip.ToPointer());
 				}
 			}
 
 			GCHandle gc_DomainEventAddNode;
+			GCHandle gc_DomainEventRemoveNode;
+			GCHandle gc_DomainEventAddElement;
+			GCHandle gc_DomainEventRemoveElement;
+			GCHandle gc_DomainEventAddSP;
+			GCHandle gc_DomainEventRemoveSP;
+			GCHandle gc_DomainEventAddMP;
+			GCHandle gc_DomainEventRemoveMP;
+			GCHandle gc_DomainEventAddLoadPattern;
+			GCHandle gc_DomainEventRemoveLoadPattern;
+			GCHandle gc_DomainEventAddRecorder;
+			GCHandle gc_DomainEventRemoveRecorder;
+			GCHandle gc_DomainEventClearAll;
 		};
 	}
 }

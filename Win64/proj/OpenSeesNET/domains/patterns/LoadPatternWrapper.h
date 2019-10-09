@@ -95,6 +95,10 @@ namespace OpenSees {
 				};
 				
 			internal:
+				LoadPatternWrapper(LoadPattern* lp) {
+					this->_LoadPattern = lp;
+					this->_TaggedObject = lp;
+				};
 				LoadPattern * _LoadPattern;
 			};
 

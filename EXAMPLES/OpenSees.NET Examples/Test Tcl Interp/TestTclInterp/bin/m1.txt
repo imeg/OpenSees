@@ -1,0 +1,28 @@
+# written: fmk
+# date: 02/99
+#
+# purpose: example1 in OpenSeesIntro.tex1
+#
+# $Revision: 1.4 $1
+# $Date: 2002-12-17 02:03:54 $
+# $Source: /usr/local/cvs/OpenSees/EXAMPLES/ExampleScripts/example1.tcl,v $
+
+wipe
+#create the ModelBuilder object
+model BasicBuilder -ndm 2 -ndf 2
+
+# build the model 
+
+# add nodes - command: node nodeId xCrd yCrd
+node 1   0.0  0.0
+node 2 144.0  0.0
+node 3 168.0  0.0
+node 4  72.0 96.0
+
+# add material - command: uniaxialMaterial  matID 
+uniaxialMaterial Elastic 1 3000
+
+# add truss elements - command: element truss trussID node1 node2 A matID
+element truss 1 1 4 10.0 1
+element truss 2 2 4 5.0 1
+element truss 3 3 4 5.0 1

@@ -31,7 +31,7 @@ namespace OpenSees {
 			};
 
 			virtual int GetTag() override {
-				return _TaggedObject->getTag();
+				return _Node->getTag();
 			}
 
 			VectorWrapper^ GetCrdsVector()

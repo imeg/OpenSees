@@ -66,6 +66,7 @@ namespace OpenSees {
 		internal:
 			RecorderWrapper(Recorder* recorder) {
 				this->_Recorder = recorder;
+				this->_TaggedObject = recorder;
 			};
 			Recorder * _Recorder;
 		private:

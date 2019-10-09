@@ -360,6 +360,7 @@ Class OpenSees.Materials.Uniaxials.UniaxialMaterialWrapper: AutoLayout, AnsiClas
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     GetCopy(): PrivateScope, Public, HideBySig
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
     GetStrain(): PrivateScope, Public, HideBySig
     GetStrainRate(): PrivateScope, Public, HideBySig
     GetStress(): PrivateScope, Public, HideBySig
@@ -720,6 +721,13 @@ Class OpenSees.Components.LoadPatterns.FireLoadPatternWrapper: AutoLayout, AnsiC
 Class OpenSees.Components.LoadPatterns.MultiSupportPatternWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Components.LoadPatterns.LoadPatternWrapper
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class OpenSees.Components.DomainClearAllArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class OpenSees.Components.DomainAddNodeEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.EventArgs
     Void .ctor(OpenSees.Components.NodeWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -729,12 +737,125 @@ Class OpenSees.Components.DomainAddNodeEventArgs: AutoLayout, AnsiClass, Class, 
     OpenSees.Components.NodeWrapper Node : Public
   Methods:
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveNodeEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.NodeWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.NodeWrapper Node : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainAddElementEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Elements.ElementWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Elements.ElementWrapper Element : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveElementEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Elements.ElementWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Elements.ElementWrapper Element : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainAddSPEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.Constraints.SP_ConstraintWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.Constraints.SP_ConstraintWrapper sp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveSPEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.Constraints.SP_ConstraintWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.Constraints.SP_ConstraintWrapper sp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainAddMPEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.Constraints.MP_ConstraintWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.Constraints.MP_ConstraintWrapper mp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveMPEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.Constraints.MP_ConstraintWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.Constraints.MP_ConstraintWrapper mp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainAddLoadPatternEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.LoadPatterns.LoadPatternWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.LoadPatterns.LoadPatternWrapper mp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveLoadPatternEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Components.LoadPatterns.LoadPatternWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Components.LoadPatterns.LoadPatternWrapper mp : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainAddRecorderEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Recorders.RecorderWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Recorders.RecorderWrapper rec : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Components.DomainRemoveRecorderEventArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Recorders.RecorderWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Recorders.RecorderWrapper rec : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class OpenSees.Components.DomainWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Components.BaseDomainWrapper
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Events:
+    System.EventHandler`1[OpenSees.Components.DomainClearAllArgs] ClearAllHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveRecorderEventArgs] RemoveRecorderEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainAddRecorderEventArgs] AddRecorderEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveLoadPatternEventArgs] RemoveLoadPatternEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainAddLoadPatternEventArgs] AddLoadPatternEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveMPEventArgs] RemoveMPEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainAddMPEventArgs] AddMPEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveSPEventArgs] RemoveSPEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainAddSPEventArgs] AddSPEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveElementEventArgs] RemoveElementEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainAddElementEventArgs] AddElementEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Components.DomainRemoveNodeEventArgs] RemoveNodeEventHandler: SpecialName
     System.EventHandler`1[OpenSees.Components.DomainAddNodeEventArgs] AddNodeEventHandler: SpecialName
   Methods:
+    add_ClearAllHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_ClearAllHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
     AddNode(NodeWrapper): PrivateScope, Public, HideBySig
     AddNode(NodeWrapper[]): PrivateScope, Public, HideBySig
     AddElement(ElementWrapper): PrivateScope, Public, HideBySig
@@ -749,6 +870,7 @@ Class OpenSees.Components.DomainWrapper: AutoLayout, AnsiClass, Class, Public, B
     AddElementLoad(ElementalLoadWrapper, Int32): PrivateScope, Public, HideBySig
     AddRecorder(RecorderWrapper): PrivateScope, Public, HideBySig
     RemoveRecorders(): PrivateScope, Public, HideBySig
+    GetPhysicalBounds(): PrivateScope, Public, HideBySig
     ClearAll(): PrivateScope, Public, HideBySig
     RemoveElement(Int32): PrivateScope, Public, HideBySig
     RemoveNode(Int32): PrivateScope, Public, HideBySig
@@ -782,6 +904,28 @@ Class OpenSees.Components.DomainWrapper: AutoLayout, AnsiClass, Class, Public, B
     GetEigenValues(): PrivateScope, Public, HideBySig
     add_AddNodeEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
     remove_AddNodeEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveNodeEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveNodeEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddElementEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddElementEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveElementEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveElementEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddSPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddSPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveSPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveSPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddMPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddMPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveMPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveMPEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddLoadPatternEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddLoadPatternEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveLoadPatternEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveLoadPatternEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddRecorderEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddRecorderEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveRecorderEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveRecorderEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
 Class OpenSees.Handlers.ConstraintHandlerWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
@@ -1799,6 +1943,7 @@ Class OpenSees.Materials.NDMaterials.NDMaterialWrapper: AutoLayout, AnsiClass, C
   :OpenSees.Materials.MaterialWrapper
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
     GetTangent(): PrivateScope, Public, HideBySig
     GetTangentMatrixWrapper(): PrivateScope, Public, HideBySig
     GetInitialTangent(): PrivateScope, Public, HideBySig
@@ -2406,6 +2551,7 @@ Class OpenSees.Materials.Sections.SectionForceDeformationWrapper: AutoLayout, An
   :OpenSees.Materials.MaterialWrapper
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
     GetSectionDeformation(): PrivateScope, Public, HideBySig
     GetStressResultant(): PrivateScope, Public, HideBySig
     GetSectionTangent(): PrivateScope, Public, HideBySig
@@ -3594,6 +3740,81 @@ Class OpenSees.Systems.Linears.UmfpackGenLinSolverWrapper: AutoLayout, AnsiClass
 Class OpenSees.Systems.Linears.UmfpackGenLinSOEWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Systems.Linears.LinearSOEWrapper
     Void .ctor(OpenSees.Systems.Linears.UmfpackGenLinSolverWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderAddUniaxialMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Materials.Uniaxials.UniaxialMaterialWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Materials.Uniaxials.UniaxialMaterialWrapper theMaterial : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveUniaxialMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Int32 tag : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllUniaxialMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderAddSectionArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Materials.Sections.SectionForceDeformationWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Materials.Sections.SectionForceDeformationWrapper theSection : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveSectionArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Int32 tag : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllSectionArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderAddNDMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(OpenSees.Materials.NDMaterials.NDMaterialWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    OpenSees.Materials.NDMaterials.NDMaterialWrapper theNDMaterial : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveNDMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Fields:
+    Int32 tag : Public
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
+Class OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllNDMaterialArgs: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.EventArgs
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Interfaces:
+    System.IDisposable
+  Methods:
+    Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class OpenSees.Tcl.TclExecutionResult: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(OpenSees.Tcl.TclExecutionStatus): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -3607,14 +3828,44 @@ Class OpenSees.Tcl.TclExecutionResult: AutoLayout, AnsiClass, Class, Public, Bef
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Class OpenSees.Tcl.TclWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(OpenSees.Handlers.RedirectStreamWrapper): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Interfaces:
     System.IDisposable
+  Events:
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllNDMaterialArgs] ClearAllNDMaterialEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveNDMaterialArgs] RemoveNDMaterialEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderAddNDMaterialArgs] AddNDMaterialEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllSectionArgs] ClearAllSectionEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveSectionArgs] RemoveSectionEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderAddSectionArgs] AddSectionEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllUniaxialMaterialArgs] ClearAllUniaxialMaterialEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderRemoveUniaxialMaterialArgs] RemoveUniaxialMaterialEventHandler: SpecialName
+    System.EventHandler`1[OpenSees.Tcl.ModelBuilder.ModelBuilderAddUniaxialMaterialArgs] AddUniaxialMaterialEventHandler: SpecialName
   Methods:
+    SetOutputStream(RedirectStreamWrapper): PrivateScope, Public, HideBySig
     Init(): PrivateScope, Public, HideBySig
     Execute(String): PrivateScope, Public, HideBySig
     TclEvalFile(String): PrivateScope, Public, HideBySig
     TclEval(String): PrivateScope, Public, HideBySig
     GetActiveDomain(): PrivateScope, Public, HideBySig
+    add_AddUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_ClearAllUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_ClearAllUniaxialMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_ClearAllSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_ClearAllSectionEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_AddNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_AddNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_RemoveNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_RemoveNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    add_ClearAllNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
+    remove_ClearAllNDMaterialEventHandler(EventHandler`1): PrivateScope, Public, HideBySig, SpecialName
     Dispose(): PrivateScope, Public, Final, Virtual, HideBySig
 Struct OpenSees.Tcl.TclExecutionStatus: AutoLayout, AnsiClass, Class, Public, Sealed, BeforeFieldInit
   :System.Enum

@@ -467,6 +467,7 @@
     <ClInclude Include="systems\UmfpackGenWrapper.h" />
     <ClInclude Include="taggeds\stdafx.h" />
     <ClInclude Include="taggeds\TaggedObjectWrapper.h" />
+    <ClInclude Include="tcl\ModelBuilderEvent.h" />
     <ClInclude Include="tcl\stdafx.h" />
     <ClInclude Include="tcl\TclWrapper.h" />
   </ItemGroup>
@@ -563,6 +564,7 @@
     <ClCompile Include="systems\SystemOfEqnWrapper.cpp" />
     <ClCompile Include="systems\UmfpackGenWrapper.cpp" />
     <ClCompile Include="taggeds\TaggedObjectWrapper.cpp" />
+    <ClCompile Include="tcl\ModelBuilderEvent.cpp" />
     <ClCompile Include="tcl\TclWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -572,7 +574,7 @@
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="logs.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

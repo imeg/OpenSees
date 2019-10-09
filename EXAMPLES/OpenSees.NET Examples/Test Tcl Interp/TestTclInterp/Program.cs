@@ -61,28 +61,23 @@ namespace TestTclInterp
             tclInterp1.Init();
             var domain = tclInterp1.GetActiveDomain();
             //var ret = tclInterp1.Execute($"cd {"C:\\Git Projects\\OpenSees.NET - old2\\OpenSees\\Win64\\bin\\".Replace("\\","/")}");
-            var ret = tclInterp1.Execute("source exam.tcl");
-            var recorders = domain.GetRecorders();
-            foreach (var recorder in recorders)
-            {
-                var retClose = recorder.CloseOutputStreamHandler();
-                var header = recorder.GetStreamHeader();
-                var filename = recorder.GetFilename();
-            }
+            tclInterp1.AddUniaxialMaterialEventHandler += TclInterp1_AddUniaxialMaterialEventHandler;
+            tclInterp1.ClearAllUniaxialMaterialEventHandler += TclInterp1_ClearAllUniaxialMaterialEventHandler;
+            domain.AddNodeEventHandler += Domain_AddNodeEventHandler1;
+            domain.AddElementEventHandler += Domain_AddElementEventHandler;
+            var ret = tclInterp1.Execute("source ../m1.txt");
+            //var recorders = domain.GetRecorders();
+            //foreach (var recorder in recorders)
+            //{
+            //    var retClose = recorder.CloseOutputStreamHandler();
+            //    var header = recorder.GetStreamHeader();
+            //    var filename = recorder.GetFilename();
+            //}
 
             tclInterp1.Execute("wipe");
             return;
 
-
-
-
-
-
-
-
-
-
-
+            #region MyRegion
             //var domain = tclInterp1.GetActiveDomain();
             //domain.AddNodeEventHandler += Domain_AddNodeEventHandler;
             //TclExecutionResult result = new TclExecutionResult()
@@ -108,7 +103,28 @@ namespace TestTclInterp
             //        wr1.WriteLine(result.ErrorMessage);
             //    }
             //}
-            Console.ReadKey();
+            Console.ReadKey(); 
+            #endregion
+        }
+
+        private static void TclInterp1_ClearAllUniaxialMaterialEventHandler(object sender, OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllUniaxialMaterialArgs e)
+        {
+            Console.WriteLine("clear all mats");
+        }
+
+        private static void Domain_AddElementEventHandler(object sender, OpenSees.Components.DomainAddElementEventArgs e)
+        {
+            Console.WriteLine("node tag :" + e.Element.GetTag());
+        }
+
+        private static void Domain_AddNodeEventHandler1(object sender, OpenSees.Components.DomainAddNodeEventArgs e)
+        {
+            Console.WriteLine("node tag :" +e.Node.GetTag());
+        }
+
+        private static void TclInterp1_AddUniaxialMaterialEventHandler(object sender, OpenSees.Tcl.ModelBuilder.ModelBuilderAddUniaxialMaterialArgs e)
+        {
+            Console.WriteLine("umat tag :" + e.theMaterial.GetTag());
         }
 
         private static void Domain_AddNodeEventHandler(object sender, OpenSees.Components.DomainAddNodeEventArgs e)

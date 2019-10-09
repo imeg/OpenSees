@@ -54,6 +54,10 @@ namespace OpenSees {
 					return theMat;
 				}
 
+				virtual int GetTag() override {
+					return _UniaxialMaterial->getTag();
+				}
+
 				double GetStrain() { return _UniaxialMaterial->getStrain(); };
 				double GetStrainRate() { return _UniaxialMaterial->getStrainRate(); };
 				double GetStress() { return _UniaxialMaterial->getStress(); };
@@ -95,6 +99,9 @@ namespace OpenSees {
 				}
 
 			internal:
+				UniaxialMaterialWrapper(UniaxialMaterial* theUniaxialMaterial) {
+					_UniaxialMaterial = theUniaxialMaterial;
+				}
 				UniaxialMaterial * _UniaxialMaterial;
 			};	
 		}

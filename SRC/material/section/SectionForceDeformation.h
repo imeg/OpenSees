@@ -41,7 +41,9 @@
 #include <Matrix.h>
 #include <Vector.h>
 #include <ID.h>
-
+#if _DLL
+#include <ModelBuilderSectionEventHandler.h>
+#endif
 class Information;
 class Response;
 
@@ -125,5 +127,7 @@ extern SectionForceDeformation *OPS_getSectionForceDeformation(int tag);
 extern bool OPS_removeSectionForceDeformation(int tag);
 extern void OPS_clearAllSectionForceDeformation(void);
 extern void OPS_printSectionForceDeformation(OPS_Stream &s, int flag=0);
-
+#if _DLL
+extern void OPSDLL_SetSectionEventHandlers(ModelBuilder_AddSection add, ModelBuilder_RemoveSection remove, ModelBuilder_ClearAllSection clear);
+#endif
 #endif

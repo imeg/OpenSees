@@ -1,7 +1,7 @@
 wipe
 puts "System"
 model basic -ndm 3 -ndf 6
-puts "restraint 1"
+puts "restraint"
 node 1 0.000E+000 0.000E+000 9.500E+003
 node 2 0.000E+000 0.000E+000 1.250E+004
 node 3 0.000E+000 4.000E+003 9.500E+003
@@ -369,7 +369,6 @@ geomTransf Linear 125 0.000 0.000 1.000
 geomTransf Linear 126 0.000 0.000 1.000 
 puts "element"
 element nonlinearBeamColumn 1 46 55 3 1001 1
-puts "element 1"
 element nonlinearBeamColumn 2 47 56 3 1001 2
 element nonlinearBeamColumn 3 48 57 3 1001 3
 element nonlinearBeamColumn 4 49 58 3 1001 4
@@ -495,7 +494,6 @@ element nonlinearBeamColumn 123 29 32 3 1002 123
 element nonlinearBeamColumn 124 32 35 3 1002 124
 element nonlinearBeamColumn 125 30 33 3 1002 125
 element nonlinearBeamColumn 126 33 36 3 1002 126
-puts "element done"
 puts "recorder"
 recorder Node -file node59.out -time -node 59 -dof 1 disp
 recorder Node -file node0.out -time -nodeRange 1 63 -dof 1 2 3 disp

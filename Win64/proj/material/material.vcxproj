@@ -207,6 +207,7 @@
     <ClCompile Include="..\..\..\SRC\material\nD\J2ThreeDimensionalThermal.cpp" />
     <ClCompile Include="..\..\..\SRC\material\nD\LinearCap.cpp" />
     <ClCompile Include="..\..\..\SRC\material\nD\matCMM\MaterialCMM.cpp" />
+    <ClCompile Include="..\..\..\SRC\material\nD\ModelBuilderNDMaterialEventHandler.cpp" />
     <ClCompile Include="..\..\..\SRC\material\nD\PlaneStressLayeredMaterial.cpp" />
     <ClCompile Include="..\..\..\SRC\material\nD\PlaneStressRebarMaterial.cpp" />
     <ClCompile Include="..\..\..\SRC\material\nD\PlaneStressSimplifiedJ2.cpp" />
@@ -242,6 +243,7 @@
     <ClCompile Include="..\..\..\SRC\material\section\integration\TubeSectionIntegration.cpp" />
     <ClCompile Include="..\..\..\SRC\material\section\LayeredShellFiberSectionThermal.cpp" />
     <ClCompile Include="..\..\..\SRC\material\section\MembranePlateFiberSectionThermal.cpp" />
+    <ClCompile Include="..\..\..\SRC\material\section\ModelBuilderSectionEventHandler.cpp" />
     <ClCompile Include="..\..\..\SRC\material\section\NDFiberSectionWarping2d.cpp" />
     <ClCompile Include="..\..\..\SRC\material\section\TimoshenkoSection3d.cpp" />
     <ClCompile Include="..\..\..\SRC\material\section\WFFiberSection2d.cpp" />
@@ -316,6 +318,7 @@
     <ClCompile Include="..\..\..\SRC\material\uniaxial\MaterialState.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\Maxwell.cpp" />
     <ClCompile Include="..\..\..\Src\material\uniaxial\MinMaxMaterial.cpp" />
+    <ClCompile Include="..\..\..\SRC\material\uniaxial\ModelBuilderUniaxialMaterialEventHandler.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\ModIMKPeakOriented.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\ModIMKPeakOriented02.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\ModIMKPinching.cpp" />
@@ -614,6 +617,7 @@
     <ClInclude Include="..\..\..\SRC\material\nD\J2ThreeDimensionalThermal.h" />
     <ClInclude Include="..\..\..\SRC\material\nD\LinearCap.h" />
     <ClInclude Include="..\..\..\SRC\material\nD\matCMM\MaterialCMM.h" />
+    <ClInclude Include="..\..\..\SRC\material\nD\ModelBuilderNDMaterialEventHandler.h" />
     <ClInclude Include="..\..\..\SRC\material\nD\PlaneStressLayeredMaterial.h" />
     <ClInclude Include="..\..\..\SRC\material\nD\PlaneStressRebarMaterial.h" />
     <ClInclude Include="..\..\..\SRC\material\nD\PlaneStressSimplifiedJ2.h" />
@@ -649,6 +653,7 @@
     <ClInclude Include="..\..\..\SRC\material\section\integration\TubeSectionIntegration.h" />
     <ClInclude Include="..\..\..\SRC\material\section\LayeredShellFiberSectionThermal.h" />
     <ClInclude Include="..\..\..\SRC\material\section\MembranePlateFiberSectionThermal.h" />
+    <ClInclude Include="..\..\..\SRC\material\section\ModelBuilderSectionEventHandler.h" />
     <ClInclude Include="..\..\..\SRC\material\section\NDFiberSectionWarping2d.h" />
     <ClInclude Include="..\..\..\SRC\material\section\TimoshenkoSection3d.h" />
     <ClInclude Include="..\..\..\SRC\material\section\WFFiberSection2d.h" />
@@ -722,6 +727,7 @@
     <ClInclude Include="..\..\..\SRC\material\uniaxial\MaterialState.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\Maxwell.h" />
     <ClInclude Include="..\..\..\Src\material\uniaxial\MinMaxMaterial.h" />
+    <ClInclude Include="..\..\..\SRC\material\uniaxial\ModelBuilderUniaxialMaterialEventHandler.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\ModIMKPeakOriented.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\ModIMKPeakOriented02.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\ModIMKPinching.h" />

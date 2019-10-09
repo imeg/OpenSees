@@ -30,14 +30,15 @@ namespace OpenSees {
 				double GetValue() {
 					return _SP_Constraint->getValue();
 				}
-
-			
-
 				~SP_ConstraintWrapper() {
 					if (_SP_Constraint != 0)
 						delete _SP_Constraint;
 				};
 			internal:
+				SP_ConstraintWrapper(SP_Constraint* sp) {
+					this->_SP_Constraint = sp;
+					this->_TaggedObject = sp;
+				};
 				SP_Constraint * _SP_Constraint;
 			};
 
@@ -85,6 +86,10 @@ namespace OpenSees {
 						delete _MP_Constraint;
 				};
 			internal:
+				MP_ConstraintWrapper(MP_Constraint* mp) {
+					this->_MP_Constraint = mp;
+					this->_TaggedObject = mp;
+				};
 				MP_Constraint * _MP_Constraint;
 			};
 

@@ -194,7 +194,10 @@ namespace OpenSees {
 
 
 		internal:
-			//Element* _Element;
+			ElementWrapper(Element* _element) {
+				this->_Element = _element;
+				this->_TaggedObject = _element;
+			};
 			InformationProxy* _InformationProxy;
 		private:
 

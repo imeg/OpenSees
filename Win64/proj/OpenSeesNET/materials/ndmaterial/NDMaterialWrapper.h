@@ -151,6 +151,10 @@ namespace OpenSees {
 			public:
 				NDMaterialWrapper();
 				
+				virtual int GetTag() override {
+					return _NDMaterial->getTag();
+				}
+
 				array<double, 2>^ GetTangent() {
 					return MatrixWrapper::GetArray(_NDMaterial->getTangent());
 				}
@@ -228,6 +232,9 @@ namespace OpenSees {
 				};
 
 			internal:
+				NDMaterialWrapper(NDMaterial* NDMaterial) {
+					_NDMaterial = NDMaterial;
+				}
 				NDMaterial * _NDMaterial;
 			};
 

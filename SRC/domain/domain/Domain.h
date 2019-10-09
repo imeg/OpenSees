@@ -77,6 +77,18 @@ class FEM_ObjectBroker;
 class TaggedObjectStorage;
 
 typedef int(__stdcall* DomainEvent_AddNode) (Node* node);
+typedef int(__stdcall* DomainEvent_RemoveNode) (Node* node);
+typedef int(__stdcall* DomainEvent_AddElement) (Element* element);
+typedef int(__stdcall* DomainEvent_RemoveElement) (Element* element);
+typedef int(__stdcall* DomainEvent_AddSP) (SP_Constraint* sp);
+typedef int(__stdcall* DomainEvent_RemoveSP) (SP_Constraint* sp);
+typedef int(__stdcall* DomainEvent_AddMP) (MP_Constraint* mp);
+typedef int(__stdcall* DomainEvent_RemoveMP) (MP_Constraint* mp);
+typedef int(__stdcall* DomainEvent_AddLoadPattern) (LoadPattern* lp);
+typedef int(__stdcall* DomainEvent_RemoveLoadPattern) (LoadPattern* lp);
+typedef int(__stdcall* DomainEvent_AddRecorder) (Recorder* rec);
+typedef int(__stdcall* DomainEvent_RemoveRecorder) (Recorder* rec);
+typedef int(__stdcall* DomainEvent_ClearAll) ();
 
 class Domain
 {
@@ -236,8 +248,20 @@ class Domain
     virtual int calculateNodalReactions(int flag);
 	Recorder* getRecorder(int tag);	//by SAJalali
 
-	DomainEvent_AddNode _DomainEvent_AddNode;
 #if _DLL
+	DomainEvent_AddNode _DomainEvent_AddNode;
+	DomainEvent_RemoveNode _DomainEvent_RemoveNode;
+	DomainEvent_AddElement _DomainEvent_AddElement;
+	DomainEvent_RemoveElement _DomainEvent_RemoveElement;
+	DomainEvent_AddSP _DomainEvent_AddSP;
+	DomainEvent_RemoveSP _DomainEvent_RemoveSP;
+	DomainEvent_AddMP _DomainEvent_AddMP;
+	DomainEvent_RemoveMP _DomainEvent_RemoveMP;
+	DomainEvent_AddLoadPattern _DomainEvent_AddLoadPattern;
+	DomainEvent_RemoveLoadPattern _DomainEvent_RemoveLoadPattern;
+	DomainEvent_AddRecorder _DomainEvent_AddRecorder;
+	DomainEvent_RemoveRecorder _DomainEvent_RemoveRecorder;
+	DomainEvent_ClearAll _DomainEvent_ClearAll;
 	Recorder** theRecorders;
 	int numRecorders;
 #endif

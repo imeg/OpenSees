@@ -1,4 +1,0 @@
-set x 1
-puts "$x kkkkki"
-info frame
-model x 1

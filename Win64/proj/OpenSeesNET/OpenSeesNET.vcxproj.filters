@@ -447,6 +447,9 @@
     <ClInclude Include="domains\domain\DomainEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="tcl\ModelBuilderEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -701,6 +704,9 @@
     <ClCompile Include="domains\domain\DomainEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tcl\ModelBuilderEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc">
@@ -713,6 +719,6 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <Text Include="logs.txt" />
   </ItemGroup>
 </Project>

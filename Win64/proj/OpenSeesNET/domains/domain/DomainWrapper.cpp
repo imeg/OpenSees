@@ -22,7 +22,21 @@ DomainWrapper::~DomainWrapper()
 		_Domain->~Domain();
 		delete _Domain;
 	}
+
 	gc_DomainEventAddNode.Free();
+	gc_DomainEventRemoveNode.Free();
+	gc_DomainEventAddElement.Free();
+	gc_DomainEventRemoveElement.Free();
+	gc_DomainEventAddSP.Free();
+	gc_DomainEventRemoveSP.Free();
+	gc_DomainEventAddMP.Free();
+	gc_DomainEventRemoveMP.Free();
+	gc_DomainEventAddLoadPattern.Free();
+	gc_DomainEventRemoveLoadPattern.Free();
+	gc_DomainEventAddRecorder.Free();
+	gc_DomainEventRemoveRecorder.Free();
+	gc_DomainEventClearAll.Free();
+
 }
 
 bool ^ 
