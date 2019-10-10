@@ -68,9 +68,9 @@
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\damage\debug\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\damage\debug-dll\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\lib\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\damage\release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\damage\release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\damage\release-dll\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -166,7 +166,7 @@
       <ProgramDataBaseFileName>.\..\..\obj\damage\release/</ProgramDataBaseFileName>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\release\damage.lib</OutputFile>
+      <OutputFile>.\..\..\lib\release-dll\damage.lib</OutputFile>
     </Lib>
     <BuildLog>
       <Path>.\..\..\obj\damage\release\$(MSBuildProjectName).log</Path>
