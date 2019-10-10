@@ -1,0 +1,6 @@
+# ninja log v5
+8	702	592398601	CMakeFiles/tet.dir/predicates.cxx.obj	7c9509e48d6a538
+6	747	592398601	CMakeFiles/tet.dir/tetgen.cxx.obj	330a0b3a645db5cf
+1	803	592398601	CMakeFiles/tetgen.dir/predicates.cxx.obj	1ef760b77dce6083
+760	845	592398601	tet.lib	e66805b6162d90dc
+3	892	592398601	CMakeFiles/tetgen.dir/tetgen.cxx.obj	4982a49854c55aac

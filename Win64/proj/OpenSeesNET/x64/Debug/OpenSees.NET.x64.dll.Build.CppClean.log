@@ -1,143 +1,107 @@
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\vc142.pdb
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\loadwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\groudmotionwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\domainwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\basedomainwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\constraintwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\domaincomponentwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\damagemodelwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\convergencetestwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\assemblyinfo.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\dof_numbererwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\analysismodelwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\transientintegratorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\staticintegratorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\integratorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\incrementalintegratorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\constrainthandlerwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\analysiswrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\linesearchwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\algorithmswrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\acceleratorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\ulbeamcolumnwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\trusswrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\shellwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\quadwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\surfaceloadwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\quad4fiberoverlaywrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\otherelementwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\externalelementwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\elementwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\crdtransfwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\catenarycablewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\brickwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\bearingwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\beamintegrationwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\beamcolumnwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\baseelementwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\adapterwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\timeserieswrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\loadpatternwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\nodewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\ops.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\vectorwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\matrixwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\idwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\yieldsurfacewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\uniaxialmaterialwrapper_all.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\uniaxialmaterialwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\limitcurvewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\sectionforcedeformationwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\sectionrepreswrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\reinflayerwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\patchwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\sectionintegrationwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\fiberwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\ndmaterialwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\materialwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\handlerwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\graphnumbererwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\zerolengthelementwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\coupledzerolengthwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\umfpackgenwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\systemofeqnwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\symbandeigenwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\sparsesymwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\sparsegenwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\solverwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\profilespdwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\linearsoewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\linearsoesolverwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\fullgenwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\eigensolverwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\eigensoewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\diagonalwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\bandspdwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\bandgenwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\arpacksoewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\responsewrapper_all.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\responsewrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\recorderwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\informationwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\taggedobjectwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\tclwrapper.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\domainevent.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\opensees.net.x64.dll.pch
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\stdafx.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\.netframework,version=v4.0.assemblyattributes.obj
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\.netframework,version=v4.0.assemblyattributes.asm
-c:\git projects\opensees.net - copy\win64\bin\debug\opensees.net.x64.dll
-c:\git projects\opensees.net - copy\win64\bin\debug\opensees.net.x64.dll.pdb
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\app.res
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.vcxprojassemblyreference.cache
-c:\git projects\opensees.net - copy\win64\\bin\debug\opensees.net.x64.dll.pdb
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.command.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.read.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.write.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.11292.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.11760.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.11768.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.12972.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.13468.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.13532.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.14008.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.14060.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.14232.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.14640.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.15124.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.15328.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.16804.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.16912.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.19460.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.19624.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.19796.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.20900.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.21540.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.21744.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.22644.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.22704.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.22760.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.22884.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.23796.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.2384.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.24572.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.25736.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.27328.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.28248.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.28736.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.29240.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.5384.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.7428.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.7636.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.7988.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.8144.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.8548.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.8712.delete.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.command.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.read.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.write.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\metagen.read.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\metagen.write.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.command.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.read.1.tlog
-c:\git projects\opensees.net - copy\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.write.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\opensees.net.x64.dll.pch
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\vc142.pdb
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\stdafx.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\groudmotionwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\domainwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\domainevent.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\basedomainwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\constraintwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\domaincomponentwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\damagemodelwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\convergencetestwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\assemblyinfo.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\dof_numbererwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\analysismodelwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\transientintegratorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\staticintegratorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\integratorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\incrementalintegratorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\constrainthandlerwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\analysiswrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\linesearchwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\algorithmswrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\acceleratorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\trusswrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\shellwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\quadwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\surfaceloadwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\quad4fiberoverlaywrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\otherelementwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\externalelementwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\elementwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\crdtransfwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\catenarycablewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\brickwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\bearingwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\beamintegrationwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\beamcolumnwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\baseelementwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\adapterwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\timeserieswrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\loadpatternwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\nodewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\loadwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\vectorwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\matrixwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\idwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\yieldsurfacewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\uniaxialmaterialwrapper_all.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\uniaxialmaterialwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\limitcurvewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\sectionforcedeformationwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\sectionrepreswrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\reinflayerwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\patchwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\sectionintegrationwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\fiberwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\ndmaterialwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\materialwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\handlerwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\graphnumbererwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\zerolengthelementwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\coupledzerolengthwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\ulbeamcolumnwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\systemofeqnwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\symbandeigenwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\sparsesymwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\sparsegenwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\solverwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\profilespdwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\linearsoewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\linearsoesolverwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\fullgenwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\eigensolverwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\eigensoewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\diagonalwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\bandspdwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\bandgenwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\arpacksoewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\responsewrapper_all.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\responsewrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\recorderwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\informationwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\ops.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\tclwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\modelbuilderevent.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\taggedobjectwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\umfpackgenwrapper.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\.netframework,version=v4.0.assemblyattributes.obj
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\.netframework,version=v4.0.assemblyattributes.asm
+d:\programming\opensees.net\win64\bin\debug\opensees.net.x64.dll
+d:\programming\opensees.net\win64\bin\debug\opensees.net.x64.dll.pdb
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\app.res
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.vcxprojassemblyreference.cache
+d:\programming\opensees.net\win64\\bin\debug\opensees.net.x64.dll.pdb
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.command.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.read.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\cl.write.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.13680.delete.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.15056.delete.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.command.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.read.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\link.write.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\metagen.read.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\metagen.write.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.command.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.read.1.tlog
+d:\programming\opensees.net\win64\proj\openseesnet\x64\debug\openseesnet.tlog\rc.write.1.tlog

@@ -64,9 +64,9 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\lib\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\cssparse\debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\cssparse\debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\cssparse\debug-dll\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\lib\release\</OutDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\cssparse\release\</IntDir>
@@ -112,7 +112,7 @@
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\debug\cssparse.lib</OutputFile>
+      <OutputFile>.\..\..\lib\debug-dll\cssparse.lib</OutputFile>
     </Lib>
     <BuildLog>
       <Path>.\..\..\obj\cssparse\debug\$(MSBuildProjectName).log</Path>
