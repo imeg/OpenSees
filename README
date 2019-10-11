@@ -2,27 +2,30 @@ The OpenSees.net source code repository.
 
 Change logs
 -------------------------------------------------------------------
-adding optimization example
-		Weight Optimization 10-bar truss using MATLAB and OpenSees
+LoadPatternWrapper object oct. 11 2019
+	return SPs
+	return TimeSeries
+adding optimization example oct. 11 2019
+	Weight Optimization 10-bar truss using MATLAB and OpenSees
 merge repos oct. 10 2019
 adding model builder events  oct. 9 2019
-		material events
-		ndmaterial events
-		sections events
+	material events
+	ndmaterial events
+	sections events
 adding events and more  oct. 8 2019
-		DomainEventAddSP;
-		DomainEventRemoveSP;
-		DomainEventAddMP;
-		DomainEventRemoveMP;
-		DomainEventAddLoadPattern;
-		DomainEventRemoveLoadPattern;
-		DomainEventAddRecorder;
-		DomainEventRemoveRecorder;
-		DomainEventClearAll;
-		GetPhysicalBounds
+	DomainEventAddSP;
+	DomainEventRemoveSP;
+	DomainEventAddMP;
+	DomainEventRemoveMP;
+	DomainEventAddLoadPattern;
+	DomainEventRemoveLoadPattern;
+	DomainEventAddRecorder;
+	DomainEventRemoveRecorder;
+	DomainEventClearAll;
+	GetPhysicalBounds
 adding event handlers Oct. 6 2019
-		DomainEventRemoveNode(Node* node);
-		DomainEventAddElement(Element* element);
-		DomainEventRemoveElement(Element* element);
-		DomainEventClearAll();
+	DomainEventRemoveNode(Node* node);
+	DomainEventAddElement(Element* element);
+	DomainEventRemoveElement(Element* element);
+	DomainEventClearAll();
 adding TclWrapper::SetOutputStream Oct. 6 2019

@@ -1,6 +1,7 @@
 #pragma once
 #include <LoadPattern.h>
 #include <NodalLoadIter.h>
+#include <SingleDomSP_Iter.h>
 #include <ElementalLoadIter.h>
 #include <EarthquakePattern.h>
 #include <UniformExcitation.h>
@@ -31,17 +32,19 @@ namespace OpenSees {
 				LoadPatternWrapper(int tag);
 				void SetTimeSeries(TimeSeriesWrapper^ timeSeries);
 
+				TimeSeriesWrapper^ GetTimeSeries() {
+					TimeSeries* ts = _LoadPattern->getTimeSeries();
+					if (ts == 0) return nullptr;
+					TimeSeriesWrapper^ tsw = gcnew TimeSeriesWrapper(ts);
+					return tsw;
+				}
+
 				int^ AddMotion(GroundMotionWrapper^ theMotion, int tag) {
 					return _LoadPattern->addMotion(*theMotion->_GroundMotion, tag);
 				};
 
-				NodalLoadWrapper^ RemoveNodalLoad(int tag) {
-					NodalLoad* ret = _LoadPattern->removeNodalLoad(tag);
-					if (ret == 0) return nullptr;
-					NodalLoadWrapper^ wret = gcnew NodalLoadWrapper();
-					wret->_NodalLoad = ret;
-					wret->_TaggedObject = ret;
-					return wret;
+				virtual int GetTag() override {
+					return _LoadPattern->getTag();
 				}
 
 				List<NodalLoadWrapper^>^ GetNodalLoads() {
@@ -60,13 +63,17 @@ namespace OpenSees {
 					return _nls;
 				}
 
-				ElementalLoadWrapper^ RemoveElementalLoad(int tag) {
-					ElementalLoad* ret = _LoadPattern->removeElementalLoad(tag);
-					if (ret == 0) return nullptr;
-					ElementalLoadWrapper^ wret = gcnew ElementalLoadWrapper();
-					wret->_ElementalLoad = ret;
-					wret->_TaggedObject = ret;
-					return wret;
+				List<SP_ConstraintWrapper^>^ GetSPs() {
+					SingleDomSP_Iter spIter = (SingleDomSP_Iter&)_LoadPattern->getSPs();
+					List<SP_ConstraintWrapper^>^ _nls = gcnew List<SP_ConstraintWrapper^>();
+					SP_Constraint* sp = 0;
+					int counter = 0;
+					while ((sp == spIter()) != 0)
+					{
+						SP_ConstraintWrapper^ nodew = gcnew SP_ConstraintWrapper(sp);
+						_nls->Add(nodew);
+					}
+					return _nls;
 				}
 
 				List<ElementalLoadWrapper^>^ GetElementalLoads() {
@@ -83,6 +90,35 @@ namespace OpenSees {
 						_nls->Add(nodew);
 					}
 					return _nls;
+				}
+
+				NodalLoadWrapper^ RemoveNodalLoad(int tag) {
+					NodalLoad* ret = _LoadPattern->removeNodalLoad(tag);
+					if (ret == 0) return nullptr;
+					NodalLoadWrapper^ wret = gcnew NodalLoadWrapper();
+					wret->_NodalLoad = ret;
+					wret->_TaggedObject = ret;
+					return wret;
+				}
+
+				ElementalLoadWrapper^ RemoveElementalLoad(int tag) {
+					ElementalLoad* ret = _LoadPattern->removeElementalLoad(tag);
+					if (ret == 0) return nullptr;
+					ElementalLoadWrapper^ wret = gcnew ElementalLoadWrapper();
+					wret->_ElementalLoad = ret;
+					wret->_TaggedObject = ret;
+					return wret;
+				}
+
+				SP_ConstraintWrapper^ RemoveSP_Constraint(int tag) {
+					SP_Constraint* ret = _LoadPattern->removeSP_Constraint(tag);
+					if (ret == 0) return nullptr;
+					SP_ConstraintWrapper^ wret = gcnew SP_ConstraintWrapper(ret);
+					return wret;
+				}
+
+				double GetLoadFactor() {
+					return _LoadPattern->getLoadFactor();
 				}
 
 				void ClearAll() {

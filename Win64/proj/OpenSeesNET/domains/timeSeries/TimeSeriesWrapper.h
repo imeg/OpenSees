@@ -39,6 +39,9 @@ namespace OpenSees {
 				};
 
 			internal:
+				TimeSeriesWrapper(TimeSeries* timeSeries) {
+					_TimeSeries = timeSeries;
+				};
 				TimeSeries * _TimeSeries;
 			};
 
