@@ -26,10 +26,9 @@ TclWrapper::SetOutputStream(RedirectStreamWrapper^ opsStream)
 
 int
 TclWrapper::Init() {
-	if (this->_opsStream == nullptr)
-		return -1000;
 	this->interp = Tcl_CreateInterp();
-	opserrPtr = this->_opsStream->_OPS_StreamPtr;
+	if (this->_opsStream != nullptr)
+		opserrPtr = this->_opsStream->_OPS_StreamPtr;
 	int ret = OpenSeesAppInit(this->interp);
 	this->InitEvents();
 	if (ret != 0)
@@ -39,7 +38,7 @@ TclWrapper::Init() {
 
 }
 
-void 
+void
 TclWrapper::InitEvents() {
 	static IntPtr ip;
 
@@ -50,7 +49,7 @@ TclWrapper::InitEvents() {
 	gc_ModelBuilderEventAddUniaxialMaterial = GCHandle::Alloc(_ModelBuilderEventAddUniaxialMaterial);
 	ip = Marshal::GetFunctionPointerForDelegate(_ModelBuilderEventAddUniaxialMaterial);
 	ModelBuilder_AddUniaxialMaterial _ModelBuilder_AddUniaxialMaterial = static_cast<ModelBuilder_AddUniaxialMaterial>(ip.ToPointer());
-	
+
 	// remove uni mat
 	ModelBuilderEventRemoveUniaxialMaterial^ _ModelBuilderEventRemoveUniaxialMaterial =
 		gcnew ModelBuilderEventRemoveUniaxialMaterial(this,
@@ -127,7 +126,7 @@ TclWrapper::InitEvents() {
 	OPSDLL_SetNDMaterialEventHandlers(_ModelBuilder_AddNDMaterial,
 		_ModelBuilder_RemoveNDMaterial,
 		_ModelBuilder_ClearAllNDMaterial);
-	
+
 }
 
 void

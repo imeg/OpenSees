@@ -1010,6 +1010,11 @@
 #define RECORDER_TAGS_MPCORecorder               20
 #define RECORDER_TAGS_GmshRecorder               21
 #define RECORDER_TAGS_VTK_Recorder               22
+#ifdef _CSS
+#define RECORDER_TAGS_ResidElementRecorder	23		//by SAJalali
+#define RECORDER_TAGS_ResidDriftRecorder	24		//by SAJalali
+#define RECORDER_TAGS_ResidNodeRecorder	25			//by SAJalali
+#endif // _CSS
 
 #define OPS_STREAM_TAGS_FileStream		1
 #define OPS_STREAM_TAGS_StandardStream		2
