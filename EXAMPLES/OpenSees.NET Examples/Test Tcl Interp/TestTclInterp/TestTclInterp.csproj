@@ -87,7 +87,7 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OpenSees.NET.x64, Version=1.0.7221.32599, Culture=neutral, processorArchitecture=AMD64">
+    <Reference Include="OpenSees.NET.x64, Version=1.0.7222.21293, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Win64\bin\Debug\OpenSees.NET.x64.dll</HintPath>
     </Reference>

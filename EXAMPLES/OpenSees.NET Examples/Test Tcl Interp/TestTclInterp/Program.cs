@@ -65,7 +65,9 @@ namespace TestTclInterp
             tclInterp1.ClearAllUniaxialMaterialEventHandler += TclInterp1_ClearAllUniaxialMaterialEventHandler;
             domain.AddNodeEventHandler += Domain_AddNodeEventHandler1;
             domain.AddElementEventHandler += Domain_AddElementEventHandler;
-            var ret = tclInterp1.Execute("source ../m1.txt");
+            var ret = tclInterp1.Execute("source ../m2.txt");
+            var disp = domain.GetNode(1).GetCommitDisp();
+            var resp = domain.GetElement(1).GetDoubleResponse(40);
             //var recorders = domain.GetRecorders();
             //foreach (var recorder in recorders)
             //{
