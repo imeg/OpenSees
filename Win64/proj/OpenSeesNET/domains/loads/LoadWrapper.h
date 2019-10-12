@@ -44,6 +44,9 @@ namespace OpenSees {
 				NodalLoadWrapper() :LoadWrapper(0) {};
 				NodalLoadWrapper(int tag) : LoadWrapper(tag) {};
 				NodalLoadWrapper(int tag, int node, VectorWrapper^ values, bool isLoadConstant);
+				virtual int GetTag() override {
+					return _NodalLoad->getTag();
+				}
 				int GetNodeTag() {
 					return _NodalLoad->getNodeTag();
 				}
@@ -62,6 +65,9 @@ namespace OpenSees {
 			public:
 				ElementalLoadWrapper() :ElementalLoadWrapper(0) {};
 				ElementalLoadWrapper(int tag) : LoadWrapper(tag) {};
+				virtual int GetTag() override {
+					return _ElementalLoad->getTag();
+				}
 				~ElementalLoadWrapper() {};
 			internal:
 				ElementalLoad * _ElementalLoad;

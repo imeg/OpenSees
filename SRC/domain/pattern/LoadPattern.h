@@ -65,6 +65,9 @@ class LoadPattern : public DomainComponent
 
     // method to set the associated TimeSeries and Domain
     virtual void setTimeSeries(TimeSeries *theSeries);
+#if _DLL
+	virtual inline TimeSeries* getTimeSeries() { return this->theSeries; };
+#endif
     virtual void setDomain(Domain *theDomain);
 
     // methods to add loads
@@ -72,9 +75,8 @@ class LoadPattern : public DomainComponent
     virtual bool addNodalLoad(NodalLoad *);
     virtual bool addElementalLoad(ElementalLoad *);
     virtual NodalLoadIter     &getNodalLoads(void);
-    virtual ElementalLoadIter &getElementalLoads(void);    
-    virtual SP_ConstraintIter &getSPs(void);        
-    
+    virtual ElementalLoadIter &getElementalLoads(void);  
+	virtual SP_ConstraintIter& getSPs(void);
     // methods to remove loads
     virtual void clearAll(void);
     virtual NodalLoad *removeNodalLoad(int tag);
