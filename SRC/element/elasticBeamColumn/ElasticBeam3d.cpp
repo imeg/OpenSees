@@ -49,6 +49,10 @@
 #include <stdlib.h>
 #include <string>
 #include <elementAPI.h>
+#ifdef _CSS
+#include <Beam3dPointLoad.h>
+#include <Beam3dUniformLoad.h>
+#endif // _CSS
 
 Matrix ElasticBeam3d::K(12,12);
 Vector ElasticBeam3d::P(12);
@@ -133,6 +137,9 @@ ElasticBeam3d::ElasticBeam3d()
   :Element(0,ELE_TAG_ElasticBeam3d), 
   A(0.0), E(0.0), G(0.0), Jx(0.0), Iy(0.0), Iz(0.0), rho(0.0), cMass(0),
   Q(12), q(6), connectedExternalNodes(2), theCoordTransf(0)
+#ifdef _CSS
+	, numEleLoads(0), eleLoads(0), eleLoadFactors(0) //SAJalali
+#endif // _CSS
 {
   // does nothing
   q0[0] = 0.0;
@@ -158,6 +165,9 @@ ElasticBeam3d::ElasticBeam3d(int tag, double a, double e, double g,
   :Element(tag,ELE_TAG_ElasticBeam3d), 
   A(a), E(e), G(g), Jx(jx), Iy(iy), Iz(iz), rho(r), cMass(cm), sectionTag(sectTag),
   Q(12), q(6), connectedExternalNodes(2), theCoordTransf(0)
+#ifdef _CSS
+	, numEleLoads(0), eleLoads(0), eleLoadFactors(0) //SAJalali
+#endif // _CSS
 {
   connectedExternalNodes(0) = Nd1;
   connectedExternalNodes(1) = Nd2;
@@ -190,6 +200,9 @@ ElasticBeam3d::ElasticBeam3d(int tag, int Nd1, int Nd2, SectionForceDeformation 
 			     CrdTransf &coordTransf, double r, int cm)
   :Element(tag,ELE_TAG_ElasticBeam3d), 
   Q(12), q(6), connectedExternalNodes(2), theCoordTransf(0)
+#ifdef _CSS
+	, numEleLoads(0), eleLoads(0), eleLoadFactors(0) //SAJalali
+#endif // _CSS
 {
   if (section != 0) {
     sectionTag = section->getTag();
@@ -258,6 +271,14 @@ ElasticBeam3d::~ElasticBeam3d()
 {
   if (theCoordTransf)
     delete theCoordTransf;
+#ifdef _CSS
+  //SAJalali
+  if (eleLoads != 0)
+  {
+	  delete[] eleLoads;
+	  delete[] eleLoadFactors;
+  }
+#endif // _CSS
 }
 
 int
@@ -499,13 +520,38 @@ ElasticBeam3d::zeroLoad(void)
   p0[3] = 0.0;
   p0[4] = 0.0;
 
+#ifdef _CSS
+  numEleLoads = 0; //SAJalali
+#endif // _CSS
+
   return;
 }
 
 int 
 ElasticBeam3d::addLoad(ElementalLoad *theLoad, double loadFactor)
 {
-  int type;
+#ifdef _CSS
+	//SAJalali
+	ElementalLoad** theNextEleLoads = new ElementalLoad * [numEleLoads + 1];
+	double* theNextEleLoadFactors = new double[numEleLoads + 1];
+	for (int i = 0; i < numEleLoads; i++) {
+		theNextEleLoads[i] = eleLoads[i];
+		theNextEleLoadFactors[i] = eleLoadFactors[i];
+	}
+	if (eleLoads != 0)
+	{
+		delete[] eleLoads;
+		delete[] eleLoadFactors;
+	}
+	eleLoads = theNextEleLoads;
+	eleLoadFactors = theNextEleLoadFactors;
+
+
+	eleLoadFactors[numEleLoads] = loadFactor;
+	eleLoads[numEleLoads] = theLoad;
+	numEleLoads++;
+#endif // _CSS
+	int type;
   const Vector &data = theLoad->getData(type, loadFactor);
   double L = theCoordTransf->getInitialLength();
 
@@ -714,8 +760,12 @@ ElasticBeam3d::sendSelf(int cTag, Channel &theChannel)
 {
     int res = 0;
 
-    static Vector data(17);
-    
+#ifdef _CSS
+	static Vector data(18);
+#else
+	static Vector data(17);
+#endif // _CSS
+
     data(0) = A;
     data(1) = E; 
     data(2) = G; 
@@ -743,7 +793,10 @@ ElasticBeam3d::sendSelf(int cTag, Channel &theChannel)
     data(14) = betaK;
     data(15) = betaK0;
     data(16) = betaKc;
-    
+#ifdef _CSS
+	data(17) = numEleLoads;
+#endif // _CSS
+
     // Send the data vector
     res += theChannel.sendVector(this->getDbTag(), cTag, data);
     if (res < 0) {
@@ -758,14 +811,33 @@ ElasticBeam3d::sendSelf(int cTag, Channel &theChannel)
       return res;
     }
 
-    return res;
+#ifdef _CSS
+	ID loadTags(numEleLoads);
+	for (int i = 0; i < numEleLoads; i++)
+		loadTags(i) = eleLoads[i]->getClassTag();
+	res += theChannel.sendID(this->getDbTag(), cTag, loadTags);
+	for (int i = 0; i < numEleLoads; i++)
+	{
+		res += eleLoads[i]->sendSelf(cTag, theChannel);
+	}
+	res += theChannel.sendVector(this->getDbTag(), cTag, Vector(eleLoadFactors, numEleLoads));
+	if (res < 0) {
+		opserr << "ElasticBeam3d::sendSelf() - could not send eleLoad Data.\n";
+		return res;
+	}
+#endif // _CSS
+	return res;
 }
 
 int
 ElasticBeam3d::recvSelf(int cTag, Channel &theChannel, FEM_ObjectBroker &theBroker)
 {
   int res = 0;
+#ifdef _CSS
+  static Vector data(18);
+#else
   static Vector data(17);
+#endif // _CSS
 
   res += theChannel.recvVector(this->getDbTag(), cTag, data);
   if (res < 0) {
@@ -818,7 +890,39 @@ ElasticBeam3d::recvSelf(int cTag, Channel &theChannel, FEM_ObjectBroker &theBrok
     opserr << "ElasticBeam3d::recvSelf -- could not receive CoordTransf\n";
     return res;
   }
-  
+#ifdef _CSS
+  numEleLoads = data(17);
+  eleLoads = new ElementalLoad * [numEleLoads];
+  eleLoadFactors = new double[numEleLoads];
+  ID loadTags(numEleLoads);
+  res += theChannel.recvID(this->getDbTag(), cTag, loadTags);
+
+  for (int i = 0; i < numEleLoads; i++)
+  {
+	  int classtag = loadTags(i);
+	  switch (classtag)
+	  {
+	  case LOAD_TAG_Beam3dPointLoad:
+		  eleLoads[i] = new Beam3dPointLoad();
+		  eleLoads[i]->recvSelf(cTag, theChannel, theBroker);
+		  break;
+	  case LOAD_TAG_Beam3dUniformLoad:
+		  eleLoads[i] = new Beam3dUniformLoad();
+		  eleLoads[i]->recvSelf(cTag, theChannel, theBroker);
+		  break;
+	  default:
+		  opserr << "ElasticBeam3d::recvSelf(): error reading elemental Load Data\n";
+		  break;
+	  }
+  }
+  res += theChannel.recvVector(this->getDbTag(), cTag, Vector(eleLoadFactors, numEleLoads));
+  if (res < 0) {
+	  opserr << "ElasticBeam3d::recvSelf() - error reading elemental Load Data\n";
+	  return res;
+  }
+
+#endif // _CSS
+
   return res;
 }
 
@@ -1087,6 +1191,30 @@ ElasticBeam3d::setResponse(const char **argv, int argc, OPS_Stream &output)
     output.tag("ResponseType","phi");
     theResponse = new ElementResponse(this, 5, Vector(6));
   }  
+#ifdef _CSS
+  //SAJalali
+  else if (strcmp(argv[0], "internalForce") == 0 || strcmp(argv[0], "InternalForce") == 0)
+  {
+
+	  if (argc > 1) {
+
+		  double xi = atof(argv[1]);
+		  if (xi >= 0 && xi <= 1) {
+			  output.tag("InternalForce");
+			  output.attr("xi", xi);
+
+			  theResponse = new ElementResponse(this, 6, Vector(6));
+			  Information& info = theResponse->getInformation();
+			  info.theDouble = xi;
+			  output.endTag();
+
+		  }
+		  else {
+			  opserr << "WARNING! ElasticBeam2d::invalid section location: " << xi << " value must be in 0<= <=1 range" << endln;
+		  }
+	  }
+  }
+#endif // _CSS
   output.endTag(); // ElementOutput
 
   return theResponse;
@@ -1100,6 +1228,9 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
   double oneOverL = 1.0/L;
   static Vector Res(12);
   Res = this->getResistingForce();
+#ifdef _CSS
+  static Vector force(6);//SAJalali
+#endif // _CSS
 
   switch (responseID) {
   case 1: // stiffness
@@ -1146,6 +1277,14 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
   case 5:
     return eleInfo.setVector(theCoordTransf->getBasicTrialDisp());
 
+#ifdef _CSS
+	//SAJalali
+  case 6:
+	  L = eleInfo.theDouble;
+	  computeSectionForces(force, L);
+	  eleInfo.setVector(force);
+	  break;
+#endif // _CSS
   default:
     return -1;
   }
@@ -1214,3 +1353,82 @@ ElasticBeam3d::updateParameter (int parameterID, Information &info)
 	}
 }
 
+#ifdef _CSS
+//by SAJalali
+void
+ElasticBeam3d::computeSectionForces(Vector& sp, double xi)
+{
+	double L = theCoordTransf->getInitialLength();
+	double oneOverL = 1 / L;
+	int order = 6;
+	//static ID code(6);
+	//code(0) = SECTION_RESPONSE_P;	// P is the first quantity
+	//code(1) = SECTION_RESPONSE_VY;	// Vy is the second
+	//code(2) = SECTION_RESPONSE_VZ;	// Vz is the third 
+	//code(3) = SECTION_RESPONSE_T;	// T is the fourth
+	//code(4) = SECTION_RESPONSE_MY;	// My is the third 
+	//code(5) = SECTION_RESPONSE_MZ;	// Mz is the second
+	sp.Zero();
+	double xL1 = xi - 1;
+	double xL = xi;
+	sp(0) = q(0);
+	sp(1) = -oneOverL * (q(1) + q(2));
+	sp(2) = oneOverL * (q(3) + q(4));
+	sp(3) = q(5);
+	sp(4) = xL1 * q(3) + xL * q(4);
+	sp(5) = xL1 * q(1) + xL * q(2);
+
+	int type;
+
+	double x = xi * L;
+
+
+	for (int i = 0; i < numEleLoads; i++) {
+
+		double loadFactor = eleLoadFactors[i];
+		const Vector& data = eleLoads[i]->getData(type, loadFactor);
+
+		if (type == LOAD_TAG_Beam3dUniformLoad) {
+			double wy = data(0) * loadFactor;  // Transverse
+			double wz = data(1) * loadFactor;  // Transverse
+			double wa = data(2) * loadFactor;  // Axial
+
+			sp(0) += wa * (L - x);
+			sp(1) += wy * (x - 0.5 * L);
+			sp(2) += wz * (x - 0.5 * L);
+			sp(4) += wz * 0.5 * x * (L - x);
+			sp(5) += wy * 0.5 * x * (x - L);
+		}
+		else if (type == LOAD_TAG_Beam3dPointLoad) {
+			double Py = data(0) * loadFactor;
+			double Pz = data(1) * loadFactor;
+			double N = data(2) * loadFactor;
+			double aOverL = data(3);
+			if (aOverL < 0.0 || aOverL > 1.0)
+				continue;
+			double a = aOverL * L;
+			double Vy1 = Py * (1.0 - aOverL);
+			double Vy2 = Py * aOverL;
+			double Vz1 = Pz * (1.0 - aOverL);
+			double Vz2 = Pz * aOverL;
+			if (x <= a) {
+				sp(0) += N;
+				sp(1) -= Vy1;
+				sp(2) -= Vz1;
+				sp(4) += x * Vz1;
+				sp(5) -= x * Vy1;
+			}
+			else {
+				sp(1) += Vy2;
+				sp(2) += Vz2;
+				sp(4) += (L - x) * Vz2;
+				sp(5) -= (L - x) * Vy2;
+			}
+		}
+		else {
+			opserr << "ElasticBeam3d::computeSectionForces -- load type unknown for element with tag: " <<
+				this->getTag() << endln;
+		}
+	}
+}
+#endif // _CSS

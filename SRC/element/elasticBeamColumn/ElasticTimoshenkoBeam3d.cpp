@@ -46,6 +46,10 @@
 
 #include <math.h>
 #include <stdlib.h>
+#ifdef _CSS
+#include <Beam3dPointLoad.h>
+#include <Beam3dUniformLoad.h>
+#endif // _CSS
 
 
 // initialize the class wide variables
@@ -137,6 +141,9 @@ ElasticTimoshenkoBeam3d::ElasticTimoshenkoBeam3d(int tag, int Nd1, int Nd2,
     Iy(iy), Iz(iz), Avy(avy), Avz(avz), rho(r), cMass(cm), nlGeo(0), phiY(0.0),
     phiZ(0.0), L(0.0), ul(12), ql(12), ql0(12), kl(12,12), klgeo(12,12),
     Tgl(12,12), Ki(12,12), M(12,12), theLoad(12)
+#ifdef _CSS
+	, numEleLoads(0), eleLoads(0), eleLoadFactors(0) //SAJalali
+#endif // _CSS
 {
     // ensure the connectedExternalNode ID is of correct size & set values
     if (connectedExternalNodes.Size() != 2)  {
@@ -184,6 +191,9 @@ ElasticTimoshenkoBeam3d::ElasticTimoshenkoBeam3d()
     Jx(0.0), Iy(0.0), Iz(0.0), Avy(0.0), Avz(0.0), rho(0.0), cMass(0),
     nlGeo(0), phiY(0.0), phiZ(0.0), L(0.0), ul(12), ql(12), ql0(12),
     kl(12,12), klgeo(12,12), Tgl(12,12), Ki(12,12), M(12,12), theLoad(12)
+#ifdef _CSS
+	, numEleLoads(0), eleLoads(0), eleLoadFactors(0) //SAJalali
+#endif // _CSS
 {
     // ensure the connectedExternalNode ID is of correct size & set values
     if (connectedExternalNodes.Size() != 2)  {
@@ -205,6 +215,14 @@ ElasticTimoshenkoBeam3d::~ElasticTimoshenkoBeam3d()
 {
     if (theCoordTransf)
         delete theCoordTransf;
+#ifdef _CSS
+	//SAJalali
+	if (eleLoads != 0)
+	{
+		delete[] eleLoads;
+		delete[] eleLoadFactors;
+	}
+#endif // _CSS
 }
 
 
@@ -385,13 +403,39 @@ void ElasticTimoshenkoBeam3d::zeroLoad()
 {
     theLoad.Zero();
     ql0.Zero();
-    
+#ifdef _CSS
+	numEleLoads = 0;//SAJalali
+#endif // _CSS
+
     return;
 }
 
 
 int ElasticTimoshenkoBeam3d::addLoad(ElementalLoad *theLoad, double loadFactor)
 {
+#ifdef _CSS
+	//SAJalali
+	ElementalLoad** theNextEleLoads = new ElementalLoad * [numEleLoads + 1];
+	double* theNextEleLoadFactors = new double[numEleLoads + 1];
+	for (int i = 0; i < numEleLoads; i++) {
+		theNextEleLoads[i] = eleLoads[i];
+		theNextEleLoadFactors[i] = eleLoadFactors[i];
+	}
+	if (eleLoads != 0)
+	{
+		delete[] eleLoads;
+		delete[] eleLoadFactors;
+	}
+	eleLoads = theNextEleLoads;
+	eleLoadFactors = theNextEleLoadFactors;
+
+
+	eleLoadFactors[numEleLoads] = loadFactor;
+	eleLoads[numEleLoads] = theLoad;
+	numEleLoads++;
+
+#endif // _CSS
+
     int type;
     const Vector &data = theLoad->getData(type, loadFactor);
     
@@ -418,7 +462,41 @@ int ElasticTimoshenkoBeam3d::addLoad(ElementalLoad *theLoad, double loadFactor)
         ql0(10) -= My;
         ql0(11) += Mz;
     }
-    
+#ifdef _CSS
+	//SAJalali
+	else if (type == LOAD_TAG_Beam3dPointLoad) {
+		double Py = data(0) * loadFactor;
+		double Pz = data(1) * loadFactor;
+		double N = data(2) * loadFactor;
+		double aOverL = data(3);
+
+		if (aOverL < 0.0 || aOverL > 1.0)
+			return 0;
+
+		double a = aOverL * L;
+		double b = L - a;
+
+		double Vy1 = Py * (1.0 - aOverL);
+		double Vy2 = Py * aOverL;
+
+		double Vz1 = Pz * (1.0 - aOverL);
+		double Vz2 = Pz * aOverL;
+
+		// fixed end forces in local system
+		ql0(0) -= N * 0.5;
+		ql0(1) -= Vy1;
+		ql0(2) -= Vz1;
+		ql0(4) += Pz * a * b * b / L / L;	  //My
+		ql0(5) -= Py * a * b * b / L / L;	  //Mz
+		ql0(6) -= N * 0.5;
+		ql0(7) -= Vy2;
+		ql0(8) -= Vz2;
+		ql0(10) -= Pz * a * a * b / L / L;  //My
+		ql0(11) += Py * a * a * b / L / L;  //Mz
+	}
+
+#endif // _CSS
+
     else {
         opserr << "ElasticTimoshenkoBeam3d::addLoad() - "
             << "load type unknown for element: " 
@@ -520,7 +598,11 @@ int ElasticTimoshenkoBeam3d::sendSelf(int commitTag, Channel &sChannel)
 {
     int res = 0;
     
-    static Vector data(19);
+#ifdef _CSS
+	static Vector data(20);
+#else
+	static Vector data(19);
+#endif // _CSS
     data(0) = this->getTag();
     data(1) = connectedExternalNodes(0);
     data(2) = connectedExternalNodes(1);
@@ -547,7 +629,10 @@ int ElasticTimoshenkoBeam3d::sendSelf(int commitTag, Channel &sChannel)
             theCoordTransf->setDbTag(dbTag);
     }
     data(18) = dbTag;
-    
+#ifdef _CSS
+	data(19) = numEleLoads;
+#endif // _CSS
+
     // send the data vector
     res += sChannel.sendVector(this->getDbTag(), commitTag, data);
     if (res < 0) {
@@ -561,7 +646,22 @@ int ElasticTimoshenkoBeam3d::sendSelf(int commitTag, Channel &sChannel)
         opserr << "ElasticTimoshenkoBeam3d::sendSelf() - could not send CoordTransf.\n";
         return res;
     }
-    
+#ifdef _CSS
+	ID loadTags(numEleLoads);
+	for (int i = 0; i < numEleLoads; i++)
+		loadTags(i) = eleLoads[i]->getClassTag();
+	res += sChannel.sendID(this->getDbTag(), commitTag, loadTags);
+	for (int i = 0; i < numEleLoads; i++)
+	{
+		res += eleLoads[i]->sendSelf(commitTag, sChannel);
+	}
+	res += sChannel.sendVector(this->getDbTag(), commitTag, Vector(eleLoadFactors, numEleLoads));
+	if (res < 0) {
+		opserr << "ElasticTimoshenkoBeam3d::sendSelf() - could not send eleLoad Data.\n";
+		return res;
+	}
+#endif // _CSS
+
     return res;
 }
 
@@ -571,8 +671,12 @@ int ElasticTimoshenkoBeam3d::recvSelf(int commitTag, Channel &rChannel,
 {
     int res = 0;
     
-    static Vector data(19);
-    res += rChannel.recvVector(this->getDbTag(), commitTag, data);
+#ifdef _CSS
+	static Vector data(20);
+#else
+	static Vector data(19);
+#endif // _CSS
+	res += rChannel.recvVector(this->getDbTag(), commitTag, data);
     if (res < 0) {
         opserr << "ElasticTimoshenkoBeam3d::recvSelf() - could not receive data Vector.\n";
         return res;
@@ -624,7 +728,38 @@ int ElasticTimoshenkoBeam3d::recvSelf(int commitTag, Channel &rChannel,
         opserr << "ElasticTimoshenkoBeam3d::recvSelf() - could not receive CoordTransf.\n";
         return res;
     }
-    
+#ifdef _CSS
+	numEleLoads = data(19);
+	eleLoads = new ElementalLoad * [numEleLoads];
+	eleLoadFactors = new double[numEleLoads];
+	ID loadTags(numEleLoads);
+	res += rChannel.recvID(this->getDbTag(), commitTag, loadTags);
+
+	for (int i = 0; i < numEleLoads; i++)
+	{
+		int classtag = loadTags(i);
+		switch (classtag)
+		{
+		case LOAD_TAG_Beam3dPointLoad:
+			eleLoads[i] = new Beam3dPointLoad();
+			eleLoads[i]->recvSelf(commitTag, rChannel, theBroker);
+			break;
+		case LOAD_TAG_Beam3dUniformLoad:
+			eleLoads[i] = new Beam3dUniformLoad();
+			eleLoads[i]->recvSelf(commitTag, rChannel, theBroker);
+			break;
+		default:
+			opserr << "ElasticTimoshenkoBeam3d::recvSelf(): error reading elemental Load Data\n";
+			break;
+		}
+	}
+	res += rChannel.recvVector(this->getDbTag(), commitTag, Vector(eleLoadFactors, numEleLoads));
+	if (res < 0) {
+		opserr << "ElasticTimoshenkoBeam3d::recvSelf() - error reading elemental Load Data\n";
+		return res;
+	}
+#endif // _CSS
+
     // get coordinate transformation type and save flag
     if (strncmp(theCoordTransf->getClassType(),"Linear",6) == 0)  {
         nlGeo = 0;
@@ -641,7 +776,7 @@ int ElasticTimoshenkoBeam3d::recvSelf(int commitTag, Channel &rChannel,
     // revert the CoordTransf to its last committed state
     theCoordTransf->revertToLastCommit();
     
-    return res;
+	return res;
 }
 
 
@@ -769,7 +904,32 @@ Response* ElasticTimoshenkoBeam3d::setResponse(const char **argv, int argc,
         
         theResponse =  new ElementResponse(this, 2, theVector);
     }
-    
+#ifdef _CSS
+	//SAJalali
+	else if (strcmp(argv[0], "internalForce") == 0 || strcmp(argv[0], "InternalForce") == 0)
+	{
+
+		if (argc > 1) {
+
+			double xi = atof(argv[1]);
+			if (xi >= 0 && xi <= 1) {
+				output.tag("InternalForce");
+				output.attr("xi", xi);
+
+				theResponse = new ElementResponse(this, 3, Vector(6));
+				Information& info = theResponse->getInformation();
+				info.theDouble = xi;
+
+				output.endTag();
+
+			}
+			else {
+				opserr << "WARNING! ElasticBeam3d::invalid section location: " << xi << " value must be in 0<= <=1 range" << endln;
+			}
+		}
+	}
+#endif // _CSS
+
     output.endTag(); // ElementOutput
     
     return theResponse;
@@ -778,7 +938,10 @@ Response* ElasticTimoshenkoBeam3d::setResponse(const char **argv, int argc,
 
 int ElasticTimoshenkoBeam3d::getResponse (int responseID, Information &eleInfo)
 {
-    switch (responseID) {
+#ifdef _CSS
+	static Vector force(6);//SAJalali
+#endif // _CSS
+	switch (responseID) {
     case 1: // global forces
         return eleInfo.setVector(this->getResistingForce());
     
@@ -789,7 +952,15 @@ int ElasticTimoshenkoBeam3d::getResponse (int responseID, Information &eleInfo)
         
         return eleInfo.setVector(theVector);
     
-    default:
+#ifdef _CSS
+	//by SAJalali
+	case 3:
+		L = eleInfo.theDouble;
+		computeSectionForces(force, L);
+		eleInfo.setVector(force);
+		break;
+#endif // _CSS
+	default:
         return -1;
     }
 }
@@ -1039,3 +1210,64 @@ void ElasticTimoshenkoBeam3d::setUp()
         }
     }
 }
+
+#ifdef _CSS
+//SAJalali
+void
+ElasticTimoshenkoBeam3d::computeSectionForces(Vector& sp, double xL)
+{
+	const double L = theCoordTransf->getInitialLength();
+	const double oneOverL = 1 / L;
+	sp.Zero();
+	this->getResistingForce();
+	const double x = xL * L;
+	//const double xL1 = xL - 1;
+	sp(0) = ql(6);
+	sp(1) = ql(7);
+	sp(2) = ql(8);
+	sp(3) = ql(9);
+
+	sp(4) = ql(10) - (L - x) * ql(8);
+	sp(5) = ql(11) + (L - x) * ql(7);
+	int type;
+	for (int i = 0; i < numEleLoads; i++) {
+
+		const double loadFactor = eleLoadFactors[i];
+		const Vector& data = eleLoads[i]->getData(type, loadFactor);
+
+		if (type == LOAD_TAG_Beam3dUniformLoad) {
+			const double wy = data(0) * loadFactor;  // Transverse
+			const double wz = data(1) * loadFactor;  // Transverse
+			const double wa = data(2) * loadFactor;  // Axial
+			sp(0) += wa * (L - x);
+			sp(1) += wy * (L - x);
+			sp(2) += wz * (L - x);
+			sp(4) -= wz * 0.5 * (L - x) * (L - x);
+			sp(5) += wy * 0.5 * (L - x) * (L - x);
+
+		}
+		else if (type == LOAD_TAG_Beam3dPointLoad) {
+			const double Py = data(0) * loadFactor;
+			const double Pz = data(1) * loadFactor;
+			const double N = data(2) * loadFactor;
+			const double aOverL = data(3);
+			const double a = aOverL * L;
+
+			if (aOverL < 0.0 || aOverL > 1.0)
+				continue;
+
+			if (x <= a) {
+				sp(0) += N;
+				sp(1) += Py;
+				sp(2) += Pz;
+				sp(4) -= Pz * (a - x);
+				sp(5) += Py * (a - x);
+			}
+		}
+		else {
+			opserr << "ElasticTimoshenkoBeam3d::computeSectionForces -- load type unknown for element with tag: " <<
+				this->getTag() << endln;
+		}
+	}
+}
+#endif // _CSS

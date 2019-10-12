@@ -97,7 +97,15 @@ class ElasticBeam2d : public Element
     int updateParameter (int parameterID, Information &info);
 
   private:
-    double A,E,I;     // area, elastic modulus, moment of inertia
+#ifdef _CSS
+	  //SAJalali
+	  void  computeSectionForces(Vector& sp, double xi);
+	  int numEleLoads;
+	  ElementalLoad** eleLoads;
+	  double* eleLoadFactors;
+#endif // _CSS
+
+	double A,E,I;     // area, elastic modulus, moment of inertia
     double alpha, d;  // coeff. of thermal expansion, depth
     double rho;       // mass per unit length
     int cMass;        // consistent mass flag
