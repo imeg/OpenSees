@@ -2,7 +2,7 @@
 #demonstrate the Resid-Type recorders (records the response at the very end of the analysis)
 
 #to call from debugger:
-cd "D:/programming/OpenSees.NET/EXAMPLES/ResidRecorderTest"
+cd "D:/programming/OpenSees.NET/EXAMPLES/CSS-OpenSees Examples/ResidRecorderTest"
 
 
 model basic -ndm 2

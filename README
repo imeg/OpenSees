@@ -2,6 +2,23 @@ The OpenSees.net source code repository.
 
 Change logs
 -------------------------------------------------------------------
+
+added ResidNode, ResidDrift and ResidElement recorders (SA Jalali, Oct. 11 2019)
+	These recorders are used for recording the residual response of structure at the end of an analysis. In lack of this ability,
+	user needs to record the full history of response. This recorder is also useful for recording dissipated energy since it is a
+	cumulutaive parameter and its value should be read at the end of analysis. Example for using this recorder option was added to
+	"EXAMPLES/CSS-OpenSees Examples/ResidRecorderTest"
+
+added internalForce ElementRecorder option ((SA Jalali, Oct. 12 2019)
+	Currently implemented for elements: ElasticBeam2d/3d and ElasticTimoshenkoBeam3d. More elements will be included later.
+	To use this option, enter "InternalForce $locRat" as argument to "recorder Element" or "recorder EnvelopeElement" commands
+	where 0<$locaRat<1 denotes the section location. The outputs include 3 and 6 internal force components in 2-d and 3-d models,
+	respectively. The order of forces follows local x->y->z axes and forces->moments.
+	Example for using this recorder option was added to "EXAMPLES/CSS-OpenSees Examples/InternalForce Recorder" for 2-d and 3-d
+	cases. Using this option is required for design-purpose utilization of OpenSees.
+
+adding optimization example
+		Weight Optimization 10-bar truss using MATLAB and OpenSees
 merge repos oct. 10 2019
 adding model builder events  oct. 9 2019
 		material events
