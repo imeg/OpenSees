@@ -4,9 +4,9 @@
   AlgorithmsWrapper.cpp
   LineSearchWrapper.cpp
   AnalysisWrapper.cpp
-D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): warning C4490:  'override': incorrect use of override specifier; 'OpenSees::Analysis::PFEMAnalysisAnalysisWrapper::Analyze' does not match a base ref class method
-D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): message :  'new' or 'override' are only allowed when a matching base method from a ref class exists
-D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): warning C4490:  'override': incorrect use of override specifier; 'OpenSees::Analysis::VariableTimeStepDirectIntegrationAnalysisWrapper::Analyze' does not match a base ref class method
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::PFEMAnalysisAnalysisWrapper::Analyze' does not match a base ref class method
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::VariableTimeStepDirectIntegrationAnalysisWrapper::Analyze' does not match a base ref class method
   ConstraintHandlerWrapper.cpp
   IncrementalIntegratorWrapper.cpp
   IntegratorWrapper.cpp
@@ -42,19 +42,19 @@ D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWra
   OtherElementWrapper.cpp
   Quad4FiberOverlayWrapper.cpp
   SurfaceLoadWrapper.cpp
-D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): message :  'new' or 'override' are only allowed when a matching base method from a ref class exists
-D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(38,1): warning C4005:  'SL_NUM_NODE': macro redefinition
-D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(39): message :  see previous definition of 'SL_NUM_NODE'
-D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(42,1): warning C4005:  'SL_NUM_DOF': macro redefinition
-D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(43): message :  see previous definition of 'SL_NUM_DOF'
-D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(44,1): warning C4005:  'SL_NUM_DDOF': macro redefinition
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(38,1): warning C4005: 'SL_NUM_NODE': macro redefinition
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(39): message : see previous definition of 'SL_NUM_NODE'
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(42,1): warning C4005: 'SL_NUM_DOF': macro redefinition
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(43): message : see previous definition of 'SL_NUM_DOF'
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(44,1): warning C4005: 'SL_NUM_DDOF': macro redefinition
   QuadWrapper.cpp
   ShellWrapper.cpp
   TrussWrapper.cpp
   Generating Code...
   Compiling...
   ULBeamColumnWrapper.cpp
-D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(45): message :  see previous definition of 'SL_NUM_DDOF'
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(45): message : see previous definition of 'SL_NUM_DDOF'
   CoupledZeroLengthWrapper.cpp
   ZeroLengthElementWrapper.cpp
   GraphNumbererWrapper.cpp
@@ -103,10 +103,10 @@ D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(45): message :
   ModelBuilderEvent.cpp
   TclWrapper.cpp
   Generating Code...
-D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.h(19,10): warning C4067:  unexpected tokens following preprocessor directive - expected a newline
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.h(19,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   .NETFramework,Version=v4.0.AssemblyAttributes.cpp
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1264,5): warning MSB8012: TargetPath(D:\programming\OpenSees.NET\Win64\\bin\Debug\OpenSees.NET.x64.dll.dll) does not match the Linker's OutputFile property value (D:\programming\OpenSees.NET\Win64\bin\Debug\OpenSees.NET.x64.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1266,5): warning MSB8012: TargetName(OpenSees.NET.x64.dll) does not match the Linker's OutputFile property value (OpenSees.NET.x64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1267,5): warning MSB8012: TargetPath(D:\programming\OpenSees.NET\Win64\\bin\Debug\OpenSees.NET.x64.dll.dll) does not match the Linker's OutputFile property value (D:\programming\OpenSees.NET\Win64\bin\Debug\OpenSees.NET.x64.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1269,5): warning MSB8012: TargetName(OpenSees.NET.x64.dll) does not match the Linker's OutputFile property value (OpenSees.NET.x64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
   AcceleratorWrapper.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
      Creating library .\..\..\bin\Debug\OpenSees.NET.x64.lib and object .\..\..\bin\Debug\OpenSees.NET.x64.exp
 LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library

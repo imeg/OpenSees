@@ -91,6 +91,9 @@ class EPPGapMaterial : public UniaxialMaterial
 
 	//by SAJalali
 	virtual double getEnergy() { return Energy; }
+#ifdef _CSS
+	virtual double getInitYieldStrain() { return fy / E; } //SAJalali
+#endif // _CSS
 
   protected:
     

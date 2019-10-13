@@ -78,6 +78,9 @@ class ReinforcingSteel : public UniaxialMaterial
   void Print(OPS_Stream &s, int flag =0);
   
   virtual double getEnergy() { return Energy; } //by SAJalali
+#ifdef _CSS
+  virtual double getInitYieldStrain() { return eyp; }//by SAJalali
+#endif // _CSS
 
  protected:
   

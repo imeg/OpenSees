@@ -88,7 +88,12 @@ class Steel02 : public UniaxialMaterial
     //by SAJalali
 	virtual double getEnergy() { return EnergyP; };
 
- protected:
+#ifdef _CSS
+	//by SAJalali
+	double getInitYieldStrain() { return Fy / E0; }
+#endif // _CSS
+
+protected:
     
  private:
 	 double EnergyP; //by SAJalali

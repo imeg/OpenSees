@@ -91,6 +91,12 @@ class FiberSection2d : public SectionForceDeformation
     // AddingSensitivity:END ///////////////////////////////////////////
 	//by SAJalali
 	double getEnergy() const;
+#ifdef _CSS
+	//by SAJalali
+	double getDmax();
+	double getMuMax();
+
+#endif // _CSS
 
   protected:
     

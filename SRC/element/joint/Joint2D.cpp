@@ -1310,11 +1310,18 @@ Response* Joint2D::setResponse(const char **argv, int argc, OPS_Stream &output)
       if (theSprings[materialNum] != 0)
 	return theSprings[materialNum]->setResponse(&argv[2], argc-2, output);
   }
+
   //by SAJalali
   else if ((strcmp(argv[0], "energy") == 0) || (strcmp(argv[0], "Energy") == 0))
   {
 	  return new ElementResponse(this, 10, Vector(5));
   }
+#ifdef _CSS
+  else if ((strcmp(argv[0], "ductility") == 0) || (strcmp(argv[0], "Ductility") == 0))
+  {
+	  return new ElementResponse(this, 9, Vector(5));
+  }
+#endif // _CSS
 
   return 0;
   	
@@ -1445,7 +1452,24 @@ int Joint2D::getResponse(int responseID, Information &eleInformation)
 			}
 		}
 		return 0;
-	
+#ifdef _CSS
+	case 9:
+		//by SAJalali
+		if (eleInformation.theVector != 0)
+		{
+			for (int i = 0; i < 5; i++)
+			{
+				(*(eleInformation.theVector))(i) = 0.0;
+				if (theSprings[i] != NULL)
+				{
+					(*(eleInformation.theVector))(i) =
+						theSprings[i]->getDuctility();
+				}
+
+			}
+		}
+		return 0;
+#endif // _CSS
 	case 10:
 		//by SAJalali
 		if (eleInformation.theVector != 0)

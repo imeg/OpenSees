@@ -2,6 +2,8 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+added new ductility and maxDuctility options to material and Section objects respectively (SA Jalali, Oct. 14 2019)
+updated previous energy recording modifications to respond correctly to database commands (SA Jalali, Oct. 14 2019)
 added ResidNode, ResidDrift and ResidElement recorders (SA Jalali, Oct. 11 2019)
 	These recorders are used for recording the residual response of structure at the end of an analysis. In lack of this ability,
 	user needs to record the full history of response. This recorder is also useful for recording dissipated energy since it is a

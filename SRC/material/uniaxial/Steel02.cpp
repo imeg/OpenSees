@@ -457,7 +457,7 @@ Steel02::revertToStart(void)
 int 
 Steel02::sendSelf(int commitTag, Channel &theChannel)
 {
-  static Vector data(23);
+  static Vector data(24);	//editted by SAJalali for energy
   data(0) = Fy;
   data(1) = E0;
   data(2) = b;
@@ -482,6 +482,8 @@ Steel02::sendSelf(int commitTag, Channel &theChannel)
   data(21) = this->getTag();
   data(22) = sigini;
 
+  //SAJalali
+  data(23) = EnergyP;
   if (theChannel.sendVector(this->getDbTag(), commitTag, data) < 0) {
     opserr << "Steel02::sendSelf() - failed to sendSelf\n";
     return -1;
@@ -493,7 +495,7 @@ int
 Steel02::recvSelf(int commitTag, Channel &theChannel, 
 	     FEM_ObjectBroker &theBroker)
 {
-  static Vector data(23);
+  static Vector data(24);	//editted by SAJalali for energy
 
   if (theChannel.recvVector(this->getDbTag(), commitTag, data) < 0) {
     opserr << "Steel02::recvSelf() - failed to recvSelf\n";
@@ -523,6 +525,8 @@ Steel02::recvSelf(int commitTag, Channel &theChannel,
   eP   = data(20);   
   this->setTag(int(data(21)));
   sigini = data(22);
+  //SAJalali
+  EnergyP = data(23);
 
   e = eP;
   sig = sigP;

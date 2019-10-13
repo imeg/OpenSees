@@ -222,7 +222,7 @@ int Clough::recvSelf(int cTag, Channel &theChannel,
 {
 
   int res = 0;
-  static Vector inp(40);
+  static Vector inp(41);		//editted by SAJalali for energy
 
   res = theChannel.recvVector(this->getDbTag(), cTag, inp);
   
@@ -250,6 +250,8 @@ int Clough::recvSelf(int cTag, Channel &theChannel,
   for (int i=0; i<24; i++) 
     hsCommit[i] = inp[16+i];
 
+  //SAJalali
+  Energy = inp[40];
   this->revertToLastCommit();
 
   return res;  
@@ -259,7 +261,7 @@ int Clough::recvSelf(int cTag, Channel &theChannel,
 int Clough::sendSelf(int cTag, Channel &theChannel)
 {
   int res = 0;
-  static Vector inp(40);
+  static Vector inp(41);		//editted by SAJalali for energy
 	
   inp[0]  = 	elstk;
   inp[1]  =  	fyieldPos;
@@ -279,7 +281,7 @@ int Clough::sendSelf(int cTag, Channel &theChannel)
   inp[15] = 	cd;
   for (int i=0; i<24; i++) 
     inp[16+i] = hsCommit[i];
-
+  inp[40] = Energy;//SAJalali
   res = theChannel.sendVector(this->getDbTag(), cTag, inp);
   if (res < 0) 
     opserr << "Clough::sendSelf() - failed to send data\n";

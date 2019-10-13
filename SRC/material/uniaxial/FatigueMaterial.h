@@ -88,6 +88,11 @@ class FatigueMaterial : public UniaxialMaterial
 
   //by SAJalali
   virtual double getEnergy(void) { return energy; }
+#ifdef _CSS
+  //by SAJalali
+  virtual double getInitYieldStrain() { return theMaterial->getInitYieldStrain(); }
+#endif // _CSS
+
 protected:
   
  private:

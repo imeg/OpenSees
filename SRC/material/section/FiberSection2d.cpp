@@ -947,6 +947,16 @@ FiberSection2d::setResponse(const char **argv, int argc,
   else if ((strcmp(argv[0], "energy") == 0) || (strcmp(argv[0], "Energy") == 0)) {
 	  return theResponse = new MaterialResponse(this, 8, getEnergy());
   }
+#ifdef _CSS
+  else if ((strcmp(argv[0], "maxStrain") == 0) || (strcmp(argv[0], "MaxStrain") == 0)) {
+
+  return theResponse = new MaterialResponse(this, 9, 0.0);
+	}
+  else if ((strcmp(argv[0], "maxDuctility") == 0) || (strcmp(argv[0], "MaxDuctility") == 0)) {
+  return theResponse = new MaterialResponse(this, 10, 0.0);
+	}
+
+#endif // _CSS
 
 // If not a fiber response, call the base class method
 return SectionForceDeformation::setResponse(argv, argc, output);
@@ -998,6 +1008,17 @@ FiberSection2d::getResponse(int responseID, Information &sectInfo)
   else if (responseID == 8) {
 	  return sectInfo.setDouble(getEnergy());
   }
+#ifdef _CSS
+
+  else if (responseID == 9) {
+
+	  return sectInfo.setDouble(getDmax());
+  }
+  else if (responseID == 10) {
+
+	  return sectInfo.setDouble(getMuMax());
+  }
+#endif // _CSS
 
   return SectionForceDeformation::getResponse(responseID, sectInfo);
 }
@@ -1320,3 +1341,67 @@ double FiberSection2d::getEnergy() const
 	}
 	return energy;
 }
+
+#ifdef _CSS
+//by SAJalali
+double FiberSection2d::getDmax()
+{
+	double d0 = e(0);
+	double d1 = e(1);
+
+	static double fiberLocs[10000];
+
+	if (sectionIntegr != 0) {
+		sectionIntegr->getFiberLocations(numFibers, fiberLocs);
+	}
+	else {
+		for (int i = 0; i < numFibers; i++) {
+			fiberLocs[i] = matData[2 * i];
+		}
+	}
+	double dMax = 0.;
+	for (int i = 0; i < numFibers; i++) {
+		double y = fiberLocs[i] - yBar;
+
+		// determine material strain and set it
+		double strain = fabs(d0 - y * d1);
+		if (strain > dMax)
+			dMax = strain;
+	}
+	return dMax;
+}
+
+
+double FiberSection2d::getMuMax()
+{
+	double d0 = e(0);
+	double d1 = e(1);
+
+	static double fiberLocs[10000];
+
+	if (sectionIntegr != 0) {
+		sectionIntegr->getFiberLocations(numFibers, fiberLocs);
+	}
+	else {
+		for (int i = 0; i < numFibers; i++) {
+			fiberLocs[i] = matData[2 * i];
+		}
+	}
+	double muMax = 0.;
+	for (int i = 0; i < numFibers; i++) {
+		double y = fiberLocs[i] - yBar;
+
+		// determine material strain and set it
+		double strain = fabs(d0 - y * d1);
+		double mu = 0;
+		double sYield = theMaterials[i]->getInitYieldStrain();
+		if (abs(sYield) > 1.e-6)
+			mu = strain / sYield;
+		if (mu > muMax)
+			muMax = mu;
+	}
+	return muMax;
+}
+
+
+#endif // _CSS

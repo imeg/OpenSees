@@ -907,6 +907,11 @@ SectionAggregator::setResponse(const char **argv, int argc, OPS_Stream &output)
   if ((strcmp(argv[0], "energy") == 0) || (strcmp(argv[0], "Energy") == 0)) {
 	  return theResponse = new MaterialResponse(this, 8, Vector(num));
   }
+#ifdef _CSS
+  if ((strcmp(argv[0], "maxDuctility") == 0) || (strcmp(argv[0], "MaxDuctility") == 0)) {
+	  return theResponse = new MaterialResponse(this, 9, Vector(num));
+  }
+#endif // _CSS
 
 
   if (theSection != 0)
@@ -935,9 +940,19 @@ SectionAggregator::getResponse(int responseID, Information &sectInfo)
 		sectInfo.setVector(res);
 		//opserr << "energyVect=" << res << "\n";
 	}
+#ifdef _CSS
+	else if (responseID == 9) {
+		for (int i = 0; i < numMats; i++)
+			res(i) = theAdditions[i]->getDuctility();
+		sec = (FiberSection2d*)theSection;
+		if (sec != 0)
+			res(numMats) = sec->getMuMax();
+		//opserr << "ductVect=" << res << "\n";
+		sectInfo.setVector(res);
+	}
+#endif //_CSS
 	else
 		return SectionForceDeformation::getResponse(responseID, sectInfo);
-
 	return 0;
 }
 

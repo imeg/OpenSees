@@ -443,7 +443,7 @@ UniaxialMaterial* Steel01::getCopy ()
 int Steel01::sendSelf (int commitTag, Channel& theChannel)
 {
    int res = 0;
-   static Vector data(16);
+   static Vector data(17);	//editted by SAJalali for energy
    data(0) = this->getTag();
 
    // Material properties
@@ -467,6 +467,8 @@ int Steel01::sendSelf (int commitTag, Channel& theChannel)
    data(14) = Cstress;
    data(15) = Ctangent;
 
+   //SAJalali
+   data(16) = Energy;
    // Data is only sent after convergence, so no trial variables
    // need to be sent through data vector
 
@@ -481,7 +483,7 @@ int Steel01::recvSelf (int commitTag, Channel& theChannel,
                                 FEM_ObjectBroker& theBroker)
 {
    int res = 0;
-   static Vector data(16);
+   static Vector data(17);	//editted by SAJalali for energy
    res = theChannel.recvVector(this->getDbTag(), commitTag, data);
   
    if (res < 0) {
@@ -519,6 +521,9 @@ int Steel01::recvSelf (int commitTag, Channel& theChannel,
       Cstrain = data(13);
       Cstress = data(14);
       Ctangent = data(15);      
+
+	  //SAJalali
+	  Energy = data(16);
 
       // Copy converged state values into trial values
       Tstrain = Cstrain;

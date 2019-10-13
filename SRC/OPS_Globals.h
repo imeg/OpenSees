@@ -26,9 +26,11 @@
 //
 // Description: This file contains global variables used in OpenSees files.
 // if you change some of the variables, you must recompile ALL the code.
-
+#ifndef _CSS
 #define _CSS
-#define OPS_VERSION "3.0.3"
+#endif // !_CSS
+
+#define OPS_VERSION "3.0.3-CSS"
 
 #ifndef _WIN64
 #define WIN_ARCH "32-Bit"

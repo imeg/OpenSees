@@ -478,7 +478,7 @@ UniaxialMaterial* Concrete01::getCopy ()
 int Concrete01::sendSelf (int commitTag, Channel& theChannel)
 {
    int res = 0;
-   static Vector data(11);
+   static Vector data(12);//editted by SAJalali for EnergyP
    data(0) = this->getTag();
 
    // Material properties
@@ -496,7 +496,7 @@ int Concrete01::sendSelf (int commitTag, Channel& theChannel)
    data(8) = Cstrain;
    data(9) = Cstress;
    data(10) = Ctangent;
-
+   data(11) = EnergyP;//SAJalali
    // Data is only sent after convergence, so no trial variables
    // need to be sent through data vector
 
@@ -511,7 +511,7 @@ int Concrete01::recvSelf (int commitTag, Channel& theChannel,
                                  FEM_ObjectBroker& theBroker)
 {
    int res = 0;
-   static Vector data(11);
+   static Vector data(12);//editted by SAJalali for EnergyP
    res = theChannel.recvVector(this->getDbTag(), commitTag, data);
 
    if (res < 0) {
@@ -536,7 +536,7 @@ int Concrete01::recvSelf (int commitTag, Channel& theChannel,
       Cstrain = data(8);
       Cstress = data(9);
       Ctangent = data(10);
-
+	  EnergyP = data(11);//SAJalali
       // Set trial state variables
       Tstrain = Cstrain;
       Tstress = Cstress;

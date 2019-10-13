@@ -71,6 +71,9 @@ class ElasticPPMaterial : public UniaxialMaterial
     int updateParameter(int parameterID, Information &info);
 	//by SAJalali
 	virtual double getEnergy() { return EnergyP; };
+#ifdef _CSS
+	virtual double getInitYieldStrain() { return fyp / E; }//by SAJalali
+#endif // _CSS
 
   protected:
     

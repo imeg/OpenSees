@@ -256,6 +256,10 @@ UniaxialMaterial::setResponse(const char** argv, int argc,
 		//by SAJalali
 		|| (strstr(argv[0], "energy") != 0) ||
 		(strstr(argv[0], "Energy") != 0)
+#ifdef _CSS
+		|| (strstr(argv[0], "ductility") != 0) ||
+		(strstr(argv[0], "Ductility") != 0)
+#endif // _CSS
 
 		) {
 
@@ -332,7 +336,14 @@ UniaxialMaterial::setResponse(const char** argv, int argc,
 			theOutput.tag("ResponseType", "energy");
 			theResponse = new MaterialResponse(this, 9, 0.0);
 		}
-
+#ifdef _CSS
+		// by SAJalali:
+		else if ((strcmp(argv[0], "ductility") == 0) ||
+			(strcmp(argv[0], "Ductility") == 0)) {
+			theOutput.tag("ResponseType", "ductility");
+			theResponse = new MaterialResponse(this, 8, 0.0);
+		}
+#endif // _CSS
 		theOutput.endTag();
 	}
 
@@ -408,6 +419,11 @@ UniaxialMaterial::getResponse(int responseID, Information& matInfo)
 		tempData = infoData.getData();
 		matInfo.setVector(tempData);
 		return 0;
+#ifdef _CSS
+	case 8:	//by SAJalali
+		matInfo.setDouble(this->getDuctility());
+		return 0;
+#endif // _CSS
 		//by SAJalali
 	case 9:
 		matInfo.setDouble(this->getEnergy());
@@ -470,3 +486,14 @@ UniaxialMaterial::getInitialTangent(void)
 }
 
 // AddingSensitivity:END //////////////////////////////////////////
+
+#ifdef _CSS
+//by SAJalali
+double UniaxialMaterial::getDuctility(void)
+{
+	double epsy = this->getInitYieldStrain();
+	if (epsy == 0)
+		return 0;
+	return this->getStrain() / epsy;
+}
+#endif // _CSS
