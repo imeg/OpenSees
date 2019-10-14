@@ -80,6 +80,10 @@ int OPS_EqualDOF()
 	rcDOF(i) = data(2+i)-1;
 	Ccr(i,i) = 1.0;
     }
+#ifdef _CSS
+	Ccr.setDiagonal(1);
+#endif // _CSS
+
     MP_Constraint* theMP = new MP_Constraint(data(0),data(1),Ccr,rcDOF,rcDOF);
     if(theMP == 0) {
 	opserr<<"WARNING: failed to create MP_Constraint\n";
@@ -163,6 +167,9 @@ int OPS_EqualDOF_Mixed()
 	cDOF(k) = dofIDC;    
 	Ccr(k,k) = 1.0;
     }
+#ifdef _CSS
+	Ccr.setDiagonal(1);
+#endif // _CSS
 
     // Create the multi-point constraint
     MP_Constraint *theMP = new MP_Constraint (RnodeID, CnodeID, Ccr, cDOF, rDOF);

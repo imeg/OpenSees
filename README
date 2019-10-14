@@ -2,6 +2,9 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+optimized PlainHandler::handle() for handling MP_Constraint objects (SA Jalali, Oct. 15 2019)
+updated OPS_EqualDOF() and OPS_EqualDOF_Mixed() to set IsDiagonal fileld of constraint Matrix to 1 (SA Jalali, Oct. 15 2019)
+added new field IsDiagonal to Matrix class to get rid of member-by-member check (SA Jalali, Oct. 15 2019)
 added new ductility and maxDuctility options to material and Section objects respectively (SA Jalali, Oct. 14 2019)
 updated previous energy recording modifications to respond correctly to database commands (SA Jalali, Oct. 14 2019)
 added ResidNode, ResidDrift and ResidElement recorders (SA Jalali, Oct. 11 2019)

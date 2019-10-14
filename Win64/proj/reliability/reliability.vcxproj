@@ -101,6 +101,9 @@
     <BuildLog>
       <Path>.\..\..\obj\reliability\debug\$(MSBuildProjectName).log</Path>
     </BuildLog>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
     <ClCompile>
