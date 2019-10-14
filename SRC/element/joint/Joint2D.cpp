@@ -562,6 +562,10 @@ Joint2D::Joint2D()
 		theSprings[i] = NULL;;
 		fixedEnd[i] = 1;
 		theNodes[i] = NULL;
+#ifdef _CSS
+		//SAJalal
+		theDamages[i] = NULL;
+#endif // _CSS
 	}
 }
 

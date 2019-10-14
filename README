@@ -2,6 +2,10 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+eliminated unnecessary warning message in EPPGapMaterial constructor (SA Jalali, Oct. 15 2019)
+removed a minor bug in FSAM::betaf4() (SA Jalali, Oct. 15 2019)
+removed a minor bug in SFI_MVLEM::setDomain() (SA Jalali, Oct. 15 2019)
+removed a bug in joint2d constructor that prevented utization of database command (SA Jalali, Oct. 15 2019)
 optimized PlainHandler::handle() for handling MP_Constraint objects (SA Jalali, Oct. 15 2019)
 updated OPS_EqualDOF() and OPS_EqualDOF_Mixed() to set IsDiagonal fileld of constraint Matrix to 1 (SA Jalali, Oct. 15 2019)
 added new field IsDiagonal to Matrix class to get rid of member-by-member check (SA Jalali, Oct. 15 2019)

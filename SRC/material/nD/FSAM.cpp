@@ -2424,7 +2424,12 @@ void FSAM::betaf4(double &eo, double &epc, double &fc, double &epsmax)
 	if (x_coeff < 0) {
 		//x_coeff=1;
 		x_coeff=0;
+#ifdef _CSS
+		opserr << "FSAM::Damage Coefficient ErRoR in material with tag: " << this->getTag() <<" !\n";//SAJalali
+#else
 		opserr << " Damage Coefficient ErRoR !\n";
+#endif // _CSS
+
 		exit(-1); // STOP
 	}
 

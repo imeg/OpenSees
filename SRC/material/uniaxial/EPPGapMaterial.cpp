@@ -113,9 +113,13 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 	else
 	  maxElasticYieldStrain = fy/E + gap;
 
+#ifdef _CSS
+	//eliminate unnecessary warning message
+#else
 	if (fy*gap<0) {
 	  opserr << "EPPGapMaterial::EPPGapMaterial -- Alternate signs on fy and E encountered, continuing anyway\n";
 	}
+#endif // _CSS
         
         if ( (eta >= 1) || (eta <= -1) ) {
           opserr << "EPPGapMaterial::EPPGapMaterial -- value of eta must be -1 <= eta <= 1, setting eta to 0\n";
