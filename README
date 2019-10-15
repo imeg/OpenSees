@@ -2,6 +2,13 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+adding logCommands command (SA Jalali, Oct. 16 2019)
+	reflects the OpenSees commands into a text file or/and the command window
+	syntax: logCommands [-file $file ] [-echo] [-stop]
+	$file: output text file name (.ops will be appended to file name) (defualt:commandsLog)
+	-echo: starts echoing commands into command window
+	-stop: stops command logging previously started by the command
+	Note: the command can be successively issued 
 removing getRecorder and geRecorderValue bugs (SA Jalali, Oct. 16 2019)
 removing ShallowFoundationGn bugs (SA Jalali, Oct. 15 2019)
 	accounted for the center node coordinates in generating soil nodes. (0,0) was used previously.

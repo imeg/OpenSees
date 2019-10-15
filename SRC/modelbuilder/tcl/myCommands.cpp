@@ -70,9 +70,17 @@ int myCommands(Tcl_Interp *interp) {
     return 0;
 }
 
+#ifdef _CSS
+int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = false);	//SAJalali
+#endif // _CSS
+
 int
 specifyModelBuilder(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   int cArg = 0;
 
   // make sure at least one other argument to contain model builder type given
