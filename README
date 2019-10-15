@@ -2,6 +2,7 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+removing getRecorder and geRecorderValue bugs (SA Jalali, Oct. 16 2019)
 removing ShallowFoundationGn bugs (SA Jalali, Oct. 15 2019)
 	accounted for the center node coordinates in generating soil nodes. (0,0) was used previously.
 	the column base node was used instead of the newly generated node in definition of foundation

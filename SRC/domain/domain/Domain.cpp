@@ -3581,7 +3581,7 @@ Domain::getRecorder(int tag)
 	for (int i = 0; i < numRecorders; i++)
 	{
 		if (theRecorders[i] == 0)
-			break;
+			continue;
 		if (theRecorders[i]->getTag() == tag)
 		{
 			res = theRecorders[i];

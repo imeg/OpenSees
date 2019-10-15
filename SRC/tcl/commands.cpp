@@ -1457,8 +1457,6 @@ wipeAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 // by SAJalali
 int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-	// make sure at least one other argument to contain type of system
-
 	// clmnID starts from 1
 	if (argc < 3) {
 		opserr << "WARNING want - recorderValue recorderTag clmnID <rowOffset> <-reset>\n";
@@ -1496,13 +1494,20 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 		curArg++;
 	}
 	Recorder* theRecorder = theDomain.getRecorder(tag);
-	double res = theRecorder->getRecordedValue(dof, rowOffset, reset);
-	// now we copy the value to the tcl string that is returned
-	//sprintf(interp->result, "%35.8f ", res);
-	char buffer [40];
-	sprintf(buffer,"%35.8f", res);	
-	Tcl_SetResult(interp, buffer, TCL_VOLATILE);
-	
+	if (theRecorder != 0)
+	{
+		double res = theRecorder->getRecordedValue(dof, rowOffset, reset);
+		// now we copy the value to the tcl string that is returned
+		char buffer[40];
+		sprintf(buffer, "%35.8f", res);
+		Tcl_SetResult(interp, buffer, TCL_VOLATILE);
+		return TCL_OK;
+	}
+	else {
+		opserr << "Could Not Find the Specified Recorder Object in Domain\n";
+		return TCL_ERROR;
+	}
+
 	return TCL_OK;
 }
 
