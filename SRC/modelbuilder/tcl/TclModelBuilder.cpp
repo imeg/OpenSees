@@ -37,6 +37,16 @@
 //
 // What: "@(#) TclModelBuilder.cpp, revA"
 
+#ifdef _CSS
+//added by SAJalali
+#ifndef TCL_Char
+#define TCL_Char const char
+#endif
+struct Tcl_Interp;
+
+int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = false);
+#endif // _CSS
+
 #include <stdlib.h>
 #include <string.h>
 
@@ -970,6 +980,9 @@ int
 TclCommand_addNode(ClientData clientData, Tcl_Interp *interp, int argc, 
                         TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
@@ -1176,7 +1189,11 @@ TclCommand_addElementRayleigh(ClientData clientData,
 			      int argc, 
 			      TCL_Char **argv) 
 {
-  
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
+
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed" << endln;
     return TCL_ERROR;
@@ -1254,6 +1271,10 @@ TclCommand_addParameter(ClientData clientData, Tcl_Interp *interp,
 			     int argc, TCL_Char **argv)
                           
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderParameterCommand(clientData, interp, 
 					 argc, argv, theTclDomain, theTclBuilder);
 }
@@ -1269,6 +1290,10 @@ TclCommand_addElement(ClientData clientData, Tcl_Interp *interp,
 			   int argc,    TCL_Char **argv)
                           
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderElementCommand(clientData, interp, 
 				       argc, argv, theTclDomain, theTclBuilder);
 }
@@ -1280,6 +1305,10 @@ int
 TclCommand_mesh(ClientData clientData, Tcl_Interp *interp,  int argc, 
 		TCL_Char **argv) 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     // ensure the destructor has not been called - 
     if (theTclBuilder == 0) {
 	opserr << "WARNING builder has been destroyed" << endln;
@@ -1320,6 +1349,10 @@ int
 TclCommand_remesh(ClientData clientData, Tcl_Interp *interp,  int argc, 
 		TCL_Char **argv) 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     // ensure the destructor has not been called - 
     if (theTclBuilder == 0) {
 	opserr << "WARNING builder has been destroyed" << endln;
@@ -1361,6 +1394,10 @@ extern int OPS_BgMesh();
 int 
 TclCommand_backgroundMesh(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     // ensure the destructor has not been called - 
     if (theTclBuilder == 0) {
 	opserr << "WARNING builder has been destroyed" << endln;
@@ -1393,6 +1430,10 @@ extern void* OPS_HingeEndpointBeamIntegration(int& integrationTag, ID& secTags);
 int
 TclCommand_addBeamIntegration(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     if (argc < 2) {
 	opserr << "WARNING: want beamIntegration type itag...\n";
 	return TCL_ERROR;
@@ -1466,6 +1507,10 @@ TclModelBuilderUniaxialMaterialCommand (ClientData clienData, Tcl_Interp *interp
 int
 TclCommand_addUniaxialMaterial(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderUniaxialMaterialCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -1476,6 +1521,10 @@ Tcl_AddLimitCurveCommand (ClientData clienData, Tcl_Interp *interp, int argc, TC
 int
 TclCommand_addLimitCurve(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return Tcl_AddLimitCurveCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -1488,6 +1537,10 @@ TclCommand_addNDMaterial(ClientData clientData, Tcl_Interp *interp,
 			    int argc,    TCL_Char **argv)
                           
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderNDMaterialCommand(clientData, interp, 
 					  argc, argv, theTclBuilder);
 }
@@ -1501,6 +1554,21 @@ TclCommand_addSection(ClientData clientData, Tcl_Interp *interp,
 			    int argc,    TCL_Char **argv)
                           
 {
+#ifdef _CSS
+	bool hasBlock = false;
+	if (strcmp(argv[1], "Fiber") == 0 ||
+		strcmp(argv[1], "fiberSec") == 0 ||
+		strcmp(argv[1], "NDFiber") == 0)
+		hasBlock = true;
+	printArgv(interp, argc, argv, hasBlock);
+	int ret = TclModelBuilderSectionCommand(clientData, interp,
+		argc, argv, theTclBuilder);
+
+	if (hasBlock)
+		printArgv(interp, argc, argv, true);
+	return ret;
+#endif // _CSS
+
   return TclModelBuilderSectionCommand(clientData, interp, 
 				       argc, argv, theTclBuilder);
 }
@@ -1516,6 +1584,10 @@ TclCommand_addYieldSurface_BC(ClientData clientData, Tcl_Interp *interp,
 				    int argc, TCL_Char **argv)
 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderYieldSurface_BCCommand(clientData, interp,
 						argc, argv, theTclBuilder);
 }
@@ -1529,6 +1601,10 @@ TclCommand_addYS_EvolutionModel(ClientData clientData, Tcl_Interp *interp,
 				    int argc, TCL_Char **argv)
 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderYS_EvolutionModelCommand(clientData, interp,
 						argc, argv, theTclBuilder);
 }
@@ -1542,6 +1618,10 @@ TclCommand_addYS_PlasticMaterial(ClientData clientData, Tcl_Interp *interp,
 				    int argc, TCL_Char **argv)
 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderPlasticMaterialCommand(clientData, interp,
 						argc, argv, theTclBuilder);
 }
@@ -1554,6 +1634,10 @@ TclCommand_addCyclicModel(ClientData clientData, Tcl_Interp *interp,
 				    int argc, TCL_Char **argv)
 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderCyclicModelCommand(clientData, interp,
 						argc, argv, theTclBuilder);
 }
@@ -1565,6 +1649,10 @@ TclCommand_addDamageModel(ClientData clientData, Tcl_Interp *interp,
 				    int argc, TCL_Char **argv)
 
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderDamageModelCommand(clientData, interp, argc, argv);
 						
 }
@@ -1577,6 +1665,17 @@ int
 TclCommand_addPattern(ClientData clientData, Tcl_Interp *interp, 
 			   int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	bool hasBlock = false;
+	if (strcmp(argv[1], "Plain") == 0 || strcmp(argv[1], "MultipleSupport") == 0)
+		hasBlock = true;
+	printArgv(interp, argc, argv, hasBlock);
+	int ret = TclPatternCommand(clientData, interp, argc, argv, theTclDomain);
+	if (hasBlock)
+		printArgv(interp, argc, argv, true);
+	return ret;
+#endif // _CSS
+
   return TclPatternCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -1589,7 +1688,10 @@ int
 TclCommand_addTimeSeries(ClientData clientData, Tcl_Interp *interp, 
 			 int argc, TCL_Char **argv)
 {
-  TimeSeries *theSeries = TclTimeSeriesCommand(clientData, interp, argc-1, &argv[1], 0);
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	TimeSeries *theSeries = TclTimeSeriesCommand(clientData, interp, argc-1, &argv[1], 0);
 
   if (theSeries != 0) {
     if (OPS_addTimeSeries(theSeries) == true)
@@ -1615,7 +1717,10 @@ TclCommand_addGroundMotion(ClientData clientData, Tcl_Interp *interp,
 			   int argc, TCL_Char **argv)
 			  
 {
-  return TclGroundMotionCommand(clientData, interp, argc, argv, 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	return TclGroundMotionCommand(clientData, interp, argc, argv,
 				theTclMultiSupportPattern);
 }
 
@@ -1624,6 +1729,9 @@ int
 TclCommand_addNodalLoad(ClientData clientData, Tcl_Interp *interp, int argc,
 	TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 	// ensure the destructor has not been called - 
 	if (theTclBuilder == 0) {
 		opserr << "WARNING builder has been destroyed - load \n";
@@ -1878,6 +1986,9 @@ int
 TclCommand_addElementalLoad(ClientData clientData, Tcl_Interp *interp, int argc,   
 			 TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING current builder has been destroyed - eleLoad\n";    
@@ -3227,6 +3338,10 @@ int
 TclCommand_addNodalMass(ClientData clientData, Tcl_Interp *interp, int argc, 
                         TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - load \n";    
@@ -3280,6 +3395,10 @@ int
 TclCommand_addHomogeneousBC(ClientData clientData, Tcl_Interp *interp, int argc,   
 				 TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - elasticBeam \n";    
@@ -3345,6 +3464,10 @@ int
 TclCommand_addHomogeneousBC_X(ClientData clientData, Tcl_Interp *interp, 
 				   int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - elasticBeam \n";    
@@ -3404,6 +3527,10 @@ int
 TclCommand_addHomogeneousBC_Y(ClientData clientData, Tcl_Interp *interp, 
 				   int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - elasticBeam \n";    
@@ -3463,6 +3590,10 @@ int
 TclCommand_addHomogeneousBC_Z(ClientData clientData, Tcl_Interp *interp, 
 				   int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - elasticBeam \n";    
@@ -3521,6 +3652,10 @@ int
 TclCommand_addSP(ClientData clientData, Tcl_Interp *interp, int argc,   
 		      TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - sp \n";    
@@ -3616,6 +3751,10 @@ TclCommand_addImposedMotionSP(ClientData clientData,
 				   int argc,   
 				   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // ensure the destructor has not been called - 
   if (theTclBuilder == 0) {
     opserr << "WARNING builder has been destroyed - sp \n";    
@@ -3710,6 +3849,10 @@ int
 TclCommand_addEqualDOF_MP (ClientData clientData, Tcl_Interp *interp,
                                 int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
         // Ensure the destructor has not been called
         if (theTclBuilder == 0) {
 	  opserr << "WARNING builder has been destroyed - equalDOF \n";
@@ -3794,6 +3937,10 @@ int
 TclCommand_addEqualDOF_MP_Mixed(ClientData clientData, Tcl_Interp *interp,
                                 int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
         // Ensure the destructor has not been called
         if (theTclBuilder == 0) {
 	  opserr << "WARNING builder has been destroyed - equalDOF \n";
@@ -3891,6 +4038,10 @@ TclCommand_addEqualDOF_MP_Mixed(ClientData clientData, Tcl_Interp *interp,
 int 
 TclCommand_RigidLink(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   if (argc < 4) {
       opserr << "WARNING rigidLink linkType? rNode? cNode?\n";
       return TCL_ERROR;
@@ -3922,6 +4073,10 @@ TclCommand_RigidLink(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Ch
 int 
 TclCommand_RigidDiaphragm(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   if (argc < 3) {
       opserr << "WARNING rigidLink perpDirn? rNode? <cNodes?>\n";
       return TCL_ERROR;
@@ -3973,6 +4128,10 @@ int
 TclCommand_doPySimple1Gen(ClientData clientData, Tcl_Interp *interp, int argc,
                                TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     	if(argc < 6 || argc > 7){
 		opserr << "WARNING PySimple1Gen file1? file2? file3? file4? file5? <file6?>";
 		opserr << "Must have either 5 or 6 arguments." << endln;
@@ -3995,6 +4154,10 @@ int
 TclCommand_doTzSimple1Gen(ClientData clientData, Tcl_Interp *interp, int argc,
                                TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 	if(argc < 6 || argc > 7){
 		opserr << "WARNING TzSimple1Gen file1? file2? file3? file4? file5? <file6?>";
 		opserr << "Must have either 5 or 6 arguments." << endln;
@@ -4020,6 +4183,10 @@ int
 TclModelBuilder_doShallowFoundationGen(ClientData clientData, Tcl_Interp *interp, int argc,
                                TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     	if(argc != 5){
 		opserr << "WARNING ShallowFoundationGen FoundationID? ConnectingNode? InputDataFile? FoundationMatType?";
 		opserr << "Must have 4 arguments." << endln;
@@ -4059,6 +4226,10 @@ int
 TclCommand_doBlock2D(ClientData clientData, Tcl_Interp *interp, int argc,   
 			  TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 
   int ndm = theTclBuilder->getNDM();
   if (ndm < 2) {
@@ -4263,6 +4434,9 @@ int
 TclCommand_doBlock3D(ClientData clientData, Tcl_Interp *interp, int argc,   
 			  TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 
   int ndm = theTclBuilder->getNDM();
   if (ndm < 3) {
@@ -4431,6 +4605,10 @@ int
 TclCommand_addRemoPatch(ClientData clientData, Tcl_Interp *interp, int argc,   
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_addPatch(clientData, interp, argc,argv,
 				    theTclBuilder);
 }
@@ -4439,6 +4617,10 @@ int
 TclCommand_addRemoFiber(ClientData clientData, Tcl_Interp *interp, int argc,   
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_addFiber(clientData, interp, argc,argv,
 				  theTclBuilder);
 }
@@ -4447,6 +4629,10 @@ int
 TclModelBuilder_addRemoHFiber(ClientData clientData, Tcl_Interp *interp, int argc,   
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_addHFiber(clientData, interp, argc,argv,theTclBuilder);
 				  
 }
@@ -4455,6 +4641,10 @@ int
 TclCommand_addRemoLayer(ClientData clientData, Tcl_Interp *interp, int argc,   
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_addReinfLayer(clientData, interp, argc,argv,
 				       theTclBuilder);
 }
@@ -4464,6 +4654,10 @@ int
 TclCommand_addRemoGeomTransf(ClientData clientData, Tcl_Interp *interp, int argc,   
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_addGeomTransf(clientData, interp, argc,argv,
 				       theTclDomain,
 				       theTclBuilder);
@@ -4479,6 +4673,10 @@ TclCommand_addStiffnessDegradation(ClientData clientData,
 					Tcl_Interp *interp,
 					int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderStiffnessDegradationCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -4492,6 +4690,10 @@ TclCommand_addUnloadingRule(ClientData clientData,
 				 Tcl_Interp *interp,
 				 int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderUnloadingRuleCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -4505,6 +4707,10 @@ TclCommand_addStrengthDegradation(ClientData clientData,
 				       Tcl_Interp *interp,
 				       int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderStrengthDegradationCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -4518,6 +4724,10 @@ TclCommand_addHystereticBackbone(ClientData clientData,
 				      Tcl_Interp *interp,
 				      int argc,	TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderHystereticBackboneCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
@@ -4535,6 +4745,10 @@ TclCommand_UpdateMaterialStage(ClientData clientData,
 				    int argc, 
 				    TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderUpdateMaterialStageCommand(clientData, interp, 
 						   argc, argv, theTclBuilder, theTclDomain);
 }
@@ -4553,6 +4767,10 @@ TclCommand_UpdateMaterials(ClientData clientData,
 			   int argc, 
 			   TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclCommand_UpdateMaterialsCommand(clientData, interp, 
 					   argc, argv, theTclBuilder, theTclDomain);
 }
@@ -4570,6 +4788,10 @@ TclCommand_UpdateParameter(ClientData clientData,
 				    int argc, 
 				    TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderUpdateParameterCommand(clientData, interp, 
 				       argc, argv, theTclBuilder);
 }
@@ -4583,13 +4805,20 @@ int
 TclCommand_addFrictionModel(ClientData clientData,
                     Tcl_Interp *interp, int argc, TCL_Char **argv)                      
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   return TclModelBuilderFrictionModelCommand(clientData, interp, argc, argv, theTclDomain);
 }
 
 int 
 TclCommand_Package(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   void *libHandle;
   int (*funcPtr)(ClientData clientData, Tcl_Interp *interp,  int argc, 
 		 TCL_Char **argv, Domain*, TclModelBuilder*);       
