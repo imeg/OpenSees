@@ -45,6 +45,13 @@
 #include "ShallowFoundationGen.h"
 #include <stdlib.h>
 #include <string>
+
+#ifdef _CSS
+#include <Node.h> //by SAJalali
+#include <Domain.h>
+extern Domain theDomain;
+#endif // _CSS
+
 using namespace std;
 
 #include <elementAPI.h>
@@ -350,6 +357,16 @@ double Xcoord; double Ycoord;
 midNodeX = 0.0;  //Coordinate of mid node of foundation along X
 midNodeY = 0.0;  //Coordinate of mid node of foundation along Y
 
+#ifdef _CSS
+//by SAJalali
+Node* theNode = theDomain.getNode(ConNode);
+if (theNode != 0) {
+	const Vector& coords = theNode->getCrds();
+	midNodeX = coords(0);
+	midNodeY = coords(1);
+}
+#endif // _CSS
+
 //Writing node and coordinate information
 ShallowFoundationOut << " #node  " << " $NodeTag " << " $Xcoord " << " $Ycoord " <<endln;
 
@@ -366,7 +383,12 @@ for(i=1; i<=nodeTotal; i++)
     }
 	Ycoord = midNodeY; // Y coordinate 
 
-	ShallowFoundationOut << " node  " << FoundationTag*1000+i << "  " << Xcoord << " " << Ycoord <<endln;
+#ifdef _CSS
+	if (i != midNode)//by SAJalali
+		ShallowFoundationOut << " node  " << FoundationTag*1000+i << "  " << Xcoord << " " << Ycoord <<endln;
+#else
+	ShallowFoundationOut << " node  " << FoundationTag * 1000 + i << "  " << Xcoord << " " << Ycoord << endln;
+#endif // _CSS
 	ShallowFoundationOut << " node  " << FoundationTag*100000+i << " " << Xcoord << " " << Ycoord <<endln;
 	
 	// For horizontal springs for foot conditions 3 
@@ -382,10 +404,14 @@ for(i=1; i<=nodeTotal; i++)
 
 
 
-
+#ifdef _CSS
+//the new node is not defined and the related constraint is not neceassry too
+#else
 //EqualDOF command
 ShallowFoundationOut <<	endln << " #equalDOF $rNodeTag $cNodeTag $dof1 $dof2 $dof3" <<endln;
 ShallowFoundationOut <<	" equalDOF "<< ConNode << "  " << FoundationTag*1000+midNode<< " 1 2 3 "<< endln;
+#endif // _CSS
+
 
 //ShallowFoundationOut << endln <<" set midNode_"<<ConNode << "   " << FoundationTag*1000+midNode <<endln;
 
@@ -518,20 +544,39 @@ ShallowFoundationOut << " uniaxialMaterial " << " TzSimple2 " << FoundationTag*1
 //Vertical Spring element connectivity 
 ShallowFoundationOut << endln <<" #Vertical spring element connectivity"<<endln; 
 ShallowFoundationOut << " #element  " << " zeroLength " << " $eleTag " << " $iNode " << " $jNode " << " -mat" << "$matTag " << " -dir " << " $dir " <<endln;
-for(i=1; i<=nodeTotal; i++)
+for (i = 1; i <= nodeTotal; i++)
 {
-	if (i > ndivEnd && i <= ndivEnd+ndivMid+1)
+#ifdef _CSS
+	//by SAJalali
+	int nod2 = FoundationTag * 1000 + i;
+	if (i == midNode)
+		nod2 = ConNode;
+	if (i > ndivEnd&& i <= ndivEnd + ndivMid + 1)
 	{
-ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag*100000+i << "  " <<FoundationTag*100000+i << "  " << FoundationTag*1000+i << " -mat " << FoundationTag*100+3 <<"  " << " -dir " << " 2 " <<endln;
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << nod2 << " -mat " << FoundationTag * 100 + 3 << "  " << " -dir " << " 2 " << endln;
 	}
-	else if (i ==1 || i == nodeTotal)
+	else if (i == 1 || i == nodeTotal)
 	{
-ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag*100000+i << "  " <<FoundationTag*100000+i << "  " << FoundationTag*1000+i << " -mat " << FoundationTag*100+1 <<"  " << " -dir " << " 2 " <<endln;
-	} 
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << nod2 << " -mat " << FoundationTag * 100 + 1 << "  " << " -dir " << " 2 " << endln;
+	}
 	else
 	{
-ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag*100000+i << "  " <<FoundationTag*100000+i << "  " << FoundationTag*1000+i << " -mat " << FoundationTag*100+2 <<"  " << " -dir " << " 2 " <<endln;
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << nod2 << " -mat " << FoundationTag * 100 + 2 << "  " << " -dir " << " 2 " << endln;
 	}
+#else
+	if (i > ndivEnd&& i <= ndivEnd + ndivMid + 1)
+	{
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << FoundationTag * 1000 + i << " -mat " << FoundationTag * 100 + 3 << "  " << " -dir " << " 2 " << endln;
+	}
+	else if (i == 1 || i == nodeTotal)
+	{
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << FoundationTag * 1000 + i << " -mat " << FoundationTag * 100 + 1 << "  " << " -dir " << " 2 " << endln;
+	}
+	else
+	{
+		ShallowFoundationOut << " element  " << " zeroLength " << FoundationTag * 100000 + i << "  " << FoundationTag * 100000 + i << "  " << FoundationTag * 1000 + i << " -mat " << FoundationTag * 100 + 2 << "  " << " -dir " << " 2 " << endln;
+	}
+#endif
 }
 
 
@@ -563,16 +608,33 @@ ShallowFoundationOut <<" geomTransf Linear  "<< transfTag <<endln;
 ShallowFoundationOut << endln <<" #foundation element connectivity"<<endln; 
 ShallowFoundationOut << " #element  " << " elasticBeamColumn " << " $eleTag " << " $iNode " << " $jNode " << " $A " << " $E " << " $Iz " << " $transfTag " <<endln;
 
-for(i=1; i<nodeTotal; i++){
-//writing Foundation connectivity
-	if (i > ndivEnd && i <= ndivEnd+ndivMid)
+for (i = 1; i < nodeTotal; i++) {
+	//writing Foundation connectivity
+#ifdef _CSS
+	int nod1 = FoundationTag * 1000 + i;
+	int nod2 = FoundationTag * 1000 + i + 1;
+	if (i == midNode)
+		nod1 = ConNode;
+	if (i + 1 == midNode)
+		nod2 = ConNode;
+	if (i > ndivEnd&& i <= ndivEnd + ndivMid)
 	{
-ShallowFoundationOut << " element " <<"elasticBeamColumn " << FoundationTag*1000+i << " " <<FoundationTag*1000+i << "  " << FoundationTag*1000+i+1 << " " << Aelefoot << " " << Efoot << " " <<  Ielefoot << " " << transfTag <<endln;
+		ShallowFoundationOut << " element " << "elasticBeamColumn " << FoundationTag * 1000 + i << " " << nod1 << "  " << nod2 << " " << Aelefoot << " " << Efoot << " " << Ielefoot << " " << transfTag << endln;
 	}
 	else
 	{
-ShallowFoundationOut << " element " <<"elasticBeamColumn " << FoundationTag*1000+i << " " <<FoundationTag*1000+i << "  " << FoundationTag*1000+i+1 << " " << Aelefoot << " " << Efoot << " " <<  Ielefoot << " " << transfTag <<endln;
+		ShallowFoundationOut << " element " << "elasticBeamColumn " << FoundationTag * 1000 + i << " " << nod1 << "  " << nod2 << " " << Aelefoot << " " << Efoot << " " << Ielefoot << " " << transfTag << endln;
 	}
+#else
+	if (i > ndivEnd&& i <= ndivEnd + ndivMid)
+	{
+		ShallowFoundationOut << " element " << "elasticBeamColumn " << FoundationTag * 1000 + i << " " << FoundationTag * 1000 + i << "  " << FoundationTag * 1000 + i + 1 << " " << Aelefoot << " " << Efoot << " " << Ielefoot << " " << transfTag << endln;
+	}
+	else
+	{
+		ShallowFoundationOut << " element " << "elasticBeamColumn " << FoundationTag * 1000 + i << " " << FoundationTag * 1000 + i << "  " << FoundationTag * 1000 + i + 1 << " " << Aelefoot << " " << Efoot << " " << Ielefoot << " " << transfTag << endln;
+	}
+#endif
 }
 
 //writing Spring Fixity
