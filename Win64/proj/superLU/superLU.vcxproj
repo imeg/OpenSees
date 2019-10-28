@@ -83,7 +83,7 @@
       <AssemblerListingLocation>.\..\..\obj\superLU\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\superLU\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\superLU\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

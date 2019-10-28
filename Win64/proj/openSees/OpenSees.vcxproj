@@ -77,7 +77,7 @@
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\bin\debug</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\opensees\debug\</IntDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\opensees\debug\</IntDir>
-    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkIncremental>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -176,7 +176,7 @@
       <AssemblerListingLocation>.\..\..\obj\opensees\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\opensees\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\opensees\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

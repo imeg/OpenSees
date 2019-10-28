@@ -139,7 +139,7 @@
       <AssemblerListingLocation>.\..\..\obj\database\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\database\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\database\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

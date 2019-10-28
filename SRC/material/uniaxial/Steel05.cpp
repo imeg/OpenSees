@@ -177,9 +177,11 @@ int
 Steel05::setTrialStrain(double trialStrain, double strainRate)
 {
 	 double Esh = b * E0;
-	 double epsy = Fy / E0;
+	 const double epsy = Fy / E0;
 	 eps = trialStrain + sigini / E0;
-	 double deps = eps - epsP;
+	 const double deps = eps - epsP;
+	 double b2 = b;
+	 const double epsPC = epsPCFac * epsy;
 
 	 epsmax = epsmaxP;
 	 epsmin = epsminP;
@@ -208,80 +210,130 @@ Steel05::setTrialStrain(double trialStrain, double strainRate)
 		  }
 	 }
 
-	 if (kon == 2 && deps > 0.0) {
-		  // in case of load reversal from negative to positive strain increment, 
-		  // update the minimum previous strain, store the last load reversal 
-		  // point and calculate the stress and strain (sigs0 and epss0) at the 
-		  // new intersection between elastic and strain hardening asymptote 
-		  // To include isotropic strain hardening shift the strain hardening 
-		  // asymptote by sigsft before calculating the intersection point 
-		  // Constants a3 and a4 control this stress shift on the tension side 
-		  kon = 1;
-		  epsr = epsP;
-		  sigr = sigP;
-		  //epsmin = min(epsP, epsmin);
-		  if (epsP < epsmin)
-				epsmin = epsP;
-		  double d1 = (epsmax - epsmin) / (2.0 * (a4 * epsy));
-		  double shft = 1.0 + a3 * pow(d1, 0.8);
-		  epss0 = (FydP * shft - Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
-		  sigs0 = FydP * shft + Esh * (epss0 - epsy * shft);
-		  epspl = epsmax;
+	 if (kon == 2) {
+		  if (deps > 0.0)
+		  {
+				// in case of load reversal from negative to positive strain increment, 
+				// update the minimum previous strain, store the last load reversal 
+				// point and calculate the stress and strain (sigs0 and epss0) at the 
+				// new intersection between elastic and strain hardening asymptote 
+				// To include isotropic strain hardening shift the strain hardening 
+				// asymptote by sigsft before calculating the intersection point 
+				// Constants a3 and a4 control this stress shift on the tension side 
+				kon = 1;
+				epsr = epsP;
+				sigr = sigP;
+				if (epsP < epsmin)
+					 epsmin = epsP;
+				const double d1 = (epsmax - epsmin) / (2.0 * (a4 * epsy));
+				const double shft = 1.0 + a3 * pow(d1, 0.8);
+				epss0 = (FydP * shft - Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
+				sigs0 = FydP * shft + Esh * (epss0 - epsy * shft);
+				epspl = epsmax;
+		  }
+		  else if (eps < -(epsPCFac - 1) / 2 * epsy)
+		  {
+				epss0 = -epsPC;
+				sigs0 = -FydN - b * E0 * (epsPC - epsy);
+				epsr = epsP;
+				sigr = sigP;
+				kon = 4;
+		  }
 	 }
-	 else if (kon == 1 && deps < 0.0) {
+	 else if (kon == 1) {
 		  // update the maximum previous strain, store the last load reversal 
 		  // point and calculate the stress and strain (sigs0 and epss0) at the 
 		  // new intersection between elastic and strain hardening asymptote 
 		  // To include isotropic strain hardening shift the strain hardening 
 		  // asymptote by sigsft before calculating the intersection point 
 		  // Constants a1 and a2 control this stress shift on compression side 
+		  if (deps < 0.0)
+		  {
+				kon = 2;
+				epsr = epsP;
+				sigr = sigP;
+				if (epsP > epsmax)
+					 epsmax = epsP;
 
-		  kon = 2;
-		  epsr = epsP;
-		  sigr = sigP;
-		  if (epsP > epsmax)
-				epsmax = epsP;
-
-		  double d1 = (epsmax - epsmin) / (2.0 * (a2 * epsy));
-		  double shft = 1.0 + a1 * pow(d1, 0.8);
-		  epss0 = (-FydN * shft + Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
-		  sigs0 = -FydN * shft + Esh * (epss0 + epsy * shft);
-		  epspl = epsmin;
+				const double d1 = (epsmax - epsmin) / (2.0 * (a2 * epsy));
+				const double shft = 1.0 + a1 * pow(d1, 0.8);
+				epss0 = (-FydN * shft + Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
+				sigs0 = -FydN * shft + Esh * (epss0 + epsy * shft);
+				epspl = epsmin;
+		  }
+		  else if (eps > (epsPCFac - 1) / 2 * epsy)
+		  {
+				epss0 = epsPC;
+				sigs0 = FydP + b * E0 * (epsPC - epsy);
+				epsr = epsP;
+				sigr = sigP;
+				kon = 3;
+		  }
 	 }
-	 // calculate current stress sig and tangent modulus E 
+	 if (kon == 4)
+	 {
+		  if (deps > 0.0)
+		  {
+				kon = 1;
+				epsr = epsP;
+				sigr = sigP;
+				if (epsP < epsmin)
+					 epsmin = epsP;
+				const double d1 = (epsmax - epsmin) / (2.0 * (a4 * epsy));
+				const double shft = 1.0 + a3 * pow(d1, 0.8);
+				epss0 = (FydP * shft - Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
+				sigs0 = FydP * shft + Esh * (epss0 - epsy * shft);
+				epspl = epsmax;
+		  }
+		  else
+				b2 = pstcpEFac / b;
+		 
+	 }
+	 if (kon == 3)
+	 {
+		  if (deps < 0.0)
+		  {
+				kon = 2;
+				epsr = epsP;
+				sigr = sigP;
+				if (epsP > epsmax)
+					 epsmax = epsP;
 
-	 double xi = fabs((epspl - epss0) / epsy);
+				const double d1 = (epsmax - epsmin) / (2.0 * (a2 * epsy));
+				const double shft = 1.0 + a1 * pow(d1, 0.8);
+				epss0 = (-FydN * shft + Esh * epsy * shft - sigr + E0 * epsr) / (E0 - Esh);
+				sigs0 = -FydN * shft + Esh * (epss0 + epsy * shft);
+				epspl = epsmin;
+		  }
+		  else
+				b2 = pstcpEFac / b;
+		 
+	 }
 	 double R = R0;
-	
+	 // calculate current stress sig and tangent modulus E 
 	 if (cR1 != 0.0 && cR2 != 0.0)
+	 {
+		  const double xi = fabs((epspl - epss0) / epsy);
 		  R *= (1.0 - (cR1 * xi) / (cR2 + xi));
-	 double epsrat = (eps - epsr) / (epss0 - epsr);
-	 double epsPC = epsPCFac * epsy;
-	 if ((kon == 1 && eps > epsPC) || (kon == 2 && eps < -epsPC))
-	 {
-		  sig = sigP + pstcpEFac * E0 * deps;
-		  e = pstcpEFac * E0;
-		  if (sigP > 0 && sig < resFac * Fy)
-		  {
-				sig = resFac * Fy;
-				e = 1e-15 * E0;
-		  }
-		  else if (sigP < 0 && sig > -resFac * Fy)
-		  {
-				sig = -resFac * Fy;
-				e = 1e-15 * E0;
-		  }
 	 }
-	 else
+	 const double epsrat = (eps - epsr) / (epss0 - epsr);
+	 const double dum1 = 1.0 + pow(fabs(epsrat), R);
+	 const double dum2 = pow(dum1, (1 / R));
+
+	 sig = b2 * epsrat + (1.0 - b2) * epsrat / dum2;
+	 sig = sig * (sigs0 - sigr) + sigr;
+
+	 e = b2 + (1.0 - b2) / (dum1 * dum2);
+	 e *= (sigs0 - sigr) / (epss0 - epsr);
+	 if (kon == 3 && sig < resFac * Fy)
 	 {
-		  double dum1 = 1.0 + pow(fabs(epsrat), R);
-		  double dum2 = pow(dum1, (1 / R));
-
-		  sig = b * epsrat + (1.0 - b) * epsrat / dum2;
-		  sig = sig * (sigs0 - sigr) + sigr;
-
-		  e = b + (1.0 - b) / (dum1 * dum2);
-		  e *= (sigs0 - sigr) / (epss0 - epsr);
+		  sig = resFac * Fy;
+		  e = 1e-15 * E0;
+	 }
+	 else if (kon == 4 && sig > -resFac * Fy)
+	 {
+		  sig = -resFac * Fy;
+		  e = 1e-15 * E0;
 	 }
 	 return 0;
 }
@@ -314,9 +366,9 @@ Steel05::commitState(void)
   sigs0P = sigs0;
   epssrP = epsr;
   sigsrP = sigr;
-  konP = kon;
 
   updateDamage();
+  konP = kon;
   eP = e;
   sigP = sig;
   epsP = eps;
@@ -576,7 +628,7 @@ Steel05::updateParameter(int parameterID, Information &info)
 
 void Steel05::updateDamage()
 {
-	if (sig *sigP <= 0)
+	if (((konP == 1 || konP == 3) && sig < 0) || ((konP == 2 || konP == 4) && sig > 0))
 	{
 		//submit Pos damage and reset for new excursion
 		double zeroSigEps = epsP - sigP/E0;
@@ -587,7 +639,8 @@ void Steel05::updateDamage()
 		{
 			return;
 		}
-		double& Fyd = sigP >= 0 ? FydP : FydN;
+		double& Fyd = (konP == 2 || konP == 4) ? FydP : FydN;
+		//double& Fyd = FydP;
 		ExcurEnergy += dE;
 		if (ExcurEnergy < 0) ExcurEnergy = 0.;
 		double beta = pow( ExcurEnergy / ( FailEnerg - EnergyP) , c );
@@ -597,6 +650,7 @@ void Steel05::updateDamage()
 			beta = 0.999;
 		}
 		Fyd = (1. - beta)*Fyd + beta * resFac*Fyd;
+		//FydN = Fyd;
 		ExcurEnergy = 0.0;
 	} 
 	else

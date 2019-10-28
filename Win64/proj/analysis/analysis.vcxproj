@@ -83,7 +83,7 @@
       <AssemblerListingLocation>.\..\..\obj\analysis\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\analysis\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\analysis\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

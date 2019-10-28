@@ -82,7 +82,7 @@
       <AssemblerListingLocation>.\..\..\obj\modelbuilder\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\modelbuilder\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\modelbuilder\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

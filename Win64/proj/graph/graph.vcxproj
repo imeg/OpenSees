@@ -139,7 +139,7 @@
       <AssemblerListingLocation>.\..\..\obj\graph\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\graph\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\graph\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

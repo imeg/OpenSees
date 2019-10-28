@@ -83,7 +83,7 @@
       <AssemblerListingLocation>.\..\..\obj\tagged\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\tagged\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\tagged\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

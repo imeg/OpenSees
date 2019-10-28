@@ -139,7 +139,7 @@
       <AssemblerListingLocation>.\..\..\obj\tcl\debugl/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\tcl\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\tcl\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>

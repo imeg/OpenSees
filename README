@@ -2,6 +2,11 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+updating project settings to ignore browse information in debug mode (SA Jalali Oct. 28 2019)
+	The changes in browse information caused re-build of the projects even if no changes were made.
+updating Steel05 UniaxialMaterial for smooth desend (SA Jalali Oct. 28 2019)
+	A smooth transition curve with the same R values as those used for the previous transition curve was added for the descending branch
+	The tangent history curve is now continuous in all range of strains.
 adding Steel05 UniaxialMaterial (SA Jalali Oct. 28 2019)
 	a "Bilinear" version of Menegotto-Pinto Model that accounts for Cyclic and In-cycle deterioration modes
 	The model best works when the transition curve uses a constant R value by omitting cR1 and cR2.

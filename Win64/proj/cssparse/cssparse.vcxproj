@@ -86,7 +86,7 @@
       <AssemblerListingLocation>.\..\..\obj\cssparse\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\cssparse\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\cssparse\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
     </ClCompile>
     <Lib>
       <OutputFile>.\..\..\lib\debug\cssparse.lib</OutputFile>

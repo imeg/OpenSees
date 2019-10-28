@@ -87,7 +87,7 @@
       <AssemblerListingLocation>.\..\..\obj\optimization\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\optimization\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\optimization\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
     </ClCompile>
     <Lib>
       <OutputFile>.\..\..\lib\debug\optimization.lib</OutputFile>
