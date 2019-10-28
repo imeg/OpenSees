@@ -2,6 +2,18 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+adding Steel05 UniaxialMaterial (SA Jalali Oct. 28 2019)
+	a "Bilinear" version of Menegotto-Pinto Model that accounts for Cyclic and In-cycle deterioration modes
+	The model best works when the transition curve uses a constant R value by omitting cR1 and cR2.
+	To achieve this, use cR1=0 and cR2=0 values.
+	In-cycle deterioration is accounted for by adding a descending branch with E=postCapEFac*E at eps=ductiliCapacity*Fy/E. This
+	branch ends to a residual plateau at Sigma = resFac*Fy.
+	The cyclic deterioration uses Rahnama-Krawinkler model that is based on hysteretic energies dissipated at positive and negative
+	excursions to deteriorate positive and negative Fy's, respectively.
+	
+	Material Command:
+	UniaxialMaterial Steel05 $matTag $Fy $E $b $ductilCapacity $postCapEFac $gama $c $resFac <$R0 $cR1 $cR2> <$a1 $a2 $a3 $a4> <$sigInit>
+
 adding logCommands command (SA Jalali, Oct. 16 2019)
 	reflects the OpenSees commands into a text file or/and the command window
 	syntax: logCommands [-file $file ] [-echo] [-stop]
