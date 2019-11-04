@@ -2802,7 +2802,7 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
 	//by SAJalali
 	else if (strcmp(argv[0], "energy") == 0)
 	{
-		return new ElementResponse(this, 10, 0.0);
+		return new ElementResponse(this, 13, 0.0);
 	}
 
     output.endTag();
@@ -3112,7 +3112,7 @@ ForceBeamColumn3d::getResponse(int responseID, Information &eleInfo)
     return -1;
   }
   //by SAJalali
-  else if (responseID == 10) {
+  else if (responseID == 13) {
 	  double xi[maxNumSections];
 	  double L = crdTransf->getInitialLength();
 	  beamIntegr->getSectionWeights(numSections, L, xi);
