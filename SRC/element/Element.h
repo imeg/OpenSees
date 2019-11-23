@@ -131,8 +131,15 @@ protected:
     static Vector ** theVectors1; 
     static Vector ** theVectors2; 
     static int numMatrices;
-
+#ifdef _CSS
+	Vector getDampingEnergies();
+#endif
   private:
+#ifdef _CSS
+	  Vector* prevDampingForces;
+	  Vector* dampingEnergies;
+#endif // _CSS
+
 };
 
 

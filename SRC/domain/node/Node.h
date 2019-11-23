@@ -50,6 +50,10 @@ class Renderer;
 class DOF_Group;
 class NodalThermalAction; //L.Jiang [ SIF ]
 
+#ifdef _CSS
+class TimeSeries;
+#endif // _CSS
+
 class Node : public DomainComponent
 {
   public:
@@ -165,6 +169,15 @@ class Node : public DomainComponent
     virtual void setCrds(double Crd1, double Crd2, double Crd3);
     virtual void setCrds(const Vector &);
 
+#ifdef _CSS
+	Vector getKineticEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT);
+	Vector getMotionEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT);
+	Vector getDampEnergy(TimeSeries** velSeries, TimeSeries** dispSeries, double t, double prevT);
+	const Vector& getLastCommitDisp() { return *lastCommitDisp; }
+	void addDampingForce(const Vector& add);
+
+#endif // _CSS
+
   protected:
 
   private:
@@ -181,12 +194,15 @@ class Node : public DomainComponent
     int numberDOF;                    // number of dof at Node
     DOF_Group *theDOF_GroupPtr;       // pointer to associated DOF_Group
     Vector *Crd;                      // original nodal coords
-    Vector *commitDisp, *commitVel, *commitAccel; // committed quantities
+    Vector *commitDisp, *commitVel, *commitAccel; // commited quantities
     Vector *trialDisp, *trialVel, *trialAccel;     // trial quantities
     Vector *unbalLoad;                // unbalanced load
     Vector *incrDisp;
     Vector *incrDeltaDisp;
-    
+#ifdef _CSS
+	Vector* kineticEnergy, *dampEnergy, *motionEnergy, *lastCommitAccel, *lastCommitVel, *lastCommitDisp, *unbalDampForce;
+#endif // _CSS
+
     double *disp, *vel, *accel; // double arrays holding the displ, 
                                 // vel and accel values
 

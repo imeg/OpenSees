@@ -53,6 +53,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#ifdef _CSS
+#include <TrapezoidalTimeSeriesIntegrator.h>
+#endif // _CSS
 
 void*
 OPS_NodeRecorder()
@@ -304,6 +307,9 @@ NodeRecorder::NodeRecorder()
  deltaT(0), nextTimeStampToRecord(0.0), 
  sensitivity(0),
  initializationDone(false), numValidNodes(0), addColumnInfo(0), theTimeSeries(0), timeSeriesValues(0)
+#ifdef _CSS
+	, velTimeSeries(0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
+#endif // _CSS
 {
 
 }
@@ -326,8 +332,11 @@ NodeRecorder::NodeRecorder(const ID &dofs,
  sensitivity(psensitivity), 
  initializationDone(false), numValidNodes(0), addColumnInfo(0), 
  theTimeSeries(theSeries), timeSeriesValues(0)
-{
+#ifdef _CSS
+	, velTimeSeries (0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
+#endif // _CSS
 
+{
   //
   // store copy of dof's to be recorder, verifying dof are valid, i.e. >= 0
   //
@@ -436,8 +445,19 @@ NodeRecorder::NodeRecorder(const ID &dofs,
       dataFlag = 3000 + grad;
     else
       dataFlag = 10;
-
-  } else {
+  }
+#ifdef _CSS
+  else if ((strcmp(dataToStore, "motionEnergy") == 0) || (strcmp(dataToStore, "MotionEnergy") == 0)) {
+	  dataFlag = 999997;
+  }
+  else if ((strcmp(dataToStore, "kineticEnergy") == 0) || (strcmp(dataToStore, "KineticEnergy") == 0)) {
+	  dataFlag = 999998;
+  }
+  else if ((strcmp(dataToStore, "dampingEnergy") == 0) || (strcmp(dataToStore, "DampingEnergy") == 0)) {
+	  dataFlag = 999999;
+  }
+#endif _CSS
+  else {
     dataFlag = 10;
     opserr << "NodeRecorder::NodeRecorder - dataToStore " << dataToStore;
     opserr << "not recognized (disp, vel, accel, incrDisp, incrDeltaDisp)\n";
@@ -479,6 +499,21 @@ NodeRecorder::~NodeRecorder()
       delete theTimeSeries[i];
     delete [] theTimeSeries;
   }
+#ifdef _CSS
+  if (velTimeSeries != 0) {
+	  for (int i = 0; i < numDOF; i++)
+		  delete velTimeSeries[i];
+	  delete[] velTimeSeries;
+  }
+  if (dispTimeSeries != 0) {
+	  for (int i = 0; i < numDOF; i++)
+		  delete dispTimeSeries[i];
+	  delete[] dispTimeSeries;
+  }
+  if (accelTimeSeries != 0) {
+	  delete[] accelTimeSeries;
+  }
+#endif // _CSS
 
 }
 
@@ -769,7 +804,119 @@ NodeRecorder::record(int commitTag, double timeStamp)
 	  }
 	  
 	  
-	} else if (dataFlag  >= 3000) {
+	}
+#ifdef _CSS
+	else if (dataFlag == 999997) {
+		if (accelTimeSeries == 0 && theTimeSeries != 0)
+		{
+			int numNodeDof = theNode->getNumberDOF();
+			accelTimeSeries = new TimeSeries * [numNodeDof];
+			velTimeSeries = new TimeSeries * [numNodeDof];
+			dispTimeSeries = new TimeSeries * [numNodeDof];
+			for (int j = 0; j < numNodeDof; j++)
+			{
+				accelTimeSeries[j] = 0;
+				velTimeSeries[j] = 0;
+				dispTimeSeries[j] = 0;
+			}
+					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
+			for (int j = 0; j < numDOF; j++)
+			{
+				int dof = (*theDofs)[j];
+				accelTimeSeries[dof] = theTimeSeries[j];
+				if (accelTimeSeries[dof] != 0)
+				{
+					velTimeSeries[dof] = integ.integrate(accelTimeSeries[dof], 0.01);
+					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
+				}
+			}
+		}
+		const Vector& theResponse = theNode->getMotionEnergy(accelTimeSeries, dispTimeSeries, timeStamp, prevT);
+		for (int j = 0; j < numDOF; j++) {
+			int dof = (*theDofs)(j);
+			if (theResponse.Size() > dof) {
+				response(cnt) = theResponse(dof);
+			}
+			else
+				response(cnt) = 0.0;
+			cnt++;
+		}
+		prevT = timeStamp;
+	}
+	else if (dataFlag == 999998) {
+		if (accelTimeSeries == 0 && theTimeSeries != 0)
+		{
+			int numNodeDof = theNode->getNumberDOF();
+			accelTimeSeries = new TimeSeries * [numNodeDof];
+			velTimeSeries = new TimeSeries * [numNodeDof];
+			dispTimeSeries = new TimeSeries * [numNodeDof];
+			for (int j = 0; j < numNodeDof; j++)
+			{
+				accelTimeSeries[j] = 0;
+				velTimeSeries[j] = 0;
+				dispTimeSeries[j] = 0;
+			}
+					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
+			for (int j = 0; j < numDOF; j++)
+			{
+				int dof = (*theDofs)[j];
+				accelTimeSeries[dof] = theTimeSeries[j];
+				if (accelTimeSeries[dof] != 0)
+				{
+					velTimeSeries[dof] = integ.integrate(accelTimeSeries[dof], 0.01);
+					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
+				}
+			}
+		}
+		const Vector& theResponse = theNode->getKineticEnergy(accelTimeSeries, dispTimeSeries, timeStamp, prevT);
+		for (int j = 0; j < numDOF; j++) {
+			int dof = (*theDofs)(j);
+			if (theResponse.Size() > dof) {
+				response(cnt) = theResponse(dof);
+			}
+			else
+				response(cnt) = 0.0;
+			cnt++;
+		}
+		prevT = timeStamp;
+	}
+	else if (dataFlag == 999999) {
+		if (velTimeSeries == 0 && theTimeSeries != 0)
+		{
+			int numNodeDof = theNode->getNumberDOF();
+			velTimeSeries = new TimeSeries * [numNodeDof];
+			dispTimeSeries = new TimeSeries * [numNodeDof];
+			for (int j = 0; j < numNodeDof; j++)
+			{
+				velTimeSeries[j] = 0;
+				dispTimeSeries[j] = 0;
+			}
+					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
+			for (int j = 0; j < numDOF; j++)
+			{
+				if (theTimeSeries[j] != 0)
+				{
+					int dof = (*theDofs)(j);
+					velTimeSeries[dof] = integ.integrate(theTimeSeries[j], 0.01);
+					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
+				}
+			}
+		}
+		const Vector& theResponse = theNode->getDampEnergy(velTimeSeries, dispTimeSeries, timeStamp, prevT);
+		for (int j = 0; j < numDOF; j++) {
+			int dof = (*theDofs)(j);
+			if (theResponse.Size() > dof) {
+				response(cnt) = theResponse(dof) + timeSeriesTerm;
+			}
+			else
+				response(cnt) = 0.0;
+			cnt++;
+		}
+		prevT = timeStamp;
+	}
+#endif // _CSS
+
+	else if (dataFlag  >= 3000) {
 	  int grad = dataFlag - 3000;
 	  
 	  for (int j=0; j<numDOF; j++) {
@@ -1129,8 +1276,6 @@ NodeRecorder::initialize(void)
   if (echoTimeFlag == true)
     timeOffset = 1;
 
-
-
   int numValidResponse = numValidNodes*theDofs->Size() + timeOffset;
   if (dataFlag == 10000 || dataFlag == 10002) {
       numValidResponse = numValidNodes + timeOffset;
@@ -1231,13 +1376,24 @@ NodeRecorder::initialize(void)
   char nodeCrdData[20];
   sprintf(nodeCrdData,"coord");
 
+  // fixing TimeOutput for node recorder
+#if _DLL
   if (echoTimeFlag == true) {
-    if (theNodalTags != 0 && addColumnInfo == 1) {
-      theOutputHandler->tag("TimeOutput");
-      theOutputHandler->tag("ResponseType", "time");
-      theOutputHandler->endTag();
-    }
+	  if (theNodalTags != 0) {
+		  theOutputHandler->tag("TimeOutput");
+		  theOutputHandler->tag("ResponseType", "time");
+		  theOutputHandler->endTag();
+	  }
   }
+#else 
+  if (echoTimeFlag == true) {
+	  if (theNodalTags != 0 && addColumnInfo == 1) {
+		  theOutputHandler->tag("TimeOutput");
+		  theOutputHandler->tag("ResponseType", "time");
+		  theOutputHandler->endTag();
+	  }
+  }
+#endif
 
   for (int i=0; i<numValidNodes; i++) {
     int nodeTag = theNodes[i]->getTag();

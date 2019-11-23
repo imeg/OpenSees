@@ -1018,7 +1018,13 @@ Response*
 ElasticBeam3d::setResponse(const char **argv, int argc, OPS_Stream &output)
 {
 
-  Response *theResponse = 0;
+#ifdef _CSS
+	Response* theResponse = Element::setResponse(argv, argc, output);
+	if (theResponse != 0)
+		return theResponse;
+#else
+	Response* theResponse = 0;
+#endif // _CSS
 
   output.tag("ElementOutput");
   output.attr("eleType","ElasticBeam3d");
@@ -1095,6 +1101,11 @@ ElasticBeam3d::setResponse(const char **argv, int argc, OPS_Stream &output)
 int
 ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
 {
+#ifdef _CSS
+	if (Element::getResponse(responseID, eleInfo) == 0)
+		return 0;
+#endif // _CSS
+
   double N, V, M1, M2, T;
   double L = theCoordTransf->getInitialLength();
   double oneOverL = 1.0/L;
