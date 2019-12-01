@@ -59,6 +59,10 @@ Element::Element(int tag, int cTag)
   :DomainComponent(tag, cTag), alphaM(0.0), 
   betaK(0.0), betaK0(0.0), betaKc(0.0), 
    Kc(0), previousK(0), numPreviousK(0), index(-1), nodeIndex(-1)
+#ifdef _CSS
+	, prevDampingForces(0), dampingEnergies(0)
+#endif // _CSS
+
 {
   // does nothing
   ops_TheActiveElement = this;
@@ -74,6 +78,13 @@ Element::~Element()
       delete previousK[i];
     delete [] previousK;
   }
+#ifdef _CSS
+  if (prevDampingForces != 0)
+	  delete prevDampingForces;
+  if (dampingEnergies != 0)
+	  delete dampingEnergies;
+#endif // _CSS
+
 }
 
 int
@@ -81,7 +92,14 @@ Element::commitState(void)
 {
   if (Kc != 0)
     *Kc = this->getTangentStiff();
-  
+#ifdef _CSS
+  Node** theNodes = this->getNodePtrs();
+  int numNodes = this->getNumExternalNodes();
+  for (int i = 0; i < numNodes; i++)
+	  theNodes[i]->addDampingForce(getRayleighDampingForces());
+
+#endif // _CSS
+
   return 0;
 }
 
@@ -465,6 +483,18 @@ Element::setResponse(const char **argv, int argc, OPS_Stream &output)
     }
     theResponse = new ElementResponse(this, 444444, this->getResistingForce());
   }
+#ifdef _CSS
+  else if (strcmp(argv[0], "dampingEnergy") == 0 || strcmp(argv[0], "DampingEnergy") == 0) {
+	  const Vector& force = this->getResistingForce();
+	  int size = force.Size();
+	  for (int i = 0; i < size; i++) {
+		  sprintf(nodeData, "P%d", i + 1);
+		  output.tag("ResponseType", nodeData);
+	  }
+	  theResponse = new ElementResponse(this, 555555, this->getResistingForce());
+  }
+
+#endif // _CSS
 
 
   output.endTag();
@@ -483,6 +513,8 @@ Element::getResponse(int responseID, Information &eleInfo)
     return eleInfo.setVector(this->getResistingForceIncInertia());
   case 444444:
     return eleInfo.setVector(this->getResistingForceIncInertia()-this->getRayleighDampingForces()-this->getResistingForce());
+  case 555555:
+    return eleInfo.setVector(this->getDampingEnergies());
 
   default:
     return -1;
@@ -770,3 +802,27 @@ Element::getGeometricTangentStiff()
     
     return *theMatrix;
 }
+
+#ifdef _CSS
+Vector Element::getDampingEnergies()
+{
+	const Vector& thisF = getRayleighDampingForces();
+	int numDof = thisF.Size();
+	if (prevDampingForces == 0)
+		prevDampingForces = new Vector(numDof);
+	if (dampingEnergies == 0)
+		dampingEnergies = new Vector(numDof);
+	Vector* theVector2 = theVectors1[index];
+	Node** theNodes = this->getNodePtrs();
+	int numNodes = this->getNumExternalNodes();
+	int loc = 0;
+	for (int i = 0; i < numNodes; i++) {
+		const Vector& prevDisp = theNodes[i]->getLastCommitDisp();
+		const Vector& thisDisp = theNodes[i]->getDisp();
+		for (int j = 0; j < prevDisp.Size(); j++) {
+			(*dampingEnergies)(loc++) = 0.5 * ((*prevDampingForces)(j) + thisF(j)) * (thisDisp[j] - prevDisp[j]);
+		}
+	}
+	return *dampingEnergies;
+}
+#endif
