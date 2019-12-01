@@ -1,0 +1,859 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Release\) contains files shared from another project (OpenSeesWrapper.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  stdafx.cpp
+  AcceleratorWrapper.cpp
+  AlgorithmsWrapper.cpp
+  LineSearchWrapper.cpp
+  AnalysisWrapper.cpp
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::PFEMAnalysisAnalysisWrapper::Analyze' does not match a base ref class method
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::VariableTimeStepDirectIntegrationAnalysisWrapper::Analyze' does not match a base ref class method
+  ConstraintHandlerWrapper.cpp
+  IncrementalIntegratorWrapper.cpp
+  IntegratorWrapper.cpp
+  StaticIntegratorWrapper.cpp
+  TransientIntegratorWrapper.cpp
+  AnalysisModelWrapper.cpp
+  DOF_NumbererWrapper.cpp
+  AssemblyInfo.cpp
+  ConvergenceTestWrapper.cpp
+  DamageModelWrapper.cpp
+  DomainComponentWrapper.cpp
+  ConstraintWrapper.cpp
+  BaseDomainWrapper.cpp
+  DomainEvent.cpp
+  DomainWrapper.cpp
+  GroudMotionWrapper.cpp
+  Generating Code...
+  Compiling...
+  LoadWrapper.cpp
+  NodeWrapper.cpp
+  LoadPatternWrapper.cpp
+  TimeSeriesWrapper.cpp
+  AdapterWrapper.cpp
+  BaseElementWrapper.cpp
+  BeamColumnWrapper.cpp
+  BeamIntegrationWrapper.cpp
+  BearingWrapper.cpp
+  BrickWrapper.cpp
+  CatenaryCableWrapper.cpp
+  CrdTransfWrapper.cpp
+  ElementWrapper.cpp
+  ExternalElementWrapper.cpp
+  OtherElementWrapper.cpp
+  Quad4FiberOverlayWrapper.cpp
+  SurfaceLoadWrapper.cpp
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(38,1): warning C4005: 'SL_NUM_NODE': macro redefinition
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(39): message : see previous definition of 'SL_NUM_NODE'
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(42,1): warning C4005: 'SL_NUM_DOF': macro redefinition
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(43): message : see previous definition of 'SL_NUM_DOF'
+D:\programming\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(44,1): warning C4005: 'SL_NUM_DDOF': macro redefinition
+  QuadWrapper.cpp
+  ShellWrapper.cpp
+  TrussWrapper.cpp
+  Generating Code...
+  Compiling...
+  ULBeamColumnWrapper.cpp
+D:\programming\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(45): message : see previous definition of 'SL_NUM_DDOF'
+  CoupledZeroLengthWrapper.cpp
+  ZeroLengthElementWrapper.cpp
+  GraphNumbererWrapper.cpp
+  HandlerWrapper.cpp
+  MaterialWrapper.cpp
+  NDMaterialWrapper.cpp
+  FiberWrapper.cpp
+  SectionIntegrationWrapper.cpp
+  PatchWrapper.cpp
+  ReinfLayerWrapper.cpp
+  SectionRepresWrapper.cpp
+  SectionForceDeformationWrapper.cpp
+  LimitCurveWrapper.cpp
+  UniaxialMaterialWrapper.cpp
+  UniaxialMaterialWrapper_all.cpp
+  YieldSurfaceWrapper.cpp
+  IDWrapper.cpp
+  MatrixWrapper.cpp
+  VectorWrapper.cpp
+  Generating Code...
+  Compiling...
+  OPS.cpp
+  InformationWrapper.cpp
+  RecorderWrapper.cpp
+  ResponseWrapper.cpp
+  ResponseWrapper_all.cpp
+  ArpackSOEWrapper.cpp
+  BandGENWrapper.cpp
+  BandSPDWrapper.cpp
+  DiagonalWrapper.cpp
+  EigenSOEWrapper.cpp
+  EigenSolverWrapper.cpp
+  FullGENWrapper.cpp
+  LinearSOESolverWrapper.cpp
+  LinearSOEWrapper.cpp
+  ProfileSPDWrapper.cpp
+  SolverWrapper.cpp
+  SparseGENWrapper.cpp
+  SparseSYMWrapper.cpp
+  SYMBandEigenWrapper.cpp
+  SystemOfEqnWrapper.cpp
+  Generating Code...
+  Compiling...
+  UmfpackGenWrapper.cpp
+  TaggedObjectWrapper.cpp
+  ModelBuilderEvent.cpp
+  TclWrapper.cpp
+  Generating Code...
+D:\programming\OpenSees.NET\Win64\proj\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.h(19,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  .NETFramework,Version=v4.0.AssemblyAttributes.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1267,5): warning MSB8012: TargetPath(D:\programming\OpenSees.NET\Win64\\bin\Release\OpenSees.NET.x64.dll.dll) does not match the Linker's OutputFile property value (D:\programming\OpenSees.NET\Win64\bin\Release\OpenSees.NET.x64.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1269,5): warning MSB8012: TargetName(OpenSees.NET.x64.dll) does not match the Linker's OutputFile property value (OpenSees.NET.x64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+analysis.lib(PlainHandler.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Domain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Subdomain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Node.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(SP_Constraint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(SingleDomParamIter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CrdTransf.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Element.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(commands.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(elementAPI_TCL.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(packages.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(TclVideoPlayer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(TclModelBuilder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+graph.lib(Graph.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(DummyStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(StandardStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(FileStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(XmlFileStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(BinaryFileStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UniaxialMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SectionForceDeformation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(LimitCurve.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PySimple1Gen.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TzSimple1Gen.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ShallowFoundationGen.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(HystereticBackbone.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclModelBuilderSectionCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclModelBuilderUniaxialMaterialCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclModelBuilderNDMaterialCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclUpdateMaterialStageCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticSection3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticShearSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticShearSection3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticWarpingShearSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticTubeSection3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SectionAggregator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ParallelSection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDFiberSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDFiberSection3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDFiberSectionWarping2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSection3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(LayeredShellFiberSection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UniaxialFiber2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UniaxialFiber3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDFiber2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(NDFiber3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Elliptical2.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(WideFlangeSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RCSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RCTBeamSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RCCircularSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RCTunnelSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TubeSectionIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSection2dThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSection3dThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(MembranePlateFiberSectionThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(LayeredShellFiberSectionThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclModelBuilderYS_SectionCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Elastic2Material.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel03.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete01WithSITC.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ECC01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete04.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete06.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete07.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FatigueMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ENTMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BoucWenMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Pinching4Material.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ShearPanelMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BarSlipMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SteelMP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SmoothPSConcrete.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SelfCenteringMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UniaxialJ2Plasticity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SPSW02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel05.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticPPMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(EPPGapMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ParallelMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SeriesMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(HardeningMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CableMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete02IS.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteZ01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteL01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SteelZ01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TendonL01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConfinedConcrete01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SimpleFractureMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(pyUCLA.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ViscousDamper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(DamperMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BilinearOilDamper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Cast.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SteelBRB.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(HookGap.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FRPConfinedConcrete.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UVCuniaxial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel01Thermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel02Thermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Concrete02Thermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StainlessECThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SteelECThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteECThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticMaterialThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BWBN.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(IMKPeakOriented.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(IMKBilin.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(IMKPinching.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ModIMKPeakOriented.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ModIMKPeakOriented02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ModIMKPinching02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcretewBeta.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PinchingLimitStateMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ResilienceMaterialHR.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ResilienceLow.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ViscousMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SteelMPF.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteCM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Bond_SP01.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Steel4.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BoucWenOriginal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(GNGMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(OOHystereticMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclSnapMaterialCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TclPyTzQzMaterialCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(LimitStateMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(AxialCurve.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ThreePointCurve.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ShearCurve.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RotationShearCurve.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(MultiaxialCyclicPlasticity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlaneStrainMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlateRebarMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlateFromPlaneStressMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteS.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlaneStressUserMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CapPlasticity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SimplifiedJ2.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlaneStressSimplifiedJ2.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteMcftNonLinear5.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ConcreteMcftNonLinear7.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PressureIndependMultiYield.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PressureDependMultiYield.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PressureDependMultiYield02.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PressureDependMultiYield03.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FluidSolidPorousMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlateFromPlaneStressMaterialThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlateRebarMaterialThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(MultiYieldSurfaceClay.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ReinforcedConcretePlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FAReinforcedConcretePlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FAFourSteelRCPlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RAFourSteelRCPlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PrestressedConcretePlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FAPrestressedConcretePlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FAFourSteelPCPlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(RAFourSteelPCPlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(MaterialCMM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlasticDamageConcrete3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlasticDamageConcretePlaneStress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticIsotropicMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticOrthotropicMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(DruckerPrager.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(BoundingCamClay.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ContactMaterial2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ContactMaterial3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(InitialStateAnalysisWrapper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafalias.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafaliasRO.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PM4Sand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PM4Silt.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(J2CyclicBoundingSurface.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCPSP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StressDensityModel.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(J2Plasticity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(J2BeamFiber2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(J2BeamFiber3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(J2PlateFibre.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlaneStressLayeredMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PlaneStressRebarMaterial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(LinearCap.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(AcousticMedium.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UVCmultiaxial.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UVCplanestress.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticIsotropicMaterialThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(DruckerPragerThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FSAM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StiffnessDegradation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(UnloadingRule.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StrengthDegradation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SectionRepres.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(SoilFootingSection2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(Bilinear.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(PyLiq1.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(TzLiq1.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticIsotropicBeamFiber.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ElasticIsotropicBeamFiber2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(DruckerPrager3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafalias3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafaliasPlaneStrain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafalias3DRO.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(ManzariDafaliasPlaneStrainRO.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCP3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCPPlaneStrain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCPSP3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(CycLiqCPSPPlaneStrain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StressDensityModel2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(StressDensityModel3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(DruckerPrager3DThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(YieldSurface_BC.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(YieldSurface_BC2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(YS_Evolution2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+matrix.lib(ID.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+matrix.lib(Matrix.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+matrix.lib(Vector.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(TclOptimizationBuilder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(OptimizationDomain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(DesignVariable.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(DesignVariablePositioner.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(ConstraintFunction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(ObjectiveFunction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+optimization.lib(OptimizationDomainComponent.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(ElementResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(TclRecorderCommands.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(MaterialResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(FiberResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(Response.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(NodeRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(EnvelopeNodeRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(PatternRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(ResidElementRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(ResidNodeRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(ElementRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(EnvelopeElementRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(NormElementRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(NormEnvelopeElementRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(MPCORecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(PVDRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(GmshRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(VTK_Recorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(DamageRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(RemoveRecorder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(FilePlotter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(AlgorithmIncrements.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+recorder.lib(CompositeResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ReliabilityDomain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ReliabilityDirectIntegrationAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(TclReliabilityBuilder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(LimitStateFunction1.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(NormalRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(LognormalRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GammaRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ShiftedExponentialRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ShiftedRayleighRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ExponentialRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RayleighRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(UniformRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(BetaRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(Type1LargestValueRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(Type1SmallestValueRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(Type2LargestValueRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(Type3SmallestValueRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ChiSquareRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GumbelRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(WeibullRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(LaplaceRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ParetoRV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(TclEvaluator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ImplicitGradient.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FiniteDifferenceGradient.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FiniteDifferenceHessian.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(NatafProbabilityTransformation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ArmijoStepSizeRule.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SearchWithStepSizeAndStepDirection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FORMAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FirstPrincipalCurvature.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(CurvaturesBySearchAlgorithm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(CurvatureFitting.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(StandardReliabilityConvergenceCheck.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(OptimalityConditionReliabilityConvergenceCheck.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GradientProjectionSearchDirection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FOSMAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GFunVisualizationAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(OutCrossingAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ImportanceSamplingAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SORMAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(PCM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(IPCM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SCIS.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(MVNcdf.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SecantRootFinding.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(MonteCarloResponseAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(OrthogonalPlaneSamplingAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(MultiDimVisPrincPlane.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(DP_RSM_Sim.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(DP_RSM_Sim_TimeVariant.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(StaticAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(DynamciAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SelectLoadInitialStaticAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ThresholdIncInitialPointBuilder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(CrossingRateAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FOSeriesSimulation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(StatFirstPassageAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(NonStatFirstPassageAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(StatRandomVibrationSimulation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(NonStatRandomVibrationSimulation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RandomVibrationAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(AllIndependentTransformation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ReliabilityDomainComponent.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RandomVariable.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FunctionEvaluator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GradientEvaluator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(HessianEvaluator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FindDesignPointAlgorithm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FORMStorage.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(CorrelatedStandardNormal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SystemAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(PrincipalPlane.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GridPlane.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(UnivariateDecomposition.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(BivariateDecomposition.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RespSurfaceSimulation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(Analyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(InitialStaticAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(InitialPointBuilder.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RandomProcess.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(TimePoints.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(FirstPassageAnalyzer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(GFunEachstepEvaluator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RandomVibrationSimulation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(RandomVibrationSimulatorResult.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(OutCrossingResults.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(ReliabilityStorage.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(SurfaceDesign.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+reliability.lib(NewDiscretizedRandomProcessSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+renderer.lib(OpenGlRenderer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+renderer.lib(Renderer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+renderer.lib(OpenGlDevice.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(BandSPDLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(BandGenLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(FullGenLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(ProfileSPDLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(SProfileSPDLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(SparseGenColLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(PFEMSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(PFEMLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(PFEMCompressibleSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(PFEMCompressibleLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(SuperLU.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(SymSparseLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(UmfpackGenLinSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(UmfpackGenLinSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(FullGenEigenSOE.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+system.lib(ArpackSolver.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tagged.lib(MapOfTaggedObjects.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tagged.lib(MapOfTaggedObjectsIter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+utility.lib(SimulationInformation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+utility.lib(File.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+utility.lib(FileIter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(locale0.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(locale0.obj) : error LNK2005: "void __cdecl std::_Facet_Register(class std::_Facet_base *)" (?_Facet_Register@std@@YAXPEAV_Facet_base@1@@Z) already defined in msvcprt.lib(locale0_implib.obj)
+libcpmt.lib(locale0.obj) : error LNK2005: "private: static class std::locale::_Locimp * __cdecl std::locale::_Getgloballocale(void)" (?_Getgloballocale@locale@std@@CAPEAV_Locimp@12@XZ) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(locale0.obj) : error LNK2005: "private: static class std::locale::_Locimp * __cdecl std::locale::_Init(bool)" (?_Init@locale@std@@CAPEAV_Locimp@12@_N@Z) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(locale0.obj) : error LNK2005: "public: static void __cdecl std::_Locinfo::_Locinfo_ctor(class std::_Locinfo *,char const *)" (?_Locinfo_ctor@_Locinfo@std@@SAXPEAV12@PEBD@Z) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(locale0.obj) : error LNK2005: "public: static void __cdecl std::_Locinfo::_Locinfo_dtor(class std::_Locinfo *)" (?_Locinfo_dtor@_Locinfo@std@@SAXPEAV12@@Z) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(cerr.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(cout.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(locale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(iosptrs.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xlock.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xlock.obj) : error LNK2005: "public: __cdecl std::_Lockit::_Lockit(int)" (??0_Lockit@std@@QEAA@H@Z) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(xlock.obj) : error LNK2005: "public: __cdecl std::_Lockit::~_Lockit(void)" (??1_Lockit@std@@QEAA@XZ) already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(wlocale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xlocale.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xmtx.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xstrcoll.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xdateord.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xmbtowc.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xwctomb.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xwctomb.obj) : error LNK2005: _Getcvt already defined in msvcprt.lib(MSVCP140.dll)
+libcpmt.lib(xwcscoll.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xwcsxfrm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xgetwctype.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xtowlower.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xtowupper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(xstrxfrm.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(winapisupp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(StlCompareStringA.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(winapinls.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(StlCompareStringW.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(StlLCMapStringW.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+libcpmt.lib(StlLCMapStringA.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+actor.lib(FEM_ObjectBrokerAllClasses.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(AnalysisModel.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(Linear.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(NewtonRaphson.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(AcceleratedNewton.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(LoadControl.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(DisplacementControl.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(NewtonHallM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(Newmark.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(PFEMAnalysis.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+analysis.lib(IncrementalIntegrator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+convergence.lib(CTestNormUnbalance.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+convergence.lib(CTestPFEM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(DamageModel.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(TclModelBuilderDamageModelCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(DamageResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(NormalizedPeak.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(Kratzig.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(Mehanny.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(ParkAng.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+damage.lib(HystereticEnergy.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+database.lib(TclDatabaseCommands.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+database.lib(FileDatastore.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(InitialStateParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ElementStateParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TimeSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(NodalLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam2dPointLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam2dUniformLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam2dPartialUniformLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PathTimeSeriesThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam2dThermalAction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam3dThermalAction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ShellThermalAction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(NodalThermalAction.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ThermalActionWrapper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Beam3dPartialUniformLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(SelfWeight.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ImposedMotionSP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ImposedMotionSP1.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclParameterCommands.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclPatternCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclSeriesCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclGroundMotionCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclUpdateMaterialCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(MaterialStageParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Parameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(UniformExcitation.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(LoadPattern.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(MultiSupportPattern.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(GroundMotion.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(DRMLoadPatternWrapper.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ElementParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(MatParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(LinearSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PathSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PathTimeSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(RectangularSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(ConstantSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TrigSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TrapezoidalTimeSeriesIntegrator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(MeshRegion.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(RVParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(NodeResponseParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(LoadFactorParameter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(FireLoadPattern.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(GroundMotionRecord.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(Mesh3DSubdomain.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PlaneDRMInputHandler.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(DRMLoadPattern.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TclSeriesIntegratorCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PeerMotion.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PeerNGAMotion.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(DiscretizedRandomProcessSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(SimulatedRandomProcessSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TriangleSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(PulseSeries.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(InterpolatedGroundMotion.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(EarthquakePattern.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(TimeSeriesIntegrator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(GeometricBrickDecorator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(DRMInputHandler.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(DRMBoundaryLayerDecorator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+domain.lib(SimpsonTimeSeriesIntegrator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FrictionModel.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Tcl_generateInterfacePoints.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BackgroundMesh.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(UserDefinedBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FixedLocationBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LowOrderBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(MidDistanceBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(UserDefinedHingeIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(HingeMidpointBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(HingeRadauBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(HingeRadauTwoBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(HingeEndpointBeamIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Information.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FiberSection2dInt.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Mesh.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FourNodeQuad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FourNodeQuadUP1.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Nine_Four_Node_QuadUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Coulomb.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(VelDependent.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(VelPressureDep.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(VelDepMultiLinear.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(VelNormalFrcDep.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Truss.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Truss2.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TrussSection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CorotTruss.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CorotTrussSection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLength.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthSection.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthContact2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthContact3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthContactNTS2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthInterface2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(EnhancedQuad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(NineNodeMixedQuad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ConstantPressureVolumeQuad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticBeam2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticBeam3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ModElasticBeam2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticTimoshenkoBeam2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticTimoshenkoBeam3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ForceBeamColumn2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ForceBeamColumn3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Tri31.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SSPquad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SSPquadUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SSPbrick.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SSPbrickUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamContact2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamContact2Dp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamContact3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamContact3Dp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamEndContact3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamEndContact3Dp.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(QuadBeamEmbedContact.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BrickUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BBarBrickUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BBarFourNodeQuadUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Twenty_Eight_Node_BrickUP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellMITC4.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellMITC9.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellDKGQ.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellNLDKGQ.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Brick.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BbarBrick.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Joint2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TwoNodeLink.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LinearElasticSpring.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Inerter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingBoucWen2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingBoucWen3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingPlasticity2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingPlasticity3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingUFRP2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericX.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(HDR.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LeadRubberX.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FlatSliderSimple2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FlatSliderSimple3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FPBearingPTV.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(RJWatsonEQS2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(RJWatsonEQS3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SingleFPSimple2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SingleFPSimple3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TripleFrictionPendulum.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LinearCrdTransf2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LinearCrdTransf3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PDeltaCrdTransf2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PDeltaCrdTransf3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CorotCrdTransf2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CorotCrdTransf3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DistHingeIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(RegularizedHingeIntegration.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FrictionResponse.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(EmbeddedBeamInterfaceL.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(EmbeddedBeamInterfaceP.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(EmbeddedEPBeamInterface.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(MultipleShearSpring.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(KikuchiBearing.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(YamamotoBiaxialHDR.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(WheelRail.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ComponentElement2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticTubularJoint.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthVG_HG.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PY_Macro2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SimpleContact2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SimpleContact3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PileToe3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SurfaceLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TriSurfaceLoad.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TPB1D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TFP_Bearing.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(MultiFP2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CoupledZeroLength.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FourNodeQuad3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellDKGT.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellNLDKGT.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Quad4FiberOverlay.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Brick8FiberOverlay.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CorotTruss2.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthImpact3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(N4BiaxialTruss.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(AC3D8HexWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ASI3D8QuadWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(AV3D4QuadWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(VS3D4QuadWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(MVLEM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(SFI_MVLEM.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(AxEqDispBeamColumn2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElastomericBearingBoucWenMod3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PFEMElement2DBubble.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PFEMElement2Dmini.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PFEMElement2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellMITC4Thermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellNLDKGQThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CatenaryCable.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ShellANDeS.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FourNodeTetrahedron.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(LysmerTriangle.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Adapter.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Actuator.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ActuatorCorot.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(GenericClient.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(GenericCopy.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TclForceBeamColumnCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TclBeamColumnJointCommand.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PFEMElement2DCompressible.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(PFEMElement3DBubble.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TFP_Bearing2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BbarBrickWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(FourNodeQuadWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Joint3D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthND.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ZeroLengthRocking.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn2dInt.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ForceBeamColumnWarping2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticForceBeamColumnWarping2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(TimoshenkoBeamColumn2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumnNL2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn2dThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn3dThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ForceBeamColumn2dThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn2dWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(DispBeamColumn3dWithSensitivity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticForceBeamColumn2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ElasticForceBeamColumn3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ForceBeamColumnCBDI2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamColumnJoint2d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(BeamColumnJoint3d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(Twenty_Node_Brick.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(CyclicModel.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(UpdatedLagrangianBeam2D.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(InelasticYS2DGNL.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+tcl.lib(TclFeViewer.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(DataFileStream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(DataFileStreamAdd.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+handler.lib(TCP_Stream.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(GenericSection1d.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(stressDensity.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(stressDensity.obj) : error LNK2005: "void * __cdecl OPS_StressDensityMaterial(void)" (?OPS_StressDensityMaterial@@YAPEAXXZ) already defined in material.lib(StressDensityModel.obj)
+     Creating library .\..\..\bin\Release\OpenSees.NET.x64.lib and object .\..\..\bin\Release\OpenSees.NET.x64.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+element.lib(MultipleNormalSpring.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+element.lib(ExternalElement.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSectionGJ.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+material.lib(FiberSectionGJThermal.obj) : error LNK2038: mismatch detected for 'RuntimeLibrary': value 'MT_StaticRelease' doesn't match value 'MD_DynamicRelease' in AcceleratorWrapper.obj
+TclWrapper.obj : error LNK2028: unresolved token (0A000551) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+ResponseWrapper_all.obj : error LNK2020: unresolved token (0A00046C) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ZeroLengthElementWrapper.obj : error LNK2028: unresolved token (0A000559) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+CoupledZeroLengthWrapper.obj : error LNK2028: unresolved token (0A00054D) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+ULBeamColumnWrapper.obj : error LNK2028: unresolved token (0A00043B) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+TrussWrapper.obj : error LNK2020: unresolved token (0A000460) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ShellWrapper.obj : error LNK2028: unresolved token (0A0004CA) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+QuadWrapper.obj : error LNK2028: unresolved token (0A0004AD) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+SurfaceLoadWrapper.obj : error LNK2028: unresolved token (0A00054D) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+Quad4FiberOverlayWrapper.obj : error LNK2028: unresolved token (0A00054D) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+OtherElementWrapper.obj : error LNK2028: unresolved token (0A000575) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+ExternalElementWrapper.obj : error LNK2028: unresolved token (0A0004B1) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: cli::array<OpenSees::Components::PE$AAVNodeWrapper >^" (?GetNodes@ElementWrapper@Elements@OpenSees@@$$FQE$AAMP$01EAPE$AAVNodeWrapper@Components@3@XZ)
+ElementWrapper.obj : error LNK2028: unresolved token (0A000431) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+CatenaryCableWrapper.obj : error LNK2028: unresolved token (0A0004CE) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+BrickWrapper.obj : error LNK2028: unresolved token (0A0004D0) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+BearingWrapper.obj : error LNK2028: unresolved token (0A0004EF) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+BeamColumnWrapper.obj : error LNK2028: unresolved token (0A0004EA) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+AdapterWrapper.obj : error LNK2028: unresolved token (0A0004D0) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+DomainWrapper.obj : error LNK2028: unresolved token (0A0004B4) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+DomainEvent.obj : error LNK2028: unresolved token (0A00046C) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+StaticIntegratorWrapper.obj : error LNK2028: unresolved token (0A0004B6) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+AnalysisWrapper.obj : error LNK2028: unresolved token (0A0004D5) "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ) referenced in function "public: class OpenSees::VectorWrapper ^ __clrcall OpenSees::Elements::ElementWrapper::GetRayleighDampingForcesVectorWrapper(void)" (?GetRayleighDampingForcesVectorWrapper@ElementWrapper@Elements@OpenSees@@$$FQE$AAMPE$AAVVectorWrapper@3@XZ)
+TclWrapper.obj : error LNK2028: unresolved token (0A000467) "void __cdecl OPSDLL_SetNDMaterialEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetNDMaterialEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+TclWrapper.obj : error LNK2028: unresolved token (0A000468) "void __cdecl OPSDLL_SetSectionEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetSectionEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+TclWrapper.obj : error LNK2028: unresolved token (0A000469) "void __cdecl OPSDLL_SetUniaxialMaterialEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetUniaxialMaterialEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+ResponseWrapper_all.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+TclWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+TrussWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ULBeamColumnWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+CoupledZeroLengthWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ZeroLengthElementWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+Quad4FiberOverlayWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+SurfaceLoadWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+QuadWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ShellWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+CatenaryCableWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ElementWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+ExternalElementWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+OtherElementWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+AdapterWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+BeamColumnWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+BearingWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+BrickWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+AnalysisWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+StaticIntegratorWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+DomainEvent.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+DomainWrapper.obj : error LNK2001: unresolved external symbol "public: class Vector const & __cdecl Element::getRayleighDampingForces(void)" (?getRayleighDampingForces@Element@@$$FQEAAAEBVVector@@XZ)
+TclWrapper.obj : error LNK2019: unresolved external symbol "void __cdecl OPSDLL_SetUniaxialMaterialEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetUniaxialMaterialEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+TclWrapper.obj : error LNK2019: unresolved external symbol "void __cdecl OPSDLL_SetSectionEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetSectionEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+TclWrapper.obj : error LNK2019: unresolved external symbol "void __cdecl OPSDLL_SetNDMaterialEventHandlers(int (__cdecl*)(class TaggedObject *),int (__cdecl*)(int),int (__cdecl*)(void))" (?OPSDLL_SetNDMaterialEventHandlers@@$$FYAXP6AHPEAVTaggedObject@@@ZP6AHH@ZP6AHXZ@Z) referenced in function "private: void __clrcall OpenSees::Tcl::TclWrapper::InitEvents(void)" (?InitEvents@TclWrapper@Tcl@OpenSees@@$$FAE$AAMXXZ)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_ChoosePixelFormat referenced in function "int __cdecl oglSetPixelFormat(struct HDC__ *,unsigned char,unsigned long)" (?oglSetPixelFormat@@YAHPEAUHDC__@@EK@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_CreateCompatibleDC referenced in function "int __cdecl oglCreateBitmap(int,int,struct HGLRC__ * *,struct HDC__ * *,struct HBITMAP__ * *,struct tagBITMAPINFO *,unsigned char * *)" (?oglCreateBitmap@@YAHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@PEAPEAUHBITMAP__@@PEAUtagBITMAPINFO@@PEAPEAE@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_DeleteObject referenced in function "int __cdecl oglDestroyBitmap(struct HBITMAP__ * *,struct HGLRC__ *,struct HDC__ *)" (?oglDestroyBitmap@@YAHPEAPEAUHBITMAP__@@PEAUHGLRC__@@PEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_SelectObject referenced in function "int __cdecl oglCreateBitmap(int,int,struct HGLRC__ * *,struct HDC__ * *,struct HBITMAP__ * *,struct tagBITMAPINFO *,unsigned char * *)" (?oglCreateBitmap@@YAHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@PEAPEAUHBITMAP__@@PEAUtagBITMAPINFO@@PEAPEAE@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_SetPixelFormat referenced in function "int __cdecl oglSetPixelFormat(struct HDC__ *,unsigned char,unsigned long)" (?oglSetPixelFormat@@YAHPEAUHDC__@@EK@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_CreateDIBSection referenced in function "int __cdecl oglCreateBitmap(int,int,struct HGLRC__ * *,struct HDC__ * *,struct HBITMAP__ * *,struct tagBITMAPINFO *,unsigned char * *)" (?oglCreateBitmap@@YAHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@PEAPEAUHBITMAP__@@PEAUtagBITMAPINFO@@PEAPEAE@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_SwapBuffers referenced in function "public: virtual void __cdecl OpenGlDevice::ENDIMAGE(void)" (?ENDIMAGE@OpenGlDevice@@UEAAXXZ)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_DefWindowProcA referenced in function "long __cdecl WndProc(struct HWND__ *,unsigned int,unsigned __int64,__int64)" (?WndProc@@YAJPEAUHWND__@@I_K_J@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_RegisterClassA referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_UnregisterClassA referenced in function "int __cdecl oglDestroyWindow(char *,struct HWND__ *,struct HGLRC__ *,struct HDC__ *)" (?oglDestroyWindow@@YAHPEADPEAUHWND__@@PEAUHGLRC__@@PEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_CreateWindowExA referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_DestroyWindow referenced in function "int __cdecl oglDestroyWindow(char *,struct HWND__ *,struct HGLRC__ *,struct HDC__ *)" (?oglDestroyWindow@@YAHPEADPEAUHWND__@@PEAUHGLRC__@@PEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_ShowWindow referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_UpdateWindow referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_GetDC referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_ReleaseDC referenced in function "int __cdecl oglDestroyWindow(char *,struct HWND__ *,struct HGLRC__ *,struct HDC__ *)" (?oglDestroyWindow@@YAHPEADPEAUHWND__@@PEAUHGLRC__@@PEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_BeginPaint referenced in function "long __cdecl WndProc(struct HWND__ *,unsigned int,unsigned __int64,__int64)" (?WndProc@@YAJPEAUHWND__@@I_K_J@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_EndPaint referenced in function "long __cdecl WndProc(struct HWND__ *,unsigned int,unsigned __int64,__int64)" (?WndProc@@YAJPEAUHWND__@@I_K_J@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_MessageBoxA referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_LoadCursorA referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+renderer.lib(OpenGlDevice.obj) : error LNK2019: unresolved external symbol __imp_LoadIconA referenced in function "struct HWND__ * __cdecl oglCreateWindow(char *,int,int,int,int,struct HGLRC__ * *,struct HDC__ * *)" (?oglCreateWindow@@YAPEAUHWND__@@PEADHHHHPEAPEAUHGLRC__@@PEAPEAUHDC__@@@Z)
+material.lib(stressDensity.obj) : error LNK2019: unresolved external symbol SDMUC referenced in function "protected: void __cdecl stressDensity::getCurrentStress(void)" (?getCurrentStress@stressDensity@@IEAAXXZ)
+.\..\..\bin\Release\OpenSees.NET.x64.dll : fatal error LNK1120: 51 unresolved externals
