@@ -29,6 +29,7 @@
 
 #include <NodeRecorder.h>
 #include <Domain.h>
+#include <Parameter.h>
 #include <Node.h>
 #include <NodeIter.h>
 #include <Vector.h>
@@ -92,7 +93,7 @@ OPS_NodeRecorder()
     const char *inetAddr = 0;
     int inetPort;
     
-    int sensitivity = 0;
+    int gradIndex = -1;
     
     TimeSeries **theTimeSeries = 0;
     
@@ -291,7 +292,7 @@ OPS_NodeRecorder()
     Domain* domain = OPS_GetDomain();
     if (domain == 0)
         return 0;
-    NodeRecorder* recorder = new NodeRecorder(dofs, &nodes, sensitivity,
+    NodeRecorder* recorder = new NodeRecorder(dofs, &nodes, gradIndex,
         responseID, *domain, *theOutputStream,
         dT, echoTimeFlag, theTimeSeries);
     
@@ -305,7 +306,7 @@ NodeRecorder::NodeRecorder()
  theDomain(0), theOutputHandler(0),
  echoTimeFlag(true), dataFlag(0), 
  deltaT(0), nextTimeStampToRecord(0.0), 
- sensitivity(0),
+ gradIndex(-1),
  initializationDone(false), numValidNodes(0), addColumnInfo(0), theTimeSeries(0), timeSeriesValues(0)
 #ifdef _CSS
 	, velTimeSeries(0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
@@ -317,7 +318,7 @@ NodeRecorder::NodeRecorder()
 
 NodeRecorder::NodeRecorder(const ID &dofs, 
 			   const ID *nodes, 
-			   int psensitivity,
+			   int pgradIndex,
 			   const char *dataToStore,
 			   Domain &theDom,
 			   OPS_Stream &theOutput,
@@ -329,9 +330,9 @@ NodeRecorder::NodeRecorder(const ID &dofs,
  theDomain(&theDom), theOutputHandler(&theOutput),
  echoTimeFlag(timeFlag), dataFlag(0), 
  deltaT(dT), nextTimeStampToRecord(0.0), 
- sensitivity(psensitivity), 
  initializationDone(false), numValidNodes(0), addColumnInfo(0), 
- theTimeSeries(theSeries), timeSeriesValues(0)
+	gradIndex(pgradIndex),
+	theTimeSeries(theSeries), timeSeriesValues(0)
 #ifdef _CSS
 	, velTimeSeries (0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
 #endif // _CSS
@@ -428,23 +429,40 @@ NodeRecorder::NodeRecorder(const ID &dofs,
     else
       dataFlag = 10;
   } else if ((strncmp(dataToStore, "sensitivity",11) == 0)) {
-    int grad = atoi(&(dataToStore[11]));
-    if (grad > 0)
-      dataFlag = 1000 + grad;
-    else
-      dataFlag = 10;
+	  int paramTag = atoi(&(dataToStore[11]));
+	  Parameter* theParameter = theDomain->getParameter(paramTag);
+	  int grad = -1;
+	  if (theParameter != 0)
+		  grad = theParameter->getGradIndex();
+
+	  if (grad > 0)
+		  dataFlag = 1000 + grad;
+	  else
+		  dataFlag = 10;
   } else if ((strncmp(dataToStore, "velSensitivity",14) == 0)) {
-    int grad = atoi(&(dataToStore[14]));
-    if (grad > 0)
-      dataFlag = 2000 + grad;
-    else
-      dataFlag = 10;
-  } else if ((strncmp(dataToStore, "accSensitivity",14) == 0)) {
-    int grad = atoi(&(dataToStore[14]));
-    if (grad > 0)
-      dataFlag = 3000 + grad;
-    else
-      dataFlag = 10;
+	  int paramTag = atoi(&(dataToStore[14]));
+	  Parameter* theParameter = theDomain->getParameter(paramTag);
+	  int grad = -1;
+	  if (theParameter != 0)
+		  grad = theParameter->getGradIndex();
+
+	  if (grad > 0)
+		  dataFlag = 2000 + grad;
+	  else
+		  dataFlag = 10;
+  }
+  else if ((strncmp(dataToStore, "accSensitivity", 14) == 0)) {
+	  int paramTag = atoi(&(dataToStore[14]));
+	  Parameter* theParameter = theDomain->getParameter(paramTag);
+	  int grad = -1;
+	  if (theParameter != 0)
+		  grad = theParameter->getGradIndex();
+
+	  if (grad > 0)
+		  dataFlag = 3000 + grad;
+	  else
+		  dataFlag = 10;
+
   }
 #ifdef _CSS
   else if ((strcmp(dataToStore, "motionEnergy") == 0) || (strcmp(dataToStore, "MotionEnergy") == 0)) {
@@ -592,7 +610,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
 	Node *theNode = theNodes[i];
 	if (dataFlag == 0) {
 	  // AddingSensitivity:BEGIN ///////////////////////////////////
-	  if (sensitivity==0) {
+	  if (gradIndex < 0) {
 	    const Vector &theResponse = theNode->getTrialDisp();
 	    for (int j=0; j<numDOF; j++) {
 
@@ -614,7 +632,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
 	    for (int j=0; j<numDOF; j++) {
 	      int dof = (*theDofs)(j);
 	      
-	      response(cnt) = theNode->getDispSensitivity(dof+1, sensitivity);
+	      response(cnt) = theNode->getDispSensitivity(dof+1, gradIndex);
 	      cnt++;
 	    }
 	  }
@@ -1012,7 +1030,7 @@ NodeRecorder::sendSelf(int commitTag, Channel &theChannel)
     idData(3) = 0;
 
   idData(4) = dataFlag;
-  idData(5) = sensitivity;
+  idData(5) = gradIndex;
 
   idData(6) = this->getTag();
   if (theTimeSeries == 0)
@@ -1109,7 +1127,7 @@ NodeRecorder::recvSelf(int commitTag, Channel &theChannel,
     echoTimeFlag = false;    
 
   dataFlag = idData(4);
-  sensitivity = idData(5);
+  gradIndex = idData(5);
 
   //
   // get the DOF ID data
