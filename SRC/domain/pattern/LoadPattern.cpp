@@ -400,7 +400,6 @@ LoadPattern::removeSP_Constraint(int tag)
     return result;    
 }    
 
-
 void
 LoadPattern::applyLoad(double pseudoTime)
 {
@@ -1303,3 +1302,19 @@ LoadPattern::getLoadFactorSensitivity(int gradIndex)
 }
 
 // AddingSensitivity:END //////////////////////////////////////
+
+#ifdef _CSS
+void LoadPattern::removeEleLoad(int eleTag)
+{
+	ElementalLoad* eleLoad;
+	ElementalLoadIter& theElementalIter = this->getElementalLoads();
+	while ((eleLoad = theElementalIter()) != 0)
+	{
+		if (eleLoad->getElementTag() == eleTag)
+		{
+			this->removeElementalLoad(eleLoad->getTag());
+		}
+	}
+}
+#endif // _CSS
+

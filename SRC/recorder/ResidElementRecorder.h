@@ -64,7 +64,10 @@ class ResidElementRecorder: public Recorder
     int sendSelf(int commitTag, Channel &theChannel);  
     int recvSelf(int commitTag, Channel &theChannel, 
 		 FEM_ObjectBroker &theBroker);
-    
+#ifdef _CSS
+	virtual int removeComponentResponse(int compTag);
+#endif // _CSS
+
   protected:
     
   private:	

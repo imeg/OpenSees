@@ -79,6 +79,9 @@ class ElementRecorder: public Recorder
     int recvSelf(int commitTag, Channel &theChannel, 
 		 FEM_ObjectBroker &theBroker);
 	virtual double getRecordedValue(int clmnId, int rowOffset, bool reset); //added by SAJalali
+#ifdef _CSS
+	virtual int removeComponentResponse(int compTag);
+#endif // _CSS
 
   protected:
 

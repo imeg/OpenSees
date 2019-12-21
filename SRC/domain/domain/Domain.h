@@ -138,6 +138,9 @@ class Domain
 
     virtual LoadPattern   *removeLoadPattern(int tag);
     virtual Parameter     *removeParameter(int tag);
+#ifdef _CSS
+	void removeLoadPatterns();
+#endif // _CSS
 
     virtual NodalLoad     *removeNodalLoad(int tag, int loadPattern);
     virtual ElementalLoad *removeElementalLoad(int tag, int loadPattern);

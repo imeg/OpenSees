@@ -1604,6 +1604,7 @@ Node::sendSelf(int cTag, Channel &theChannel)
 		res += theChannel.sendVector(dataTag, cTag, *lastCommitAccel);
 		res += theChannel.sendVector(dataTag, cTag, *lastCommitVel);
 		res += theChannel.sendVector(dataTag, cTag, *lastCommitDisp);
+		res += theChannel.sendVector(dataTag, cTag, *unbalDampForce);
 		if (res < 0) {
 			opserr << " Node::sendSelf() - failed to send energy data\n";
 			return res;
@@ -1772,7 +1773,8 @@ Node::recvSelf(int cTag, Channel &theChannel,
 			lastCommitAccel = new Vector(numberDOF);
 			lastCommitVel = new Vector(numberDOF);
 			lastCommitDisp = new Vector(numberDOF);
-			if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || motionEnergy == 0) {
+			unbalDampForce = new Vector(numberDOF);
+			if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || motionEnergy == 0 || unbalDampForce == 0) {
 				opserr << "Node::recvData -- ran out of memory\n";
 				return -11;
 			}
@@ -1783,6 +1785,7 @@ Node::recvSelf(int cTag, Channel &theChannel,
 		res += theChannel.recvVector(dbTag4, cTag, *lastCommitAccel);
 		res += theChannel.recvVector(dbTag4, cTag, *lastCommitVel);
 		res += theChannel.recvVector(dbTag4, cTag, *lastCommitDisp);
+		res += theChannel.recvVector(dbTag4, cTag, *unbalDampForce);
 		if (res < 0) {
 			opserr << "Node::recvSelf() - failed to receive energy data\n";
 			return res;
