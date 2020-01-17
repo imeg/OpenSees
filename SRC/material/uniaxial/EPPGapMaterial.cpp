@@ -113,9 +113,13 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 	else
 	  maxElasticYieldStrain = fy/E + gap;
 
+#ifdef _CSS
+	//eliminate unnecessary warning message
+#else
 	if (fy*gap<0) {
 	  opserr << "EPPGapMaterial::EPPGapMaterial -- Alternate signs on fy and E encountered, continuing anyway\n";
 	}
+#endif // _CSS
         
         if ( (eta >= 1) || (eta <= -1) ) {
           opserr << "EPPGapMaterial::EPPGapMaterial -- value of eta must be -1 <= eta <= 1, setting eta to 0\n";
@@ -287,7 +291,7 @@ int
 EPPGapMaterial::sendSelf(int cTag, Channel &theChannel)
 {
   int res = 0;
-  static Vector data(9);
+  static Vector data(11);	//editted by SAJalali for energy
   data(0) = this->getTag();
   data(1) = commitStrain;
   data(2) = E;
@@ -297,7 +301,10 @@ EPPGapMaterial::sendSelf(int cTag, Channel &theChannel)
   data(6) = maxElasticYieldStrain;
   data(7) = minElasticYieldStrain;
   data(8) = damage;
-
+  
+  //SAJalali
+  data(9) = commitStress;
+  data(10) = EnergyP;
   res = theChannel.sendVector(this->getDbTag(), cTag, data);
   if (res < 0) 
     opserr << "EPPGapMaterial::sendSelf() - failed to send data\n";
@@ -310,7 +317,7 @@ EPPGapMaterial::recvSelf(int cTag, Channel &theChannel,
 				 FEM_ObjectBroker &theBroker)
 {
   int res = 0;
-  static Vector data(9);
+  static Vector data(11);	//editted by SAJalali for energy
   res = theChannel.recvVector(this->getDbTag(), cTag, data);
   if (res < 0)
     opserr << "EPPGapMaterial::recvSelf() - failed to recv data\n";
@@ -325,6 +332,10 @@ EPPGapMaterial::recvSelf(int cTag, Channel &theChannel,
     maxElasticYieldStrain = data(6);
     minElasticYieldStrain = data(7);
     damage = (int)data(8);
+
+	//SAJalali
+	commitStress = data(9);
+	EnergyP = data(10);
   }
 
   return res;

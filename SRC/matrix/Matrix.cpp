@@ -63,67 +63,77 @@ int    *Matrix::intWork =0;
 //
 
 Matrix::Matrix()
-:numRows(0), numCols(0), dataSize(0), data(0), fromFree(0)
+	:numRows(0), numCols(0), dataSize(0), data(0), fromFree(0)
+#ifdef _CSS
+	, IsDiagonal(-1)
+#endif // _CSS
 {
-  // allocate work areas if the first
-  if (matrixWork == 0) {
-    matrixWork = new (nothrow) double[sizeDoubleWork];
-    intWork = new (nothrow) int[sizeIntWork];
-    if (matrixWork == 0 || intWork == 0) {
-      opserr << "WARNING: Matrix::Matrix() - out of memory creating work area's\n";
-      exit(-1);
-    }
-  }
+	// allocate work areas if the first
+	if (matrixWork == 0) {
+		matrixWork = new (nothrow) double[sizeDoubleWork];
+		intWork = new (nothrow) int[sizeIntWork];
+		if (matrixWork == 0 || intWork == 0) {
+			opserr << "WARNING: Matrix::Matrix() - out of memory creating work area's\n";
+			exit(-1);
+		}
+	}
 }
 
 
-Matrix::Matrix(int nRows,int nCols)
-:numRows(nRows), numCols(nCols), dataSize(0), data(0), fromFree(0)
+Matrix::Matrix(int nRows, int nCols)
+	:numRows(nRows), numCols(nCols), dataSize(0), data(0), fromFree(0)
+#ifdef _CSS
+	, IsDiagonal(1)
+#endif // _CSS
 {
 
-  // allocate work areas if the first matrix
-  if (matrixWork == 0) {
-    matrixWork = new (nothrow) double[sizeDoubleWork];
-    intWork = new (nothrow) int[sizeIntWork];
-    if (matrixWork == 0 || intWork == 0) {
-      opserr << "WARNING: Matrix::Matrix() - out of memory creating work area's\n";
-      exit(-1);
-    }
-  }
+	// allocate work areas if the first matrix
+	if (matrixWork == 0) {
+		matrixWork = new (nothrow) double[sizeDoubleWork];
+		intWork = new (nothrow) int[sizeIntWork];
+		if (matrixWork == 0 || intWork == 0) {
+			opserr << "WARNING: Matrix::Matrix() - out of memory creating work area's\n";
+			exit(-1);
+		}
+	}
 
 #ifdef _G3DEBUG
-    if (nRows < 0) {
-      opserr << "WARNING: Matrix::Matrix(int,int): tried to init matrix ";
-      opserr << "with num rows: " << nRows << " <0\n";
-      numRows = 0; numCols =0; dataSize =0; data = 0;
-    }
-    if (nCols < 0) {
-      opserr << "WARNING: Matrix::Matrix(int,int): tried to init matrix";
-      opserr << "with num cols: " << nCols << " <0\n";
-      numRows = 0; numCols =0; dataSize =0; data = 0;
-    }
+	if (nRows < 0) {
+		opserr << "WARNING: Matrix::Matrix(int,int): tried to init matrix ";
+		opserr << "with num rows: " << nRows << " <0\n";
+		numRows = 0; numCols = 0; dataSize = 0; data = 0;
+	}
+	if (nCols < 0) {
+		opserr << "WARNING: Matrix::Matrix(int,int): tried to init matrix";
+		opserr << "with num cols: " << nCols << " <0\n";
+		numRows = 0; numCols = 0; dataSize = 0; data = 0;
+	}
 #endif
-    dataSize = numRows * numCols;
-    data = 0;
+	dataSize = numRows * numCols;
+	data = 0;
 
-    if (dataSize > 0) {
-      data = new (nothrow) double[dataSize];
-      //data = (double *)malloc(dataSize*sizeof(double));
-      if (data == 0) {
-	opserr << "WARNING:Matrix::Matrix(int,int): Ran out of memory on init ";
-	opserr << "of size " << dataSize << endln;
-	numRows = 0; numCols =0; dataSize =0;
-      } else {
-	// zero the data
-	double *dataPtr = data;
-	for (int i=0; i<dataSize; i++)
-	  *dataPtr++ = 0.0;
-      }
-    }
+	if (dataSize > 0) {
+		data = new (nothrow) double[dataSize];
+		//data = (double *)malloc(dataSize*sizeof(double));
+		if (data == 0) {
+			opserr << "WARNING:Matrix::Matrix(int,int): Ran out of memory on init ";
+			opserr << "of size " << dataSize << endln;
+			numRows = 0; numCols = 0; dataSize = 0;
+		}
+		else {
+			// zero the data
+			double* dataPtr = data;
+			for (int i = 0; i < dataSize; i++)
+				*dataPtr++ = 0.0;
+		}
+	}
 }
 
 Matrix::Matrix(double *theData, int row, int col) 
 :numRows(row),numCols(col),dataSize(row*col),data(theData),fromFree(1)
+#ifdef _CSS
+, IsDiagonal(-1)
+#endif // _CSS
 {
   // allocate work areas if the first matrix
   if (matrixWork == 0) {
@@ -153,6 +163,9 @@ Matrix::Matrix(double *theData, int row, int col)
 
 Matrix::Matrix(const Matrix &other)
 :numRows(0), numCols(0), dataSize(0), data(0), fromFree(0)
+#ifdef _CSS
+, IsDiagonal(other.isDiagonal())
+#endif // _CSS
 {
   // allocate work areas if the first matrix
   if (matrixWork == 0) {
@@ -217,6 +230,10 @@ Matrix::~Matrix()
 int
 Matrix::setData(double *theData, int row, int col) 
 {
+#ifdef _CSS
+	IsDiagonal = -1;
+#endif // _CSS
+
   // delete the old if allocated
   if (data != 0) 
     if (fromFree == 0)
@@ -252,6 +269,10 @@ Matrix::Zero(void)
   double *dataPtr = data;
   for (int i=0; i<dataSize; i++)
     *dataPtr++ = 0;
+
+#ifdef _CSS
+  IsDiagonal = 1;
+#endif // _CSS
 }
 
 
@@ -315,6 +336,12 @@ Matrix::Assemble(const Matrix &V, const ID &rows, const ID &cols, double fact)
       if ((pos_Cols >= 0) && (pos_Rows >= 0) && (pos_Rows < numRows) &&
 	  (pos_Cols < numCols) && (i < V.numCols) && (j < V.numRows))
 	(*this)(pos_Rows,pos_Cols) += V(j,i)*fact;
+#ifdef _CSS
+	  if (pos_Rows != pos_Cols)
+		  if ((*this)(pos_Rows, pos_Cols) != 0)
+			  IsDiagonal = 0;
+#endif // _CSS
+
       else {
 	opserr << "WARNING: Matrix::Assemble(const Matrix &V, const ID &l): ";
 	opserr << " - position (" << pos_Rows << "," << pos_Cols << ") outside bounds \n";
@@ -686,6 +713,11 @@ Matrix::Invert(Matrix &theInverse) const
 int
 Matrix::addMatrix(double factThis, const Matrix &other, double factOther)
 {
+#ifdef _CSS
+	if (other.IsDiagonal != 1 && IsDiagonal == 1)
+		IsDiagonal = other.IsDiagonal;
+#endif // _CSS
+
     if (factThis == 1.0 && factOther == 0.0)
       return 0;
 
@@ -756,7 +788,11 @@ Matrix::addMatrix(double factThis, const Matrix &other, double factOther)
 int
 Matrix::addMatrixTranspose(double factThis, const Matrix &other, double factOther)
 {
-    if (factThis == 1.0 && factOther == 0.0)
+#ifdef _CSS
+	if (other.IsDiagonal != 1 && IsDiagonal == 1)
+		IsDiagonal = other.IsDiagonal;
+#endif // _CSS
+	if (factThis == 1.0 && factOther == 0.0)
       return 0;
 
 #ifdef _G3DEBUG
@@ -835,7 +871,11 @@ Matrix::addMatrixProduct(double thisFact,
 			 const Matrix &C, 
 			 double otherFact)
 {
-    if (thisFact == 1.0 && otherFact == 0.0)
+#ifdef _CSS
+	if (IsDiagonal == 1)
+		IsDiagonal = -1;
+#endif // _CSS
+	if (thisFact == 1.0 && otherFact == 0.0)
       return 0;
 #ifdef _G3DEBUG
     if ((B.numRows != numRows) || (C.numCols != numCols) || (B.numCols != C.numRows)) {
@@ -909,7 +949,11 @@ Matrix::addMatrixTransposeProduct(double thisFact,
 				  const Matrix &C, 
 				  double otherFact)
 {
-  if (thisFact == 1.0 && otherFact == 0.0)
+#ifdef _CSS
+	if (IsDiagonal == 1)
+		IsDiagonal = -1;
+#endif // _CSS
+	if (thisFact == 1.0 && otherFact == 0.0)
     return 0;
 
 #ifdef _G3DEBUG
@@ -975,7 +1019,11 @@ Matrix::addMatrixTripleProduct(double thisFact,
 			       const Matrix &B, 
 			       double otherFact)
 {
-    if (thisFact == 1.0 && otherFact == 0.0)
+#ifdef _CSS
+	if (IsDiagonal == 1)
+		IsDiagonal = -1;
+#endif // _CSS
+	if (thisFact == 1.0 && otherFact == 0.0)
       return 0;
 #ifdef _G3DEBUG
     if ((numCols != numRows) || (B.numCols != B.numRows) || (T.numCols != numRows) ||
@@ -1074,7 +1122,11 @@ Matrix::addMatrixTripleProduct(double thisFact,
 			       const Matrix &C,
 			       double otherFact)
 {
-    if (thisFact == 1.0 && otherFact == 0.0)
+#ifdef _CSS
+	if (IsDiagonal == 1)
+		IsDiagonal = -1;
+#endif // _CSS
+	if (thisFact == 1.0 && otherFact == 0.0)
       return 0;
 #ifdef _G3DEBUG
     if ((numRows != A.numRows) || (A.numCols != B.numRows) || (B.numCols != C.numRows) ||
@@ -1194,6 +1246,10 @@ Matrix::operator()(const ID &rows, const ID & cols) const
 Matrix &
 Matrix::operator=(const Matrix &other)
 {
+#ifdef _CSS
+	IsDiagonal == other.IsDiagonal;
+#endif // _CSS
+
   // first check we are not trying other = other
   if (this == &other) 
     return *this;
@@ -1274,9 +1330,13 @@ Matrix::operator=( Matrix &&other)
 Matrix &
 Matrix::operator+=(double fact)
 {
+
   // check if quick return
   if (fact == 0.0)
     return *this;
+#ifdef _CSS
+  IsDiagonal == 0;
+#endif // _CSS
 
   double *dataPtr = data;
   for (int i=0; i<dataSize; i++)
@@ -1294,7 +1354,11 @@ Matrix::operator-=(double fact)
   // check if quick return
   if (fact == 0.0)
     return *this;
-  
+#ifdef _CSS
+  IsDiagonal == 0;
+#endif // _CSS
+
+
   double *dataPtr = data;
   for (int i=0; i<dataSize; i++)
     *dataPtr++ -= fact;
@@ -1550,6 +1614,10 @@ Matrix::operator+=(const Matrix &M)
     return *this;
   }
 #endif
+#ifdef _CSS
+  if (IsDiagonal == 1 && M.IsDiagonal != 1)
+	  IsDiagonal = M.IsDiagonal;
+#endif // _CSS
 
   double *dataPtr = data;
   double *otherData = M.data;
@@ -1570,6 +1638,10 @@ Matrix::operator-=(const Matrix &M)
     return *this;
   }
 #endif
+#ifdef _CSS
+  if (IsDiagonal == 1 && M.IsDiagonal != 1)
+	  IsDiagonal = M.IsDiagonal;
+#endif // _CSS
 
   double *dataPtr = data;
   double *otherData = M.data;
@@ -1630,6 +1702,10 @@ istream &operator>>(istream &s, Matrix &V)
 int
 Matrix::Assemble(const Matrix &V, int init_row, int init_col, double fact) 
 {
+#ifdef _CSS
+	IsDiagonal = -1;
+#endif // _CSS
+
   int pos_Rows, pos_Cols;
   int res = 0;
   
@@ -1666,7 +1742,11 @@ Matrix::Assemble(const Matrix &V, int init_row, int init_col, double fact)
 int
 Matrix::Assemble(const Vector &V, int init_row, int init_col, double fact) 
 {
-  int pos_Rows, pos_Cols;
+#ifdef _CSS
+	if (IsDiagonal== 1 && init_row <= init_col && V(init_col- init_row) != 0)
+		IsDiagonal = 0;
+#endif // _CSS
+	int pos_Rows, pos_Cols;
   int res = 0;
   
   int VnumRows = V.sz;
@@ -1702,7 +1782,10 @@ Matrix::Assemble(const Vector &V, int init_row, int init_col, double fact)
 int
 Matrix::AssembleTranspose(const Matrix &V, int init_row, int init_col, double fact) 
 {
-  int pos_Rows, pos_Cols;
+#ifdef _CSS
+	IsDiagonal = -1;
+#endif // _CSS
+	int pos_Rows, pos_Cols;
   int res = 0;
   
   int VnumRows = V.numRows;
@@ -1738,7 +1821,11 @@ Matrix::AssembleTranspose(const Matrix &V, int init_row, int init_col, double fa
 int
 Matrix::AssembleTranspose(const Vector &V, int init_row, int init_col, double fact) 
 {
-  int pos_Rows, pos_Cols;
+#ifdef _CSS
+	if (IsDiagonal == 1 && init_row >= init_col && V(init_row-init_col) != 0)
+		IsDiagonal = 0;
+#endif // _CSS
+	int pos_Rows, pos_Cols;
   int res = 0;
   
   int VnumRows = V.sz;
@@ -1774,7 +1861,10 @@ Matrix::AssembleTranspose(const Vector &V, int init_row, int init_col, double fa
 int
 Matrix::Extract(const Matrix &V, int init_row, int init_col, double fact) 
 {
-  int pos_Rows, pos_Cols;
+#ifdef _CSS
+	IsDiagonal = -1;
+#endif // _CSS
+	int pos_Rows, pos_Cols;
   int res = 0;
   
   int VnumRows = V.numRows;
@@ -2016,3 +2106,26 @@ Matrix::Eigen3(const Matrix &M)
 
   return 0;
 }
+
+#ifdef _CSS
+void Matrix::checkDiagonal()
+{
+	IsDiagonal = 1;
+	double* dataPtr = data;
+	int iDiag = 0;
+	for (int i = 0; i < dataSize; i++)
+	{
+		if (i == iDiag)
+		{
+			iDiag += numCols + 1;
+			dataPtr++;
+			continue;
+		}
+		if (*dataPtr++ != 0)
+		{
+			IsDiagonal = 0;
+			break;
+		}
+	}
+}
+#endif // _CSS

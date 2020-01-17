@@ -61,7 +61,19 @@ class Matrix
     // utility methods
     int setData(double *newData, int nRows, int nCols);
     inline int noRows() const;
-    inline int noCols() const;
+	inline int noCols() const;
+#ifdef _CSS
+	int isDiagonal() const {
+		//1:true, 0: flase, -1:not determined
+		return IsDiagonal;
+	}
+	void setDiagonal(int val)  {
+		//1:true, 0: flase, -1:not determined
+		IsDiagonal = val;
+	}
+	void checkDiagonal();
+#endif // _CSS
+
     void Zero(void);
     int resize(int numRow, int numCol);
     
@@ -169,6 +181,9 @@ class Matrix
   protected:
 
   private:
+#ifdef _CSS
+	  int IsDiagonal;	//1:true, 0: flase, -1:not determined
+#endif
     static double MATRIX_NOT_VALID_ENTRY;
     static double *matrixWork;
     static int *intWork;
@@ -209,6 +224,10 @@ Matrix::operator()(int row, int col)
     return MATRIX_NOT_VALID_ENTRY;
   }
 #endif
+#ifdef _CSS
+  IsDiagonal = -1;
+#endif // _CSS
+
   return data[col*numRows + row];
 }
 

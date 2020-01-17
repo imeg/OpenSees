@@ -47,6 +47,12 @@
  #include <EnvelopeNodeRecorder.h>
  #include <PatternRecorder.h>
  #include <DriftRecorder.h>
+#ifdef _CSS
+#include <ResidDriftRecorder.h>		//by SAJalali
+#include <ResidElementRecorder.h>		//by SAJalali
+#include <ResidNodeRecorder.h>		//by SAJalali
+#endif // _CSS
+
  #include <EnvelopeDriftRecorder.h>
  #include <ElementRecorder.h>
  #include <EnvelopeElementRecorder.h>
@@ -66,6 +72,7 @@ extern void* OPS_VTK_Recorder();
  #include <ElementIter.h>
  #include <Node.h>
  #include <Element.h>
+#include <Parameter.h>
  #include <DamageModel.h>
  #include <DamageRecorder.h>
  #include <MeshRegion.h>
@@ -154,7 +161,11 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 
      // an Element Recorder or ElementEnvelope Recorder
      if ((strcmp(argv[1],"Element") == 0) || (strcmp(argv[1],"EnvelopeElement") == 0)
-	 || (strcmp(argv[1],"NormElement") == 0) || (strcmp(argv[1],"NormEnvelopeElement") == 0)) {
+	 || (strcmp(argv[1],"NormElement") == 0) || (strcmp(argv[1],"NormEnvelopeElement") == 0)
+#ifdef _CSS
+	|| strcmp(argv[1], "ResidElement") == 0
+#endif // _CSS
+		 ) {
 
 
        int numEle = 0;
@@ -491,7 +502,23 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 						  dT, 
 						  specificIndices);
 
-       } else {
+       }
+#ifdef _CSS
+	   //by SA Jalali
+	   else if (strcmp(argv[1], "ResidElement") == 0) {
+
+		   (*theRecorder) = new ResidElementRecorder(eleIDs,
+			   data,
+			   argc - eleData,
+			   theDomain,
+			   *theOutputStream,
+			   echoTime,
+			   specificIndices);
+
+	   }
+#endif // _CSS
+
+	   else {
 
 	 (*theRecorder) = new NormEnvelopeElementRecorder(eleIDs, 
 							  data, 
@@ -1046,7 +1073,12 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 
      // create a recorder to write nodal displacement quantities to a file
      else if ((strcmp(argv[1],"Node") == 0) || (strcmp(argv[1],"EnvelopeNode") == 0) 
-	      || (strcmp(argv[1],"NodeEnvelope") == 0)) {	
+	      || (strcmp(argv[1],"NodeEnvelope") == 0)
+#ifdef _CSS
+		  || (strcmp(argv[1], "ResidNode") == 0)
+#endif // _CSS
+
+		  ) {	
 
        if (argc < 7) {
 	 opserr << "WARNING recorder Node ";
@@ -1055,7 +1087,9 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
        }    
 
        // AddingSensitivity:BEGIN ///////////////////////////////////
-       int sensitivity = 0;
+       //int sensitivity = 0;
+       int paramTag = 0;
+       int gradIndex = -1;
        // AddingSensitivity:END /////////////////////////////////////
 
        TCL_Char *responseID = 0;
@@ -1321,11 +1355,19 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
  // AddingSensitivity:BEGIN //////////////////////////////////////
 	 else if (strcmp(argv[pos],"-sensitivity") == 0) {
 		 pos++;
-		 if (Tcl_GetInt(interp, argv[pos], &sensitivity) != TCL_OK) {
-			 opserr << "ERROR: Invalid gradient number to node recorder." << endln;
+		 if (Tcl_GetInt(interp, argv[pos], &paramTag) != TCL_OK) {
+			 opserr << "ERROR: Invalid parameter tag to node recorder." << endln;
 			 return TCL_ERROR;
 		 }
 		 pos++;
+
+		 // Now get gradIndex from parameter tag
+		 Parameter *theParameter = theDomain.getParameter(paramTag);
+		 if (theParameter == 0) {
+		   opserr << "NodeRecorder: parameter " << paramTag << " not found" << endln;
+		   return TCL_ERROR;
+		 }
+		 gradIndex = theParameter->getGradIndex();
 	 }
  // AddingSensitivity:END ////////////////////////////////////////
 	 else	 
@@ -1372,12 +1414,25 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	   theTimeSeries = 0;
 	 }
        }
-	 
+#ifdef _CSS
+	   if (strcmp(argv[1], "ResidNode") == 0) {
+
+		   (*theRecorder) = new ResidNodeRecorder(theDofs,
+			   theNodes,
+			   responseID,
+			   theDomain,
+			   *theOutputStream,
+			   echoTimeFlag,
+			   theTimeSeries);
+
+	   } else
+#endif // _CSS
+
        if (strcmp(argv[1],"Node") == 0) {
 
 	 (*theRecorder) = new NodeRecorder(theDofs, 
 					   theNodes, 
-					   sensitivity,
+					   gradIndex,
 					   responseID, 
 					   theDomain, 
 					   *theOutputStream, 
@@ -1425,7 +1480,12 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
      }
 
      // Create a recorder to write nodal drifts to a file
-     else if ((strcmp(argv[1],"Drift") == 0) || (strcmp(argv[1],"EnvelopeDrift") == 0)) {
+     else if ((strcmp(argv[1],"Drift") == 0) || (strcmp(argv[1],"EnvelopeDrift") == 0)
+#ifdef _CSS
+	 || (strcmp(argv[1], "ResidDrift") == 0)
+#endif // _CSS
+
+	 ) {
 
        outputMode eMode = STANDARD_STREAM;       // enum found in DataOutputFileHandler.h
 
@@ -1598,6 +1658,13 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	 theOutputStream = new StandardStream();
 
        // Subtract one from dof and perpDirn for C indexing
+#ifdef _CSS
+	   if (strcmp(argv[1], "ResidDrift") == 0)
+		   (*theRecorder) = new ResidDriftRecorder(iNodes, jNodes, dof - 1, perpDirn - 1,
+			   theDomain, *theOutputStream, echoTimeFlag);
+	   else
+#endif // _CSS
+
        if (strcmp(argv[1],"Drift") == 0) 
 	 (*theRecorder) = new DriftRecorder(iNodes, jNodes, dof-1, perpDirn-1,
 					    theDomain, *theOutputStream, echoTimeFlag, dT);

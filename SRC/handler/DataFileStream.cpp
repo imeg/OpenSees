@@ -184,8 +184,11 @@ DataFileStream::open(void)
 		theFile.open(fileName, ios::out | ios::app);
 
 	theOpenMode = APPEND;
-
+#ifdef _CSS
+	if (theFile.bad() || !theFile.is_open()) {
+#else
 	if (theFile.bad()) {
+#endif
 		std::cerr << "WARNING - DataFileStream::setFile()";
 		std::cerr << " - could not open file " << fileName << std::endl;
 		fileOpen = 0;
@@ -193,7 +196,6 @@ DataFileStream::open(void)
 	}
 	else
 		fileOpen = 1;
-
 	if (doScientific == true)
 		theFile << std::scientific;
 #if _DLL

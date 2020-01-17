@@ -80,6 +80,9 @@ class Clough : public UniaxialMaterial
   
   //by SAJalali
   double getEnergy();
+#ifdef _CSS
+  double getInitYieldStrain() { return fyieldPos / elstk; } //SAJalali
+#endif // _CSS
 
  private:
   // Input parameters

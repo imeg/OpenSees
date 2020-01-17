@@ -601,11 +601,14 @@ Class OpenSees.Components.Loads.NodalLoadWrapper: AutoLayout, AnsiClass, Class, 
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
     GetNodeTag(): PrivateScope, Public, HideBySig
 Class OpenSees.Components.Loads.ElementalLoadWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Components.Loads.LoadWrapper
     Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Methods:
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
 Class OpenSees.Components.Loads.Beam2dPartialUniformLoadWrapper: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :OpenSees.Components.Loads.ElementalLoadWrapper
     Void .ctor(Int32, Double, Double, Double, Double, Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -701,11 +704,16 @@ Class OpenSees.Components.LoadPatterns.LoadPatternWrapper: AutoLayout, AnsiClass
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Methods:
     SetTimeSeries(TimeSeriesWrapper): PrivateScope, Public, HideBySig
+    GetTimeSeries(): PrivateScope, Public, HideBySig
     AddMotion(GroundMotionWrapper, Int32): PrivateScope, Public, HideBySig
-    RemoveNodalLoad(Int32): PrivateScope, Public, HideBySig
+    GetTag(): PrivateScope, Public, Virtual, HideBySig
     GetNodalLoads(): PrivateScope, Public, HideBySig
-    RemoveElementalLoad(Int32): PrivateScope, Public, HideBySig
+    GetSPs(): PrivateScope, Public, HideBySig
     GetElementalLoads(): PrivateScope, Public, HideBySig
+    RemoveNodalLoad(Int32): PrivateScope, Public, HideBySig
+    RemoveElementalLoad(Int32): PrivateScope, Public, HideBySig
+    RemoveSP_Constraint(Int32): PrivateScope, Public, HideBySig
+    GetLoadFactor(): PrivateScope, Public, HideBySig
     ClearAll(): PrivateScope, Public, HideBySig
 Class OpenSees.Components.LoadPatterns.EarthquakePatternWrapper: AutoLayout, AnsiClass, Class, Public, Abstract, BeforeFieldInit
   :OpenSees.Components.LoadPatterns.LoadPatternWrapper

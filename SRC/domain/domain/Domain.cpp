@@ -80,6 +80,12 @@
 #include <FE_Datastore.h>
 #include <FEM_ObjectBroker.h>
 
+#ifdef _CSS
+#include <ElementRecorder.h>
+#include <EnvelopeElementRecorder.h>
+#include <ResidElementRecorder.h>
+#endif // _CSS
+
 //
 // global variables
 //
@@ -1066,6 +1072,44 @@ Domain::removeElement(int tag)
 		this->_DomainEvent_RemoveElement(result);
 #endif
 	//  result->setDomain(0);
+
+#ifdef _CSS
+	for (int i = 0; i < numRecorders; i++)
+	{
+		if (theRecorders[i] == 0)
+			continue;
+		ElementRecorder* pEleRcrdr;
+		pEleRcrdr = dynamic_cast<ElementRecorder*>(theRecorders[i]);
+		if (pEleRcrdr != 0)
+		{
+			pEleRcrdr->removeComponentResponse(tag);
+			continue;
+		}
+		EnvelopeElementRecorder* pEnvEleRcrdr;
+		pEnvEleRcrdr = dynamic_cast<EnvelopeElementRecorder*>(theRecorders[i]);
+		if (pEnvEleRcrdr != 0)
+		{
+			pEnvEleRcrdr->removeComponentResponse(tag);
+			continue;
+		}
+		ResidElementRecorder* pResEleRcrdr;
+		pResEleRcrdr = dynamic_cast<ResidElementRecorder*>(theRecorders[i]);
+		if (pResEleRcrdr != 0)
+		{
+			pResEleRcrdr->removeComponentResponse(tag);
+			continue;
+		}
+	}
+	LoadPatternIter& theLoadPatterns = this->getLoadPatterns();
+	LoadPattern* thePattern;
+
+	// go through all load patterns
+	while ((thePattern = theLoadPatterns()) != 0) {
+		thePattern->removeEleLoad(tag);
+	}
+
+#endif // _CSS
+
 	return result;
 }
 
@@ -1299,6 +1343,33 @@ Domain::removeParameter(int tag)
 	return result;
 	*/
 }
+
+#ifdef _CSS
+void Domain::removeLoadPatterns()
+{
+	int numPats = this->getNumLoadPatterns();
+	ID tags = ID(numPats);
+
+	LoadPatternIter& iter = this->getLoadPatterns();
+	LoadPattern* pPat = 0;
+	int i = 0;
+	while ((pPat = iter()) != 0)
+		tags(i++) = pPat->getTag();
+	for (i = 0; i < numPats; i++)
+	{
+		int tag = tags(i);
+		// remove the object from the container            
+
+		pPat = this->removeLoadPattern(tag);
+		if (pPat != 0)
+		{
+			pPat->clearAll();
+			delete pPat;
+		}
+	}
+
+}
+#endif // _CSS
 
 LoadPattern*
 Domain::removeLoadPattern(int tag)
@@ -3581,7 +3652,7 @@ Domain::getRecorder(int tag)
 	for (int i = 0; i < numRecorders; i++)
 	{
 		if (theRecorders[i] == 0)
-			break;
+			continue;
 		if (theRecorders[i]->getTag() == tag)
 		{
 			res = theRecorders[i];

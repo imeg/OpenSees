@@ -64,13 +64,13 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\lib\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\recorder\release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\recorder\release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\recorder\release-dll\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\lib\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\recorder\debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\recorder\debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\recorder\debug-dll\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -117,7 +117,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\release\recorder.lib</OutputFile>
+      <OutputFile>.\..\..\lib\release-dll\recorder.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <ResourceCompile>
@@ -139,7 +139,7 @@
       <AssemblerListingLocation>.\..\..\obj\recorder\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\recorder\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\recorder\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -156,6 +156,9 @@
     <BuildLog>
       <Path>.\..\..\obj\recorder\debug\$(MSBuildProjectName).log</Path>
     </BuildLog>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
     <ClCompile>
@@ -175,7 +178,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\debug\recorder.lib</OutputFile>
+      <OutputFile>.\..\..\lib\debug-dll\recorder.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <ResourceCompile>
@@ -207,6 +210,9 @@
     <ClCompile Include="..\..\..\SRC\recorder\PVDRecorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\Recorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\RemoveRecorder.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ResidDriftRecorder.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ResidElementRecorder.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ResidNodeRecorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\TclRecorderCommands.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\response\CompositeResponse.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\response\ElementResponse.cpp" />
@@ -236,6 +242,9 @@
     <ClInclude Include="..\..\..\SRC\recorder\NodeRecorder.h" />
     <ClInclude Include="..\..\..\SRC\recorder\PatternRecorder.h" />
     <ClInclude Include="..\..\..\SRC\recorder\Recorder.h" />
+    <ClInclude Include="..\..\..\SRC\recorder\ResidDriftRecorder.h" />
+    <ClInclude Include="..\..\..\SRC\recorder\ResidElementRecorder.h" />
+    <ClInclude Include="..\..\..\SRC\recorder\ResidNodeRecorder.h" />
     <ClInclude Include="..\..\..\SRC\recorder\response\CompositeResponse.h" />
     <ClInclude Include="..\..\..\SRC\recorder\response\ElementResponse.h" />
     <ClInclude Include="..\..\..\SRC\recorder\response\FiberResponse.h" />

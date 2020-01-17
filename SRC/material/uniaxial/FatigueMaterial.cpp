@@ -754,7 +754,7 @@ FatigueMaterial::sendSelf(int cTag, Channel &theChannel)
     return -1;
   }
 
-  static Vector dataVec(21);
+  static Vector dataVec(23); //editted by SAJalali for energy
   dataVec(0)  = DI;
   dataVec(1)  = X;
   dataVec(2)  = Y;
@@ -780,6 +780,8 @@ FatigueMaterial::sendSelf(int cTag, Channel &theChannel)
     dataVec(20) = 1.0;
   else
     dataVec(20) = 0.0;
+  dataVec(21) = energy;
+  dataVec(22) = CStress;
 
   if (theChannel.sendVector(dbTag, cTag, dataVec) < 0) {
     opserr << "FatigueMaterial::sendSelf() - failed to send the Vector\n";
@@ -819,7 +821,7 @@ FatigueMaterial::recvSelf(int cTag, Channel &theChannel,
   }
   theMaterial->setDbTag(dataID(2));
 
-  static Vector dataVec(21);
+  static Vector dataVec(23);	 //editted by SAJalali for energy
   if (theChannel.recvVector(dbTag, cTag, dataVec) < 0) {
     opserr << "FatigueMaterial::recvSelf() - failed to get the Vector\n";
     return -3;
@@ -851,6 +853,9 @@ FatigueMaterial::recvSelf(int cTag, Channel &theChannel,
   else
     Cfailed = false;
 
+  //SAJalali
+  energy = dataVec(21);
+  CStress = dataVec(22);
   if (theMaterial->recvSelf(cTag, theChannel, theBroker) < 0) {
     opserr << "FatigueMaterial::recvSelf() - failed to get the Material\n";
     return -4;

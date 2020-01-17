@@ -51,7 +51,7 @@ class NodeRecorder: public Recorder
     NodeRecorder();
     NodeRecorder(const ID &theDof, 
 		 const ID *theNodes, 
-		 int sensitivity,
+		 int pgradIndex,
 		 const char *dataToStore,
 		 Domain &theDomain,
 		 OPS_Stream &theOutputHandler,
@@ -80,6 +80,11 @@ class NodeRecorder: public Recorder
   protected:
 
   private:	
+#ifdef _CSS
+	  TimeSeries** velTimeSeries, ** accelTimeSeries, ** dispTimeSeries;
+	  double prevT;
+#endif // _CSS
+
     int initialize(void);
 
     ID *theDofs;
@@ -97,7 +102,7 @@ class NodeRecorder: public Recorder
     double nextTimeStampToRecord;
 
     // AddingSensitivity:BEGIN //////////////////////////////
-    int sensitivity;
+    int gradIndex;
     // AddingSensitivity:END ////////////////////////////////
 
     bool initializationDone;

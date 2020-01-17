@@ -575,8 +575,12 @@ void SFI_MVLEM::setDomain(Domain *theDomain)
   
   // Currently element can be only vertical
   if (end2Crd(0) != end1Crd(0)) {
+#ifdef _CSS
+	  opserr << "SFI_mvlem:: tag= " << this->getTag() << " ,WARNING: Element is NOT vertical!\n";//SAJalali
+#else
     opserr << "WARNING: Element is NOT vertical!";
-  }
+#endif // _CSS
+ }
   
   
   // Create a internal node tag

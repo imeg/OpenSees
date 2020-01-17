@@ -1206,6 +1206,19 @@ FiberSection3d::setResponse(const char **argv, int argc, OPS_Stream &output)
   else if ((strcmp(argv[0], "energy") == 0) || (strcmp(argv[0], "Energy") == 0)) {
 	  return theResponse = new MaterialResponse(this, 10, getEnergy());
   }
+#ifdef _CSS
+  //by SAJalali
+  else if ((strcmp(argv[0], "maxStrain") == 0) || (strcmp(argv[0], "MaxStrain") == 0)) {
+
+  return theResponse = new MaterialResponse(this, 8, getDmax());
+  }
+  else if ((strcmp(argv[0], "maxDuctility") == 0) || (strcmp(argv[0], "MaxDuctility") == 0)) {
+
+  return theResponse = new MaterialResponse(this, 9, getMuMax());
+  }
+
+#endif // _CSS
+
 
 
   else {
@@ -1342,11 +1355,23 @@ FiberSection3d::getResponse(int responseID, Information &sectInfo)
       count = 0;
 
     return sectInfo.setInt(count);
-  } 
+  }
+  //by SAJalali
   else  if (responseID == 10) {
 
 	  return sectInfo.setDouble(getEnergy());
   }
+#ifdef _CSS
+  //by SAJalali
+  else  if (responseID == 8) {
+
+	  return sectInfo.setDouble(getDmax());
+  }
+  else  if (responseID == 9) {
+
+	  return sectInfo.setDouble(getMuMax());
+  }
+#endif // _CSS
 
   return SectionForceDeformation::getResponse(responseID, sectInfo);
 }
@@ -1614,3 +1639,74 @@ double FiberSection3d::getEnergy() const
 	}
 	return energy;
 }
+
+#ifdef _CSS
+//by SAJalali
+double FiberSection3d::getDmax()
+{
+	double d0 = e(0);
+	double d1 = e(1);
+	double d2 = e(2);
+
+	static double fiberLocsy[10000];
+	static double fiberLocsz[10000];
+
+	if (sectionIntegr != 0) {
+		sectionIntegr->getFiberLocations(numFibers, fiberLocsy, fiberLocsz);
+	}
+	else {
+		for (int i = 0; i < numFibers; i++) {
+			fiberLocsy[i] = matData[3 * i];
+			fiberLocsz[i] = matData[3 * i + 1];
+		}
+	}
+	double dMax = 0.;
+	for (int i = 0; i < numFibers; i++) {
+		double y = fiberLocsy[i] - yBar;
+		double z = fiberLocsz[i] - zBar;
+
+		// determine material strain and set it
+		double strain = fabs(d0 - y * d1 + z * d2);
+		if (strain > dMax)
+			dMax = strain;
+	}
+	return dMax;
+}
+
+double FiberSection3d::getMuMax()
+{
+
+	double d0 = e(0);
+	double d1 = e(1);
+	double d2 = e(2);
+
+	static double fiberLocsy[10000];
+	static double fiberLocsz[10000];
+
+	if (sectionIntegr != 0) {
+		sectionIntegr->getFiberLocations(numFibers, fiberLocsy, fiberLocsz);
+	}
+	else {
+		for (int i = 0; i < numFibers; i++) {
+			fiberLocsy[i] = matData[3 * i];
+			fiberLocsz[i] = matData[3 * i + 1];
+		}
+	}
+	double muMax = 0.;
+	for (int i = 0; i < numFibers; i++) {
+		double y = fiberLocsy[i] - yBar;
+		double z = fiberLocsz[i] - zBar;
+
+		// determine material strain and set it
+		double strain = fabs(d0 - y * d1 + z * d2);
+		double sYield = theMaterials[i]->getInitYieldStrain();
+		double mu = 0;
+		if (abs(sYield) > 1.e-6)
+			mu = strain / sYield;
+		if (mu > muMax)
+			muMax = mu;
+	}
+	return muMax;
+}
+#endif // _CSS
+

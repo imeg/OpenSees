@@ -94,6 +94,14 @@ public:
 protected:
     
 private:
+#ifdef _CSS
+	//SAJalali
+	void  computeSectionForces(Vector& sp, double xi);
+	int numEleLoads;
+	ElementalLoad** eleLoads;
+	double* eleLoadFactors;
+#endif // _CSS
+
     // private methods
     void setUp();
     

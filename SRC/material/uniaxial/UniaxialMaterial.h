@@ -95,7 +95,12 @@ class UniaxialMaterial : public Material
     // AddingSensitivity:END ///////////////////////////////////////////
 	//by SAJalali
 	virtual double getEnergy(void) { return 0; }
- protected:
+#ifdef _CSS
+	//by SAJalali
+	virtual double getInitYieldStrain() { return 0; }
+	virtual double getDuctility(void);
+#endif // _CSS
+protected:
     
  private:
 };

@@ -2527,7 +2527,7 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
        }
      }
 
-	 if (flag == OPS_PRINT_CURRENTSTATE) {
+    if (flag == OPS_PRINT_CURRENTSTATE) {
        s << "\nElement: " << this->getTag() << " Type: ForceBeamColumn3d ";
        s << "\tConnected Nodes: " << connectedExternalNodes ;
        s << "\tNumber of Sections: " << numSections;
@@ -2556,11 +2556,11 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
 	 << P        << " " << MZ2 << " " << -VY+p0[2] << " " 
 	 << MY2 << " " <<  VZ+p0[4] << " " << -T << endln;
 
-       if (flag == 1) { 
-	 for (int i = 0; i < numSections; i++)
-	   s << "\numSections "<<i<<" :" << *sections[i];
+       for (int i = 0; i < numSections; i++) {
+	 //opserr << "Section Type: " << theSections[i]->getClassTag() << endln;
+	 sections[i]->Print(s,flag);
        }
-     }
+    }
 
 	 if (flag == OPS_PRINT_PRINTMODEL_JSON) {
 		 s << "\t\t\t{";
@@ -2802,7 +2802,7 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
 	//by SAJalali
 	else if (strcmp(argv[0], "energy") == 0)
 	{
-		return new ElementResponse(this, 10, 0.0);
+		return new ElementResponse(this, 13, 0.0);
 	}
 
     output.endTag();
@@ -3112,7 +3112,7 @@ ForceBeamColumn3d::getResponse(int responseID, Information &eleInfo)
     return -1;
   }
   //by SAJalali
-  else if (responseID == 10) {
+  else if (responseID == 13) {
 	  double xi[maxNumSections];
 	  double L = crdTransf->getInitialLength();
 	  beamIntegr->getSectionWeights(numSections, L, xi);

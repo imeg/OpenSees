@@ -69,198 +69,253 @@ PlainHandler::~PlainHandler()
 }
 
 int
-PlainHandler::handle(const ID *nodesLast)
+PlainHandler::handle(const ID* nodesLast)
 {
-    // first check links exist to a Domain and an AnalysisModel object
-    Domain *theDomain = this->getDomainPtr();
-    AnalysisModel *theModel = this->getAnalysisModelPtr();
-    Integrator *theIntegrator = this->getIntegratorPtr();    
-    
-    if ((theDomain == 0) || (theModel == 0) || (theIntegrator == 0)) {
-	opserr << "WARNING PlainHandler::handle() - ";
-	opserr << " setLinks() has not been called\n";
-	return -1;
-    }
+	// first check links exist to a Domain and an AnalysisModel object
+	Domain* theDomain = this->getDomainPtr();
+	AnalysisModel* theModel = this->getAnalysisModelPtr();
+	Integrator* theIntegrator = this->getIntegratorPtr();
 
-    // get all SPs
-    std::multimap<int,SP_Constraint*> allSPs;
-    SP_ConstraintIter &theSPs = theDomain->getDomainAndLoadPatternSPs();
-    SP_Constraint *theSP; 
-    while ((theSP = theSPs()) != 0) {
-	if (theSP->isHomogeneous() == false) {
-	    opserr << "WARNING PlainHandler::handle() - ";
-	    opserr << " non-homogeneos constraint";
-	    opserr << " for node " << theSP->getNodeTag();
-	    opserr << " homo assumed\n";
-	}
-	allSPs.insert(std::make_pair(theSP->getNodeTag(),theSP));
-    }
-
-    // initialise the DOF_Groups and add them to the AnalysisModel.
-    //    : must of course set the initial IDs
-    NodeIter &theNod = theDomain->getNodes();
-    Node *nodPtr;
-    SP_Constraint *spPtr;
-    DOF_Group *dofPtr;
-
-    int numDOF = 0;
-    int count3 = 0;
-    int countDOF =0;
-    while ((nodPtr = theNod()) != 0) {
-	if ((dofPtr = new DOF_Group(numDOF++, nodPtr)) == 0) {
-	    opserr << "WARNING PlainHandler::handle() - ran out of memory";
-	    opserr << " creating DOF_Group " << numDOF << endln;	
-	    return -4;    		
-	}
-	// initially set all the ID value to -2
-	const ID &id = dofPtr->getID();
-	for (int j=0; j < id.Size(); j++) {
-	    dofPtr->setID(j,-2);
-	    countDOF++;
-	}
-	// loop through the SP_Constraints to see if any of the
-	// DOFs are constrained, if so set initial ID value to -1
-	int nodeID = nodPtr->getTag();
-	std::multimap<int,SP_Constraint*>::iterator first = allSPs.lower_bound(nodeID);
-	std::multimap<int,SP_Constraint*>::iterator last = allSPs.upper_bound(nodeID);
-	for(std::multimap<int,SP_Constraint*>::iterator it=first; it!=last; it++) {
-	    spPtr = it->second;
-	    const ID &id = dofPtr->getID();
-	    int dof = spPtr->getDOF_Number();		
-	    if (id(dof) == -2) {
-		dofPtr->setID(spPtr->getDOF_Number(),-1);
-		countDOF--;	
-	    } else {
+	if ((theDomain == 0) || (theModel == 0) || (theIntegrator == 0)) {
 		opserr << "WARNING PlainHandler::handle() - ";
-		opserr << " multiple single pointconstraints at DOF " << dof;
-		opserr << " for node " << spPtr->getNodeTag() << endln;
-	    }
+		opserr << " setLinks() has not been called\n";
+		return -1;
 	}
 
-    	// loop through the MP_Constraints to see if any of the
-	// DOFs are constrained, note constraint matrix must be diagonal
-	// with 1's on the diagonal
-	MP_ConstraintIter &theMPs = theDomain->getMPs();
-	MP_Constraint *mpPtr;
-	while ((mpPtr = theMPs()) != 0)
-	    if (mpPtr->getNodeConstrained() == nodeID) {
-		if (mpPtr->isTimeVarying() == true) {
-		    opserr << "WARNING PlainHandler::handle() - ";
-		    opserr << " time-varying constraint";
-		    opserr << " for node " << nodeID;
-		    opserr << " non-varyng assumed\n";
+	// get all SPs
+	std::multimap<int, SP_Constraint*> allSPs;
+	SP_ConstraintIter& theSPs = theDomain->getDomainAndLoadPatternSPs();
+	SP_Constraint* theSP;
+	while ((theSP = theSPs()) != 0) {
+		if (theSP->isHomogeneous() == false) {
+			opserr << "WARNING PlainHandler::handle() - ";
+			opserr << " non-homogeneos constraint";
+			opserr << " for node " << theSP->getNodeTag();
+			opserr << " homo assumed\n";
 		}
-		const Matrix &C = mpPtr->getConstraint();
-		int numRows = C.noRows();
-		int numCols = C.noCols();
-		if (numRows != numCols) {
+		allSPs.insert(std::make_pair(theSP->getNodeTag(), theSP));
+	}
+
+#ifdef _CSS
+	std::multimap<int, MP_Constraint*> allMPs;
+	MP_ConstraintIter& theMPs = theDomain->getMPs();
+	MP_Constraint* mpPtr;
+	while ((mpPtr = theMPs()) != 0)
+	{
+		int nodeID = mpPtr->getNodeConstrained();
+		if (mpPtr->isTimeVarying() == true) {
+			opserr << "WARNING PlainHandler::handle() - ";
+			opserr << " time-varying constraint";
+			opserr << " for node " << nodeID;
+			opserr << " non-varyng assumed\n";
+		}
+		const Matrix& C = mpPtr->getConstraint();
+		if (!C.isDiagonal() || C.noRows() != C.noCols()) {
 			opserr << "WARNING PlainHandler::handle() - ";
 			opserr << " constraint matrix not diagonal, ignoring constraint";
 			opserr << " for node " << nodeID << endln;
-			opserr << " non-varyng assumed\n";
-		} else {
-		  int ok = 0;
-		  for (int i=0; i<numRows; i++) {
-		    if (C(i,i) != 1.0) ok = 1;
-		    for (int j=0; j<numRows; j++)
-		      if (i != j)
-			if (C(i,j) != 0.0)
-			  ok = 1;
-		  }
-		  if (ok != 0) {
-		    opserr << "WARNING PlainHandler::handle() - ";
-		    opserr << " constraint matrix not identity, ignoring constraint";
-		    opserr << " for node " << nodeID << endln;
-		    opserr << " non-varyng assumed\n";
-		  } else {
-		    const ID &dofs = mpPtr->getConstrainedDOFs();
-		    const ID &id = dofPtr->getID();				
-		    for (int i=0; i<dofs.Size(); i++) {
-		      int dof = dofs(i);	
-		      if (id(dof) == -2) {
-			dofPtr->setID(dof,-4);
-			countDOF--;	
-		      } else {
-			opserr << "WARNING PlainHandler::handle() - ";
-			opserr << " constraint at dof " << dof << " already specified for constrained node";
-			opserr << " in MP_Constraint at node " << nodeID << endln;
-		      }
-		      
-		    }
-		  }
+			continue;
+		}
+		allMPs.insert(std::make_pair(nodeID, mpPtr));
+	}
+
+#endif // _CSS
+
+	// initialise the DOF_Groups and add them to the AnalysisModel.
+	//    : must of course set the initial IDs
+	NodeIter& theNod = theDomain->getNodes();
+	Node* nodPtr;
+	SP_Constraint* spPtr;
+	DOF_Group* dofPtr;
+
+	int numDOF = 0;
+	int count3 = 0;
+	int countDOF = 0;
+	while ((nodPtr = theNod()) != 0) {
+		if ((dofPtr = new DOF_Group(numDOF++, nodPtr)) == 0) {
+			opserr << "WARNING PlainHandler::handle() - ran out of memory";
+			opserr << " creating DOF_Group " << numDOF << endln;
+			return -4;
+		}
+		// initially set all the ID value to -2
+		const ID& id = dofPtr->getID();
+		for (int j = 0; j < id.Size(); j++) {
+			dofPtr->setID(j, -2);
+			countDOF++;
+		}
+		// loop through the SP_Constraints to see if any of the
+		// DOFs are constrained, if so set initial ID value to -1
+		int nodeID = nodPtr->getTag();
+		std::multimap<int, SP_Constraint*>::iterator first = allSPs.lower_bound(nodeID);
+		std::multimap<int, SP_Constraint*>::iterator last = allSPs.upper_bound(nodeID);
+		for (std::multimap<int, SP_Constraint*>::iterator it = first; it != last; it++) {
+			spPtr = it->second;
+			const ID& id = dofPtr->getID();
+			int dof = spPtr->getDOF_Number();
+			if (id(dof) == -2) {
+				dofPtr->setID(dof, -1);
+				countDOF--;
+			}
+			else {
+				opserr << "WARNING PlainHandler::handle() - ";
+				opserr << " multiple single pointconstraints at DOF " << dof;
+				opserr << " for node " << spPtr->getNodeTag() << endln;
+			}
+		}
+
+#ifdef _CSS
+		std::multimap<int, MP_Constraint*>::iterator firstMP = allMPs.lower_bound(nodeID);
+		std::multimap<int, MP_Constraint*>::iterator lastMP = allMPs.upper_bound(nodeID);
+		for (std::multimap<int, MP_Constraint*>::iterator it = firstMP; it != lastMP; it++) {
+			mpPtr = it->second;
+			const ID& dofs = mpPtr->getConstrainedDOFs();
+			const ID& id = dofPtr->getID();
+			for (int i = 0; i < dofs.Size(); i++) {
+				int dof = dofs(i);
+				if (id(dof) == -2) {
+					dofPtr->setID(dof, -4);
+					countDOF--;
+				}
+				else {
+					opserr << "WARNING PlainHandler::handle() - ";
+					opserr << " constraint at dof " << dof << " already specified for constrained node";
+					opserr << " in MP_Constraint at node " << nodeID << endln;
+				}
+
+			}
+		}
+#else
+
+		// loop through the MP_Constraints to see if any of the
+	// DOFs are constrained, note constraint matrix must be diagonal
+	// with 1's on the diagonal
+		MP_ConstraintIter& theMPs = theDomain->getMPs();
+		MP_Constraint* mpPtr;
+		while ((mpPtr = theMPs()) != 0)
+			if (mpPtr->getNodeConstrained() == nodeID) {
+				if (mpPtr->isTimeVarying() == true) {
+					opserr << "WARNING PlainHandler::handle() - ";
+					opserr << " time-varying constraint";
+					opserr << " for node " << nodeID;
+					opserr << " non-varyng assumed\n";
+				}
+				const Matrix& C = mpPtr->getConstraint();
+				int numRows = C.noRows();
+				int numCols = C.noCols();
+				if (numRows != numCols) {
+					opserr << "WARNING PlainHandler::handle() - ";
+					opserr << " constraint matrix not diagonal, ignoring constraint";
+					opserr << " for node " << nodeID << endln;
+					opserr << " non-varyng assumed\n";
+				}
+				else {
+					int ok = 0;
+					for (int i = 0; i < numRows; i++) {
+						if (C(i, i) != 1.0) ok = 1;
+						for (int j = 0; j < numRows; j++)
+							if (i != j)
+								if (C(i, j) != 0.0)
+									ok = 1;
+					}
+					if (ok != 0) {
+						opserr << "WARNING PlainHandler::handle() - ";
+						opserr << " constraint matrix not identity, ignoring constraint";
+						opserr << " for node " << nodeID << endln;
+						opserr << " non-varyng assumed\n";
+					}
+					else {
+						const ID& dofs = mpPtr->getConstrainedDOFs();
+						const ID& id = dofPtr->getID();
+						for (int i = 0; i < dofs.Size(); i++) {
+							int dof = dofs(i);
+							if (id(dof) == -2) {
+								dofPtr->setID(dof, -4);
+								countDOF--;
+							}
+							else {
+								opserr << "WARNING PlainHandler::handle() - ";
+								opserr << " constraint at dof " << dof << " already specified for constrained node";
+								opserr << " in MP_Constraint at node " << nodeID << endln;
+							}
+
+						}
+					}
+				}
+			}
+#endif // _CSS
+
+		nodPtr->setDOF_GroupPtr(dofPtr);
+		theModel->addDOF_Group(dofPtr);
+	}
+
+	// set the number of eqn in the model
+	theModel->setNumEqn(countDOF);
+
+	// now see if we have to set any of the dof's to -3
+	//    int numLast = 0;
+	if (nodesLast != 0)
+		for (int i = 0; i < nodesLast->Size(); i++) {
+			int nodeID = (*nodesLast)(i);
+			Node* nodPtr = theDomain->getNode(nodeID);
+			if (nodPtr != 0) {
+				dofPtr = nodPtr->getDOF_GroupPtr();
+
+				const ID& id = dofPtr->getID();
+				// set all the dof values to -3
+				for (int j = 0; j < id.Size(); j++)
+					if (id(j) == -2) {
+						dofPtr->setID(j, -3);
+						count3++;
+					}
+					else {
+						opserr << "WARNING PlainHandler::handle() ";
+						opserr << " - boundary sp constraint in subdomain";
+						opserr << " this should not be - results suspect \n";
+					}
+			}
+		}
+
+	// initialise the FE_Elements and add to the AnalysisModel.
+	ElementIter& theEle = theDomain->getElements();
+	Element* elePtr;
+
+	int numFe = 0;
+	FE_Element* fePtr;
+	while ((elePtr = theEle()) != 0) {
+
+		// only create an FE_Element for a subdomain element if it does not
+		// do independent analysis .. then subdomain part of this analysis so create
+		// an FE_element & set subdomain to point to it.
+		if (elePtr->isSubdomain() == true) {
+
+			Subdomain* theSub = (Subdomain*)elePtr;
+			if (theSub->doesIndependentAnalysis() == false) {
+
+				if ((fePtr = new FE_Element(numFe++, elePtr)) == 0) {
+					opserr << "WARNING PlainHandler::handle() - ran out of memory";
+					opserr << " creating FE_Element " << elePtr->getTag() << endln;
+					return -5;
+				}
+
+				theModel->addFE_Element(fePtr);
+				theSub->setFE_ElementPtr(fePtr);
+
+			} //  if (theSub->doesIndependentAnalysis() == false) {
+
+		}
+		else {
+
+			// just a regular element .. create an FE_Element for it & add to AnalysisModel
+			if ((fePtr = new FE_Element(numFe++, elePtr)) == 0) {
+				opserr << "WARNING PlainHandler::handle() - ran out of memory";
+				opserr << " creating FE_Element " << elePtr->getTag() << endln;
+				return -5;
+			}
+
+			theModel->addFE_Element(fePtr);
 		}
 	}
-
-	nodPtr->setDOF_GroupPtr(dofPtr);
-	theModel->addDOF_Group(dofPtr);
-    }
-
-    // set the number of eqn in the model
-    theModel->setNumEqn(countDOF);
-
-    // now see if we have to set any of the dof's to -3
-    //    int numLast = 0;
-    if (nodesLast != 0) 
-	for (int i=0; i<nodesLast->Size(); i++) {
-	    int nodeID = (*nodesLast)(i);
-	    Node *nodPtr = theDomain->getNode(nodeID);
-	    if (nodPtr != 0) {
-		dofPtr = nodPtr->getDOF_GroupPtr();
-		
-		const ID &id = dofPtr->getID();
-		// set all the dof values to -3
-		for (int j=0; j < id.Size(); j++) 
-		    if (id(j) == -2) {
-			dofPtr->setID(j,-3);
-			count3++;
-		    } else {
-			opserr << "WARNING PlainHandler::handle() ";
-			opserr << " - boundary sp constraint in subdomain";
-			opserr << " this should not be - results suspect \n";
-		    }
-	    }
-	}
-    
-    // initialise the FE_Elements and add to the AnalysisModel.
-    ElementIter &theEle = theDomain->getElements();
-    Element *elePtr;
-
-    int numFe = 0;    
-    FE_Element *fePtr;
-    while ((elePtr = theEle()) != 0) {
-
-      // only create an FE_Element for a subdomain element if it does not
-      // do independent analysis .. then subdomain part of this analysis so create
-      // an FE_element & set subdomain to point to it.
-      if (elePtr->isSubdomain() == true) {
-
-	Subdomain *theSub = (Subdomain *)elePtr;
-	if (theSub->doesIndependentAnalysis() == false) {
-
-	  if ((fePtr = new FE_Element(numFe++, elePtr)) == 0) {
-	    opserr << "WARNING PlainHandler::handle() - ran out of memory";
-	    opserr << " creating FE_Element " << elePtr->getTag() << endln; 
-	    return -5;
-	  }
-
-	  theModel->addFE_Element(fePtr);
-	  theSub->setFE_ElementPtr(fePtr);
-
-	} //  if (theSub->doesIndependentAnalysis() == false) {
-
-      } else {
-
-	// just a regular element .. create an FE_Element for it & add to AnalysisModel
-	if ((fePtr = new FE_Element(numFe++, elePtr)) == 0) {
-	  opserr << "WARNING PlainHandler::handle() - ran out of memory";
-	  opserr << " creating FE_Element " << elePtr->getTag() << endln; 
-	  return -5;
-	}
-
-	theModel->addFE_Element(fePtr);
-      }
-    }
-    return count3;
+	return count3;
 }
 
 

@@ -64,13 +64,13 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\lib\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\optimization\debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\optimization\debug\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\optimization\debug-dll\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\lib\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release-dll\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\optimization\release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\optimization\release\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\optimization\release-dll\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -87,7 +87,7 @@
       <AssemblerListingLocation>.\..\..\obj\optimization\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\optimization\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\optimization\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>true</BrowseInformation>
+      <BrowseInformation>false</BrowseInformation>
     </ClCompile>
     <Lib>
       <OutputFile>.\..\..\lib\debug\optimization.lib</OutputFile>
@@ -95,6 +95,9 @@
     <BuildLog>
       <Path>.\..\..\obj\optimization\debug\$(MSBuildProjectName).log</Path>
     </BuildLog>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
     <ClCompile>
@@ -114,7 +117,7 @@
       <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\debug\optimization.lib</OutputFile>
+      <OutputFile>.\..\..\lib\debug-dll\optimization.lib</OutputFile>
     </Lib>
     <BuildLog>
       <Path>.\..\..\obj\optimization\debug\$(MSBuildProjectName).log</Path>
@@ -166,7 +169,7 @@
       <ProgramDataBaseFileName>.\..\..\obj\optimization\release/</ProgramDataBaseFileName>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\release\optimization.lib</OutputFile>
+      <OutputFile>.\..\..\lib\release-dll\optimization.lib</OutputFile>
     </Lib>
     <BuildLog>
       <Path>.\..\..\obj\optimization\release\$(MSBuildProjectName).log</Path>

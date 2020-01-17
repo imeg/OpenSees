@@ -177,6 +177,13 @@ OPS_Stream *opserrPtr = &sserr;
 
 //  recorders
 #include <Recorder.h> //SAJalali
+#ifdef _CSS
+//SAJalali for logCommands
+int LOG_COMMANDS = 0;
+int ECHO_COMMANDS = 0;
+FileStream CmdLogStream(0);
+FileStream* CmdStrmPtr = &CmdLogStream;
+#endif // _CSS
 
 extern void *OPS_NewtonRaphsonAlgorithm(void);
 extern void *OPS_ModifiedNewton(void);
@@ -804,6 +811,11 @@ int OpenSeesAppInit(Tcl_Interp *interp) {
 	
 	Tcl_CreateCommand(interp, "recorderValue", &OPS_recorderValue,
 		(ClientData)NULL, (Tcl_CmdDeleteProc *)NULL); //by SAJalali
+#ifdef _CSS
+	//by SAJalali
+	Tcl_CreateCommand(interp, "logCommands", &OPS_LogCommandsCmd,
+		(ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
+#endif // _CSS
 
 	Tcl_CreateObjCommand(interp, "pset", &OPS_SetObjCmd,
 			 (ClientData)NULL, (Tcl_CmdDeleteProc *)NULL); 
@@ -1457,8 +1469,6 @@ wipeAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 // by SAJalali
 int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-	// make sure at least one other argument to contain type of system
-
 	// clmnID starts from 1
 	if (argc < 3) {
 		opserr << "WARNING want - recorderValue recorderTag clmnID <rowOffset> <-reset>\n";
@@ -1496,19 +1506,131 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 		curArg++;
 	}
 	Recorder* theRecorder = theDomain.getRecorder(tag);
-	double res = theRecorder->getRecordedValue(dof, rowOffset, reset);
-	// now we copy the value to the tcl string that is returned
-	//sprintf(interp->result, "%35.8f ", res);
-	char buffer [40];
-	sprintf(buffer,"%35.8f", res);	
-	Tcl_SetResult(interp, buffer, TCL_VOLATILE);
-	
+	if (theRecorder != 0)
+	{
+		double res = theRecorder->getRecordedValue(dof, rowOffset, reset);
+		// now we copy the value to the tcl string that is returned
+		char buffer[40];
+		sprintf(buffer, "%35.8f", res);
+		Tcl_SetResult(interp, buffer, TCL_VOLATILE);
+		return TCL_OK;
+	}
+	else {
+		opserr << "Could Not Find the Specified Recorder Object in Domain\n";
+		return TCL_ERROR;
+	}
+
 	return TCL_OK;
 }
+
+#ifdef _CSS
+//added by SAJalali:start
+int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv)
+{
+	std::string file = "commandsLog.ops";
+	CmdLogStream.setFile(file.c_str());
+	if (LOG_COMMANDS == 0)		// to support for "stop"
+		LOG_COMMANDS = 1;
+	int narg = 1;
+	while (1) {
+		if (narg >= argc)
+			break;
+		if (strcmp(argv[narg], "-file") == 0)
+		{
+			narg++;
+			if (argc <= narg)
+			{
+				opserr << "LogCommands: Error reading file name; default name will be used\n";
+				narg++;
+			}
+			else {
+				file = argv[narg++];
+				file += ".ops";
+				CmdLogStream.setFile(file.c_str());
+			}
+		}
+		else	if (strcmp(argv[narg], "-echo") == 0)
+		{
+			narg++;
+			ECHO_COMMANDS = 1;
+		}
+		else if (strcmp(argv[narg], "-stop") == 0 || strcmp(argv[narg], "-Stop") == 0)
+		{
+			narg++;
+			LOG_COMMANDS = 0;
+		}
+	}
+
+	return 0;
+}
+
+int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock)
+{
+	static bool BlockStarted = false;
+	if (LOG_COMMANDS == 0)
+		return 0;
+	if (hasBlock && BlockStarted)
+	{
+		CmdLogStream << "}";
+		CmdLogStream << endln;
+		if (ECHO_COMMANDS)
+		{
+			opserr << "}";
+			opserr << endln;
+		}
+		BlockStarted = false;
+		return 0;
+	}
+	for (int i = 0; i < argc; i++)
+	{
+		if (argv[i][0] == '\n')
+		{
+			if (hasBlock)
+			{
+				CmdLogStream << " {";
+				CmdLogStream << endln;
+				if (ECHO_COMMANDS)
+				{
+					opserr << " {";
+					opserr << endln;
+				}
+				BlockStarted = true;
+				return 0;
+			}
+		}
+		else if (i != 0)
+		{
+			CmdLogStream << " ";
+			if (ECHO_COMMANDS)
+			{
+				opserr << " ";
+			}
+		}
+		CmdLogStream << argv[i];
+		if (ECHO_COMMANDS)
+		{
+			opserr << argv[i];
+		}
+	}
+	CmdLogStream << endln;
+	if (ECHO_COMMANDS)
+	{
+		opserr << endln;
+	}
+	if (hasBlock && !BlockStarted)
+		BlockStarted = true;
+
+	return 0;
+}
+#endif // _CSS
 
 int 
 resetModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 	theDomain.revertToStart();
 
 	if (theTransientIntegrator != 0) {
@@ -1521,7 +1643,10 @@ resetModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 initializeAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (theTransientAnalysis != 0)
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (theTransientAnalysis != 0)
     theTransientAnalysis->initialize();
   else if (theStaticAnalysis != 0)
     theStaticAnalysis->initialize();
@@ -1535,7 +1660,10 @@ initializeAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char
 int 
 setLoadConst(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  theDomain.setLoadConstant();
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	theDomain.setLoadConstant();
   if (argc == 3) {
       if( strcmp(argv[1],"-time") == 0) {
 	  double newTime;
@@ -1556,7 +1684,10 @@ setLoadConst(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 setTime(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 2) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 2) {
       opserr << "WARNING illegal command - time pseudoTime? \n";
       return TCL_ERROR;
   }
@@ -1574,7 +1705,10 @@ setTime(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 getTime(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  double time = theDomain.getCurrentTime();
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	double time = theDomain.getCurrentTime();
   
   // get the display format
   char format[80];
@@ -1595,7 +1729,10 @@ getTime(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 getLoadFactor(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 2) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 2) {
     opserr << "WARNING no load pattern supplied -- getLoadFactor\n";
     return TCL_ERROR;
   }
@@ -1690,6 +1827,10 @@ sensLambda(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv 
 int 
 buildModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
     // to build the model make sure the ModelBuilder has been constructed
   // and that the model has not already been constructed
   if (theBuilder != 0 && builtModel == false) {
@@ -1791,6 +1932,9 @@ partitionModel(int eleTag)
 int 
 opsPartition(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 #ifdef _PARALLEL_PROCESSING
   int eleTag;
   if (argc == 2) {
@@ -1810,7 +1954,10 @@ opsPartition(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 analyzeModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  int result = 0;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int result = 0;
 
 #ifdef _PARALLEL_PROCESSING
   if (OPS_PARTITIONED == false && OPS_NUM_SUBDOMAINS > 1) {
@@ -1914,7 +2061,10 @@ printAlgorithm(ClientData clientData, Tcl_Interp *interp, int argc,
 int 
 printModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  int currentArg = 1;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int currentArg = 1;
   int res = 0;
 
   int flag = OPS_PRINT_CURRENTSTATE;
@@ -2010,7 +2160,10 @@ int
 printNode(ClientData clientData, Tcl_Interp *interp, int argc, 
 	  TCL_Char **argv, OPS_Stream &output)
 {
-  int flag = 0; // default flag sent to a nodes Print() method
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int flag = 0; // default flag sent to a nodes Print() method
   int nodeArg = 0;
 
   // if just 'print <filename> node' print all the nodes - no flag
@@ -2075,7 +2228,10 @@ int
 printElement(ClientData clientData, Tcl_Interp *interp, int argc, 
 	  TCL_Char **argv, OPS_Stream &output)
 {
-  int flag = 0; // default flag sent to a nodes Print() method
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int flag = 0; // default flag sent to a nodes Print() method
   int eleArg = 0;
 
   // if just 'print <filename> node' print all the nodes - no flag
@@ -2135,7 +2291,10 @@ int
 printAlgorithm(ClientData clientData, Tcl_Interp *interp, int argc, 
 	       TCL_Char **argv, OPS_Stream &output)
 {
-  int eleArg = 0;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int eleArg = 0;
   if (theAlgorithm == 0)
       return TCL_OK;
 
@@ -2161,7 +2320,10 @@ int
 printIntegrator(ClientData clientData, Tcl_Interp *interp, int argc, 
 		TCL_Char **argv, OPS_Stream &output)
 {
-  int eleArg = 0;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int eleArg = 0;
   if (theStaticIntegrator == 0 && theTransientIntegrator == 0)
       return TCL_OK;
   
@@ -2192,7 +2354,10 @@ printIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 int 
 printA(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  int res = 0;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int res = 0;
 
   FileStream outputFile;
   OPS_Stream *output = &opserr;
@@ -2232,7 +2397,10 @@ printA(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 printB(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  int res = 0;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int res = 0;
 
   FileStream outputFile;
   OPS_Stream *output = &opserr;
@@ -2275,7 +2443,10 @@ int
 specifyAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, 
 		TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING need to specify an analysis type (Static, Transient)\n";
 	return TCL_ERROR;
@@ -2774,6 +2945,9 @@ static ExternalClassFunction *theExternalAlgorithmCommands = NULL;
 int 
 specifySOE(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain type of system
   if (argc < 2) {
       opserr << "WARNING need to specify a model type \n";
@@ -2922,9 +3096,6 @@ specifySOE(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
       } else if(strcmp(argv[2], "-quasi") == 0) {
           PFEMCompressibleSolver* theSolver = new PFEMCompressibleSolver();
           theSOE = new PFEMCompressibleLinSOE(*theSolver);
-      } else if(strcmp(argv[2], "-umfpack") == 0) {
-	  PFEMSolver_Umfpack* theSolver = new PFEMSolver_Umfpack();
-          theSOE = new PFEMLinSOE(*theSolver);
       } else if (strcmp(argv[2],"-mumps") ==0) {
 #ifdef _PARALLEL_INTERPRETERS
 	  int relax = 20;
@@ -3463,7 +3634,10 @@ specifySOE(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 specifyNumberer(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  // make sure at least one other argument to contain numberer
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+ // make sure at least one other argument to contain numberer
   if (argc < 2) {
       opserr << "WARNING need to specify a Nemberer type \n";
       return TCL_ERROR;
@@ -3530,6 +3704,9 @@ int
 specifyConstraintHandler(ClientData clientData, Tcl_Interp *interp, int argc, 
 			 TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain numberer
   if (argc < 2) {
       opserr << "WARNING need to specify a Nemberer type \n";
@@ -3600,6 +3777,9 @@ int
 specifyAlgorithm(ClientData clientData, Tcl_Interp *interp, int argc, 
 		 TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain numberer
   if (argc < 2) {
       opserr << "WARNING need to specify an Algorithm type \n";
@@ -4010,6 +4190,9 @@ int
 specifyCTest(ClientData clientData, Tcl_Interp *interp, int argc, 
 	     TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain numberer
   if (argc < 2) {
       opserr << "WARNING need to specify a ConvergenceTest Type type \n";
@@ -4244,6 +4427,9 @@ int
 specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc, 
 		  TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 
   OPS_ResetInput(clientData, interp, 2, argc, argv, &theDomain, NULL);	  
 
@@ -5209,7 +5395,10 @@ int
 addRecorder(ClientData clientData, Tcl_Interp *interp, int argc, 
 	    TCL_Char **argv)
 {
-  return TclAddRecorder(clientData, interp, argc, argv, theDomain);
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	return TclAddRecorder(clientData, interp, argc, argv, theDomain);
 }
 
 extern int
@@ -5219,6 +5408,9 @@ TclAddAlgorithmRecorder(ClientData clientData, Tcl_Interp *interp, int argc,
 int 
 addAlgoRecorder(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 	if (theAlgorithm != 0)
 		return TclAddAlgorithmRecorder(clientData, interp, argc, argv,
 			theDomain, theAlgorithm);
@@ -5235,7 +5427,10 @@ TclAddDatabase(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **a
 int 
 addDatabase(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  return TclAddDatabase(clientData, interp, argc, argv, theDomain, theBroker);
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	return TclAddDatabase(clientData, interp, argc, argv, theDomain, theBroker);
 }
 
 
@@ -5291,6 +5486,9 @@ int
 eigenAnalysis(ClientData clientData, Tcl_Interp *interp, int argc, 
 	      TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain type of system
   if (argc < 2) {
     opserr << "WARNING want - eigen <type> numModes?\n";
@@ -5497,7 +5695,10 @@ int
 videoPlayer(ClientData clientData, Tcl_Interp *interp, int argc, 
 	    TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 5) {
 	opserr << "WARNING want - video -window windowTitle? -file fileName?\n";
 	return TCL_ERROR;
@@ -5556,6 +5757,9 @@ int
 removeObject(ClientData clientData, Tcl_Interp *interp, int argc, 
 	     TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain type of system
   if (argc < 2) {
     opserr << "WARNING want - remove objectType?\n";
@@ -5620,6 +5824,11 @@ removeObject(ClientData clientData, Tcl_Interp *interp, int argc,
       delete thePattern;
     }
   }
+#ifdef _CSS
+  else if (strcmp(argv[1],"loadPatterns") == 0) {
+	theDomain.removeLoadPatterns();
+  }
+#endif // _CSS
 
   else if ((strcmp(argv[1],"TimeSeries") == 0) ||
 	   (strcmp(argv[1],"timeSeries") == 0)) {
@@ -5822,7 +6031,10 @@ removeObject(ClientData clientData, Tcl_Interp *interp, int argc,
 int
 getCTestNorms(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (theTest != 0) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (theTest != 0) {
     const Vector &data = theTest->getNorms();
       
     char buffer [40];
@@ -5842,7 +6054,10 @@ getCTestNorms(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **ar
 int
 getCTestIter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (theTest != 0) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (theTest != 0) {
     int res = theTest->getNumTests();
   
     char buffer [10];
@@ -5859,7 +6074,10 @@ getCTestIter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 nodeDisp(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - nodeDisp nodeTag? <dof?>\n";
 	return TCL_ERROR;
@@ -5918,7 +6136,10 @@ nodeDisp(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 nodeReaction(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - nodeReaction nodeTag? <dof?>\n";
 	return TCL_ERROR;
@@ -5977,7 +6198,10 @@ nodeReaction(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 nodeUnbalance(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - nodeUnbalance nodeTag? <dof?>\n";
 	return TCL_ERROR;
@@ -6036,7 +6260,10 @@ nodeUnbalance(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **ar
 int 
 nodeEigenvector(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 3) {
 	opserr << "WARNING want - nodeEigenVector nodeTag? eigenVector? <dof?>\n";
 	return TCL_ERROR;
@@ -6105,7 +6332,10 @@ nodeEigenvector(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **
 int 
 eleForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - eleForce eleTag? <dof?>\n";
 	return TCL_ERROR;
@@ -6174,7 +6404,10 @@ eleForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 localForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - localForce eleTag? <dof?>\n";
 	return TCL_ERROR;
@@ -6243,7 +6476,10 @@ localForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 eleDynamicalForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - eleForce eleTag? <dof?>\n";
 	return TCL_ERROR;
@@ -6301,7 +6537,10 @@ eleDynamicalForce(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char 
 int 
 eleResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - eleResponse eleTag? eleArgs...\n";
 	return TCL_ERROR;
@@ -6352,7 +6591,10 @@ eleResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv
 int 
 findID(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+   // make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - findNodesWithID ?id\n";
 	return TCL_ERROR;
@@ -6390,6 +6632,9 @@ findID(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 nodeCoord(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain type of system
   if (argc < 2) {
     opserr << "WARNING want - nodeCoord nodeTag? <dim?>\n";
@@ -6455,6 +6700,9 @@ nodeCoord(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 setNodeCoord(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   // make sure at least one other argument to contain type of system
   if (argc < 4) {
     opserr << "WARNING want - setNodeCoord nodeTag? dim? value?\n";
@@ -6496,7 +6744,10 @@ setNodeCoord(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 updateElementDomain(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // Need to "setDomain" to make the change take effect. 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// Need to "setDomain" to make the change take effect. 
     ElementIter &theElements = theDomain.getElements();
     Element *theElement;
     while ((theElement = theElements()) != 0) {
@@ -6509,7 +6760,10 @@ updateElementDomain(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Cha
 int 
 eleNodes(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 2) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 2) {
     opserr << "WARNING want - eleNodes eleTag?\n";
     return TCL_ERROR;
   }    
@@ -6530,6 +6784,11 @@ eleNodes(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 
   //const Vector *tags = theDomain.getElementResponse(tag, &myArgv[0], 1);
   Element *theElement = theDomain.getElement(tag);
+  if (theElement == 0)
+  {
+	  opserr << "ERROR! eleNodes command: could not find element: " << tag << endln;
+	  return TCL_ERROR;
+  }
   int numTags = theElement->getNumExternalNodes();
   const ID &tags = theElement->getExternalNodes();
   for (int i = 0; i < numTags; i++) {
@@ -6543,7 +6802,10 @@ eleNodes(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 nodeMass(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 3) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 3) {
     opserr << "WARNING want - nodeMass nodeTag? nodeDOF?\n";
     return TCL_ERROR;
   }    
@@ -6583,7 +6845,10 @@ nodeMass(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 nodePressure(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    if(argc < 2) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if(argc < 2) {
         opserr << "WARNING: want - nodePressure nodeTag?\n";
         return TCL_ERROR;
     }
@@ -6617,7 +6882,10 @@ int
 nodeBounds(ClientData clientData, Tcl_Interp *interp, int argc, 
 	   TCL_Char **argv)
 {
-  int requiredDataSize = 20*6;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	int requiredDataSize = 20*6;
   if (requiredDataSize > resDataSize) {
     if (resDataPtr != 0) {
       delete [] resDataPtr;
@@ -6644,7 +6912,10 @@ nodeBounds(ClientData clientData, Tcl_Interp *interp, int argc,
 int 
 nodeVel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - nodeVel nodeTag? <dof?>\n";
 	return TCL_ERROR;
@@ -6700,7 +6971,10 @@ nodeVel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 setNodeVel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 4) {
 	opserr << "WARNING want - setNodeVel nodeTag? dof? value? <-commit>\n";
 	return TCL_ERROR;
@@ -6752,7 +7026,10 @@ setNodeVel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 setNodeDisp(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 4) {
 	opserr << "WARNING want - setNodeDisp nodeTag? dof? value? <-commit>\n";
 	return TCL_ERROR;
@@ -6804,7 +7081,10 @@ setNodeDisp(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv
 int 
 setNodeAccel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 4) {
 	opserr << "WARNING want - setNodeAccel nodeTag? dof? value? <-commit>\n";
 	return TCL_ERROR;
@@ -6856,7 +7136,10 @@ setNodeAccel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 nodeAccel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 2) {
 	opserr << "WARNING want - nodeAccel nodeTag? dof?\n";
 	return TCL_ERROR;
@@ -6912,7 +7195,10 @@ nodeAccel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 nodeResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
     if (argc < 4) {
 	opserr << "WARNING want - nodeResponse nodeTag? dof? responseID?\n";
 	return TCL_ERROR;
@@ -6953,7 +7239,10 @@ nodeResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 calculateNodalReactions(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    // make sure at least one other argument to contain type of system
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	// make sure at least one other argument to contain type of system
   int incInertia = 0;
 
   if (argc == 2)  {
@@ -7926,7 +8215,10 @@ computeGradients(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char *
 int 
 startTimer(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (theTimer == 0)
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (theTimer == 0)
     theTimer = new Timer();
   
   theTimer->start();
@@ -7936,7 +8228,10 @@ startTimer(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 stopTimer(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (theTimer == 0)
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (theTimer == 0)
     return TCL_OK;
   
   theTimer->pause();
@@ -7947,7 +8242,10 @@ stopTimer(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 rayleighDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 5) { 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 5) {
     opserr << "WARNING rayleigh alphaM? betaK? betaK0? betaKc? - not enough arguments to command\n";
     return TCL_ERROR;
   }
@@ -7979,7 +8277,10 @@ rayleighDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **
 int 
 modalDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 2) { 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 2) {
     opserr << "WARNING modalDamping ?factor - not enough arguments to command\n";
     return TCL_ERROR;
   }
@@ -8033,7 +8334,10 @@ modalDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 modalDampingQ(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  if (argc < 2) { 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 2) {
     opserr << "WARNING modalDamping ?factor - not enough arguments to command\n";
     return TCL_ERROR;
   }
@@ -8094,7 +8398,10 @@ setElementRayleighDampingFactors(ClientData clientData,
 				 int argc, 
 				 TCL_Char **argv)
 {
-  if (argc < 6) { 
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 6) {
     opserr << "WARNING setElementRayleighDampingFactors eleTag? alphaM? betaK? betaK0? betaKc? - not enough arguments to command\n";
     return TCL_ERROR;
   }
@@ -8137,13 +8444,19 @@ TclAddMeshRegion(ClientData clientData, Tcl_Interp *interp, int argc,
 int 
 addRegion(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    OPS_ResetInput(clientData, interp, 1, argc, argv, &theDomain, NULL);
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	OPS_ResetInput(clientData, interp, 1, argc, argv, &theDomain, NULL);
   return TclAddMeshRegion(clientData, interp, argc, argv, theDomain);
 }
 
 int 
 logFile(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 
   if (argc < 2) { 
     opserr << "WARNING logFile fileName? - no filename supplied\n";
@@ -8174,6 +8487,9 @@ logFile(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 setPrecision(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
 
   if (argc < 2) { 
     opserr << "WARNING setPrecision precision? - no precision value supplied\n";
@@ -8193,7 +8509,10 @@ setPrecision(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 exit(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  Tcl_Finalize();
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	Tcl_Finalize();
   return TCL_OK;
 }
 
@@ -8247,7 +8566,10 @@ getNP(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 getEleTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  Element *theEle;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	Element *theEle;
   ElementIter &eleIter = theDomain.getElements();
 
   char buffer[20];
@@ -8263,7 +8585,10 @@ getEleTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 getNodeTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  Node *theEle;
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	Node *theEle;
   NodeIter &eleIter = theDomain.getNodes();
 
   char buffer[20];
@@ -8279,6 +8604,9 @@ getNodeTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv
 int
 getParamTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   Parameter *theEle;
   ParameterIter &eleIter = theDomain.getParameters();
 
@@ -8295,6 +8623,9 @@ getParamTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int
 getParamValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
   if (argc < 2) {
     opserr << "Insufficient arguments to getParamValue" << endln;
     return TCL_ERROR;
@@ -8320,6 +8651,10 @@ getParamValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **ar
 int
 sdfResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   if (argc < 9) {
     opserr << "Insufficient arguments to sdfResponse" << endln;
     return TCL_ERROR;
@@ -8483,6 +8818,10 @@ sdfResponse(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv
 int 
 opsBarrier(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 #ifdef _PARALLEL_INTERPRETERS
   return MPI_Barrier(MPI_COMM_WORLD);
 #endif
@@ -8494,6 +8833,10 @@ opsBarrier(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 opsSend(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 #ifdef _PARALLEL_INTERPRETERS
   if (argc < 2)
     return TCL_OK;
@@ -8543,6 +8886,10 @@ opsSend(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int 
 opsRecv(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 #ifdef _PARALLEL_INTERPRETERS
   if (argc < 2)
     return TCL_OK;
@@ -8624,7 +8971,10 @@ opsRecv(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 defaultUnits(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-    if (argc < 9) {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	if (argc < 9) {
         opserr << "defaultUnits - missing a unit type want: defaultUnits -Force type? -Length type? -Time type? -Temperature type?\n";
         return -1;
     }
@@ -8824,6 +9174,7 @@ defaultUnits(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 
 
 const char * getInterpPWD(Tcl_Interp *interp) {
+
   static char *pwd = 0;
 
   if (pwd != 0)
@@ -8856,7 +9207,10 @@ const char * getInterpPWD(Tcl_Interp *interp) {
 int 
 OpenSeesExit(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-  theDomain.clearAll();
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+	theDomain.clearAll();
 
 #ifdef _PARALLEL_PROCESSING
   //
@@ -8911,6 +9265,10 @@ OpenSeesExit(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 
 int stripOpenSeesXML(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
 
   if (argc < 3) {
     opserr << "ERROR incorrect # args - stripXML input.xml output.dat <output.xml>\n";
@@ -8983,6 +9341,10 @@ extern int textToBinary(const char *inputFilename, const char *outputFilename);
 
 int convertBinaryToText(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   if (argc < 3) {
     opserr << "ERROR incorrect # args - convertBinaryToText inputFile outputFile\n";
     return -1;
@@ -8997,6 +9359,10 @@ int convertBinaryToText(ClientData clientData, Tcl_Interp *interp, int argc, TCL
 
 int convertTextToBinary(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   if (argc < 3) {
     opserr << "ERROR incorrect # args - convertTextToBinary inputFile outputFile\n";
     return -1;
@@ -9010,6 +9376,10 @@ int convertTextToBinary(ClientData clientData, Tcl_Interp *interp, int argc, TCL
 
 int domainChange(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   theDomain.domainChange();
   return TCL_OK;
 }
@@ -9017,6 +9387,10 @@ int domainChange(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char *
 
 int record(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   theDomain.record(false);
   return TCL_OK;
 }
@@ -9043,6 +9417,10 @@ int peerSearchNGA(const char *eq,
 int 
 peerNGA(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   StringContainer ngaRecordNames;
   const char *eq =0;
   const char *soilType = 0;
@@ -9126,6 +9504,10 @@ peerNGA(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 totalCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theAlgorithm == 0)
@@ -9140,6 +9522,10 @@ totalCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 solveCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theAlgorithm == 0)
@@ -9154,6 +9540,10 @@ solveCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 accelCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theAlgorithm == 0)
@@ -9168,6 +9558,10 @@ accelCPU(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 numFact(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theAlgorithm == 0)
@@ -9182,6 +9576,10 @@ numFact(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 systemSize(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theSOE == 0) {
@@ -9199,6 +9597,10 @@ systemSize(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 numIter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
   if (theAlgorithm == 0)
@@ -9213,6 +9615,10 @@ numIter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 int
 version(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   char buffer[20];
 
 
@@ -9369,6 +9775,10 @@ EvalFileWithParameters(Tcl_Interp *interp,
 int
 setParameter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   int argLoc = 1;
   double newValue = 0.0;
   ID eleIDs(0, 32);
@@ -9454,6 +9864,10 @@ setParameter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int
 maxOpenFiles(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   int maxOpenFiles;
 
   if (Tcl_GetInt(interp, argv[1], &maxOpenFiles) != TCL_OK) {
@@ -9481,6 +9895,10 @@ maxOpenFiles(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 int 
 printModelGID(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
+#ifdef _CSS
+	printArgv(interp, argc, argv); //SAJalali
+#endif // _CSS
+
   // This function print's a file with node and elements in a format useful for GID
 	int res = 0;
 	bool hasLinear = 0;

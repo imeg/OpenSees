@@ -78,6 +78,9 @@ class HystereticMaterial : public UniaxialMaterial
   void Print(OPS_Stream &s, int flag =0);
   //by SAJalali
   double getEnergy() { return CenergyD; }
+#ifdef _CSS
+  double getInitYieldStrain() { return rot1p; }//by SAJalali
+#endif // _CSS
 
  protected:
   

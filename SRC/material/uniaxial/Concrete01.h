@@ -80,6 +80,10 @@ class Concrete01 : public UniaxialMaterial
   int getVariable(const char *variable, Information &);
   //by SAJalali
   double getEnergy() { return EnergyP; }
+#ifdef _CSS
+  //by SAJalali
+  double getInitYieldStrain() { return epsc0; }
+#endif // _CSS
 
  protected:
 

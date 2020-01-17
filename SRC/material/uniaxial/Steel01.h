@@ -86,6 +86,10 @@ class Steel01 : public UniaxialMaterial
     // AddingSensitivity:END ///////////////////////////////////////////
 	//by SAJalali
 	virtual double getEnergy() { return Energy; }
+#ifdef _CSS
+	//by SAJalali
+	double getInitYieldStrain() { return fy / E0; }
+#endif // _CSS
 
  protected:
     

@@ -2176,7 +2176,7 @@ TclCommand_addFiberSection (ClientData clientData, Tcl_Interp *interp, int argc,
 	return TCL_ERROR;
     }
 
-    if (torsion == 0) {
+    if (torsion == 0 && theTclModelBuilder->getNDM() == 3) {
       opserr << "WARNING - no torsion specified for 3D fiber section, use -GJ or -torsion\n";
       opserr << "\nFiberSection3d: " << secTag << endln;
       return TCL_ERROR;
