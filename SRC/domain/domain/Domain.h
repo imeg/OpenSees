@@ -170,6 +170,7 @@ class Domain
 
     // methods to query the state of the domain
     virtual double  getCurrentTime(void) const;
+    virtual int getCreep(void) const;
     virtual int     getCommitTag(void) const;    	
     virtual int getNumElements(void) const;
     virtual int getNumNodes(void) const;
@@ -191,7 +192,8 @@ class Domain
     // methods to update the domain
     virtual  void setCommitTag(int newTag);    	
     virtual  void setCurrentTime(double newTime);    
-    virtual  void setCommittedTime(double newTime);        
+    virtual  void setCommittedTime(double newTime);
+    virtual void setCreep(int newCreep);
     virtual  void applyLoad(double pseudoTime);
     virtual  void setLoadConstant(void);
     virtual void  unsetLoadConstant(void);
