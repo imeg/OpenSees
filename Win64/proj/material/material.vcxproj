@@ -260,6 +260,7 @@
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BilinearOilDamper.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BoucWenOriginal.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BraceMaterial.cpp" />
+    <ClCompile Include="..\..\..\SRC\material\uniaxial\BucklingStrut.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BWBN.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BarSlipMaterial.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\Bond_SP01.cpp" />
@@ -671,6 +672,7 @@
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BilinearOilDamper.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BoucWenOriginal.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BraceMaterial.h" />
+    <ClInclude Include="..\..\..\SRC\material\uniaxial\BucklingStrut.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BWBN.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BarSlipMaterial.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\Bond_SP01.h" />
