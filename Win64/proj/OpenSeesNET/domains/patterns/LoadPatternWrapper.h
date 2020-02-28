@@ -53,7 +53,7 @@ namespace OpenSees {
 					NodalLoadWrapper^ wret = gcnew NodalLoadWrapper();
 					NodalLoad* nodalload = 0;
 					int counter = 0;
-					while ((nodalload == nlIter()) != 0)
+					while ((nodalload = nlIter()) != 0)
 					{
 						NodalLoadWrapper^ nodew = gcnew NodalLoadWrapper();
 						nodew->_NodalLoad = nodalload;
@@ -68,7 +68,7 @@ namespace OpenSees {
 					List<SP_ConstraintWrapper^>^ _nls = gcnew List<SP_ConstraintWrapper^>();
 					SP_Constraint* sp = 0;
 					int counter = 0;
-					while ((sp == spIter()) != 0)
+					while ((sp = spIter()) != 0)
 					{
 						SP_ConstraintWrapper^ nodew = gcnew SP_ConstraintWrapper(sp);
 						_nls->Add(nodew);
@@ -82,7 +82,7 @@ namespace OpenSees {
 					ElementalLoadWrapper^ wret = gcnew ElementalLoadWrapper();
 					ElementalLoad* nodalload = 0;
 					int counter = 0;
-					while ((nodalload == nlIter()) != 0)
+					while ((nodalload = nlIter()) != 0)
 					{
 						ElementalLoadWrapper^ nodew = gcnew ElementalLoadWrapper();
 						nodew->_ElementalLoad = nodalload;

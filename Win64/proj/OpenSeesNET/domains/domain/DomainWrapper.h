@@ -10,6 +10,8 @@
 #include <Element.h>
 #include <ElementIter.h>
 #include <SP_Constraint.h>
+#include <NodalLoad.h>
+#include <ElementalLoad.h>
 #include <SP_ConstraintIter.h>
 #include <MP_Constraint.h>
 #include <MP_ConstraintIter.h>
@@ -23,6 +25,7 @@
 #include "../../recorders/RecorderWrapper.h"
 #include "../../matrix/MatrixWrapper.h"
 #include "../constraints/ConstraintWrapper.h"
+#include "../loads/LoadWrapper.h"
 #include "../patterns/LoadPatternWrapper.h"
 #include "../nodes/NodeWrapper.h"
 #include "../../taggeds/TaggedObjectWrapper.h"
@@ -49,6 +52,12 @@ namespace OpenSees {
 		delegate int DomainEventRemoveLoadPattern(LoadPattern* lp);
 		delegate int DomainEventAddRecorder(Recorder* rec);
 		delegate int DomainEventRemoveRecorder(Recorder* rec);
+		delegate int DomainEventAddNodalLoad(NodalLoad* obj,int pattern);
+		delegate int DomainEventRemoveNodalLoad(NodalLoad* obj);
+		delegate int DomainEventAddElementalLoad(ElementalLoad* obj, int pattern);
+		delegate int DomainEventRemoveElementalLoad(ElementalLoad* obj);
+		delegate int DomainEventAddSP_Constraint(SP_Constraint* obj, int pattern);
+		delegate int DomainEventRemoveSP_Constraint(SP_Constraint* obj);
 		delegate int DomainEventClearAll();
 		public ref class DomainWrapper : BaseDomainWrapper
 		{
@@ -310,6 +319,12 @@ namespace OpenSees {
 			event EventHandler<DomainRemoveLoadPatternEventArgs^>^ RemoveLoadPatternEventHandler;
 			event EventHandler<DomainAddRecorderEventArgs^>^ AddRecorderEventHandler;
 			event EventHandler<DomainRemoveRecorderEventArgs^>^ RemoveRecorderEventHandler;
+			event EventHandler<DomainAddNodalLoadEventArgs^>^ AddNodalLoadEventHandler;
+			event EventHandler<DomainRemoveNodalLoadEventArgs^>^ RemoveNodalLoadEventHandler;
+			event EventHandler<DomainAddElementalLoadEventArgs^>^ AddElementalLoadEventHandler;
+			event EventHandler<DomainRemoveElementalLoadEventArgs^>^ RemoveElementalLoadEventHandler;
+			event EventHandler<DomainAddSP_ConstraintEventArgs^>^ AddSP_ConstraintEventHandler;
+			event EventHandler<DomainRemoveSP_ConstraintEventArgs^>^ RemoveSP_ConstraintEventHandler;
 			event EventHandler<DomainClearAllArgs^>^ ClearAllHandler;
 
 
@@ -372,6 +387,33 @@ namespace OpenSees {
 			int RemoveRecorderEvent(Recorder* Recorder)
 			{
 				RemoveRecorderEventHandler(this, gcnew DomainRemoveRecorderEventArgs(gcnew RecorderWrapper(Recorder)));
+				return 0;
+			}
+			int AddNodalLoadEvent(NodalLoad* NodalLoad, int pattern) {
+				AddNodalLoadEventHandler(this, gcnew DomainAddNodalLoadEventArgs(gcnew NodalLoadWrapper(NodalLoad), pattern));
+				return 0;
+			}
+			int RemoveNodalLoadEvent(NodalLoad* NodalLoad)
+			{
+				RemoveNodalLoadEventHandler(this, gcnew DomainRemoveNodalLoadEventArgs(gcnew NodalLoadWrapper(NodalLoad)));
+				return 0;
+			}
+			int AddElementalLoadEvent(ElementalLoad* ElementalLoad, int pattern) {
+				AddElementalLoadEventHandler(this, gcnew DomainAddElementalLoadEventArgs(gcnew ElementalLoadWrapper(ElementalLoad), pattern));
+				return 0;
+			}
+			int RemoveElementalLoadEvent(ElementalLoad* ElementalLoad)
+			{
+				RemoveElementalLoadEventHandler(this, gcnew DomainRemoveElementalLoadEventArgs(gcnew ElementalLoadWrapper(ElementalLoad)));
+				return 0;
+			}
+			int AddSP_ConstraintEvent(SP_Constraint* SP_Constraint, int pattern) {
+				AddSP_ConstraintEventHandler(this, gcnew DomainAddSP_ConstraintEventArgs(gcnew SP_ConstraintWrapper(SP_Constraint), pattern));
+				return 0;
+			}
+			int RemoveSP_ConstraintEvent(SP_Constraint* SP_Constraint)
+			{
+				RemoveSP_ConstraintEventHandler(this, gcnew DomainRemoveSP_ConstraintEventArgs(gcnew SP_ConstraintWrapper(SP_Constraint)));
 				return 0;
 			}
 			int ClearAllEvent() {
@@ -468,6 +510,50 @@ namespace OpenSees {
 					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveRecorder);
 					_Domain->_DomainEvent_RemoveRecorder = static_cast<DomainEvent_RemoveRecorder>(ip.ToPointer());
 
+					// add nl
+					DomainEventAddNodalLoad^ _DomainEventAddNodalLoad = gcnew DomainEventAddNodalLoad(this,
+						&DomainWrapper::AddNodalLoadEvent);
+					gc_DomainEventAddNodalLoad = GCHandle::Alloc(_DomainEventAddNodalLoad);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddNodalLoad);
+					_Domain->_DomainEvent_AddNodalLoad = static_cast<DomainEvent_AddNodalLoad>(ip.ToPointer());
+
+					// remove nl
+					DomainEventRemoveNodalLoad^ _DomainEventRemoveNodalLoad = gcnew DomainEventRemoveNodalLoad(this,
+						&DomainWrapper::RemoveNodalLoadEvent);
+					gc_DomainEventRemoveNodalLoad = GCHandle::Alloc(_DomainEventRemoveNodalLoad);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveNodalLoad);
+					_Domain->_DomainEvent_RemoveNodalLoad = static_cast<DomainEvent_RemoveNodalLoad>(ip.ToPointer());
+
+					// add el
+					DomainEventAddElementalLoad^ _DomainEventAddElementalLoad = gcnew DomainEventAddElementalLoad(this,
+						&DomainWrapper::AddElementalLoadEvent);
+					gc_DomainEventAddElementalLoad = GCHandle::Alloc(_DomainEventAddElementalLoad);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddElementalLoad);
+					_Domain->_DomainEvent_AddElementalLoad = static_cast<DomainEvent_AddElementalLoad>(ip.ToPointer());
+
+					// remove el
+					DomainEventRemoveElementalLoad^ _DomainEventRemoveElementalLoad = gcnew DomainEventRemoveElementalLoad(this,
+						&DomainWrapper::RemoveElementalLoadEvent);
+					gc_DomainEventRemoveElementalLoad = GCHandle::Alloc(_DomainEventRemoveElementalLoad);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveElementalLoad);
+					_Domain->_DomainEvent_RemoveElementalLoad = static_cast<DomainEvent_RemoveElementalLoad>(ip.ToPointer());
+
+
+					// add sp
+					DomainEventAddSP_Constraint^ _DomainEventAddSP_Constraint = gcnew DomainEventAddSP_Constraint(this,
+						&DomainWrapper::AddSP_ConstraintEvent);
+					gc_DomainEventAddSP_Constraint = GCHandle::Alloc(_DomainEventAddSP_Constraint);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventAddSP_Constraint);
+					_Domain->_DomainEvent_AddSP_Constraint = static_cast<DomainEvent_AddSP_Constraint>(ip.ToPointer());
+
+					// remove sp
+					DomainEventRemoveSP_Constraint^ _DomainEventRemoveSP_Constraint = gcnew DomainEventRemoveSP_Constraint(this,
+						&DomainWrapper::RemoveSP_ConstraintEvent);
+					gc_DomainEventRemoveSP_Constraint = GCHandle::Alloc(_DomainEventRemoveSP_Constraint);
+					ip = Marshal::GetFunctionPointerForDelegate(_DomainEventRemoveSP_Constraint);
+					_Domain->_DomainEvent_RemoveSP_Constraint = static_cast<DomainEvent_RemoveSP_Constraint>(ip.ToPointer());
+
+
 					// clear all
 					DomainEventClearAll^ _DomainEventClearAll = gcnew DomainEventClearAll(this, &DomainWrapper::ClearAllEvent);
 					gc_DomainEventClearAll = GCHandle::Alloc(_DomainEventClearAll);
@@ -488,6 +574,12 @@ namespace OpenSees {
 			GCHandle gc_DomainEventRemoveLoadPattern;
 			GCHandle gc_DomainEventAddRecorder;
 			GCHandle gc_DomainEventRemoveRecorder;
+			GCHandle gc_DomainEventAddNodalLoad;
+			GCHandle gc_DomainEventRemoveNodalLoad;
+			GCHandle gc_DomainEventAddElementalLoad;
+			GCHandle gc_DomainEventRemoveElementalLoad;
+			GCHandle gc_DomainEventAddSP_Constraint;
+			GCHandle gc_DomainEventRemoveSP_Constraint;
 			GCHandle gc_DomainEventClearAll;
 		};
 	}

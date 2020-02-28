@@ -1,17 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (OpenSeesWrapper.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  AcceleratorWrapper.cpp
-  AlgorithmsWrapper.cpp
-  LineSearchWrapper.cpp
   AnalysisWrapper.cpp
 C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::PFEMAnalysisAnalysisWrapper::Analyze' does not match a base ref class method
 C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(181,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
 C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): warning C4490: 'override': incorrect use of override specifier; 'OpenSees::Analysis::VariableTimeStepDirectIntegrationAnalysisWrapper::Analyze' does not match a base ref class method
-  ConstraintHandlerWrapper.cpp
   StaticIntegratorWrapper.cpp
-  TransientIntegratorWrapper.cpp
-  AnalysisModelWrapper.cpp
-  DOF_NumbererWrapper.cpp
-  ConvergenceTestWrapper.cpp
   DamageModelWrapper.cpp
   DomainComponentWrapper.cpp
   ConstraintWrapper.cpp
@@ -22,8 +14,6 @@ C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWr
   LoadWrapper.cpp
   NodeWrapper.cpp
   LoadPatternWrapper.cpp
-  Generating Code...
-  Compiling...
   TimeSeriesWrapper.cpp
   BaseElementWrapper.cpp
   ElementWrapper.cpp
@@ -33,9 +23,10 @@ C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWr
 C:\Git Projects\OpenSees.NET\Win64\proj\OpenSeesNET\analysis\analysis\AnalysisWrapper.h(206,16): message : 'new' or 'override' are only allowed when a matching base method from a ref class exists
   CoupledZeroLengthWrapper.cpp
   ZeroLengthElementWrapper.cpp
+  Generating Code...
+  Compiling...
   AdapterWrapper.cpp
   BeamColumnWrapper.cpp
-  BeamIntegrationWrapper.cpp
   BearingWrapper.cpp
   BrickWrapper.cpp
   CatenaryCableWrapper.cpp
@@ -51,44 +42,20 @@ C:\Git Projects\OpenSees.NET\src\element\surfaceLoad\SurfaceLoad.h(43): message 
 C:\Git Projects\OpenSees.NET\src\element\surfaceLoad\TriSurfaceLoad.h(44,1): warning C4005: 'SL_NUM_DDOF': macro redefinition
   ShellWrapper.cpp
   TrussWrapper.cpp
-  Generating Code...
-  Compiling...
-  GraphNumbererWrapper.cpp
-  HandlerWrapper.cpp
   MaterialWrapper.cpp
   NDMaterialWrapper.cpp
   SectionForceDeformationWrapper.cpp
   FiberWrapper.cpp
   SectionIntegrationWrapper.cpp
-  PatchWrapper.cpp
-  ReinfLayerWrapper.cpp
   SectionRepresWrapper.cpp
   LimitCurveWrapper.cpp
   UniaxialMaterialWrapper.cpp
   UniaxialMaterialWrapper_all.cpp
-  YieldSurfaceWrapper.cpp
-  IDWrapper.cpp
-  MatrixWrapper.cpp
-  VectorWrapper.cpp
-  InformationWrapper.cpp
-  RecorderWrapper.cpp
-  ResponseWrapper.cpp
   Generating Code...
   Compiling...
+  YieldSurfaceWrapper.cpp
+  RecorderWrapper.cpp
   ResponseWrapper_all.cpp
-  BandGENWrapper.cpp
-  BandSPDWrapper.cpp
-  DiagonalWrapper.cpp
-  EigenSOEWrapper.cpp
-  EigenSolverWrapper.cpp
-  FullGENWrapper.cpp
-  LinearSOEWrapper.cpp
-  ProfileSPDWrapper.cpp
-  SYMBandEigenWrapper.cpp
-  SparseGENWrapper.cpp
-  SparseSYMWrapper.cpp
-  UmfpackGenWrapper.cpp
-  ArpackSOEWrapper.cpp
   TaggedObjectWrapper.cpp
   ModelBuilderEvent.cpp
   TclWrapper.cpp

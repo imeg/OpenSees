@@ -12,7 +12,7 @@ using namespace OpenSees::Components::Loads;
 DomainWrapper::DomainWrapper()
 {
 	_Domain = new Domain();
-	InitEvents();	
+	InitEvents();
 }
 
 DomainWrapper::~DomainWrapper()
@@ -36,21 +36,27 @@ DomainWrapper::~DomainWrapper()
 	gc_DomainEventAddRecorder.Free();
 	gc_DomainEventRemoveRecorder.Free();
 	gc_DomainEventClearAll.Free();
+	gc_DomainEventAddNodalLoad.Free();
+	gc_DomainEventRemoveNodalLoad.Free();
+	gc_DomainEventAddElementalLoad.Free();
+	gc_DomainEventRemoveElementalLoad.Free();
+	gc_DomainEventAddSP_Constraint.Free();
+	gc_DomainEventRemoveSP_Constraint.Free();
 
 }
 
-bool ^ 
+bool^
 DomainWrapper::AddNode(array<NodeWrapper^>^ nodes)
 {
 	int length = (nodes->Length);
 	for (int i = 0; i < length; i++) {
 		Node* _node = nodes[i]->_Node;
 
-		if(! _Domain->addNode(_node))
+		if (!_Domain->addNode(_node))
 			return false;
-		AddNodeEventHandler(nullptr,nullptr);
+		AddNodeEventHandler(nullptr, nullptr);
 	}
-	
+
 	return true;
 }
 
@@ -62,7 +68,7 @@ DomainWrapper::AddNode(NodeWrapper^ node)
 	//return false;
 }
 
-bool ^ DomainWrapper::AddElement(array<ElementWrapper^>^ elements)
+bool^ DomainWrapper::AddElement(array<ElementWrapper^>^ elements)
 {
 	int length = (elements->Length);
 	for (int i = 0; i < length; i++) {
@@ -73,14 +79,14 @@ bool ^ DomainWrapper::AddElement(array<ElementWrapper^>^ elements)
 	return true;
 }
 
-bool^ 
+bool^
 DomainWrapper::AddElement(ElementWrapper^ element)
 {
 	Element* _element = element->_Element;
 	return _Domain->addElement(_element);
 }
 
-bool ^ DomainWrapper::AddSP_Constraint(array<SP_ConstraintWrapper^>^ sps)
+bool^ DomainWrapper::AddSP_Constraint(array<SP_ConstraintWrapper^>^ sps)
 {
 	int length = (sps->Length);
 	for (int i = 0; i < length; i++) {
@@ -104,7 +110,7 @@ DomainWrapper::AddMP_Constraint(MP_ConstraintWrapper^ mp_Constraint)
 	return _Domain->addMP_Constraint(mp_Constraint->_MP_Constraint);
 }
 
-bool^ 
+bool^
 DomainWrapper::AddMP_Constraint(array<MP_ConstraintWrapper^>^ mps)
 {
 	int length = (mps->Length);
@@ -129,13 +135,13 @@ DomainWrapper::AddNodalLoad(NodalLoadWrapper^ nodalLoad, int loadPatternTag)
 	return _Domain->addNodalLoad(_nodalLoad, loadPatternTag);
 }
 
-bool^ 
+bool^
 DomainWrapper::AddNodalLoad(array<NodalLoadWrapper^>^ nodalLoads, int loadPatternTag)
 {
 	int length = (nodalLoads->Length);
 	for (int i = 0; i < length; i++) {
 		NodalLoad* nl = nodalLoads[i]->_NodalLoad;
-		if (!_Domain->addNodalLoad(nl,loadPatternTag))
+		if (!_Domain->addNodalLoad(nl, loadPatternTag))
 			return false;
 	}
 	return true;

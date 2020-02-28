@@ -146,12 +146,14 @@
     <LinkIncremental>true</LinkIncremental>
     <TargetName>OpenSees.NET.x64.dll</TargetName>
     <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
     <OutDir>.\..\..\bin\</OutDir>
     <IntDir>.\..\..\obj\opensees.net\debug\</IntDir>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -169,12 +171,14 @@
     <LinkIncremental>false</LinkIncremental>
     <TargetName>OpenSees.NET.x64.dll</TargetName>
     <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
     <OutDir>.\..\..\bin\</OutDir>
     <IntDir>.\..\..\obj\opensees.net\release\</IntDir>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

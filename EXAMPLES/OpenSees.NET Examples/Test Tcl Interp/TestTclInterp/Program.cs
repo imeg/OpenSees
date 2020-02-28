@@ -65,6 +65,7 @@ namespace TestTclInterp
             tclInterp1.ClearAllUniaxialMaterialEventHandler += TclInterp1_ClearAllUniaxialMaterialEventHandler;
             domain.AddNodeEventHandler += Domain_AddNodeEventHandler1;
             domain.AddElementEventHandler += Domain_AddElementEventHandler;
+            domain.AddLoadPatternEventHandler += Domain_AddLoadPatternEventHandler;
             var ret = tclInterp1.Execute("source ../m2.txt");
             var disp = domain.GetNode(1).GetCommitDisp();
             var resp = domain.GetElement(1).GetDoubleResponse(40);
@@ -107,6 +108,11 @@ namespace TestTclInterp
             //}
             Console.ReadKey(); 
             #endregion
+        }
+
+        private static void Domain_AddLoadPatternEventHandler(object sender, OpenSees.Components.DomainAddLoadPatternEventArgs e)
+        {
+            var nodalloads = e.LoadPattern.GetNodalLoads();
         }
 
         private static void TclInterp1_ClearAllUniaxialMaterialEventHandler(object sender, OpenSees.Tcl.ModelBuilder.ModelBuilderClearAllUniaxialMaterialArgs e)

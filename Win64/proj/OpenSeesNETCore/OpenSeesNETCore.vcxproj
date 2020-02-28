@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug.DLL|Win32">
+      <Configuration>Debug.DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug.DLL|x64">
+      <Configuration>Debug.DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release.DLL|Win32">
+      <Configuration>Release.DLL</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release.DLL|x64">
+      <Configuration>Release.DLL</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{486E32B5-EEA1-4C5F-87CD-02F54CBD15AA}</ProjectGuid>
+    <Keyword>NetCoreCProj</Keyword>
+    <RootNamespace>OpenSeesNETCore</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>NetCore</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
+    <OutDir>.\..\..\bin\</OutDir>
+    <IntDir>.\..\..\obj\opensees.netcore\debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">
+    <OutDir>.\..\..\bin\</OutDir>
+    <IntDir>.\..\..\obj\opensees.netcore\debug\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\..\..\src\system_of_eqn\linearSOE\diagonal;..\..\..\src\damage;..\..\..\src\material\uniaxial\py;..\..\..\src\reliability\fesensitivity;..\..\..\src\reliability\tcl;..\..\..\src\coordTransformation;..\..\..\src\material\section\repres\section;..\..\..\src\analysis\algorithm\equiSolnAlgo;..\..\..\src\system_of_eqn\eigenSOE;..\..\..\src\analysis\algorithm\eigenAlgo;..\..\..\src\material\nD;..\..\..\src\material\uniaxial;..\..\..\src\handler;..\..\..\src\tcl;..\..\..\src\actor\objectBroker;..\..\..\src\system_of_eqn\linearSOE\umfGEN;..\..\..\src\system_of_eqn\linearSOE\fullGEN;..\..\..\src\system_of_eqn\linearSOE\sparseGEN;..\..\..\src\system_of_eqn\linearSOE\bandSPD;..\..\..\src\system_of_eqn\linearSOE\bandGEN;..\..\..\src\element\nonlinearBeamColumn\tcl\repres\section;..\..\..\src\matrix;..\..\..\src\recorder;..\..\..\src\graph\numberer;..\..\..\src\material\section;..\..\..\src\graph\graph;..\..\..\src\element\beam2d;..\..\..\src\element\beam3d;..\..\..\src\system_of_eqn;..\..\..\src\system_of_eqn\linearSOE;..\..\..\src\system_of_eqn\linearSOE\profileSPD;..\..\..\src\system_of_eqn\linearSOE\sparseSYM;..\..\..\src\domain\pattern;..\..\..\src\analysis\analysis;..\..\..\src\analysis\integrator;..\..\..\src\analysis\numberer;..\..\..\src\analysis\handler;..\..\..\src\renderer;..\..\..\src\material;..\..\..\src\analysis\algorithm;..\..\..\src\convergenceTest;..\..\..\src\analysis\model\simple;..\..\..\src\domain\load;..\..\..\src\analysis\model;..\..\..\src\element\truss;..\..\..\src\actor\channel;..\..\..\src\utility;..\..\..\src\actor\actor;..\..\..\src\modelbuilder;..\..\..\src\modelbuilder\tcl;..\..\..\src\domain\constraints;..\..\..\src\domain\component;..\..\..\src\element;..\..\..\src\domain\node;..\..\..\src\domain\domain;..\..\..\src\tagged\storage;..\..\..\src;..\..\..\src\tagged;..\..\..\src\reliability\domain;..\..\..\src\reliability\domain\components;..\..\..\src\reliability\domain\distributions;..\..\..\src\reliability\analysis;..\..\..\src\reliability\analysis\analysis;..\..\..\src\reliability\analysis\curvature;..\..\..\src\reliability\analysis\designPoint;..\..\..\src\reliability\analysis\direction;..\..\..\src\reliability\analysis\gFunction;..\..\..\src\reliability\analysis\misc;..\..\..\src\reliability\analysis\randomNumber;..\..\..\src\reliability\analysis\sensitivity;..\..\..\src\reliability\analysis\stepSize;..\..\..\src\reliability\analysis\transformation;..\..\..\src\nDarray;..\..\..\src\system_of_eqn\linearSOE\cg;..\..\..\src\system_of_eqn\linearSOE\itpack;..\..\..\src\database;..\..\..\src\element\updatedLagrangianBeamColumn;..\..\..\src\material\yieldSurface\yieldSurfaceBC;..\..\..\src\material\yieldSurface\evolution;..\..\..\src\material\yieldSurface\plasticHardeningMaterial;..\..\..\src\reliability\domain\modulatingFunction;..\..\..\src\reliability\domain\spectrum;..\..\..\src\reliability\domain\filter;..\..\..\src\reliability\analysis\hessianApproximation;..\..\..\src\reliability\analysis\convergenceCheck;..\..\..\src\reliability\analysis\meritFunction;..\..\..\src\reliability\analysis\rootFinding;C:\Program Files\Tcl;C:\Program Files\Tcl\include;..\..\..\src\material\section\fiber;..\..\..\src\element\forceBeamColumn;..\..\..\src\material\section\repres\patch;..\..\..\src\material\section\repres\reinfLayer;..\..\..\src\element\elasticbeamcolumn;..\..\..\src\material\section\repres\cell;..\..\..\src\domain\groundMotion;..\..\..\src\proxy;..\..\..\src\element\fourNodeQuad;..\..\..\src\element\shell;..\..\..\SRC\element\frictionBearing\frictionModel;..\..\..\SRC\recorder\response;..\..\..\SRC\material\uniaxial\backbone;..\..\..\SRC\material\uniaxial\limitState;..\..\..\SRC\material\uniaxial\limitState\limitCurve;..\..\..\SRC\api;..\..\..\SRC\material\nd\soil;..\..\..\SRC\material\uniaxial\PY;..\..\..\SRC\element\UP-ucsd;..\..\..\SRC\material\section\yieldSurface;..\..\..\SRC\material\nD\cyclicSoil;..\..\..\SRC\material\nD\stressDensityModel;..\..\..\SRC\material\nD\UWmaterials;..\..\..\SRC\material\section\integration;..\..\..\SRC\analysis\dof_grp;..\..\..\OTHER\SuperLU_5.1.1\SRC;..\..\..\src\analysis\algorithm\equiSolnAlgo\accelerator;..\..\..\SRC\proxy;..\..\..\SRC\system_of_eqn\linearSOE\pardiso;..\..\..\src\domain\domain\single</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>actor.lib;analysis.lib;arpack.lib;blas.lib;cblas.lib;convergence.lib;cssparse.lib;damage.lib;database.lib;DoddRestrepo.lib;domain.lib;drain.lib;element.lib;feap.lib;tcl.lib;fedeas.lib;glu32.lib;graph.lib;handler.lib;ifconsol.lib;lapack.lib;libifcoremt.lib;libmmt.lib;material.lib;matrix.lib;modelbuilder.lib;opengl32.lib;optimization.lib;recorder.lib;reliability.lib;renderer.lib;superLU.lib;system.lib;tagged.lib;tcl86t.lib;tk86t.lib;umfpackC.lib;utility.lib;wsock32.lib;proxy.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib\release;..\..\lib;C:\Program Files\Tcl\lib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2018.2.185\windows\mkl\lib\intel64_win</AdditionalLibraryDirectories>
+      <OutputFile>.\..\..\bin\OpenSees.NETCore.x64.dll</OutputFile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\..\..\src\system_of_eqn\linearSOE\diagonal;..\..\..\src\damage;..\..\..\src\material\uniaxial\py;..\..\..\src\reliability\fesensitivity;..\..\..\src\reliability\tcl;..\..\..\src\coordTransformation;..\..\..\src\material\section\repres\section;..\..\..\src\analysis\algorithm\equiSolnAlgo;..\..\..\src\system_of_eqn\eigenSOE;..\..\..\src\analysis\algorithm\eigenAlgo;..\..\..\src\material\nD;..\..\..\src\material\uniaxial;..\..\..\src\handler;..\..\..\src\tcl;..\..\..\src\actor\objectBroker;..\..\..\src\system_of_eqn\linearSOE\umfGEN;..\..\..\src\system_of_eqn\linearSOE\fullGEN;..\..\..\src\system_of_eqn\linearSOE\sparseGEN;..\..\..\src\system_of_eqn\linearSOE\bandSPD;..\..\..\src\system_of_eqn\linearSOE\bandGEN;..\..\..\src\element\nonlinearBeamColumn\tcl\repres\section;..\..\..\src\matrix;..\..\..\src\recorder;..\..\..\src\graph\numberer;..\..\..\src\material\section;..\..\..\src\graph\graph;..\..\..\src\element\beam2d;..\..\..\src\element\beam3d;..\..\..\src\system_of_eqn;..\..\..\src\system_of_eqn\linearSOE;..\..\..\src\system_of_eqn\linearSOE\profileSPD;..\..\..\src\system_of_eqn\linearSOE\sparseSYM;..\..\..\src\domain\pattern;..\..\..\src\analysis\analysis;..\..\..\src\analysis\integrator;..\..\..\src\analysis\numberer;..\..\..\src\analysis\handler;..\..\..\src\renderer;..\..\..\src\material;..\..\..\src\analysis\algorithm;..\..\..\src\convergenceTest;..\..\..\src\analysis\model\simple;..\..\..\src\domain\load;..\..\..\src\analysis\model;..\..\..\src\element\truss;..\..\..\src\actor\channel;..\..\..\src\utility;..\..\..\src\actor\actor;..\..\..\src\modelbuilder;..\..\..\src\modelbuilder\tcl;..\..\..\src\domain\constraints;..\..\..\src\domain\component;..\..\..\src\element;..\..\..\src\domain\node;..\..\..\src\domain\domain;..\..\..\src\tagged\storage;..\..\..\src;..\..\..\src\tagged;..\..\..\src\reliability\domain;..\..\..\src\reliability\domain\components;..\..\..\src\reliability\domain\distributions;..\..\..\src\reliability\analysis;..\..\..\src\reliability\analysis\analysis;..\..\..\src\reliability\analysis\curvature;..\..\..\src\reliability\analysis\designPoint;..\..\..\src\reliability\analysis\direction;..\..\..\src\reliability\analysis\gFunction;..\..\..\src\reliability\analysis\misc;..\..\..\src\reliability\analysis\randomNumber;..\..\..\src\reliability\analysis\sensitivity;..\..\..\src\reliability\analysis\stepSize;..\..\..\src\reliability\analysis\transformation;..\..\..\src\nDarray;..\..\..\src\system_of_eqn\linearSOE\cg;..\..\..\src\system_of_eqn\linearSOE\itpack;..\..\..\src\database;..\..\..\src\element\updatedLagrangianBeamColumn;..\..\..\src\material\yieldSurface\yieldSurfaceBC;..\..\..\src\material\yieldSurface\evolution;..\..\..\src\material\yieldSurface\plasticHardeningMaterial;..\..\..\src\reliability\domain\modulatingFunction;..\..\..\src\reliability\domain\spectrum;..\..\..\src\reliability\domain\filter;..\..\..\src\reliability\analysis\hessianApproximation;..\..\..\src\reliability\analysis\convergenceCheck;..\..\..\src\reliability\analysis\meritFunction;..\..\..\src\reliability\analysis\rootFinding;C:\Program Files\Tcl;C:\Program Files\Tcl\include;..\..\..\src\material\section\fiber;..\..\..\src\element\forceBeamColumn;..\..\..\src\material\section\repres\patch;..\..\..\src\material\section\repres\reinfLayer;..\..\..\src\element\elasticbeamcolumn;..\..\..\src\material\section\repres\cell;..\..\..\src\domain\groundMotion;..\..\..\src\proxy;..\..\..\src\element\fourNodeQuad;..\..\..\src\element\shell;..\..\..\SRC\element\frictionBearing\frictionModel;..\..\..\SRC\recorder\response;..\..\..\SRC\material\uniaxial\backbone;..\..\..\SRC\material\uniaxial\limitState;..\..\..\SRC\material\uniaxial\limitState\limitCurve;..\..\..\SRC\api;..\..\..\SRC\material\nd\soil;..\..\..\SRC\material\uniaxial\PY;..\..\..\SRC\element\UP-ucsd;..\..\..\SRC\material\section\yieldSurface;..\..\..\SRC\material\nD\cyclicSoil;..\..\..\SRC\material\nD\stressDensityModel;..\..\..\SRC\material\nD\UWmaterials;..\..\..\SRC\material\section\integration;..\..\..\SRC\analysis\dof_grp;..\..\..\OTHER\SuperLU_5.1.1\SRC;..\..\..\src\analysis\algorithm\equiSolnAlgo\accelerator;..\..\..\SRC\proxy;..\..\..\SRC\system_of_eqn\linearSOE\pardiso;..\..\..\src\domain\domain\single</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>actor.lib;analysis.lib;arpack.lib;blas.lib;cblas.lib;convergence.lib;cssparse.lib;damage.lib;database.lib;DoddRestrepo.lib;domain.lib;drain.lib;element.lib;feap.lib;tcl.lib;fedeas.lib;glu32.lib;graph.lib;handler.lib;ifconsol.lib;lapack.lib;libifcoremt.lib;libmmt.lib;material.lib;matrix.lib;modelbuilder.lib;opengl32.lib;optimization.lib;recorder.lib;reliability.lib;renderer.lib;superLU.lib;system.lib;tagged.lib;tcl86t.lib;tk86t.lib;umfpackC.lib;utility.lib;wsock32.lib;proxy.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\lib\debug;..\..\lib;C:\Program Files\Tcl\lib;C:\Program Files (x86)\IntelSWTools\compilers_and_libraries_2018.2.185\windows\mkl\lib\intel64_win</AdditionalLibraryDirectories>
+      <OutputFile>.\..\..\bin\OpenSees.NETCore.x64.dll</OutputFile>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.DLL|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\OpenSeesNET\actors\IMovableObjectWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\actors\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\AcceleratorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\AlgorithmsWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\LineSearchWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\analysis\AnalysisWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\analysis\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\handlers\ConstraintHandlerWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\handlers\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\IncrementalIntegratorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\IntegratorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\StaticIntegratorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\TransientIntegratorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\models\AnalysisModelWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\models\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\numberers\DOF_NumbererWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\analysis\numberers\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\convergances\ConvergenceTestWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\convergances\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\damage\DamageModelWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\damage\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\components\DomainComponentWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\components\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\constraints\ConstraintWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\constraints\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\domain\BaseDomainWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\domain\DomainEvent.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\domain\DomainWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\domain\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\groundmotion\GroudMotionWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\groundmotion\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\loads\LoadWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\loads\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\nodes\NodeWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\nodes\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\patterns\LoadPatternWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\patterns\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\timeSeries\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\domains\timeSeries\TimeSeriesWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\adaptors\AdapterWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\adaptors\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\BaseElementWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\BeamColumnWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\BeamIntegrationWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\bearing\BearingWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\bearing\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\brick\BrickWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\brick\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\catenaryCable\CatenaryCableWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\catenaryCable\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\crdTransf\CrdTransfWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\crdTransf\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ElementWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\External\ExternalElementWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\External\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\other\OtherElementWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\other\Quad4FiberOverlayWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\other\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\other\SurfaceLoadWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\Quad\QuadWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\quad\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\shell\ShellWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\shell\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\truss\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\truss\TrussWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ULBeamColumn\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\CoupledZeroLengthWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\ZeroLengthElementWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\graphs\GraphNumbererWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\graphs\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\handlers\HandlerWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\handlers\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\MaterialWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\ndmaterial\NDMaterialWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\ndmaterial\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\fiber\FiberWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\fiber\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\integrations\SectionIntegrationWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\integrations\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\patch\PatchWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\patch\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\reinfLayer\ReinfLayerWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\reinfLayer\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\sect\SectionRepresWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\sect\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\SectionForceDeformationWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\section\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\LimitCurveWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper_all.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\yieldSurface\YieldSurfaceWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\materials\yieldSurface\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\matrix\IDWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\matrix\MatrixWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\matrix\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\matrix\VectorWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\OPS.h" />
+    <ClInclude Include="..\OpenSeesNET\recorders\InformationWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\recorders\RecorderWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\recorders\ResponseWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\recorders\ResponseWrapper_all.h" />
+    <ClInclude Include="..\OpenSeesNET\recorders\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\arpack\ArpackSOEWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\arpack\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\BandGENWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\BandSPDWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\DiagonalWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\EigenSOEWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\EigenSolverWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\FullGENWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\LinearSOESolverWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\LinearSOEWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\ProfileSPDWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\SolverWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\SparseGENWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\SparseSYMWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\SYMBandEigenWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\SystemOfEqnWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\systems\UmfpackGenWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\taggeds\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\taggeds\TaggedObjectWrapper.h" />
+    <ClInclude Include="..\OpenSeesNET\tcl\ModelBuilderEvent.h" />
+    <ClInclude Include="..\OpenSeesNET\tcl\stdafx.h" />
+    <ClInclude Include="..\OpenSeesNET\tcl\TclWrapper.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release.DLL|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\AcceleratorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\AlgorithmsWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\LineSearchWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\analysis\AnalysisWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\handlers\ConstraintHandlerWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\IncrementalIntegratorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\IntegratorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\StaticIntegratorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\TransientIntegratorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\models\AnalysisModelWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\analysis\numberers\DOF_NumbererWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\convergances\ConvergenceTestWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\damage\DamageModelWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\components\DomainComponentWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\constraints\ConstraintWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\domain\BaseDomainWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\domain\DomainEvent.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\domain\DomainWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\groundmotion\GroudMotionWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\loads\LoadWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\nodes\NodeWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\patterns\LoadPatternWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\domains\timeSeries\TimeSeriesWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\adaptors\AdapterWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\BaseElementWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\beamColumn\BeamColumnWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\BeamIntegrationWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\bearing\BearingWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\brick\BrickWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\catenaryCable\CatenaryCableWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\crdTransf\CrdTransfWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\ElementWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\External\ExternalElementWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\other\OtherElementWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\other\Quad4FiberOverlayWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\other\SurfaceLoadWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\Quad\QuadWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\shell\ShellWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\truss\TrussWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\ZeroLength\CoupledZeroLengthWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\elements\ZeroLength\ZeroLengthElementWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\graphs\GraphNumbererWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\handlers\HandlerWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\MaterialWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\ndmaterial\NDMaterialWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\fiber\FiberWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\integrations\SectionIntegrationWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\patch\PatchWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\reinfLayer\ReinfLayerWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\sect\SectionRepresWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\section\SectionForceDeformationWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\LimitCurveWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper_all.cpp" />
+    <ClCompile Include="..\OpenSeesNET\materials\yieldSurface\YieldSurfaceWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\matrix\IDWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\matrix\MatrixWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\matrix\VectorWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\OPS.cpp" />
+    <ClCompile Include="..\OpenSeesNET\recorders\InformationWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\recorders\RecorderWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\recorders\ResponseWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\recorders\ResponseWrapper_all.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\arpack\ArpackSOEWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\BandGENWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\BandSPDWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\DiagonalWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\EigenSOEWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\EigenSolverWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\FullGENWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\LinearSOESolverWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\LinearSOEWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\ProfileSPDWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\SolverWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\SparseGENWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\SparseSYMWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\SYMBandEigenWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\SystemOfEqnWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\systems\UmfpackGenWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\taggeds\TaggedObjectWrapper.cpp" />
+    <ClCompile Include="..\OpenSeesNET\tcl\ModelBuilderEvent.cpp" />
+    <ClCompile Include="..\OpenSeesNET\tcl\TclWrapper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

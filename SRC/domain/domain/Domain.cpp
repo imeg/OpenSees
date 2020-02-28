@@ -882,8 +882,11 @@ Domain::addSP_Constraint(SP_Constraint* spConstraint, int pattern)
 	}
 
 	spConstraint->setDomain(this);
+#if _DLL
+	if (this->_DomainEvent_AddSP_Constraint)
+		this->_DomainEvent_AddSP_Constraint(spConstraint, pattern);
+#endif
 	this->domainChange();
-
 	return true;
 }
 
@@ -917,7 +920,10 @@ Domain::addNodalLoad(NodalLoad* load, int pattern)
 
 	load->setDomain(this);    // done in LoadPattern::addNodalLoad()
 	this->domainChange();
-
+#if _DLL
+	if (this->_DomainEvent_AddNodalLoad)
+		this->_DomainEvent_AddNodalLoad(load, pattern);
+#endif
 	return result;
 }
 
@@ -941,7 +947,10 @@ Domain::addElementalLoad(ElementalLoad* load, int pattern)
 		return false;
 	}
 
-
+#if _DLL
+	if (this->_DomainEvent_AddElementalLoad)
+		this->_DomainEvent_AddElementalLoad(load, pattern);
+#endif
 	// load->setDomain(this); // done in LoadPattern::addElementalLoad()
 	this->domainChange();
 	return result;
@@ -1340,16 +1349,17 @@ Domain::removeLoadPattern(int tag)
 		// theSP_Constraint->setDomain(0);
 	}
 
+#if _DLL
+	if (this->_DomainEvent_RemoveLoadPattern)
+		this->_DomainEvent_RemoveLoadPattern(result);
+#endif
+
 	// mark the domain has having changed if numSPs > 0
 	// as the constraint handlers have to be redone
 	if (numSPs > 0)
 		this->domainChange();
 
 	// finally return the load pattern
-#if _DLL
-	if (this->_DomainEvent_RemoveLoadPattern)
-		this->_DomainEvent_RemoveLoadPattern(result);
-#endif
 
 	return result;
 }
@@ -1367,8 +1377,13 @@ Domain::removeNodalLoad(int tag, int loadPattern)
 	// if not there return 0    
 	if (theLoadPattern == 0)
 		return 0;
+	NodalLoad* removedItem = theLoadPattern->removeNodalLoad(tag);
+#if _DLL
+	if (this->_DomainEvent_RemoveNodalLoad)
+		this->_DomainEvent_RemoveNodalLoad(removedItem);
+#endif
 
-	return theLoadPattern->removeNodalLoad(tag);
+	return removedItem;
 }
 
 
@@ -1382,7 +1397,12 @@ Domain::removeElementalLoad(int tag, int loadPattern)
 	if (theLoadPattern == 0)
 		return 0;
 
-	return theLoadPattern->removeElementalLoad(tag);
+	ElementalLoad* removedItem = theLoadPattern->removeElementalLoad(tag);
+#if _DLL
+	if (this->_DomainEvent_RemoveElementalLoad)
+		this->_DomainEvent_RemoveElementalLoad(removedItem);
+#endif
+	return removedItem;
 }
 
 
@@ -1397,6 +1417,10 @@ Domain::removeSP_Constraint(int tag, int loadPattern)
 		return 0;
 
 	SP_Constraint* theSP = theLoadPattern->removeSP_Constraint(tag);
+#if _DLL
+	if (this->_DomainEvent_RemoveSP_Constraint)
+		this->_DomainEvent_RemoveSP_Constraint(theSP);
+#endif
 	if (theSP != 0)
 		this->domainChange();
 

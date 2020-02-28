@@ -116,6 +116,10 @@ namespace OpenSees {
 				return gcnew String(type);
 			}
 
+			int GetClassTag() {
+				return _Element->getClassTag();
+			}
+
 			/*ResponseWrapper^ SetResponse(array<String^>^ argv, OpenSees::Handlers::OPS_StreamWrapper^ output) {
 				char ** _argv = new char*[argv->Length];
 				for (int i = 0; i < argv->Length; i++)

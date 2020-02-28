@@ -4,6 +4,7 @@
 #include "../nodes/NodeWrapper.h"
 #include "../../elements/ElementWrapper.h"
 #include "../constraints/ConstraintWrapper.h"
+#include "../loads/LoadWrapper.h"
 #include "../patterns/LoadPatternWrapper.h"
 #include "../../recorders/RecorderWrapper.h"
 
@@ -11,6 +12,7 @@ using namespace System;
 using namespace OpenSees::Components;
 using namespace OpenSees::Components::Constraints;
 using namespace OpenSees::Components::LoadPatterns;
+using namespace OpenSees::Components::Loads;
 using namespace OpenSees::Elements;
 using namespace OpenSees::Recorders;
 
@@ -91,10 +93,10 @@ namespace OpenSees {
 
 		public:
 			DomainAddSPEventArgs(SP_ConstraintWrapper^ sp) :EventArgs() {
-				this->sp = sp;
+				this->SPConstraint = sp;
 			};
 			~DomainAddSPEventArgs() {};
-			SP_ConstraintWrapper^ sp;
+			SP_ConstraintWrapper^ SPConstraint;
 		internal:
 
 		private:
@@ -105,10 +107,10 @@ namespace OpenSees {
 
 		public:
 			DomainRemoveSPEventArgs(SP_ConstraintWrapper^ sp) :EventArgs() {
-				this->sp = sp;
+				this->SPConstraint = sp;
 			};
 			~DomainRemoveSPEventArgs() {};
-			SP_ConstraintWrapper^ sp;
+			SP_ConstraintWrapper^ SPConstraint;
 		internal:
 
 		private:
@@ -118,11 +120,11 @@ namespace OpenSees {
 		{
 
 		public:
-			DomainAddMPEventArgs(MP_ConstraintWrapper^ sp) :EventArgs() {
-				this->mp = mp;
+			DomainAddMPEventArgs(MP_ConstraintWrapper^ mp) :EventArgs() {
+				this->MPConstraint = mp;
 			};
 			~DomainAddMPEventArgs() {};
-			MP_ConstraintWrapper^ mp;
+			MP_ConstraintWrapper^ MPConstraint;
 		internal:
 
 		private:
@@ -133,10 +135,10 @@ namespace OpenSees {
 
 		public:
 			DomainRemoveMPEventArgs(MP_ConstraintWrapper^ mp) :EventArgs() {
-				this->mp = mp;
+				this->MPConstraint = mp;
 			};
 			~DomainRemoveMPEventArgs() {};
-			MP_ConstraintWrapper^ mp;
+			MP_ConstraintWrapper^ MPConstraint;
 		internal:
 
 		private:
@@ -146,11 +148,11 @@ namespace OpenSees {
 		{
 
 		public:
-			DomainAddLoadPatternEventArgs(LoadPatternWrapper^ sp) :EventArgs() {
-				this->mp = mp;
+			DomainAddLoadPatternEventArgs(LoadPatternWrapper^ lp) :EventArgs() {
+				this->LoadPattern = lp;
 			};
 			~DomainAddLoadPatternEventArgs() {};
-			LoadPatternWrapper^ mp;
+			LoadPatternWrapper^ LoadPattern;
 		internal:
 
 		private:
@@ -160,11 +162,11 @@ namespace OpenSees {
 		{
 
 		public:
-			DomainRemoveLoadPatternEventArgs(LoadPatternWrapper^ mp) :EventArgs() {
-				this->mp = mp;
+			DomainRemoveLoadPatternEventArgs(LoadPatternWrapper^ lp) :EventArgs() {
+				this->LoadPattern = lp;
 			};
 			~DomainRemoveLoadPatternEventArgs() {};
-			LoadPatternWrapper^ mp;
+			LoadPatternWrapper^ LoadPattern;
 		internal:
 
 		private:
@@ -175,10 +177,10 @@ namespace OpenSees {
 
 		public:
 			DomainAddRecorderEventArgs(RecorderWrapper^ rec) :EventArgs() {
-				this->rec = rec;
+				this->Recorder = rec;
 			};
 			~DomainAddRecorderEventArgs() {};
-			RecorderWrapper^ rec;
+			RecorderWrapper^ Recorder;
 		internal:
 
 		private:
@@ -189,10 +191,100 @@ namespace OpenSees {
 
 		public:
 			DomainRemoveRecorderEventArgs(RecorderWrapper^ rec) :EventArgs() {
-				this->rec = rec;
+				this->Recorder = rec;
 			};
 			~DomainRemoveRecorderEventArgs() {};
-			RecorderWrapper^ rec;
+			RecorderWrapper^ Recorder;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainAddNodalLoadEventArgs : EventArgs
+		{
+
+		public:
+			DomainAddNodalLoadEventArgs(NodalLoadWrapper^ obj, int pattern) :EventArgs() {
+				this->NodalLoad = obj;
+				this->Pattern = pattern;
+			};
+			~DomainAddNodalLoadEventArgs() {};
+			NodalLoadWrapper^ NodalLoad;
+			int Pattern;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainRemoveNodalLoadEventArgs : EventArgs
+		{
+
+		public:
+			DomainRemoveNodalLoadEventArgs(NodalLoadWrapper^ obj) :EventArgs() {
+				this->NodalLoad = obj;
+			};
+			~DomainRemoveNodalLoadEventArgs() {};
+			NodalLoadWrapper^ NodalLoad;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainAddElementalLoadEventArgs : EventArgs
+		{
+
+		public:
+			DomainAddElementalLoadEventArgs(ElementalLoadWrapper^ obj, int pattern) :EventArgs() {
+				this->ElementalLoad = obj;
+				this->Pattern = pattern;
+			};
+			~DomainAddElementalLoadEventArgs() {};
+			ElementalLoadWrapper^ ElementalLoad;
+			int Pattern;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainRemoveElementalLoadEventArgs : EventArgs
+		{
+
+		public:
+			DomainRemoveElementalLoadEventArgs(ElementalLoadWrapper^ obj) :EventArgs() {
+				this->ElementalLoad = obj;
+			};
+			~DomainRemoveElementalLoadEventArgs() {};
+			ElementalLoadWrapper^ ElementalLoad;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainAddSP_ConstraintEventArgs : EventArgs
+		{
+
+		public:
+			DomainAddSP_ConstraintEventArgs(SP_ConstraintWrapper^ obj, int pattern) :EventArgs() {
+				this->SP_Constraint = obj;
+				this->Pattern = pattern;
+			};
+			~DomainAddSP_ConstraintEventArgs() {};
+			SP_ConstraintWrapper^ SP_Constraint;
+			int Pattern;
+		internal:
+
+		private:
+		};
+
+		public ref class DomainRemoveSP_ConstraintEventArgs : EventArgs
+		{
+
+		public:
+			DomainRemoveSP_ConstraintEventArgs(SP_ConstraintWrapper^ obj) :EventArgs() {
+				this->SP_Constraint = obj;
+			};
+			~DomainRemoveSP_ConstraintEventArgs() {};
+			SP_ConstraintWrapper^ SP_Constraint;
 		internal:
 
 		private:

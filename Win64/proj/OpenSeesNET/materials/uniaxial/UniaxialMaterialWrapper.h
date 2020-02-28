@@ -74,10 +74,12 @@ namespace OpenSees {
 				int RevertToStart() {
 					return _UniaxialMaterial->revertToStart();
 				}
-				String^ GetType() {
-					return gcnew String(_UniaxialMaterial->getClassType());
+				String^ GetClassType() {
+					const char* type = _UniaxialMaterial->getClassType();
+					return gcnew String(type);
 				}
-				int GetTypeTag() {
+
+				int GetClassTag() {
 					return _UniaxialMaterial->getClassTag();
 				}
 

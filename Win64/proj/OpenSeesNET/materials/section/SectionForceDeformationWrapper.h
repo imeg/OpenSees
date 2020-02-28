@@ -109,6 +109,15 @@ namespace OpenSees {
 					return _SectionForceDeformation->getRho();
 				}
 
+				String^ GetClassType() {
+					const char* type = _SectionForceDeformation->getClassType();
+					return gcnew String(type);
+				}
+
+				int GetClassTag() {
+					return _SectionForceDeformation->getClassTag();
+				}
+
 				~SectionForceDeformationWrapper() {
 					if (_SectionForceDeformation != 0)
 						delete _SectionForceDeformation;

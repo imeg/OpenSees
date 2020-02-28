@@ -191,7 +191,12 @@ namespace OpenSees {
 					return gcnew String(_NDMaterial->getClassType());
 				}
 
-				int GetTypeTag() {
+				String^ GetClassType() {
+					const char* type = _NDMaterial->getClassType();
+					return gcnew String(type);
+				}
+
+				int GetClassTag() {
 					return _NDMaterial->getClassTag();
 				}
 

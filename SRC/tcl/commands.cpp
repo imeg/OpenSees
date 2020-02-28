@@ -171,6 +171,7 @@ OPS_Stream *opserrPtr = &sserr;
 #include <HSConstraint.h>
 #include <MinUnbalDispNorm.h>
 #include <DisplacementControl.h>
+#include <EQPath.h>
 
 #include <PFEMIntegrator.h>
 #include <Integrator.h>//Abbas
@@ -4319,6 +4320,23 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
   // if the analysis exists - we want to change the Integrator
   if (theStaticAnalysis != 0)
     theStaticAnalysis->setIntegrator(*theStaticIntegrator);
+  }
+  else if (strcmp(argv[1], "eqpath") == 0) {
+	  double arcLength;
+	  int method;
+	  if (argc != 4) {
+		  opserr << "WARNING integrator eqpath arcLength method \n";
+		  return TCL_ERROR;
+	  }
+	  if (Tcl_GetDouble(interp, argv[2], &arcLength) != TCL_OK)
+		  return TCL_ERROR;
+	  if (Tcl_GetInt(interp, argv[3], &method) != TCL_OK)
+		  return TCL_ERROR;
+	  theStaticIntegrator = new EQPath(arcLength, method);
+
+	  // if the analysis exists - we want to change the Integrator
+	  if (theStaticAnalysis != 0)
+		  theStaticAnalysis->setIntegrator(*theStaticIntegrator);
   }
   /************************added for HSConstraint*************************************/
   

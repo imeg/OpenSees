@@ -75,6 +75,15 @@ namespace OpenSees {
 				return _OPS_StreamPtr->write(*vec->_Vector);
 			};
 
+			String^ GetClassType() {
+				const char* type = _OPS_StreamPtr->getClassType();
+				return gcnew String(type);
+			}
+
+			int GetClassTag() {
+				return _OPS_StreamPtr->getClassTag();
+			}
+
 			String^ GetStreamHeader() {
 				const char* headerChar = _OPS_StreamPtr->getStreamHeader();
 				if (headerChar == 0)

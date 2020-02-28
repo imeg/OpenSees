@@ -51,6 +51,15 @@ namespace OpenSees {
 					return opsstr->GetStreamHeader();
 				}
 			}
+			String^ GetClassType() {
+				const char* type = _Recorder->getClassType();
+				return gcnew String(type);
+			}
+
+			int GetClassTag() {
+				return _Recorder->getClassTag();
+			}
+
 			int CloseOutputStreamHandler() {
 				OPS_Stream* opsstrptr = _Recorder->getOutputHandler();
 				if (opsstrptr == 0) return -1;

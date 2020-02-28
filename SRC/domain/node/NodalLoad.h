@@ -67,6 +67,11 @@ class NodalLoad : public Load
 	virtual void applyLoad(Vector& loadFactors);
 	virtual const Vector &getData(int& type);
 	//Change made by Liming for NodalThermalAction [SIF]
+#if _DLL
+	virtual inline Vector* getLoadVector() {
+		return load;
+	};
+#endif
 
   protected:
 

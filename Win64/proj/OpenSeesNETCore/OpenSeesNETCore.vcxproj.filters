@@ -1,0 +1,862 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="OpenSeesNET">
+      <UniqueIdentifier>{bcb59846-2d34-4ff8-a527-8b42a8043cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis">
+      <UniqueIdentifier>{87fa0709-609a-4bfc-b14a-5e302c1ab955}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\algorithms">
+      <UniqueIdentifier>{79112919-deff-4b40-928c-91b07302797a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\analysis">
+      <UniqueIdentifier>{fd5f1087-2b07-4691-a567-fd17f40c6965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\handlers">
+      <UniqueIdentifier>{9deebdd1-a718-4d8e-a185-0c1318ccf63e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\integrators">
+      <UniqueIdentifier>{7f72af04-52e5-492b-bd7c-b87dc7849f83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\models">
+      <UniqueIdentifier>{abc9a94f-32b4-49d5-a61f-ebca31ebe54e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\analysis\numberers">
+      <UniqueIdentifier>{1c3630e2-f12d-4c8f-beb4-2e178939441d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\convergances">
+      <UniqueIdentifier>{21d471f4-07a8-454b-b70e-15dfca05c36a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\damage">
+      <UniqueIdentifier>{c4704d53-00cd-495b-ba5d-d5949c04f171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains">
+      <UniqueIdentifier>{ad4997c5-e27d-4d08-bd04-fc29691cd99d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\components">
+      <UniqueIdentifier>{5cd44cd4-b65a-42a2-a407-a4e63117395f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\constraints">
+      <UniqueIdentifier>{8e1f12c8-933b-4f36-be7b-85564dd379f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\domain">
+      <UniqueIdentifier>{429f988f-3648-4844-93e7-a3b5bd611132}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\groundmotion">
+      <UniqueIdentifier>{26c0f15b-0f55-461f-9e15-2103544c386f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\loads">
+      <UniqueIdentifier>{2b7e587f-4e52-4b1c-a051-3858bc5cad10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\nodes">
+      <UniqueIdentifier>{7c2fda13-94b4-43a1-9831-a18763375f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\patterns">
+      <UniqueIdentifier>{5f010654-424d-4de9-9c3b-79a5d1593193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\domains\timeSeries">
+      <UniqueIdentifier>{e57d0984-60db-4516-98ef-d7caa73ed0ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements">
+      <UniqueIdentifier>{4397fd53-5a60-4f97-b23c-91ea5d229fa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\adaptors">
+      <UniqueIdentifier>{3d5d61f8-440b-42d2-a41f-5577d17ce182}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\beamColumn">
+      <UniqueIdentifier>{30a93e2c-39cd-4c02-939f-24c5a493c4a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\beamColumn\beamIntegration">
+      <UniqueIdentifier>{572c1a1e-9e6b-40e4-a83b-306d2be878f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\bearing">
+      <UniqueIdentifier>{edd2b270-7b50-4fb3-b1d2-ba5648b39810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\brick">
+      <UniqueIdentifier>{0915b260-b557-4bf7-9036-f121bb885143}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\catenaryCable">
+      <UniqueIdentifier>{9eedb50b-7e35-4423-a728-05eeaf06e306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\crdTransf">
+      <UniqueIdentifier>{dc6c519d-efaf-430a-861d-b9cc87abb65b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\External">
+      <UniqueIdentifier>{d5afedae-6259-48fc-b95b-2c173a49e406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\other">
+      <UniqueIdentifier>{2b6afbaf-cf4c-474b-8cf1-eb45f6fd8c3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\Quad">
+      <UniqueIdentifier>{63fd3a7e-fdc6-412b-93a3-3c40f86375a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\quad">
+      <UniqueIdentifier>{49f7e126-df72-4ad8-8fdc-c3c52ec54476}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\shell">
+      <UniqueIdentifier>{b2f87fe2-72bd-41b3-b9c5-ffc5eb8d1323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\truss">
+      <UniqueIdentifier>{ac6555db-9aa0-4824-b567-dbcdb29130fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\ULBeamColumn">
+      <UniqueIdentifier>{9d9ec793-e79e-4c7b-a41d-f973df0f87d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\elements\ZeroLength">
+      <UniqueIdentifier>{b1cfce49-9e8e-48ee-bce4-524bdd673545}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\graphs">
+      <UniqueIdentifier>{3ace3c35-e139-4d44-993d-8958825ceb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\handlers">
+      <UniqueIdentifier>{8fffcf77-c0e7-4c88-81de-d6c69b0da6b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials">
+      <UniqueIdentifier>{2e37ab4c-9bfb-4eaf-b942-d30b11543563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\ndmaterial">
+      <UniqueIdentifier>{b323109a-d90b-47bc-a1da-07f5a12f8a61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section">
+      <UniqueIdentifier>{8be10750-8eae-4c71-8555-b8a03a68be2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\fiber">
+      <UniqueIdentifier>{3046623b-f4f4-4c0e-8f0b-e3bae1a9361a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\integrations">
+      <UniqueIdentifier>{e0b63fc6-893a-4287-b52a-896919059c2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\repres">
+      <UniqueIdentifier>{8b3d0f22-f660-47bd-810a-d49da346b5a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\repres\patch">
+      <UniqueIdentifier>{f26441bc-8fb4-4022-b2ff-427978f36733}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\repres\reinfLayer">
+      <UniqueIdentifier>{6e395c91-f0e4-40a6-ab4b-f38b563d9f44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\section\repres\sect">
+      <UniqueIdentifier>{2da5d40d-2f0b-46a0-84dc-846645ef34d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\uniaxial">
+      <UniqueIdentifier>{f2d6a09f-5b37-452e-b349-e4eab9a026d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\materials\yieldSurface">
+      <UniqueIdentifier>{b2123c57-95c4-4648-a208-de4ee99b9426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\matrix">
+      <UniqueIdentifier>{4f468e37-89b5-4f58-9563-a4f9f8a4c792}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\recorders">
+      <UniqueIdentifier>{3848eae1-e7fe-4396-9ace-6e2eb109c012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\systems">
+      <UniqueIdentifier>{fd6687b0-98e0-490b-a132-a345782177fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\systems\arpack">
+      <UniqueIdentifier>{5303cd9c-ecd3-433b-b211-1b588c491380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\taggeds">
+      <UniqueIdentifier>{584a6fcb-32ca-4c92-8c05-87a1281afd86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\tcl">
+      <UniqueIdentifier>{848ea4b7-1a08-4793-9205-e2a32aa7f10d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSeesNET\actors">
+      <UniqueIdentifier>{57c9e3ee-d69e-475a-87bf-4725d0ca1876}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\AcceleratorWrapper.h">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\AlgorithmsWrapper.h">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\LineSearchWrapper.h">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\algorithms\stdafx.h">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\analysis\AnalysisWrapper.h">
+      <Filter>OpenSeesNET\analysis\analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\analysis\stdafx.h">
+      <Filter>OpenSeesNET\analysis\analysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\handlers\ConstraintHandlerWrapper.h">
+      <Filter>OpenSeesNET\analysis\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\handlers\stdafx.h">
+      <Filter>OpenSeesNET\analysis\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\IncrementalIntegratorWrapper.h">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\IntegratorWrapper.h">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\StaticIntegratorWrapper.h">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\stdafx.h">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\integrators\TransientIntegratorWrapper.h">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\models\AnalysisModelWrapper.h">
+      <Filter>OpenSeesNET\analysis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\models\stdafx.h">
+      <Filter>OpenSeesNET\analysis\models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\numberers\DOF_NumbererWrapper.h">
+      <Filter>OpenSeesNET\analysis\numberers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\analysis\numberers\stdafx.h">
+      <Filter>OpenSeesNET\analysis\numberers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\convergances\ConvergenceTestWrapper.h">
+      <Filter>OpenSeesNET\convergances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\convergances\stdafx.h">
+      <Filter>OpenSeesNET\convergances</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\damage\DamageModelWrapper.h">
+      <Filter>OpenSeesNET\damage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\damage\stdafx.h">
+      <Filter>OpenSeesNET\damage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\components\DomainComponentWrapper.h">
+      <Filter>OpenSeesNET\domains\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\components\stdafx.h">
+      <Filter>OpenSeesNET\domains\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\constraints\ConstraintWrapper.h">
+      <Filter>OpenSeesNET\domains\constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\constraints\stdafx.h">
+      <Filter>OpenSeesNET\domains\constraints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\domain\BaseDomainWrapper.h">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\domain\DomainEvent.h">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\domain\DomainWrapper.h">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\domain\stdafx.h">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\groundmotion\GroudMotionWrapper.h">
+      <Filter>OpenSeesNET\domains\groundmotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\groundmotion\stdafx.h">
+      <Filter>OpenSeesNET\domains\groundmotion</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\loads\LoadWrapper.h">
+      <Filter>OpenSeesNET\domains\loads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\loads\stdafx.h">
+      <Filter>OpenSeesNET\domains\loads</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\nodes\NodeWrapper.h">
+      <Filter>OpenSeesNET\domains\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\nodes\stdafx.h">
+      <Filter>OpenSeesNET\domains\nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\patterns\LoadPatternWrapper.h">
+      <Filter>OpenSeesNET\domains\patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\patterns\stdafx.h">
+      <Filter>OpenSeesNET\domains\patterns</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\timeSeries\stdafx.h">
+      <Filter>OpenSeesNET\domains\timeSeries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\domains\timeSeries\TimeSeriesWrapper.h">
+      <Filter>OpenSeesNET\domains\timeSeries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\adaptors\AdapterWrapper.h">
+      <Filter>OpenSeesNET\elements\adaptors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\adaptors\stdafx.h">
+      <Filter>OpenSeesNET\elements\adaptors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\BaseElementWrapper.h">
+      <Filter>OpenSeesNET\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\BeamColumnWrapper.h">
+      <Filter>OpenSeesNET\elements\beamColumn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\BeamIntegrationWrapper.h">
+      <Filter>OpenSeesNET\elements\beamColumn\beamIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\stdafx.h">
+      <Filter>OpenSeesNET\elements\beamColumn\beamIntegration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\beamColumn\stdafx.h">
+      <Filter>OpenSeesNET\elements\beamColumn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\bearing\BearingWrapper.h">
+      <Filter>OpenSeesNET\elements\bearing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\bearing\stdafx.h">
+      <Filter>OpenSeesNET\elements\bearing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\brick\BrickWrapper.h">
+      <Filter>OpenSeesNET\elements\brick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\brick\stdafx.h">
+      <Filter>OpenSeesNET\elements\brick</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\catenaryCable\CatenaryCableWrapper.h">
+      <Filter>OpenSeesNET\elements\catenaryCable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\catenaryCable\stdafx.h">
+      <Filter>OpenSeesNET\elements\catenaryCable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\crdTransf\CrdTransfWrapper.h">
+      <Filter>OpenSeesNET\elements\crdTransf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\crdTransf\stdafx.h">
+      <Filter>OpenSeesNET\elements\crdTransf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ElementWrapper.h">
+      <Filter>OpenSeesNET\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\External\ExternalElementWrapper.h">
+      <Filter>OpenSeesNET\elements\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\External\stdafx.h">
+      <Filter>OpenSeesNET\elements\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\other\OtherElementWrapper.h">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\other\Quad4FiberOverlayWrapper.h">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\other\stdafx.h">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\other\SurfaceLoadWrapper.h">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\Quad\QuadWrapper.h">
+      <Filter>OpenSeesNET\elements\Quad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\quad\stdafx.h">
+      <Filter>OpenSeesNET\elements\quad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\shell\ShellWrapper.h">
+      <Filter>OpenSeesNET\elements\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\shell\stdafx.h">
+      <Filter>OpenSeesNET\elements\shell</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\stdafx.h">
+      <Filter>OpenSeesNET\elements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\truss\stdafx.h">
+      <Filter>OpenSeesNET\elements\truss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\truss\TrussWrapper.h">
+      <Filter>OpenSeesNET\elements\truss</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ULBeamColumn\stdafx.h">
+      <Filter>OpenSeesNET\elements\ULBeamColumn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.h">
+      <Filter>OpenSeesNET\elements\ULBeamColumn</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\CoupledZeroLengthWrapper.h">
+      <Filter>OpenSeesNET\elements\ZeroLength</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\ZeroLengthElementWrapper.h">
+      <Filter>OpenSeesNET\elements\ZeroLength</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\elements\ZeroLength\stdafx.h">
+      <Filter>OpenSeesNET\elements\ZeroLength</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\graphs\GraphNumbererWrapper.h">
+      <Filter>OpenSeesNET\graphs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\graphs\stdafx.h">
+      <Filter>OpenSeesNET\graphs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\handlers\HandlerWrapper.h">
+      <Filter>OpenSeesNET\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\handlers\stdafx.h">
+      <Filter>OpenSeesNET\handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\MaterialWrapper.h">
+      <Filter>OpenSeesNET\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\ndmaterial\NDMaterialWrapper.h">
+      <Filter>OpenSeesNET\materials\ndmaterial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\ndmaterial\stdafx.h">
+      <Filter>OpenSeesNET\materials\ndmaterial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\fiber\FiberWrapper.h">
+      <Filter>OpenSeesNET\materials\section\fiber</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\fiber\stdafx.h">
+      <Filter>OpenSeesNET\materials\section\fiber</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\integrations\SectionIntegrationWrapper.h">
+      <Filter>OpenSeesNET\materials\section\integrations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\integrations\stdafx.h">
+      <Filter>OpenSeesNET\materials\section\integrations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\patch\PatchWrapper.h">
+      <Filter>OpenSeesNET\materials\section\repres\patch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\patch\stdafx.h">
+      <Filter>OpenSeesNET\materials\section\repres\patch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\reinfLayer\ReinfLayerWrapper.h">
+      <Filter>OpenSeesNET\materials\section\repres\reinfLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\reinfLayer\stdafx.h">
+      <Filter>OpenSeesNET\materials\section\repres\reinfLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\sect\SectionRepresWrapper.h">
+      <Filter>OpenSeesNET\materials\section\repres\sect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\repres\sect\stdafx.h">
+      <Filter>OpenSeesNET\materials\section\repres\sect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\SectionForceDeformationWrapper.h">
+      <Filter>OpenSeesNET\materials\section</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\section\stdafx.h">
+      <Filter>OpenSeesNET\materials\section</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\stdafx.h">
+      <Filter>OpenSeesNET\materials</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\LimitCurveWrapper.h">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\stdafx.h">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper.h">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper_all.h">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\yieldSurface\YieldSurfaceWrapper.h">
+      <Filter>OpenSeesNET\materials\yieldSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\materials\yieldSurface\stdafx.h">
+      <Filter>OpenSeesNET\materials\yieldSurface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\matrix\IDWrapper.h">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\matrix\MatrixWrapper.h">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\matrix\stdafx.h">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\matrix\VectorWrapper.h">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\OPS.h">
+      <Filter>OpenSeesNET</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\recorders\InformationWrapper.h">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\recorders\RecorderWrapper.h">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\recorders\ResponseWrapper.h">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\recorders\ResponseWrapper_all.h">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\recorders\stdafx.h">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\stdafx.h">
+      <Filter>OpenSeesNET</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\arpack\ArpackSOEWrapper.h">
+      <Filter>OpenSeesNET\systems\arpack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\arpack\stdafx.h">
+      <Filter>OpenSeesNET\systems\arpack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\BandGENWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\BandSPDWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\DiagonalWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\EigenSOEWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\EigenSolverWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\FullGENWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\LinearSOESolverWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\LinearSOEWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\ProfileSPDWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\SolverWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\SparseGENWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\SparseSYMWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\stdafx.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\SYMBandEigenWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\SystemOfEqnWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\systems\UmfpackGenWrapper.h">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\taggeds\stdafx.h">
+      <Filter>OpenSeesNET\taggeds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\taggeds\TaggedObjectWrapper.h">
+      <Filter>OpenSeesNET\taggeds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\tcl\ModelBuilderEvent.h">
+      <Filter>OpenSeesNET\tcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\tcl\stdafx.h">
+      <Filter>OpenSeesNET\tcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\tcl\TclWrapper.h">
+      <Filter>OpenSeesNET\tcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\actors\IMovableObjectWrapper.h">
+      <Filter>OpenSeesNET\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OpenSeesNET\actors\stdafx.h">
+      <Filter>OpenSeesNET\actors</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AssemblyInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\AcceleratorWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\AlgorithmsWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\algorithms\LineSearchWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\algorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\analysis\AnalysisWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\analysis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\handlers\ConstraintHandlerWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\IncrementalIntegratorWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\IntegratorWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\StaticIntegratorWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\integrators\TransientIntegratorWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\integrators</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\models\AnalysisModelWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\models</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\analysis\numberers\DOF_NumbererWrapper.cpp">
+      <Filter>OpenSeesNET\analysis\numberers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\convergances\ConvergenceTestWrapper.cpp">
+      <Filter>OpenSeesNET\convergances</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\damage\DamageModelWrapper.cpp">
+      <Filter>OpenSeesNET\damage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\components\DomainComponentWrapper.cpp">
+      <Filter>OpenSeesNET\domains\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\constraints\ConstraintWrapper.cpp">
+      <Filter>OpenSeesNET\domains\constraints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\domain\BaseDomainWrapper.cpp">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\domain\DomainEvent.cpp">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\domain\DomainWrapper.cpp">
+      <Filter>OpenSeesNET\domains\domain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\groundmotion\GroudMotionWrapper.cpp">
+      <Filter>OpenSeesNET\domains\groundmotion</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\loads\LoadWrapper.cpp">
+      <Filter>OpenSeesNET\domains\loads</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\nodes\NodeWrapper.cpp">
+      <Filter>OpenSeesNET\domains\nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\patterns\LoadPatternWrapper.cpp">
+      <Filter>OpenSeesNET\domains\patterns</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\domains\timeSeries\TimeSeriesWrapper.cpp">
+      <Filter>OpenSeesNET\domains\timeSeries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\adaptors\AdapterWrapper.cpp">
+      <Filter>OpenSeesNET\elements\adaptors</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\BaseElementWrapper.cpp">
+      <Filter>OpenSeesNET\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\beamColumn\BeamColumnWrapper.cpp">
+      <Filter>OpenSeesNET\elements\beamColumn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\beamColumn\beamIntegration\BeamIntegrationWrapper.cpp">
+      <Filter>OpenSeesNET\elements\beamColumn\beamIntegration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\bearing\BearingWrapper.cpp">
+      <Filter>OpenSeesNET\elements\bearing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\brick\BrickWrapper.cpp">
+      <Filter>OpenSeesNET\elements\brick</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\catenaryCable\CatenaryCableWrapper.cpp">
+      <Filter>OpenSeesNET\elements\catenaryCable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\crdTransf\CrdTransfWrapper.cpp">
+      <Filter>OpenSeesNET\elements\crdTransf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\ElementWrapper.cpp">
+      <Filter>OpenSeesNET\elements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\External\ExternalElementWrapper.cpp">
+      <Filter>OpenSeesNET\elements\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\other\OtherElementWrapper.cpp">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\other\Quad4FiberOverlayWrapper.cpp">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\other\SurfaceLoadWrapper.cpp">
+      <Filter>OpenSeesNET\elements\other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\Quad\QuadWrapper.cpp">
+      <Filter>OpenSeesNET\elements\Quad</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\shell\ShellWrapper.cpp">
+      <Filter>OpenSeesNET\elements\shell</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\truss\TrussWrapper.cpp">
+      <Filter>OpenSeesNET\elements\truss</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\ULBeamColumn\ULBeamColumnWrapper.cpp">
+      <Filter>OpenSeesNET\elements\ULBeamColumn</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\ZeroLength\CoupledZeroLengthWrapper.cpp">
+      <Filter>OpenSeesNET\elements\ZeroLength</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\elements\ZeroLength\ZeroLengthElementWrapper.cpp">
+      <Filter>OpenSeesNET\elements\ZeroLength</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\graphs\GraphNumbererWrapper.cpp">
+      <Filter>OpenSeesNET\graphs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\handlers\HandlerWrapper.cpp">
+      <Filter>OpenSeesNET\handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\MaterialWrapper.cpp">
+      <Filter>OpenSeesNET\materials</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\ndmaterial\NDMaterialWrapper.cpp">
+      <Filter>OpenSeesNET\materials\ndmaterial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\fiber\FiberWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section\fiber</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\integrations\SectionIntegrationWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section\integrations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\patch\PatchWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section\repres\patch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\reinfLayer\ReinfLayerWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section\repres\reinfLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\repres\sect\SectionRepresWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section\repres\sect</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\section\SectionForceDeformationWrapper.cpp">
+      <Filter>OpenSeesNET\materials\section</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\LimitCurveWrapper.cpp">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper.cpp">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\uniaxial\UniaxialMaterialWrapper_all.cpp">
+      <Filter>OpenSeesNET\materials\uniaxial</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\materials\yieldSurface\YieldSurfaceWrapper.cpp">
+      <Filter>OpenSeesNET\materials\yieldSurface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\matrix\IDWrapper.cpp">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\matrix\MatrixWrapper.cpp">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\matrix\VectorWrapper.cpp">
+      <Filter>OpenSeesNET\matrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\OPS.cpp">
+      <Filter>OpenSeesNET</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\recorders\InformationWrapper.cpp">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\recorders\RecorderWrapper.cpp">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\recorders\ResponseWrapper.cpp">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\recorders\ResponseWrapper_all.cpp">
+      <Filter>OpenSeesNET\recorders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\arpack\ArpackSOEWrapper.cpp">
+      <Filter>OpenSeesNET\systems\arpack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\BandGENWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\BandSPDWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\DiagonalWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\EigenSOEWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\EigenSolverWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\FullGENWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\LinearSOESolverWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\LinearSOEWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\ProfileSPDWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\SolverWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\SparseGENWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\SparseSYMWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\SYMBandEigenWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\SystemOfEqnWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\systems\UmfpackGenWrapper.cpp">
+      <Filter>OpenSeesNET\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\taggeds\TaggedObjectWrapper.cpp">
+      <Filter>OpenSeesNET\taggeds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\tcl\ModelBuilderEvent.cpp">
+      <Filter>OpenSeesNET\tcl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OpenSeesNET\tcl\TclWrapper.cpp">
+      <Filter>OpenSeesNET\tcl</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="app.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="app.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

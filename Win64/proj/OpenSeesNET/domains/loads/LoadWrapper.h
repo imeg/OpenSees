@@ -3,6 +3,8 @@
 #include <NodalLoad.h>
 #include <ElementalLoad.h>
 
+#include <Vector.h>
+
 #include <Beam2dPartialUniformLoad.h>
 #include <Beam2dPointLoad.h>
 #include <ElementalLoad.h>
@@ -50,11 +52,20 @@ namespace OpenSees {
 				int GetNodeTag() {
 					return _NodalLoad->getNodeTag();
 				}
+				VectorWrapper^ GetLoadVector() {
+					Vector* vec = _NodalLoad->getLoadVector();
+					VectorWrapper^ nvec = gcnew VectorWrapper(vec);
+					return nvec;
+				}
 				~NodalLoadWrapper() {
 					if (_NodalLoad != 0)
 						delete _NodalLoad;
 				};
 			internal:
+				NodalLoadWrapper(NodalLoad* NodalLoad) 
+					:LoadWrapper(0) {
+					_NodalLoad = NodalLoad;
+				}
 				NodalLoad * _NodalLoad;
 			private:
 
@@ -70,6 +81,9 @@ namespace OpenSees {
 				}
 				~ElementalLoadWrapper() {};
 			internal:
+				ElementalLoadWrapper(ElementalLoad* ElementalLoad) :ElementalLoadWrapper(0) {
+					_ElementalLoad = ElementalLoad;
+				};
 				ElementalLoad * _ElementalLoad;
 			private:
 
