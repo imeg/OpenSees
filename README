@@ -2,17 +2,18 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
-LoadPatternWrapper object oct. 11 2019
+Add .NET Core Project (VS Version 16.5.0 Preview 4.0)
+Fixing LoadPatternWrapper object oct. 11 2019
 	return SPs
 	return TimeSeries
-adding optimization example oct. 11 2019
+Adding optimization example oct. 11 2019
 	Weight Optimization 10-bar truss using MATLAB and OpenSees
-merge repos oct. 10 2019
-adding model builder events  oct. 9 2019
+Merge repos oct. 10 2019
+Adding model builder events  oct. 9 2019
 	material events
 	ndmaterial events
 	sections events
-adding events and more  oct. 8 2019
+Adding events and more  oct. 8 2019
 	DomainEventAddSP;
 	DomainEventRemoveSP;
 	DomainEventAddMP;
@@ -23,9 +24,9 @@ adding events and more  oct. 8 2019
 	DomainEventRemoveRecorder;
 	DomainEventClearAll;
 	GetPhysicalBounds
-adding event handlers Oct. 6 2019
+Adding event handlers Oct. 6 2019
 	DomainEventRemoveNode(Node* node);
 	DomainEventAddElement(Element* element);
 	DomainEventRemoveElement(Element* element);
 	DomainEventClearAll();
-adding TclWrapper::SetOutputStream Oct. 6 2019
+Adding TclWrapper::SetOutputStream Oct. 6 2019
