@@ -52,6 +52,10 @@ extern void OPS_clearAllUniaxialMaterial(void);
 extern void OPS_clearAllNDMaterial(void);
 extern void OPS_clearAllSectionForceDeformation(void);
 
+extern void OPS_clearAllHystereticBackbone(void);
+extern void OPS_clearAllStiffnessDegradation(void);
+extern void OPS_clearAllStrengthDegradation(void);
+extern void OPS_clearAllUnloadingRule(void);
 
 // the following is a little kludgy but it works!
 #ifdef _USING_STL_STREAMS
@@ -171,6 +175,7 @@ OPS_Stream *opserrPtr = &sserr;
 #include <HSConstraint.h>
 #include <MinUnbalDispNorm.h>
 #include <DisplacementControl.h>
+#include <EQPath.h>
 
 #include <PFEMIntegrator.h>
 #include <Integrator.h>//Abbas
@@ -370,8 +375,8 @@ extern void *OPS_WilsonTheta(void);
 // #include <PFEMSensitivityIntegrator.h>
 //#include <OrigSensitivityAlgorithm.h>
 //#include <NewSensitivityAlgorithm.h>
-#include <ReliabilityStaticAnalysis.h>
-#include <ReliabilityDirectIntegrationAnalysis.h>
+//#include <ReliabilityStaticAnalysis.h>
+//#include <ReliabilityDirectIntegrationAnalysis.h>
 // AddingSensitivity:END /////////////////////////////////////////////////
 #include <TclReliabilityBuilder.h>
 
@@ -471,13 +476,12 @@ Domain theDomain;
 
 #endif
 
-extern int OPS_ResetInput(ClientData clientData, 
+extern int OPS_ResetInputNoBuilder(ClientData clientData,
 			  Tcl_Interp *interp,  
 			  int cArg, 
 			  int mArg, 
 			  TCL_Char **argv, 
-			  Domain *domain,
-			  TclModelBuilder *builder);
+			  Domain *domain);
 
 
 
@@ -529,8 +533,8 @@ static TclReliabilityBuilder *theReliabilityBuilder = 0;
 
 Integrator *theSensitivityAlgorithm = 0;
 Integrator *theSensitivityIntegrator = 0;
-ReliabilityStaticAnalysis *theReliabilityStaticAnalysis = 0;
-ReliabilityDirectIntegrationAnalysis *theReliabilityTransientAnalysis = 0;
+//FMK RELIABILITY ReliabilityStaticAnalysis *theReliabilityStaticAnalysis = 0;
+//FMK RELIABILITY ReliabilityDirectIntegrationAnalysis *theReliabilityTransientAnalysis = 0;
 
 // static NewmarkSensitivityIntegrator *theNSI = 0;
 // static NewNewmarkSensitivityIntegrator *theNNSI = 0;
@@ -1069,8 +1073,8 @@ int OpenSeesAppInit(Tcl_Interp *interp) {
 
     theSensitivityAlgorithm =0;
     theSensitivityIntegrator =0;
-    theReliabilityStaticAnalysis =0;
-    theReliabilityTransientAnalysis =0;    
+	//FMK RELIABILITY theReliabilityStaticAnalysis =0;
+    //FMK RELIABILITY theReliabilityTransientAnalysis =0;    
     // AddingSensitivity:END //////////////////////////////////
 
     theOptimizationBuilder = 0;
@@ -1366,6 +1370,11 @@ wipeModel(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
   OPS_clearAllUniaxialMaterial();
   OPS_clearAllNDMaterial();
   OPS_clearAllSectionForceDeformation();
+
+  OPS_clearAllHystereticBackbone();
+  OPS_clearAllStiffnessDegradation();
+  OPS_clearAllStrengthDegradation();
+  OPS_clearAllUnloadingRule();
 
   ops_Dt = 0.0;
 
@@ -2786,7 +2795,9 @@ specifyAnalysis(ClientData clientData, Tcl_Interp *interp, int argc,
 
 	//////////////////////////////////
     ////// added by K Fujimura ///////
-	//////////////////////////////////
+	
+	//FMK RELIABILITY
+	/*
     } else if (strcmp(argv[1],"ReliabilityStatic") == 0) {
 		// make sure all the components have been built,
 		// otherwise print a warning and use some defaults
@@ -2830,13 +2841,13 @@ specifyAnalysis(ClientData clientData, Tcl_Interp *interp, int argc,
 
 		if (theSensitivityAlgorithm != 0 && theSensitivityAlgorithm->shouldComputeAtEachStep()) {
 
-		  /* This if-statement cannot stay -- MHS
-		  if(!theSensitivityAlgorithm->newAlgorithm()){
-		    opserr << "WARNING new sensitivity algorothm needs to be specified \n";
-		    opserr << "for reliability static analysis \n";
-		    return TCL_ERROR;
-		  }
-		  */
+		  //This if-statement cannot stay -- MHS
+		  //if(!theSensitivityAlgorithm->newAlgorithm()){
+		  //  opserr << "WARNING new sensitivity algorothm needs to be specified \n";
+		   // opserr << "for reliability static analysis \n";
+		   // return TCL_ERROR;
+		  //}
+		  
 
 		  //theStaticAnalysis->setSensitivityAlgorithm(theSensitivityAlgorithm);
 		} else {
@@ -2892,13 +2903,13 @@ specifyAnalysis(ClientData clientData, Tcl_Interp *interp, int argc,
 
 		if (theSensitivityAlgorithm != 0 && theSensitivityAlgorithm->shouldComputeAtEachStep()) {
 
-		  /* This if-statement must go -- MHS
-		  if(!theSensitivityAlgorithm->newAlgorithm()){
-		    opserr << "WARNING new sensitivity algorothm needs to be specified \n";
-		    opserr << "for reliability static analysis \n";
-		    return TCL_ERROR;
-		  }
-		  */
+		  //This if-statement must go -- MHS
+		  //if(!theSensitivityAlgorithm->newAlgorithm()){
+		   // opserr << "WARNING new sensitivity algorothm needs to be specified \n";
+		   // opserr << "for reliability static analysis \n";
+		   // return TCL_ERROR;
+		  //}
+		  
 
 			theReliabilityTransientAnalysis->setSensitivityAlgorithm(theSensitivityAlgorithm);
 		}else{
@@ -2906,6 +2917,8 @@ specifyAnalysis(ClientData clientData, Tcl_Interp *interp, int argc,
 			opserr << "ReliabilityStaticAnalysis with computeateachstep\n";
 			return TCL_ERROR;
 		}
+		FMK RELIABILITY
+	    *************************/
 // AddingSensitivity:END /////////////////////////////////
 #endif
 
@@ -3585,7 +3598,7 @@ specifySOE(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 
       if (strcmp(argv[1], solverCommands->funcName) == 0) {
 	
-	OPS_ResetInput(clientData, interp, 2, argc, argv, &theDomain, NULL);
+          OPS_ResetInputNoBuilder(clientData, interp, 2, argc, argv, &theDomain);
 	void *theRes = (*(solverCommands->funcPtr))();
 	if (theRes != 0) {
 
@@ -3623,7 +3636,7 @@ specifySOE(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 	theSolverCommand->next = theExternalSolverCommands;
 	theExternalSolverCommands = theSolverCommand;
 	
-	OPS_ResetInput(clientData, interp, 2, argc, argv, &theDomain, NULL);
+    OPS_ResetInputNoBuilder(clientData, interp, 2, argc, argv, &theDomain);
 	
 	void *theRes = (*funcPtr)();
 	if (theRes != 0) {
@@ -3817,7 +3830,7 @@ specifyAlgorithm(ClientData clientData, Tcl_Interp *interp, int argc,
       return TCL_ERROR;
   }    
   EquiSolnAlgo *theNewAlgo = 0;
-  OPS_ResetInput(clientData, interp, 2, argc, argv, &theDomain, NULL);	  
+  OPS_ResetInputNoBuilder(clientData, interp, 2, argc, argv, &theDomain);
 
   // check argv[1] for type of Algorithm and create the object
   if (strcmp(argv[1],"Linear") == 0) {
@@ -4462,7 +4475,7 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 	printArgv(interp, argc, argv); //SAJalali
 #endif // _CSS
 
-  OPS_ResetInput(clientData, interp, 2, argc, argv, &theDomain, NULL);	  
+    OPS_ResetInputNoBuilder(clientData, interp, 2, argc, argv, &theDomain);
 
   // make sure at least one other argument to contain integrator
   if (argc < 2) {
@@ -4611,7 +4624,45 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 	theStaticAnalysis->setIntegrator(*theStaticIntegrator);
   }
 
-  
+  else if (strcmp(argv[1], "EQPath") == 0) {
+		double arcLength;
+		int type;
+		int numIter;
+		if (argc != 4) {
+			opserr << "WARNING integrator EQPath $arc_length $type \n";
+			opserr << "REFS : \n";
+			opserr << " https://doi.org/10.12989/sem.2013.48.6.849	 \n";
+			opserr << " https://doi.org/10.12989/sem.2013.48.6.879	 \n";
+			return TCL_ERROR;
+		}
+
+		if (Tcl_GetDouble(interp, argv[2], &arcLength) != TCL_OK)
+		{
+			opserr << "WARNING integrator EQPath $arc_length $type \n";
+			opserr << " https://doi.org/10.12989/sem.2013.48.6.849	 \n";
+			opserr << " https://doi.org/10.12989/sem.2013.48.6.879	 \n";
+			return TCL_ERROR;
+			return TCL_ERROR;
+		}
+
+		if (Tcl_GetInt(interp, argv[3], &type) != TCL_OK)
+		{
+			opserr << "WARNING integrator $arc_length $type \n";
+			opserr << "$type = 1 Minimum Residual Displacement \n";
+			opserr << "$type = 2 Normal Plain \n";
+			opserr << "$type = 3 Update Normal Plain \n";
+			opserr << "$type = 4 Cylindrical Arc-Length \n";
+
+			return TCL_ERROR;
+		}
+
+		theStaticIntegrator = new EQPath(arcLength, type);
+
+		// if the analysis exists - we want to change the Integrator
+		if (theStaticAnalysis != 0)
+			theStaticAnalysis->setIntegrator(*theStaticIntegrator);
+  }	
+    
   else if (strcmp(argv[1],"DisplacementControl") == 0) {
       int node;
       int dof;
@@ -5257,7 +5308,7 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 
       if (strcmp(argv[2], integratorCommands->funcName) == 0) {
 	
-	OPS_ResetInput(clientData, interp, 3, argc, argv, &theDomain, NULL);
+          OPS_ResetInputNoBuilder(clientData, interp, 3, argc, argv, &theDomain);
 	void *theRes = (*(integratorCommands->funcPtr))();
 	if (theRes != 0) {
 	  theTransientIntegrator = (TransientIntegrator *)theRes;
@@ -5294,7 +5345,7 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 	theIntegratorCommand->next = theExternalTransientIntegratorCommands;
 	theExternalTransientIntegratorCommands = theIntegratorCommand;
 	
-	OPS_ResetInput(clientData, interp, 3, argc, argv, &theDomain, NULL);
+    OPS_ResetInputNoBuilder(clientData, interp, 3, argc, argv, &theDomain);
 	
 	void *theRes = (*funcPtr)();
 	if (theRes != 0) {
@@ -5325,7 +5376,7 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 
       if (strcmp(argv[2], integratorCommands->funcName) == 0) {
 	
-	OPS_ResetInput(clientData, interp, 3, argc, argv, &theDomain, NULL);
+    OPS_ResetInputNoBuilder(clientData, interp, 3, argc, argv, &theDomain);
 	void *theRes = (*(integratorCommands->funcPtr))();
 	if (theRes != 0) {
 	  theStaticIntegrator = (StaticIntegrator *)theRes;
@@ -5362,7 +5413,7 @@ specifyIntegrator(ClientData clientData, Tcl_Interp *interp, int argc,
 	theIntegratorCommand->next = theExternalStaticIntegratorCommands;
 	theExternalStaticIntegratorCommands = theIntegratorCommand;
 	
-	OPS_ResetInput(clientData, interp, 3, argc, argv, &theDomain, NULL);
+    OPS_ResetInputNoBuilder(clientData, interp, 3, argc, argv, &theDomain);
 	
 	void *theRes = (*funcPtr)();
 	if (theRes != 0) {
@@ -8323,7 +8374,7 @@ modalDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
 
     for (int i=0; i<numEigen; i++) {
       if (Tcl_GetDouble(interp, argv[1+i], &factor) != TCL_OK) {
-	opserr << "WARNING rayleigh alphaM? betaK? betaK0? betaKc? - could not read betaK? \n";
+	opserr << "WARNING modalDamping - could not read factor for model " << i+1 << endln;
 	return TCL_ERROR;	        
       }        
       modalDampingValues[i] = factor;    
@@ -8332,7 +8383,7 @@ modalDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
   } else {
 
     if (Tcl_GetDouble(interp, argv[1], &factor) != TCL_OK) {
-      opserr << "WARNING rayleigh alphaM? betaK? betaK0? betaKc? - could not read betaK? \n";
+      opserr << "WARNING modalDamping - could not read factor for all modes \n";
       return TCL_ERROR;	        
     }        
 
@@ -8343,7 +8394,7 @@ modalDamping(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **arg
   // set factors in domain
   theDomain.setModalDampingFactors(&modalDampingValues, true);
 
-  opserr << "modalDamping Factors: " << modalDampingValues;
+  //opserr << "modalDamping Factors: " << modalDampingValues;
 
   return TCL_OK;
 }
@@ -8464,7 +8515,7 @@ addRegion(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 #ifdef _CSS
 	printArgv(interp, argc, argv); //SAJalali
 #endif // _CSS
-	OPS_ResetInput(clientData, interp, 1, argc, argv, &theDomain, NULL);
+    OPS_ResetInputNoBuilder(clientData, interp, 1, argc, argv, &theDomain);
   return TclAddMeshRegion(clientData, interp, argc, argv, theDomain);
 }
 
