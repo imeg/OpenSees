@@ -25,6 +25,14 @@ SA Jalali
 			
 Change log
 -------------------------------------------------------------------
+
+Dec. 21 2019 (SA Jalali)
+	Bug removed: Steel05 usage in dtabase command
+	Bug removed: Node initialization related to energy computations for use with database command
+	Command added: remove loadPatterns : removes all previous loadPattern objects
+	Behaviour changed: remove element -> element references are removed from all recorder and loadPattern objects refering to the removed element 
+Dec. 1 2019 (SA Jalali)
+	added new Node Recorder options: "motionEnergy", "kineticEnergy" and "dampingEnergy"
 Nov. 3 2019 (SA Jalali)
 	Bug removed: in case OpenSees failed to open a file for writing due to lack of path, no error was detected and data 
 		could not be saved. Now, the error is identified and the used is informed by showing appropriate message

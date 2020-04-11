@@ -676,5 +676,21 @@ ResidElementRecorder::initialize(void)
   initializationDone = true;  
   return 0;
 }
-  
+//by SAJalali
+int ResidElementRecorder::removeComponentResponse(int compTag)
+{
+	if (theResponses == 0)
+		return -1;
+	if (eleID == 0)
+		return -1;
+	int loc = eleID->getLocation(compTag);
+	if (loc == -1)
+		return -1;
+	if (theResponses[loc] == 0)
+		return -1;
+	delete theResponses[loc];
+	theResponses[loc] = 0;
+	return 0;
+}
+
 #endif // _CSS

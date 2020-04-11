@@ -5902,6 +5902,11 @@ removeObject(ClientData clientData, Tcl_Interp *interp, int argc,
       delete thePattern;
     }
   }
+#ifdef _CSS
+  else if (strcmp(argv[1],"loadPatterns") == 0) {
+	theDomain.removeLoadPatterns();
+  }
+#endif // _CSS
 
   else if ((strcmp(argv[1],"TimeSeries") == 0) ||
 	   (strcmp(argv[1],"timeSeries") == 0)) {
@@ -6857,6 +6862,11 @@ eleNodes(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 
   //const Vector *tags = theDomain.getElementResponse(tag, &myArgv[0], 1);
   Element *theElement = theDomain.getElement(tag);
+  if (theElement == 0)
+  {
+	  opserr << "ERROR! eleNodes command: could not find element: " << tag << endln;
+	  return TCL_ERROR;
+  }
   int numTags = theElement->getNumExternalNodes();
   const ID &tags = theElement->getExternalNodes();
   for (int i = 0; i < numTags; i++) {

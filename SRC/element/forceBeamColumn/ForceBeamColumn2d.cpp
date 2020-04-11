@@ -2540,7 +2540,13 @@ ForceBeamColumn2d::displaySelf(Renderer &theViewer, int displayMode, float fact,
 Response*
 ForceBeamColumn2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 {
-  Response *theResponse = 0;
+#ifdef _CSS
+	Response* theResponse = Element::setResponse(argv, argc, output);
+	if (theResponse != 0)
+		return theResponse;
+#else
+	Response* theResponse = 0;
+#endif // _CSS
 
   output.tag("ElementOutput");
   output.attr("eleType","ForceBeamColumn2d");
@@ -2769,7 +2775,11 @@ ForceBeamColumn2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 int 
 ForceBeamColumn2d::getResponse(int responseID, Information &eleInfo)
 {
-  static Vector vp(3);
+#ifdef _CSS
+	if (Element::getResponse(responseID, eleInfo) == 0)
+		return 0;
+#endif // _CSS
+	static Vector vp(3);
   static Matrix fe(3,3);
 
   if (responseID == 1)

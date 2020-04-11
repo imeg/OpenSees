@@ -423,7 +423,7 @@ Steel05::revertToStart(void)
 int 
 Steel05::sendSelf(int commitTag, Channel &theChannel)
 {
-  static Vector data(32);
+  static Vector data(33);
   data(0) = Fy;
   data(1) = E0;
   data(2) = b;
@@ -456,6 +456,7 @@ Steel05::sendSelf(int commitTag, Channel &theChannel)
   data(29) = FydP;
   data(30) = FydN;
   data(31) = ExcurEnergy;
+  data(32) = gama;
   if (theChannel.sendVector(this->getDbTag(), commitTag, data) < 0) {
     opserr << "Steel05::sendSelf() - failed to sendSelf\n";
     return -1;

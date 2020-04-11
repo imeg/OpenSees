@@ -1219,8 +1219,14 @@ ElasticBeam2d::displaySelf(Renderer &theViewer, int displayMode, float fact, con
 Response*
 ElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 {
+#ifdef _CSS
+  Response *theResponse = Element::setResponse(argv, argc, output);
+  if (theResponse != 0)
+	  return theResponse;
+#else
+	Response* theResponse = 0;
+#endif // _CSS
 
-  Response *theResponse = 0;
 
   output.tag("ElementOutput");
   output.attr("eleType","ElasticBeam2d");
@@ -1314,6 +1320,11 @@ ElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 int
 ElasticBeam2d::getResponse (int responseID, Information &eleInfo)
 {
+#ifdef _CSS
+	if (Element::getResponse(responseID, eleInfo) == 0)
+		return 0;
+#endif // _CSS
+
   double N, M1, M2, V;
   double L = theCoordTransf->getInitialLength();
   this->getResistingForce();

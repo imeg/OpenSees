@@ -112,6 +112,10 @@ class LoadPattern : public DomainComponent
     virtual double getLoadFactorSensitivity(int gradIndex);
     // AddingSensitivity:END ///////////////////////////////////////////
 
+#ifdef _CSS
+	virtual void removeEleLoad(int eleTag);
+#endif // _CSS
+
   protected:
     int    isConstant;     // to indictae whether setConstant has been called
 	

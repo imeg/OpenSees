@@ -1259,7 +1259,13 @@ ZeroLength::Print(OPS_Stream &s, int flag)
 Response*
 ZeroLength::setResponse(const char **argv, int argc, OPS_Stream &output)
 {
-    Response *theResponse = 0;
+#ifdef _CSS
+	Response* theResponse = Element::setResponse(argv, argc, output);
+	if (theResponse != 0)
+		return theResponse;
+#else
+	Response* theResponse = 0;
+#endif // _CSS
 
     output.tag("ElementOutput");
     output.attr("eleType","ZeroLength");
@@ -1353,6 +1359,11 @@ ZeroLength::setResponse(const char **argv, int argc, OPS_Stream &output)
 int 
 ZeroLength::getResponse(int responseID, Information &eleInformation)
 {
+#ifdef _CSS
+	if (Element::getResponse(responseID, eleInformation) == 0)
+		return 0;
+#endif // _CSS
+
     const Vector& disp1 = theNodes[0]->getTrialDisp();
     const Vector& disp2 = theNodes[1]->getTrialDisp();
     const Vector  diff  = disp2-disp1;
