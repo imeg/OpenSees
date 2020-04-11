@@ -1356,7 +1356,6 @@ Response* Joint2D::setResponse(const char** argv, int argc, OPS_Stream& output)
 
 int Joint2D::getResponse(int responseID, Information& eleInformation)
 {
-<<<<<<< HEAD
 	switch (responseID) {
 	case -1:
 		return -1;

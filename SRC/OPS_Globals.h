@@ -39,6 +39,9 @@
 #else
 #define WIN_ARCH "64-Bit"
 #endif
+#else
+#define WIN_ARCH "64-Bit"
+#endif
 
 #define _USING_OpenSees_STREAMS
 #include <OPS_Stream.h>

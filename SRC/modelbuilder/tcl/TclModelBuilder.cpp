@@ -1562,7 +1562,7 @@ TclCommand_addSection(ClientData clientData, Tcl_Interp *interp,
 		hasBlock = true;
 	printArgv(interp, argc, argv, hasBlock);
 	int ret = TclModelBuilderSectionCommand(clientData, interp,
-		argc, argv, theTclBuilder);
+		argc, argv, theTclDomain, theTclBuilder);
 
 	if (hasBlock)
 		printArgv(interp, argc, argv, true);
