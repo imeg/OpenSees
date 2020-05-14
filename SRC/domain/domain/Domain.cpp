@@ -93,6 +93,7 @@
 Domain* ops_TheActiveDomain = 0;
 double        ops_Dt = 0.0;
 bool          ops_InitialStateAnalysis = false;
+int           ops_Creep = 0;
 
 Domain::Domain()
 	:theRecorders(0), numRecorders(0),
