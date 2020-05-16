@@ -979,7 +979,12 @@ int TwoNodeLink::recvSelf(int commitTag, Channel &rChannel,
     ub.resize(numDIR);
     ubdot.resize(numDIR);
     qb.resize(numDIR);
+
+#ifndef _CSS
+    //SAJalali: to retrive analysis status, model should not be reverted to initial condition
     this->revertToStart();
+#endif // !_CSS
+
     
     return 0;
 }
