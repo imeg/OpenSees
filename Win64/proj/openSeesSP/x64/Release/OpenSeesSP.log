@@ -1,0 +1,17 @@
+﻿  TclModelBuilder.cpp
+D:\programming\OpenSees.NET\SRC\modelbuilder\tcl\TclModelBuilder.cpp(128,10): fatal error C1083: Cannot open include file: 'FrictionModel.h': No such file or directory
+  TclSectionTester.cpp
+D:\programming\OpenSees.NET\SRC\modelbuilder\tcl\TclSectionTester.cpp(200,1): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message : see declaration of 'sprintf'
+D:\programming\OpenSees.NET\SRC\modelbuilder\tcl\TclSectionTester.cpp(221,1): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1774): message : see declaration of 'sprintf'
+  commands.cpp
+D:\programming\OpenSees.NET\SRC\tcl\commands.cpp(35,10): fatal error C1083: Cannot open include file: 'DOF_Group.h': No such file or directory
+  mpiMain.cpp
+  TclVideoPlayer.cpp
+D:\programming\OpenSees.NET\SRC\tcl\TclVideoPlayer.cpp(96,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : see declaration of 'strcpy'
+D:\programming\OpenSees.NET\SRC\tcl\TclVideoPlayer.cpp(147,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : see declaration of 'strcpy'
+D:\programming\OpenSees.NET\SRC\tcl\TclVideoPlayer.cpp(203,7): warning C4101: 'mode': unreferenced local variable
+  Generating Code...
