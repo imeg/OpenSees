@@ -146,7 +146,7 @@ Clough::Clough(int tag, Vector inputParam )
 	hsTrial[23] = -capSlope * elstk * capDispNeg + fPeakNeg;	// fCapRefNeg : indicates cap reference point
 
 	for (int i = 0; i < 24; i++) {
-		 hsCommit[i] = hsTrial[i];
+		 //hsCommit[i] = hsTrial[i];
 		 hsLastCommit[i] = hsTrial[i];
 	}
 #endif
@@ -208,7 +208,7 @@ int Clough::revertToStart()
 	hsTrial[23] = -capSlope*elstk*capDispNeg+fPeakNeg;	// fCapRefNeg : indicates cap reference point
 		
 	for( int i=0 ; i<24; i++) {
-		hsCommit[i] = hsTrial[i];
+		//hsCommit[i] = hsTrial[i];
 		hsLastCommit[i] = hsTrial[i];
 	}
 
@@ -289,8 +289,19 @@ int Clough::recvSelf(int cTag, Channel &theChannel,
   ck = inp[13];
   ca = inp[14];
   cd = inp[15];
+
+#ifdef _CSS
+  dyieldPos = fyieldPos / elstk;
+  dyieldNeg = fyieldNeg / elstk;
+  Enrgts = fyieldPos * dyieldPos * ecaps;
+  Enrgtk = fyieldPos * dyieldPos * ecapk;
+  Enrgta = fyieldPos * dyieldPos * ecapa;
+  Enrgtd = fyieldPos * dyieldPos * ecapd;
+
+#endif // _CSS
+
   for (int i=0; i<24; i++) 
-    hsCommit[i] = inp[16+i];
+	  hsLastCommit[i] = inp[16+i];
 
   //SAJalali
   Energy = inp[40];
@@ -322,7 +333,7 @@ int Clough::sendSelf(int cTag, Channel &theChannel)
   inp[14] = 	ca;
   inp[15] = 	cd;
   for (int i=0; i<24; i++) 
-    inp[16+i] = hsCommit[i];
+    inp[16+i] = hsLastCommit[i];
   inp[40] = Energy;//SAJalali
   res = theChannel.sendVector(this->getDbTag(), cTag, inp);
   if (res < 0) 
@@ -441,13 +452,13 @@ int Clough::setTrialStrain( double d, double strainRate)
 			if ( (Enrgc-RSE) <= 0.0 || (Enrgtk-(Enrgtot-RSE)) <0.0) RSE = 0.0;
 			a2 = Enrgtk - ( Enrgtot - RSE );			
 			if( a2 <= 0.0 && Enrgtk != 0.0)
-				opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n";	
+				opserr << "Warning: Clough::SetTrial (tag= " << getTag() << " : Maximum energy capacity has been reached for stiffness degradation\n";	
 
 			if( ecapk != 0.0) {
 				betak = pow ( ((Enrgc-RSE)/(Enrgtk-(Enrgtot-RSE))) , ck );
 				ekunload = ekexcurs * ( 1 - betak );
 				if( ekunload <= ekhardNeg ) 
-					opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n";	
+					opserr << "Warning: Clough::SetTrial  (tag= " << getTag() << " : Maximum energy capacity has been reached for stiffness degradation\n";
 			}
 			
 			//	Determination of sn according to the hysteresis status

@@ -94,7 +94,7 @@ class Clough : public UniaxialMaterial
   double dyieldPos,dyieldNeg;
   double Enrgts,Enrgtk,Enrgta,Enrgtd;
   
-  double hsTrial[24], hsCommit[24], hsLastCommit[24];
+  double hsTrial[24], /*hsCommit[24],*/ hsLastCommit[24];
   
   //by SAJalali
   double Energy;
