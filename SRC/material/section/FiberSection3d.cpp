@@ -1634,14 +1634,15 @@ double FiberSection3d::getEnergy() const
 	}
 	else {
 		for (int i = 0; i < numFibers; i++) {
-			fiberArea[i] = matData[2 * i + 1];
+			fiberArea[i] = matData[3 * i + 2];
 		}
 	}
 	double energy = 0;
 	for (int i = 0; i < numFibers; i++)
 	{
 		double A = fiberArea[i];
-		energy += A * theMaterials[i]->getEnergy();
+		double matE = theMaterials[i]->getEnergy();
+		energy += A * matE;
 	}
 	return energy;
 }
