@@ -441,18 +441,18 @@ int Clough::setTrialStrain( double d, double strainRate)
 			if ( (Enrgc-RSE) <= 0.0 || (Enrgtk-(Enrgtot-RSE)) <0.0) RSE = 0.0;
 			a2 = Enrgtk - ( Enrgtot - RSE );			
 			if( a2 <= 0.0 && Enrgtk != 0.0)
-				opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n" << "\a";	
+				opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n";	
 
 			if( ecapk != 0.0) {
 				betak = pow ( ((Enrgc-RSE)/(Enrgtk-(Enrgtot-RSE))) , ck );
 				ekunload = ekexcurs * ( 1 - betak );
 				if( ekunload <= ekhardNeg ) 
-					opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n" << "\a";	
+					opserr << "Warning: Clough::SetTrial  : Maximum energy capacity has been reached for stiffness degradation\n";	
 			}
 			
 			//	Determination of sn according to the hysteresis status
 			if( ekunload <= 1.e-7 )
-				opserr << "Warning: Clough::SetTrial  : Total stiffness loss\n" << "\a";	
+				opserr << "Warning: Clough::SetTrial  : Total stiffness loss\n";	
 			
 			if( fP < 0.0) {
 				tst = dP - fP / ekunload;
@@ -646,19 +646,19 @@ int Clough::setTrialStrain( double d, double strainRate)
 	  if (ecaps != 0.0 ) betas = pow ((Enrgc/(Enrgts-Enrgtot)) , cs );
 
 	  if (betas>=1.0 ){
-	    opserr << "Warning: Clough::SetTrial  : Total Strength loss\n" << "\a";	
+	    opserr << "Warning: Clough::SetTrial  : Total Strength loss\n";	
 	    betas = 1.0;
 	  }
 	  
 	  if (ecapa != 0.0 ) betaa = pow ((Enrgc/(Enrgta-Enrgtot)) , ca );
 		if( betaa>=1.0 ){
-			opserr << "Warning: Clough::SetTrial  : Total accelerated stiffness loss\n" << "\a";
+			opserr << "Warning: Clough::SetTrial  : Total accelerated stiffness loss\n";
 			betaa = 1.0;
 		}
 
 		if( ecapd != 0.0 ) betad = pow ((Enrgc/(Enrgtd-Enrgtot)) , cd );
 		if( betad>=1.0){
-			opserr << "Warning: Clough::SetTrial  : Total capping loss\n" << "\a";	
+			opserr << "Warning: Clough::SetTrial  : Total capping loss\n";	
 			betad = 1.0;
 		}
 	
