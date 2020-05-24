@@ -95,30 +95,36 @@ PythonWrapper::getMethods()
 }
 
 void
-PythonWrapper::setOutputs(int* data, int numArgs)
+PythonWrapper::setOutputs(int* data, int numArgs, bool scalar)
 {
-    if (numArgs == 0) return;
-    if (numArgs == 1) {
-	currentResult = Py_BuildValue("i", data[0]);
-	return ;
-    }
-    currentResult = PyList_New(numArgs);
-    for (int i=0; i<numArgs; i++) {
-	PyList_SET_ITEM(currentResult, i, Py_BuildValue("i", data[i]));
+    if (numArgs < 0) numArgs = 0;
+
+    if (scalar) {
+        if (numArgs > 0) {
+            currentResult = Py_BuildValue("i", data[0]);
+        }
+    } else {
+        currentResult = PyList_New(numArgs);
+        for (int i = 0; i < numArgs; i++) {
+            PyList_SET_ITEM(currentResult, i, Py_BuildValue("i", data[i]));
+        }
     }
 }
 
 void
-PythonWrapper::setOutputs(double* data, int numArgs)
+PythonWrapper::setOutputs(double* data, int numArgs, bool scalar)
 {
-    if (numArgs == 0) return;
-    if (numArgs == 1) {
-	currentResult = Py_BuildValue("d", data[0]);
-	return ;
-    }
-    currentResult = PyList_New(numArgs);
-    for (int i=0; i<numArgs; i++) {
-	PyList_SET_ITEM(currentResult, i, Py_BuildValue("d", data[i]));
+    if (numArgs < 0) numArgs = 0;
+
+    if (scalar) {
+        if (numArgs > 0) {
+            currentResult = Py_BuildValue("d", data[0]);
+        }
+    } else {
+        currentResult = PyList_New(numArgs);
+        for (int i = 0; i < numArgs; i++) {
+            PyList_SET_ITEM(currentResult, i, Py_BuildValue("d", data[i]));
+        }
     }
 }
 
@@ -234,6 +240,18 @@ static PyObject *Py_ops_wipe(PyObject *self, PyObject *args)
     wrapper->resetCommandLine(PyTuple_Size(args), 1, args);
 
     if (OPS_wipe() < 0) {
+	opserr<<(void*)0;
+	return NULL;
+    }
+
+    return wrapper->getResults();
+}
+
+static PyObject *Py_ops_wipeReliability(PyObject *self, PyObject *args)
+{
+    wrapper->resetCommandLine(PyTuple_Size(args), 1, args);
+
+    if (OPS_wipeReliability() < 0) {
 	opserr<<(void*)0;
 	return NULL;
     }
@@ -678,6 +696,18 @@ static PyObject *Py_ops_getTime(PyObject *self, PyObject *args)
     wrapper->resetCommandLine(PyTuple_Size(args), 1, args);
 
     if (OPS_getTime() < 0) {
+	opserr<<(void*)0;
+	return NULL;
+    }
+
+    return wrapper->getResults();
+}
+
+static PyObject *Py_ops_setCreep(PyObject *self, PyObject *args)
+{
+    wrapper->resetCommandLine(PyTuple_Size(args), 1, args);
+
+    if (OPS_setCreep() < 0) {
 	opserr<<(void*)0;
 	return NULL;
     }
@@ -2138,6 +2168,19 @@ static PyObject *Py_ops_unloadingRule(PyObject *self, PyObject *args)
     return wrapper->getResults();
 }
 
+static PyObject *Py_ops_partition(PyObject *self, PyObject *args)
+{
+    wrapper->resetCommandLine(PyTuple_Size(args), 1, args);
+
+    if (OPS_partition() < 0) {
+	opserr<<(void*)0;
+	return NULL;
+    }
+
+    return wrapper->getResults();
+}
+
+
 /////////////////////////////////////////////////
 ////////////// Add Python commands //////////////
 /////////////////////////////////////////////////
@@ -2189,6 +2232,7 @@ PythonWrapper::addOpenSeesCommands()
     addCommand("equalDOF", &Py_ops_equalDOF);
     addCommand("nodeEigenvector", &Py_ops_nodeEigenvector);
     addCommand("getTime", &Py_ops_getTime);
+    addCommand("setCreep", &Py_ops_setCreep);
     addCommand("eleResponse", &Py_ops_eleResponse);
     addCommand("sp", &Py_ops_SP);
     addCommand("fixX", &Py_ops_fixX);
@@ -2302,6 +2346,7 @@ PythonWrapper::addOpenSeesCommands()
     addCommand("getInverseCDF", &Py_ops_getRVInverseCDF);
     addCommand("correlate", &Py_ops_addCorrelate);
     addCommand("transformUtoX", &Py_ops_transformUtoX);
+    addCommand("wipeReliability", &Py_ops_wipeReliability);
     addCommand("updateMaterialStage", &Py_ops_updateMaterialStage);
     addCommand("sdfResponse", &Py_ops_sdfResponse);
     addCommand("probabilityTransformation", &Py_ops_probabilityTransformation);
@@ -2313,6 +2358,7 @@ PythonWrapper::addOpenSeesCommands()
     addCommand("stiffnessDegradation", &Py_ops_stiffnessDegradation);
     addCommand("strengthDegradation", &Py_ops_strengthDegradation);
     addCommand("unloadingRule", &Py_ops_unloadingRule);
+    addCommand("partition", &Py_ops_partition);
 
     PyMethodDef method = {NULL,NULL,0,NULL};
     methodsOpenSees.push_back(method);

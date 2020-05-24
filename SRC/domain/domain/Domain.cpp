@@ -87,6 +87,7 @@
 Domain* ops_TheActiveDomain = 0;
 double        ops_Dt = 0.0;
 bool          ops_InitialStateAnalysis = false;
+int           ops_Creep = 0;
 
 Domain::Domain()
 	:theRecorders(0), numRecorders(0),
@@ -1294,9 +1295,17 @@ Domain::removeParameter(int tag)
 	// remove the object from the container
 	TaggedObject *mc = theParameters->removeComponent(tag);
 
-	// if not there return 0
-	if (mc == 0)
-		return 0;
+void
+Domain::setCreep(int newCreep)
+{
+  ops_Creep = newCreep;
+}
+
+int
+Domain::getCreep(void) const
+{
+  return ops_Creep;
+}
 
 	// otherwise mark the domain as having changed
 	this->domainChange();

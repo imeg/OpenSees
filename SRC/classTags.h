@@ -214,6 +214,7 @@
 #define MAT_TAG_ConfinedConcrete01              101
 #define MAT_TAG_ElasticPowerFunc                102
 #define MAT_TAG_UVCuniaxial                     103
+#define MAT_TAG_IMKBilin                        104
 #define MAT_TAG_PySimple1                    205
 #define MAT_TAG_TzSimple1                    206
 #define MAT_TAG_QzSimple1                    207
@@ -373,6 +374,15 @@
 #define ND_TAG_StressDensityModel3D 57
 #define ND_TAG_UVCmultiaxial  58
 #define ND_TAG_UVCplanestress 59
+
+#define ND_TAG_LowTension 65
+#define ND_TAG_LowTensionPlaneStress 66
+#define ND_TAG_ExponentialTS 67
+#define ND_TAG_ExponentialTS2D 68
+#define ND_TAG_ElasticTS 69
+#define ND_TAG_ElasticTS2D 70
+#define ND_TAG_BilinearTS 71
+#define ND_TAG_BilinearTS2D 72
 
 #define ND_TAG_FluidSolidPorousMaterial        100
 #define ND_TAG_PressureDependMultiYield		101
@@ -620,9 +630,12 @@
 #define ELE_TAG_ElasticForceBeamColumn3d 76
 #define ELE_TAG_ForceBeamColumnCBDI2d   77
 #define ELE_TAG_ForceBeamColumnCBDI3d   78
+#define ELE_TAG_MixedBeamColumn2d 30766
+#define ELE_TAG_MixedBeamColumn3d 30765
 #define ELE_TAG_DispBeamColumn2dInt     79
 #define ELE_TAG_InternalSpring          80
 #define ELE_TAG_SimpleJoint2D           81
+#define ELE_TAG_LehighJoint2d           8181
 #define ELE_TAG_Joint2D                 82
 #define ELE_TAG_Joint3D                 83
 #define ELE_TAG_ElastomericBearingPlasticity3d 84
@@ -730,10 +743,20 @@
 #define ELE_TAG_PFEMElement2DQuasi        187
 #define ELE_TAG_MINI                      188
 #define ELE_TAG_PFEMElement3DBubble       189
-#define ELE_TAG_ComponentElement2d       192
 #define ELE_TAG_LinearElasticSpring       190
 #define ELE_TAG_Inerter                   191
-#define ELE_TAG_ExternalElement           99990  
+#define ELE_TAG_GradientInelasticBeamColumn2d	192
+#define ELE_TAG_GradientInelasticBeamColumn3d	193
+#define ELE_TAG_CohesiveZoneQuad 194
+#define ELE_TAG_ComponentElement2d       195
+#define ELE_TAG_InerterElement 196
+#define ELE_TAG_BeamColumn2DwLHNMYS 197
+#define ELE_TAG_BeamColumn3DwLHNMYS 198
+#define ELE_TAG_PFEMLink                  199
+#define ELE_TAG_PFEMContact2D             200
+#define ELE_TAG_ExternalElement           99990
+
+
 
 #define FRN_TAG_Coulomb            1
 #define FRN_TAG_VelDependent       2
@@ -919,7 +942,8 @@
 #define INTEGRATOR_TAGS_KRAlphaExplicit                 53
 #define INTEGRATOR_TAGS_KRAlphaExplicit_TP              54
 #define INTEGRATOR_TAGS_ExplicitDifference              55
-#define INTEGRATOR_TAGS_EQPath        					        56
+#define INTEGRATOR_TAGS_EQPath                          56
+#define INTEGRATOR_TAGS_GimmeMCK       			        57
 
 #define LinSOE_TAGS_FullGenLinSOE		1
 #define LinSOE_TAGS_BandGenLinSOE		2

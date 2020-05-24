@@ -5,6 +5,11 @@ OBJS       = UniaxialMaterial.o \
 	Elastic2Material.o \
 	ElasticPowerFunc.o \
 	UVCuniaxial.o \
+	Bilin.o \
+	Bilin02.o \
+	IMKBilin.o \
+	IMKPeakOriented.o \
+	IMKPinching.o \
 	Steel2.o \
 	OriginCentered.o \
 	ConcretewBeta.o \
@@ -120,6 +125,10 @@ OBJS       = UniaxialMaterial.o \
 	MaterialState.o \
 	OOHystereticMaterial.o \
 	SPSW02.o \
+	TDConcrete.o \
+	TDConcreteEXP.o \
+	TDConcreteMC10.o \
+	TDConcreteMC10NL.o \
         TclModelBuilderUniaxialMaterialCommand.o
 
 all:         $(OBJS)
