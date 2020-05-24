@@ -25,17 +25,17 @@ BASE  =
 
 FE    = $(HOME)/OpenSees/SRC
 
-#PROGRAMMING_MODE = SEQUENTIAL
+PROGRAMMING_MODE = SEQUENTIAL
 #PROGRAMMING_MODE = PARALLEL
 #PROGRAMMING_MODE = PARALLEL_INTERPRETERS
 
-OpenSees_PROGRAM = $(HOME)/bin/OpenSees
+OpenSees_PROGRAM = $(HOME)/fmkBin/OpenSees
 
 ifeq ($(PROGRAMMING_MODE), PARALLEL)
-OpenSees_PROGRAM = $(HOME)/bin/OpenSeesSP
+OpenSees_PROGRAM = $(HOME)/fmkBin/OpenSeesSP
 endif
 ifeq ($(PROGRAMMING_MODE), PARALLEL_INTERPRETERS)
-OpenSees_PROGRAM = $(HOME)/bin/OpenSeesMP
+OpenSees_PROGRAM = $(HOME)/fmkBin/OpenSeesMP
 endif
 
 # %---------------------------------%
@@ -52,7 +52,6 @@ DEBUG_MODE = NO_DEBUG
 RELIABILITY = NO_RELIABILITY
 
 GRAPHICS = NONE
-
 
 BLASdir      = $(HOME)/OpenSees/OTHER/BLAS
 CBLASdir     = $(HOME)/OpenSees/OTHER/CBLAS
@@ -123,6 +122,7 @@ CSPARSE_LIBRARY     = $(HOME)/lib/libCSparse.a
 DISTRIBUTED_SUPERLU_LIBRARY     = $(HOME)/lib/libDistributedSuperLU.a
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
+
 DISTRIBUTED_SUPERLU_LIBRARY     = 
 LAPACK_LIBRARY      = $(HOME)/lib/libLapack.a
 BLAS_LIBRARY        = $(HOME)/lib/libBlas.a
@@ -170,13 +170,18 @@ MPI_BIN = $(MPI_DIR)/bin
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
 
-#CC++            =  $(ICC_BIN)/icpc
-#CC              =  $(ICC_BIN)/icc
+CC++            =  $(ICC_BIN)/icpc
+CC              =  $(ICC_BIN)/icc
+FC              =  $(IFC_BIN)/ifort
 
-#FC              =  $(IFC_BIN)/ifort
-CC++ = g++
-CC = gcc
-FC = gfortran
+#CC++ = g++
+#CC = gcc
+#FC = gfortran
+
+OPT_FLAG = -O2
+
+COMP_FLAG = -DMPICH_IGNORE_CXX_SEEK 
+
 
 F90              =  $(FC)
 LINKER           = $(CC++)
@@ -191,7 +196,20 @@ FORTRAN             =  $(FC)
 
 LINKER          =  $(CC++)
 
+#OPT_FLAG = -fPIC
+#OPT_FLAG = -O2 -xCORE-AVX2 -axCORE-AVX512,MIC-AVX512
+
 endif
+
+C++FLAGS         = $(PLAINCONCRETE_FLAG) $(DAMAGE2P_FLAG) -D_LINUX -D_UNIX  $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG) $(OPT_FLAG) $(COMP_FLAG) $(H5DRM_FLAG) \
+		$(PROGRAMMING_FLAG)  $(PETSC_FLAG) $(MUMPS_FLAG) \
+		-D_TCL85 -D_BLAS 
+
+CFLAGS          =  $(RELIABILITY_FLAG) $(DEBUG_FLAG)$(PROGRAMMING_FLAG) $(OPT_FLAG) $(COMP_FLAG) -D_TCL85 -D_BLAS
+FFLAGS          =  $(OPT_FLAG) $(COMP_FLAG)
+LINKFLAGS       =
+
+
 
 AR		= ar 
 ARCH		= ar 
@@ -224,23 +242,11 @@ RELIABILITY_FLAG =
 #DEBUG_FLAG = -p -g
 DEBUG_FLAG = 
 
+H5DRM_FLAG = -D_H5DRM
+DAMAGE2P_FLAG = -D_HAVE_Damage2p
 PLAINCONCRETE_FLAG = -D_HAVE_PSUMAT
 MUMPS_FLAG = 
 PETSC_FLAG =
-
-#OPT_FLAG = -fPIC
-OPT_FLAG = -O2 
-#OPT_FLAG = -O0
-
-COMP_FLAG = -DMPICH_IGNORE_CXX_SEEK 
-
-C++FLAGS         = -I${MKLROOT}/include/intel64/lp64 -I${MKLROOT}/include $(PLAINCONCRETE_FLAG) -D_LINUX -D_UNIX  $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG) $(OPT_FLAG) $(COMP_FLAG)\
-		$(PROGRAMMING_FLAG)  $(PETSC_FLAG) $(MUMPS_FLAG) \
-		-D_TCL85 -D_BLAS
-
-CFLAGS          =  -I${MKLROOT}/include/intel64/lp64 -I${MKLROOT}/include $(GRAPHIC_FLAG) $(RELIABILITY_FLAG) $(DEBUG_FLAG)$(PROGRAMMING_FLAG) $(OPT_FLAG) $(COMP_FLAG) -D_TCL85 -D_BLAS
-FFLAGS          =  $(OPT_FLAG) $(COMP_FLAG)
-LINKFLAGS       = 
 
 
 # Misc
@@ -452,15 +458,22 @@ MACHINE_NUMERICAL_LIBS  = -lm \
   $(RELIABILITY_LIBRARY) \
   $(DISTRIBUTED_SUPERLU_LIBRARY) $(CSPARSE_LIBRARY) \
   $(METIS_LIBRARY) $(PETSC_LIB) $(CBLAS_LIBRARY) \
-  $(LAPACK_LIBRARY) $(MUMPS_LIB) $(BLAS_LIBRARY) $(PARALLEL_LIB)
+  $(LAPACK_LIBRARY) $(MUMPS_LIB) $(BLAS_LIBRARY) \
+  $(TACC_HDF5_DIR)/lib/libhdf5.a  \
+$(TACC_HDF5_DIR)/lib/libsz.a $(PARALLEL_LIB)
 
 #  $(DISTRIBUTED_SUPERLU_LIBRARY) $(METIS_LIBRARY) \
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
 
 #MACHINE_SPECIFIC_LIBS = -mkl=sequential -static-intel -lifcore
-MACHINE_SPECIFIC_LIBS = -lpthread -lifcore -lgfortran -ldl
+#MACHINE_SPECIFIC_LIBS = -lpthread -lgfortran -ldl
+MACHINE_SPECIFIC_LIBS = -lpthread -static-intel -L$(IFC_LIB) -lifcore
 
+#MACHINE_SPECIFIC_LIBS = /usr/lib/x86_64-redhat-linux6E/lib64/libpthread.a -lgfortran \
+#/usr/lib/x86_64-redhat-linux6E/lib64/libdl.a \
+#/usr/lib/x86_64-redhat-linux6E/lib64/libc.a \
+#/usr/lib/x86_64-redhat-linux6E/lib64/libm.a -static-libgcc
 
 else
 
@@ -481,7 +494,7 @@ MACHINE_INCLUDES = -I$(MPICH_HOME)/include \
 	-I$(HOME)/include   \
 	-I$(UMFPACKdir) \
 	-I$(SUPERLUdir) \
-	-I$(SUPERLU_DISTdir) \
+	-I$(SUPERLU_DISTdir) -I$(TACC_HDF5_DIR)/include \
 	$(PETSC_INC) $(MUMPS_INCLUDE)
 
 

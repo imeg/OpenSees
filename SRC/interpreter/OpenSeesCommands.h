@@ -265,6 +265,8 @@ int OPS_sectionStiffness();
 int OPS_sectionFlexibility();
 int OPS_sectionLocation();
 int OPS_sectionWeight();
+int OPS_sectionDisplacement();
+int OPS_cbdiDisplacement();
 int OPS_basicDeformation();
 int OPS_basicForce();
 int OPS_basicStiffness();
@@ -285,6 +287,7 @@ int OPS_loadConst();
 int OPS_calculateNodalReactions();
 int OPS_rayleighDamping();
 int OPS_setTime();
+int OPS_setCreep();
 int OPS_removeObject();
 int OPS_addNodalMass();
 int OPS_buildModel();
@@ -315,6 +318,7 @@ int OPS_sdfResponse();
 int OPS_getNumThreads();
 int OPS_setNumThreads();
 int OPS_setStartNodeTag();
+int OPS_partition();
 
 // OpenSeesReliabilityCommands.cpp
 int OPS_randomVariable();
@@ -327,6 +331,7 @@ int OPS_getRVInverseCDF();
 int OPS_addCorrelate();
 int OPS_probabilityTransformation();
 int OPS_transformUtoX();
+int OPS_wipeReliability();
 
 /* OpenSeesCommands.cpp */
 int OPS_wipe();
@@ -405,6 +410,7 @@ void* OPS_PFEMSolver();
 void* OPS_PFEMCompressibleSolver();
 void* OPS_PFEMQuasiSolver();
 void* OPS_PFEMSolver_Umfpack();
+void* OPS_PFEMSolver_Mumps();
 void* OPS_PFEMSolver_Laplace();
 void* OPS_PFEMSolver_LumpM();
 void* OPS_SymSparseLinSolver();
@@ -432,6 +438,7 @@ void* OPS_CTestRelativeTotalNormDispIncr();
 void* OPS_LoadControlIntegrator();
 void* OPS_DisplacementControlIntegrator();
 void* OPS_Newmark();
+void* OPS_GimmeMCK();
 void* OPS_ArcLength();
 void* OPS_ArcLength1();
 void* OPS_HSConstraint();
@@ -487,8 +494,7 @@ void* OPS_BFGS();
 
 // commands that changed or added:
 //
-//    missing : video, partition,
-//              reliability, wipeReliability,
+//    missing : video,
 //              FiberThermal, FiberInt,
 //              UCFiber, TclModelBuilderYS_SectionCommand, yieldSurface_BC,
 //              ysEvolutionModel, plasticMaterial, cyclicModel, damageModel,
