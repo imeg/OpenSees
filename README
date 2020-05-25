@@ -2,6 +2,7 @@ The OpenSees.net source code repository.
 
 Change log
 -------------------------------------------------------------------
+Update to version 3.2.0 May 25,2020
 Add .NET Core Project (VS Version 16.5.0 Preview 4.0)
 Fixing LoadPatternWrapper object oct. 11 2019
 	return SPs
