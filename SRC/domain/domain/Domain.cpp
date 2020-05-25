@@ -450,7 +450,11 @@ Domain::addElement(Element *element)
       theElements->removeComponent(eleTag);
       return false;
     }
-#endif      
+#endif   
+#if _DLL
+    if (this->_DomainEvent_AddElement)
+        this->_DomainEvent_AddElement(element);
+#endif
     // mark the Domain as having been changed
     this->domainChange();
   } else 
@@ -478,8 +482,12 @@ Domain::addNode(Node * node)
   bool result = theNodes->addComponent(node);
   if (result == true) {
       node->setDomain(this);
+#if _DLL
+      if (this->_DomainEvent_AddNode)
+          this->_DomainEvent_AddNode(node);
+#endif
       this->domainChange();
-      
+
       // see if the physical bounds are changed
       // note this assumes 0,0,0,0,0,0 as startup min,max values
       const Vector &crds = node->getCrds();
@@ -572,6 +580,10 @@ Domain::addSP_Constraint(SP_Constraint *spConstraint)
   } 
 
   spConstraint->setDomain(this);
+#if _DLL
+  if (this->_DomainEvent_AddSP)
+      this->_DomainEvent_AddSP(spConstraint);
+#endif
   this->domainChange();  
 
   return true;
@@ -723,6 +735,10 @@ Domain::addMP_Constraint(MP_Constraint *mpConstraint)
   bool result = theMPs->addComponent(mpConstraint);
   if (result == true) {
       mpConstraint->setDomain(this);
+#if _DLL
+      if (this->_DomainEvent_AddMP)
+          this->_DomainEvent_AddMP(mpConstraint);
+#endif
       this->domainChange();
   } else
     opserr << "Domain::addMP_Constraint - cannot add constraint with tag" << 
@@ -748,6 +764,10 @@ Domain::addLoadPattern(LoadPattern *load)
     bool result = theLoadPatterns->addComponent(load);
     if (result == true) {
 	load->setDomain(this);
+#if _DLL
+    if (this->_DomainEvent_AddLoadPattern)
+        this->_DomainEvent_AddLoadPattern(load);
+#endif
 	this->domainChange();
     }
     else 
@@ -858,6 +878,10 @@ Domain::addSP_Constraint(SP_Constraint *spConstraint, int pattern)
   }
 
   spConstraint->setDomain(this);
+#if _DLL
+  if (this->_DomainEvent_AddSP_Constraint)
+      this->_DomainEvent_AddSP_Constraint(spConstraint, pattern);
+#endif
   this->domainChange();  
 
   return true;
@@ -892,6 +916,10 @@ Domain::addNodalLoad(NodalLoad *load, int pattern)
     }
 
     load->setDomain(this);    // done in LoadPattern::addNodalLoad()
+#if _DLL
+    if (this->_DomainEvent_AddNodalLoad)
+        this->_DomainEvent_AddNodalLoad(load, pattern);
+#endif
     this->domainChange();
 
     return result;
@@ -920,6 +948,10 @@ Domain::addElementalLoad(ElementalLoad *load, int pattern)
 
     // load->setDomain(this); // done in LoadPattern::addElementalLoad()
     this->domainChange();
+#if _DLL
+    if (this->_DomainEvent_AddElementalLoad)
+        this->_DomainEvent_AddElementalLoad(load, pattern);
+#endif
     return result;
 }
 
@@ -1013,6 +1045,10 @@ Domain::clearAll(void) {
   theElementGraph = 0;
   
   dbEle =0; dbNod =0; dbSPs =0; dbPCs = 0; dbMPs =0; dbLPs = 0; dbParam = 0;
+#if _DLL
+  if (this->_DomainEvent_ClearAll)
+      this->_DomainEvent_ClearAll();
+#endif
 }
 
 
@@ -1032,6 +1068,10 @@ Domain::removeElement(int tag)
   // perform a downward cast to an Element (safe as only Element added to
   // this container, 0 the Elements DomainPtr and return the result of the cast  
   Element *result = (Element *)mc;
+#if _DLL
+  if (this->_DomainEvent_RemoveElement)
+      this->_DomainEvent_RemoveElement(result);
+#endif
   //  result->setDomain(0);
   return result;
 }
@@ -1052,6 +1092,10 @@ Domain::removeNode(int tag)
   // perform a downward cast to a Node (safe as only Node added to
   // this container and return the result of the cast
   Node *result = (Node *)mc;
+#if _DLL
+  if (this->_DomainEvent_RemoveNode)
+      this->_DomainEvent_RemoveNode(result);
+#endif
   // result->setDomain(0);
   return result;
 }
@@ -1122,7 +1166,10 @@ Domain::removeSP_Constraint(int tag)
     // and return the result of the cast    
     SP_Constraint *result = (SP_Constraint *)mc;
     // result->setDomain(0);
-
+#if _DLL
+    if (this->_DomainEvent_RemoveSP)
+        this->_DomainEvent_RemoveSP(result);
+#endif
     // should check that theLoad and result are the same    
     return result;
 }
@@ -1165,6 +1212,10 @@ Domain::removeMP_Constraint(int tag)
     // perform a downward cast, set the objects domain pointer to 0
     // and return the result of the cast        
     MP_Constraint *result = (MP_Constraint *)mc;
+#if _DLL
+    if (this->_DomainEvent_RemoveMP)
+        this->_DomainEvent_RemoveMP(result);
+#endif
     // result->setDomain(0);
     return result;
 }    
@@ -1191,13 +1242,17 @@ Domain::removeMP_Constraints(int nodeTag)
   for (int i=0; i<sizeTags; i++) {
     int  tag = tagsToRemove(i);
     TaggedObject *mc = theMPs->removeComponent(tag);
+#if _DLL
+    if (this->_DomainEvent_RemoveMP)
+        this->_DomainEvent_RemoveMP((MP_Constraint*)mc);
+#endif
     if (mc != 0)
       delete mc;
   }
     
   // mark the domain as having changed    
   this->domainChange();
-    
+
   return sizeTags;
 }    
 
@@ -1289,7 +1344,10 @@ Domain::removeLoadPattern(int tag)
 	numSPs++;
 	// theSP_Constraint->setDomain(0);
     }
-
+#if _DLL
+    if (this->_DomainEvent_RemoveLoadPattern)
+        this->_DomainEvent_RemoveLoadPattern(result);
+#endif
     // mark the domain has having changed if numSPs > 0
     // as the constraint handlers have to be redone
     if (numSPs > 0)
@@ -1312,8 +1370,13 @@ Domain::removeNodalLoad(int tag, int loadPattern)
   // if not there return 0    
   if (theLoadPattern == 0)
     return 0;
-    
-  return theLoadPattern->removeNodalLoad(tag);
+  NodalLoad* removedItem = theLoadPattern->removeNodalLoad(tag);
+#if _DLL
+  if (this->_DomainEvent_RemoveNodalLoad)
+      this->_DomainEvent_RemoveNodalLoad(removedItem);
+#endif
+
+  return removedItem;
 }    
 
 
@@ -1327,7 +1390,12 @@ Domain::removeElementalLoad(int tag, int loadPattern)
   if (theLoadPattern == 0)
     return 0;
     
-  return theLoadPattern->removeElementalLoad(tag);
+  ElementalLoad* removedItem = theLoadPattern->removeElementalLoad(tag);
+#if _DLL
+  if (this->_DomainEvent_RemoveElementalLoad)
+      this->_DomainEvent_RemoveElementalLoad(removedItem);
+#endif
+  return removedItem;
 }    
 
 
@@ -1343,7 +1411,13 @@ Domain::removeSP_Constraint(int tag, int loadPattern)
     
   SP_Constraint *theSP = theLoadPattern->removeSP_Constraint(tag);
   if (theSP != 0)
-    this->domainChange();
+  {
+#if _DLL
+      if (this->_DomainEvent_RemoveSP_Constraint)
+          this->_DomainEvent_RemoveSP_Constraint(theSP);
+#endif
+      this->domainChange();
+  }
 
   return theSP;
 }    
@@ -2311,7 +2385,10 @@ Domain::addRecorder(Recorder &theRecorder)
     opserr << "Domain::addRecorder() - recorder could not be added\n";
     return -1;
   }
-
+#if _DLL
+  if (this->_DomainEvent_AddRecorder)
+      this->_DomainEvent_AddRecorder(&theRecorder);
+#endif
   for (int i=0; i<numRecorders; i++) {
     if (theRecorders[i] == 0) {
       theRecorders[i] = &theRecorder;
@@ -2342,8 +2419,13 @@ int
 Domain::removeRecorders(void)
 {
     for (int i=0; i<numRecorders; i++)  
-      if (theRecorders[i] != 0)
-	delete theRecorders[i];
+        if (theRecorders[i] != 0) {
+#if _DLL
+            if (this->_DomainEvent_RemoveRecorder)
+                this->_DomainEvent_RemoveRecorder(theRecorders[i]);
+#endif
+	    delete theRecorders[i];
+      }
     
     if (theRecorders != 0) {
       delete [] theRecorders;
@@ -2360,6 +2442,10 @@ Domain::removeRecorder(int tag)
   for (int i=0; i<numRecorders; i++) {
     if (theRecorders[i] != 0) {
       if (theRecorders[i]->getTag() == tag) {
+#if _DLL
+          if (this->_DomainEvent_RemoveRecorder)
+              this->_DomainEvent_RemoveRecorder(theRecorders[i]);
+#endif
 	delete theRecorders[i];
 	theRecorders[i] = 0;
 	return 0;
