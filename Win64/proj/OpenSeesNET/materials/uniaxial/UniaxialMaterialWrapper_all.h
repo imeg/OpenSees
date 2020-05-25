@@ -54,8 +54,8 @@
 
 
 //snap
-#include <snap/Bilin.h>
-#include <snap/Bilin02.h>
+#include <Bilin.h>
+#include <Bilin02.h>
 #include <snap/Bilinear.h>
 #include <snap/Clough.h>
 #include <snap/CloughDamage.h>

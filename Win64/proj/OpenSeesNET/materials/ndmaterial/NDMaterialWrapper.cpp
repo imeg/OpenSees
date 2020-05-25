@@ -342,7 +342,8 @@ J2CyclicBoundingSurfaceWrapper::J2CyclicBoundingSurfaceWrapper(int    tag,
 	double k_in,
 	double beta)
 {
-	_NDMaterial = new J2CyclicBoundingSurface(tag,
+	throw gcnew Exception("model change in version 3.2");
+	/*_NDMaterial = new J2CyclicBoundingSurface(tag,
 		G,
 		K,
 		su,
@@ -350,7 +351,7 @@ J2CyclicBoundingSurfaceWrapper::J2CyclicBoundingSurfaceWrapper(int    tag,
 		h,
 		m,
 		k_in,
-		beta);
+		beta);*/
 }
 
 J2PlaneStrainWrapper::J2PlaneStrainWrapper(int    tag,

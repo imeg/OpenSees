@@ -166,11 +166,11 @@ void* OPS_ShearPanelMaterial();
 void* OPS_SteelMP();
 void* OPS_SmoothPSConcrete();
 void* OPS_UniaxialJ2Plasticity();
-void* OPS_IMKPeakOriented();
-void* OPS_IMKPinching();
-void* OPS_IMKBilin();
-void* OPS_UVCuniaxial();
 void* OPS_OOHystereticMaterial();
+void* OPS_UVCuniaxial();
+void* OPS_IMKBilin();
+void* OPS_IMKPinching();
+void* OPS_IMKPeakOriented();
 
 void* OPS_ArctangentBackbone();
 void* OPS_BilinearBackbone();

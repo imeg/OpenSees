@@ -43,11 +43,6 @@
 obj
 *.exp
 
-# log & exp
-*.exp
-*.log
-*.tlog
-
 # CLion
 .gitignore
 .idea
