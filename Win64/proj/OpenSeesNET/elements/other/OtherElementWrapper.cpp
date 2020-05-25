@@ -128,15 +128,15 @@ Joint2DWrapper::Joint2DWrapper(int tag, int nd1, int nd2, int nd3, int nd4, int 
 	UniaxialMaterialWrapper^ springC,
 	DomainWrapper^ theDomain,
 	int LrgDisp) {
-
-	_Element = new Joint2D(tag, nd1, nd2, nd3, nd4, IntNodeTag,
+	throw gcnew Exception("model change in version 3.2");
+	/*_Element = new Joint2D(tag, nd1, nd2, nd3, nd4, IntNodeTag,
 		*spring1->_UniaxialMaterial,
 		*spring2->_UniaxialMaterial,
 		*spring3->_UniaxialMaterial,
 		*spring4->_UniaxialMaterial,
 		*springC->_UniaxialMaterial,
 		theDomain->_Domain,
-		LrgDisp);
+		LrgDisp);*/
 }
 
 MP_Joint2DWrapper::MP_Joint2DWrapper(DomainWrapper^ theDomain, int nodeRetain, int nodeConstr,
@@ -165,8 +165,8 @@ Joint2DWrapper::Joint2DWrapper(int tag, int nd1, int nd2, int nd3, int nd4, int 
 	DamageModelWrapper^ dmg3,
 	DamageModelWrapper^ dmg4,
 	DamageModelWrapper^ dmgC) {
-
-	_Element = new Joint2D(tag, nd1, nd2, nd3, nd4, IntNodeTag,
+	throw gcnew Exception("model change in version 3.2");
+	/*_Element = new Joint2D(tag, nd1, nd2, nd3, nd4, IntNodeTag,
 		*spring1->_UniaxialMaterial,
 		*spring2->_UniaxialMaterial,
 		*spring3->_UniaxialMaterial,
@@ -178,7 +178,7 @@ Joint2DWrapper::Joint2DWrapper(int tag, int nd1, int nd2, int nd3, int nd4, int 
 		*dmg2->_DamageModel,
 		*dmg3->_DamageModel,
 		*dmg4->_DamageModel,
-		*dmgC->_DamageModel);
+		*dmgC->_DamageModel);*/
 }
 
 Joint3DWrapper::Joint3DWrapper(int tag, int nd1, int nd2, int nd3, int nd4, int nd5, int nd6, int IntNodeTag,
@@ -187,13 +187,13 @@ Joint3DWrapper::Joint3DWrapper(int tag, int nd1, int nd2, int nd3, int nd4, int 
 	UniaxialMaterialWrapper^ springz,
 	DomainWrapper^ theDomain,
 	int LrgDisp) {
-
-	_Element = new Joint3D( tag,  nd1,  nd2,  nd3,  nd4,  nd5,  nd6,  IntNodeTag,
+	throw gcnew Exception("model change in version 3.2");
+	/*_Element = new Joint3D( tag,  nd1,  nd2,  nd3,  nd4,  nd5,  nd6,  IntNodeTag,
 		*springx->_UniaxialMaterial,
 		*springy->_UniaxialMaterial,
 		*springz->_UniaxialMaterial,
 		theDomain->_Domain,
-		LrgDisp);
+		LrgDisp);*/
 }
 
 PY_Macro2DWrapper::PY_Macro2DWrapper(int tag,
