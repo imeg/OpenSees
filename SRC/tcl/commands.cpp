@@ -1534,7 +1534,7 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 //added by SAJalali:start
 int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv)
 {
-	std::string file = "commandsLog.ops";
+	std::string file = "commandsLog.tcl";
 	CmdLogStream.setFile(file.c_str());
 	if (LOG_COMMANDS == 0)		// to support for "stop"
 		LOG_COMMANDS = 1;
@@ -1552,7 +1552,6 @@ int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_
 			}
 			else {
 				file = argv[narg++];
-				file += ".ops";
 				CmdLogStream.setFile(file.c_str());
 			}
 		}
@@ -1565,6 +1564,7 @@ int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_
 		{
 			narg++;
 			LOG_COMMANDS = 0;
+			CmdLogStream.close();
 		}
 	}
 
@@ -9285,9 +9285,6 @@ const char * getInterpPWD(Tcl_Interp *interp) {
 int 
 OpenSeesExit(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv)
 {
-#ifdef _CSS
-	printArgv(interp, argc, argv); //SAJalali
-#endif // _CSS
 	theDomain.clearAll();
 
 #ifdef _PARALLEL_PROCESSING
