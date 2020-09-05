@@ -220,7 +220,7 @@ Node::Node(int theClassTag)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0)
+	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 
 {
@@ -247,7 +247,7 @@ Node::Node(int tag, int theClassTag)
   R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0)
+	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // for subclasses - they must implement all the methods with
@@ -272,6 +272,9 @@ Node::Node(int tag, int ndof, double Crd1, Vector *dLoc)
  disp(0), vel(0), accel(0), dbTag1(0), dbTag2(0), dbTag3(0), dbTag4(0),
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
+#ifdef _CSS
+    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+#endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
   dispSensitivity = 0;
@@ -318,6 +321,9 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  disp(0), vel(0), accel(0), dbTag1(0), dbTag2(0), dbTag3(0), dbTag4(0),
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
+#ifdef _CSS
+    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+#endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
   dispSensitivity = 0;
@@ -366,7 +372,10 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  disp(0), vel(0), accel(0), dbTag1(0), dbTag2(0), dbTag3(0), dbTag4(0),
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
-{
+#ifdef _CSS
+     , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+#endif // _CSS
+ {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
   dispSensitivity = 0;
   velSensitivity = 0;
@@ -415,6 +424,9 @@ Node::Node(const Node &otherNode, bool copyMass)
  disp(0), vel(0), accel(0), dbTag1(0), dbTag2(0), dbTag3(0), dbTag4(0),
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
    reaction(0), displayLocation(0)
+#ifdef _CSS
+    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+#endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
   dispSensitivity = 0;
@@ -488,7 +500,6 @@ Node::Node(const Node &otherNode, bool copyMass)
     }
   }
 #ifdef _CSS
-#ifdef _CSS
   if (otherNode.kineticEnergy != 0)
   kineticEnergy = new Vector(*otherNode.kineticEnergy);
   dampEnergy = new Vector(*otherNode.dampEnergy);
@@ -504,7 +515,6 @@ Node::Node(const Node &otherNode, bool copyMass)
   }
 #endif // _CSS
 
-#endif //_CSS
 
   index = -1;
 }
@@ -531,6 +541,8 @@ Node::~Node()
 		delete lastCommitDisp;
 	if (unbalDampForce != 0)
 		delete unbalDampForce;
+   if (theEleConnects != 0)
+       delete theEleConnects;
 #endif // _CSS
 
     if (Crd != 0)
@@ -2505,6 +2517,17 @@ Node::setGlobalMatrices()
 }
 
 #ifdef _CSS
+void Node::addEleConnect(Element* pEle)
+{
+    numEleConnects++;
+    Element** oldCncts = theEleConnects;
+    theEleConnects = new Element* [numEleConnects];
+    for (int i = 0; i < numEleConnects - 1; i++)
+        theEleConnects[i] = oldCncts[i];
+    theEleConnects[numEleConnects - 1] = pEle;
+    if (oldCncts != 0)
+        delete oldCncts;
+}
 Vector Node::getKineticEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT)
 {
 	if (kineticEnergy == 0)

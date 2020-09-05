@@ -175,7 +175,11 @@ class Node : public DomainComponent
 	Vector getDampEnergy(TimeSeries** velSeries, TimeSeries** dispSeries, double t, double prevT);
 	const Vector& getLastCommitDisp() { return *lastCommitDisp; }
 	void addDampingForce(const Vector& add);
-
+   void addEleConnect(Element* pEle);
+   int getEleConnects(Element**& list) const {
+       list = theEleConnects;
+       return numEleConnects;
+   }
 #endif // _CSS
 
   protected:
@@ -201,6 +205,8 @@ class Node : public DomainComponent
     Vector *incrDeltaDisp;
 #ifdef _CSS
 	Vector* kineticEnergy, *dampEnergy, *motionEnergy, *lastCommitAccel, *lastCommitVel, *lastCommitDisp, *unbalDampForce;
+   Element** theEleConnects;
+   int numEleConnects;
 #endif // _CSS
 
     double *disp, *vel, *accel; // double arrays holding the displ, 

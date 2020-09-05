@@ -40,6 +40,8 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 #ifdef _CSS
 int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = false);
 int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv);
+int OPS_NodeEleConnectsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv);
+
 #endif // _CSS
 
 int OpenSeesAppInit(Tcl_Interp *interp);

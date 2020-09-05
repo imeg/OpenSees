@@ -34,6 +34,11 @@
 
 
 #include <Domain.h>
+#ifdef _CSS
+#include <Element.h>
+#include <Node.h>
+#endif // _CSS
+
 #include <DomainComponent.h>
 
 DomainComponent::DomainComponent(int tag, int clasTag)
@@ -54,6 +59,17 @@ DomainComponent::setDomain(Domain *model)
 {
     // sets the pointer 
     theDomain = model;
+#ifdef _CSS
+    Element* pEle = dynamic_cast<Element*>(this);
+    if (pEle != 0)
+    {
+        int n = pEle->getNumExternalNodes();
+        Node** nodes = pEle->getNodePtrs();
+        for (int i = 0; i < n; i++)
+            nodes[i]->addEleConnect(pEle);
+    }
+#endif // _CSS
+
 }
 
 

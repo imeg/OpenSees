@@ -815,6 +815,8 @@ int OpenSeesAppInit(Tcl_Interp *interp) {
 	//by SAJalali
 	Tcl_CreateCommand(interp, "logCommands", &OPS_LogCommandsCmd,
 		(ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
+	Tcl_CreateCommand(interp, "nodeEleConnects", &OPS_NodeEleConnectsCmd,
+		(ClientData)NULL, (Tcl_CmdDeleteProc*)NULL);
 #endif // _CSS
 
 	Tcl_CreateObjCommand(interp, "pset", &OPS_SetObjCmd,
@@ -1532,6 +1534,31 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 
 #ifdef _CSS
 //added by SAJalali:start
+int OPS_NodeEleConnectsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv)
+{
+    int tag;
+    if (Tcl_GetInt(interp, argv[1], &tag) != TCL_OK) {
+        opserr << "WARNING nodeEleConnects nodeTag? : could not read nodeTag \n";
+        return TCL_ERROR;
+    }
+    Node* pNode = theDomain.getNode(tag);
+    if (pNode == NULL)
+    {
+        opserr << "WARNING nodeEleConnects: could not find the Node object\n";
+        return TCL_ERROR;
+    }
+    Element** eleList;
+    int numEle = pNode->getEleConnects(eleList);
+    char buffer[20];
+
+    for (int i = 0; i < numEle; i++) {
+        sprintf(buffer, "%d ", eleList[i]->getTag());
+        Tcl_AppendResult(interp, buffer, NULL);
+    }
+
+    return TCL_OK;
+
+}
 int OPS_LogCommandsCmd(ClientData clientData, Tcl_Interp* interp, int argc, TCL_Char** argv)
 {
 	std::string file = "commandsLog.tcl";

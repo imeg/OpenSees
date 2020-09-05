@@ -1,0 +1,2 @@
+F:\Omran Elm Afzar\OpenSees.NET new\OpenSees.NET\Win64\lib\debug\proxy.pdb
+F:\Omran Elm Afzar\OpenSees.NET new\OpenSees.NET\Win64\proj\proxy\x64\Debug\proxy.pdb
