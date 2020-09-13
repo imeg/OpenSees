@@ -206,6 +206,9 @@ int
 getEleTags(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
 
 int 
+nodeDOFs(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
+
+int 
 nodeMass(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
 
 int 
@@ -323,12 +326,8 @@ numIter(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
 int 
 systemSize(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
 
-
-
-
-
-
-
-
-
+int
+elementActivate(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
+int
+elementDeactivate(ClientData clientData, Tcl_Interp *interp, int argc, TCL_Char **argv);
 

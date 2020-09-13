@@ -58,11 +58,11 @@ int  Element::numMatrices(0);
 Element::Element(int tag, int cTag) 
   :DomainComponent(tag, cTag), alphaM(0.0), 
   betaK(0.0), betaK0(0.0), betaKc(0.0), 
-   Kc(0), previousK(0), numPreviousK(0), index(-1), nodeIndex(-1)
+      Kc(0), previousK(0), numPreviousK(0), index(-1), nodeIndex(-1),
+      is_this_element_active(true)
 #ifdef _CSS
-	, prevDampingForces(0), dampingEnergies(0)
+    , prevDampingForces(0), dampingEnergies(0)
 #endif // _CSS
-
 {
   // does nothing
   ops_TheActiveElement = this;
@@ -803,26 +803,75 @@ Element::getGeometricTangentStiff()
     return *theMatrix;
 }
 
+void Element::activate()
+{
+    // opserr << "Activating element # " << this->getTag() << endln;
+    is_this_element_active = true;
+    this->onActivate();
+}
+
+void Element::deactivate()
+{
+    // opserr << "Deactivating element # " << this->getTag() << endln;
+    is_this_element_active = false;
+    this->onDeactivate();
+}
+
+
+void Element::onActivate()
+{
+    static bool report_once = true;
+    if (report_once)
+    {
+        opserr << "onActivate not implemented for this element. classTag = " << this->getClassTag() << endln;
+        report_once = false;
+    }
+}
+
+void Element::onDeactivate()
+{   static bool report_once = true;
+    if (report_once)
+    {
+        opserr << "onDeactivate not implemented for this element. classTag = " << this->getClassTag() << endln;
+        report_once = false;
+    }
+}    
+
+
+bool  Element::isActive()
+{
+    // opserr << "Element::isActive() [tag = " << this->getTag() << "] = ";
+    // if (is_this_element_active)
+    // {
+    //     opserr << "TRUE" << endln;
+    // }
+    // else
+    // {
+    //     opserr << "FALSE" << endln;
+    // }
+    return is_this_element_active;
+}
+
 #ifdef _CSS
 Vector Element::getDampingEnergies()
 {
-	const Vector& thisF = getRayleighDampingForces();
-	int numDof = thisF.Size();
-	if (prevDampingForces == 0)
-		prevDampingForces = new Vector(numDof);
-	if (dampingEnergies == 0)
-		dampingEnergies = new Vector(numDof);
-	Vector* theVector2 = theVectors1[index];
-	Node** theNodes = this->getNodePtrs();
-	int numNodes = this->getNumExternalNodes();
-	int loc = 0;
-	for (int i = 0; i < numNodes; i++) {
-		const Vector& prevDisp = theNodes[i]->getLastCommitDisp();
-		const Vector& thisDisp = theNodes[i]->getDisp();
-		for (int j = 0; j < prevDisp.Size(); j++) {
-			(*dampingEnergies)(loc++) = 0.5 * ((*prevDampingForces)(j) + thisF(j)) * (thisDisp[j] - prevDisp[j]);
-		}
-	}
-	return *dampingEnergies;
+    const Vector& thisF = getRayleighDampingForces();
+    int numDof = thisF.Size();
+    if (prevDampingForces == 0)
+        prevDampingForces = new Vector(numDof);
+    if (dampingEnergies == 0)
+        dampingEnergies = new Vector(numDof);
+    Vector* theVector2 = theVectors1[index];
+    Node** theNodes = this->getNodePtrs();
+    int numNodes = this->getNumExternalNodes();
+    int loc = 0;
+    for (int i = 0; i < numNodes; i++) {
+        const Vector& prevDisp = theNodes[i]->getLastCommitDisp();
+        const Vector& thisDisp = theNodes[i]->getDisp();
+        for (int j = 0; j < prevDisp.Size(); j++) {
+            (*dampingEnergies)(loc++) = 0.5 * ((*prevDampingForces)(j) + thisF(j)) * (thisDisp[j] - prevDisp[j]);
+        }
+    }
+    return *dampingEnergies;
 }
 #endif

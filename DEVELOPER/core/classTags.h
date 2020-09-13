@@ -557,6 +557,8 @@
 #define ELE_TAG_NLBeamColumn3d	        29
 #define ELE_TAG_LargeDispBeamColumn3d	30
 #define ELE_TAG_FourNodeQuad	        31
+#define ELE_TAG_NineNodeQuad	        311
+#define ELE_TAG_EightNodeQuad	        312
 #define ELE_TAG_FourNodeQuad3d	        32
 #define ELE_TAG_Tri31	                33    //Added by Roozbeh Geraili Mikola
 #define ELE_TAG_BeamWithHinges2d        34
@@ -902,6 +904,8 @@
 #define INTEGRATOR_TAGS_KRAlphaExplicit                 53
 #define INTEGRATOR_TAGS_KRAlphaExplicit_TP              54
 #define INTEGRATOR_TAGS_ExplicitDifference              55
+#define INTEGRATOR_TAGS_EQPath                          56
+#define INTEGRATOR_TAGS_GimmeMCK                        57
 
 #define LinSOE_TAGS_FullGenLinSOE		1
 #define LinSOE_TAGS_BandGenLinSOE		2

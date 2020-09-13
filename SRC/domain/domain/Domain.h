@@ -254,22 +254,26 @@ class Domain
 	Recorder* getRecorder(int tag);	//by SAJalali
 
 #if _DLL
-	DomainEvent_AddNode _DomainEvent_AddNode;
-	DomainEvent_RemoveNode _DomainEvent_RemoveNode;
-	DomainEvent_AddElement _DomainEvent_AddElement;
-	DomainEvent_RemoveElement _DomainEvent_RemoveElement;
-	DomainEvent_AddSP _DomainEvent_AddSP;
-	DomainEvent_RemoveSP _DomainEvent_RemoveSP;
-	DomainEvent_AddMP _DomainEvent_AddMP;
-	DomainEvent_RemoveMP _DomainEvent_RemoveMP;
-	DomainEvent_AddLoadPattern _DomainEvent_AddLoadPattern;
-	DomainEvent_RemoveLoadPattern _DomainEvent_RemoveLoadPattern;
-	DomainEvent_AddRecorder _DomainEvent_AddRecorder;
-	DomainEvent_RemoveRecorder _DomainEvent_RemoveRecorder;
-	DomainEvent_ClearAll _DomainEvent_ClearAll;
-	Recorder** theRecorders;
-	int numRecorders;
+   DomainEvent_AddNode _DomainEvent_AddNode;
+   DomainEvent_RemoveNode _DomainEvent_RemoveNode;
+   DomainEvent_AddElement _DomainEvent_AddElement;
+   DomainEvent_RemoveElement _DomainEvent_RemoveElement;
+   DomainEvent_AddSP _DomainEvent_AddSP;
+   DomainEvent_RemoveSP _DomainEvent_RemoveSP;
+   DomainEvent_AddMP _DomainEvent_AddMP;
+   DomainEvent_RemoveMP _DomainEvent_RemoveMP;
+   DomainEvent_AddLoadPattern _DomainEvent_AddLoadPattern;
+   DomainEvent_RemoveLoadPattern _DomainEvent_RemoveLoadPattern;
+   DomainEvent_AddRecorder _DomainEvent_AddRecorder;
+   DomainEvent_RemoveRecorder _DomainEvent_RemoveRecorder;
+   DomainEvent_ClearAll _DomainEvent_ClearAll;
+   Recorder** theRecorders;
+   int numRecorders;
 #endif
+
+   virtual int activateElements(const ID& elementList);
+   virtual int deactivateElements(const ID& elementList);
+
   protected:    
 
     virtual int buildEleGraph(Graph *theEleGraph);

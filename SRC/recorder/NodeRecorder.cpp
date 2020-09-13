@@ -609,6 +609,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
 
 	Node *theNode = theNodes[i];
 	if (dataFlag == 0) {
+
 	  // AddingSensitivity:BEGIN ///////////////////////////////////
 	  if (gradIndex < 0) {
 	    const Vector &theResponse = theNode->getTrialDisp();
@@ -639,6 +640,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
 	  
 	  // AddingSensitivity:END /////////////////////////////////////
 	} else if (dataFlag == 1) {
+
 	  const Vector &theResponse = theNode->getTrialVel();
 	  for (int j=0; j<numDOF; j++) {
 
@@ -709,6 +711,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
 
 	    cnt++;
 	  }
+
 	} else if (dataFlag == 3) {
 	  const Vector &theResponse = theNode->getIncrDisp();
 	  for (int j=0; j<numDOF; j++) {

@@ -215,6 +215,9 @@
 #define MAT_TAG_ElasticPowerFunc                102
 #define MAT_TAG_UVCuniaxial                     103
 #define MAT_TAG_IMKBilin                        104
+#define MAT_TAG_IMKPeakOriented                 105
+#define MAT_TAG_IMKPinching                     106
+#define MAT_TAG_SLModel                         107
 #define MAT_TAG_PySimple1                    205
 #define MAT_TAG_TzSimple1                    206
 #define MAT_TAG_QzSimple1                    207
@@ -225,10 +228,10 @@
 #define MAT_TAG_QzSimple2                    212
 #define MAT_TAG_SteelBRB                     213
 #define MAT_TAG_PySimple3                    214
+#define MAT_TAG_PlateBearingConnectionThermal 215
 #ifdef _CSS
-#define MAT_TAG_Steel05                    215	//SAJalali
+#define MAT_TAG_Steel05                    216	//SAJalali
 #endif
-
 
 #define MAT_TAG_FedeasMaterial    1000
 #define MAT_TAG_FedeasBond1       1001
@@ -478,6 +481,7 @@
 
 #define ND_TAG_InitStressNDMaterial 7009
 
+#define ND_TAG_IncrementalElasticIsotropicThreeDimensional 7010 //Chile
 
 
 
@@ -581,6 +585,8 @@
 #define ELE_TAG_NLBeamColumn3d	        29
 #define ELE_TAG_LargeDispBeamColumn3d	30
 #define ELE_TAG_FourNodeQuad	        31
+#define ELE_TAG_NineNodeQuad	        311
+#define ELE_TAG_EightNodeQuad	        312
 #define ELE_TAG_FourNodeQuad3d	        32
 #define ELE_TAG_Tri31	                33    //Added by Roozbeh Geraili Mikola
 #define ELE_TAG_BeamWithHinges2d        34
@@ -756,6 +762,12 @@
 #define ELE_TAG_BeamColumn3DwLHNMYS 198
 #define ELE_TAG_PFEMLink                  199
 #define ELE_TAG_PFEMContact2D             200
+#define ELE_TAG_PML3D                     201
+#define ELE_TAG_PML2D                     202
+#define ELE_TAG_ASDShellQ4                203  // Massimo Petracca (ASDEA)
+#define ELE_TAG_ASDShellT3                204  // Massimo Petracca (ASDEA)
+#define ELE_TAG_WheelRail                 205
+#define ELE_TAG_DispBeamColumn3dID        206 // Jose Abell the Chileno added 
 #define ELE_TAG_ExternalElement           99990
 
 
@@ -944,7 +956,11 @@
 #define INTEGRATOR_TAGS_KRAlphaExplicit                 53
 #define INTEGRATOR_TAGS_KRAlphaExplicit_TP              54
 #define INTEGRATOR_TAGS_ExplicitDifference              55
-#define INTEGRATOR_TAGS_EQPath        					        56
+#define INTEGRATOR_TAGS_EQPath                          56
+#define INTEGRATOR_TAGS_GimmeMCK       	                57
+#define INTEGRATOR_TAGS_StagedLoadControl               58
+#define INTEGRATOR_TAGS_StagedNewmark                   59
+
 
 #define LinSOE_TAGS_FullGenLinSOE		1
 #define LinSOE_TAGS_BandGenLinSOE		2
@@ -1040,6 +1056,8 @@
 #define RECORDER_TAGS_ResidDriftRecorder	24		//by SAJalali
 #define RECORDER_TAGS_ResidNodeRecorder	25			//by SAJalali
 #endif // _CSS
+#define RECORDER_TAGS_NodeRecorderRMS               26
+#define RECORDER_TAGS_ElementRecorderRMS               27
 
 #define OPS_STREAM_TAGS_FileStream		1
 #define OPS_STREAM_TAGS_StandardStream		2

@@ -148,6 +148,7 @@
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\PFEMElement2DQuasi.cpp" />
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\PFEMElement3D.cpp" />
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\PFEMElement3DBubble.cpp" />
+    <ClCompile Include="..\..\..\SRC\element\PFEMElement\PFEMContact2D.cpp" />
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\QuadMesh.cpp" />
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\QuadMeshGenerator.cpp" />
     <ClCompile Include="..\..\..\SRC\element\PFEMElement\TaylorHood2D.cpp" />
@@ -348,6 +349,7 @@
     <ClCompile Include="..\..\..\SRC\element\shell\ShellDKGQ.cpp" />
     <ClCompile Include="..\..\..\SRC\element\shell\ShellMITC4.cpp" />
     <ClCompile Include="..\..\..\SRC\element\shell\ShellNLDKGQ.cpp" />
+    <ClCompile Include="..\..\..\SRC\element\shell\ASDShellQ4.cpp" />
     <ClCompile Include="..\..\..\SRC\element\HUelements\DBESI0.C" />
     <ClCompile Include="..\..\..\SRC\element\HUelements\DBESI1.C" />
     <ClCompile Include="..\..\..\SRC\element\HUelements\KikuchiBearing.cpp" />
@@ -407,6 +409,7 @@
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\PFEMElement2DQuasi.h" />
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\PFEMElement3D.h" />
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\PFEMElement3DBubble.h" />
+    <ClInclude Include="..\..\..\SRC\element\PFEMElement\PFEMContact2D.h" />
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\QuadMesh.h" />
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\QuadMeshGenerator.h" />
     <ClInclude Include="..\..\..\SRC\element\PFEMElement\TaylorHood2D.h" />
@@ -582,6 +585,7 @@
     <ClInclude Include="..\..\..\SRC\element\shell\ShellDKGQ.h" />
     <ClInclude Include="..\..\..\SRC\element\shell\ShellMITC4.h" />
     <ClInclude Include="..\..\..\SRC\element\shell\ShellNLDKGQ.h" />
+    <ClInclude Include="..\..\..\SRC\element\shell\ASDShellQ4.h" />
     <ClInclude Include="..\..\..\SRC\element\HUelements\KikuchiBearing.h" />
     <ClInclude Include="..\..\..\SRC\element\HUelements\MultipleNormalSpring.h" />
     <ClInclude Include="..\..\..\SRC\element\HUelements\MultipleShearSpring.h" />
