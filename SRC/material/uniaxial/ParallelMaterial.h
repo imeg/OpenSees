@@ -71,10 +71,18 @@ class ParallelMaterial : public UniaxialMaterial
     Response *setResponse(const char **argv, int argc, 
 			  OPS_Stream &theOutputStream);
     int getResponse(int responseID, Information &matInformation);
+#ifdef _CSS
+    virtual double getInitYieldStrain();
+    virtual double getEnergy();
+#endif // _CSS
 
   protected:
     
   private:
+#ifdef _CSS
+      double energy;
+#endif // _CSS
+
     double trialStrain;
     double trialStrainRate;
     int numMaterials;   // the number of UniaxialMaterials in the aggregation

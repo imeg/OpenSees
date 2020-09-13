@@ -294,7 +294,12 @@ ParallelMaterial::commitState(void)
       opserr << "MaterialModel failed to commitState():" ;
       theModels[i]->Print(opserr);
     }
-  
+#ifdef _CSS
+  energy = 0;
+  for (int i = 0; i < numMaterials; i++)
+      energy += theModels[i]->getEnergy();
+#endif // _CSS
+
   return 0;    
 }
 
@@ -513,7 +518,21 @@ Response*
 ParallelMaterial::setResponse(const char **argv, int argc, OPS_Stream &theOutput)
 {
   Response *theResponse = 0;
-
+#ifdef _CSS
+  if (strcmp(argv[0], "stresses") == 0) {
+      for (int i = 0; i < numMaterials; i++) {
+          theOutput.tag("UniaxialMaterialOutput");
+          theOutput.attr("matType", this->getClassType());
+          theOutput.attr("matTag", this->getTag());
+          theOutput.tag("ResponseType", "sigma11");
+          theOutput.endTag();
+      }
+      theResponse = new MaterialResponse(this, 100, Vector(numMaterials));
+  }
+  else {
+      theResponse = UniaxialMaterial::setResponse(argv, argc, theOutput);
+  }
+#else
   theOutput.tag("UniaxialMaterialOutput");
   theOutput.attr("matType", this->getClassType());
   theOutput.attr("matTag", this->getTag());
@@ -562,6 +581,7 @@ ParallelMaterial::setResponse(const char **argv, int argc, OPS_Stream &theOutput
 	theResponse =  theModels[matNum]->setResponse(&argv[2], argc-2, theOutput);
     }
   }
+#endif // _CSS
 
   theOutput.endTag();
   return theResponse;
@@ -583,3 +603,21 @@ ParallelMaterial::getResponse(int responseID, Information &info)
     return this->UniaxialMaterial::getResponse(responseID, info);
   }
 }
+
+#ifdef _CSS
+double ParallelMaterial::getInitYieldStrain()
+{
+    double res = 0;
+    for (int i = 0; i < numMaterials; i++) {
+        double d = fabs(theModels[i]->getInitYieldStrain());
+        if (res == 0 || d < res)
+            res = d;
+    }
+
+    return res;
+}
+double ParallelMaterial::getEnergy()
+{
+    return energy;
+}
+#endif // _CSS

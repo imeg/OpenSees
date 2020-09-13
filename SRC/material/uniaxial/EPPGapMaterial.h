@@ -90,9 +90,9 @@ class EPPGapMaterial : public UniaxialMaterial
     // AddingSensitivity:END ///////////////////////////////////////////
 
 	//by SAJalali
-	virtual double getEnergy() { return Energy; }
+	virtual double getEnergy() { return EnergyP; }
 #ifdef _CSS
-	virtual double getInitYieldStrain() { return fy / E; } //SAJalali
+	virtual double getInitYieldStrain() { return fy / E + gap; } //SAJalali
 #endif // _CSS
 
   protected:
@@ -118,7 +118,7 @@ class EPPGapMaterial : public UniaxialMaterial
 
 	//added by SAJalali
 	double commitStress;      // prev. trial stress
-	double Energy, EnergyP;
+	double EnergyP;
 };
 
 

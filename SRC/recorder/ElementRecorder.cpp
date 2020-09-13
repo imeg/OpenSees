@@ -94,6 +94,9 @@ OPS_ElementRecorder()
 
     ID elements(0, 6);
     ID dofs(0, 6);
+#ifdef _CSS
+    int procDataMethod = 0;
+#endif // _CSS
 
     while (OPS_GetNumRemainingInputArgs() > 0) {
 
@@ -241,6 +244,19 @@ OPS_ElementRecorder()
                 dofs[numDOF++] = dof - 1;
             }
         }
+#ifdef _CSS
+        else if (strcmp(option, "-process") == 0) {
+            const char* procType = OPS_GetString();
+            if (strcmp(procType, "sum") == 0)
+                procDataMethod = 1;
+            else if (strcmp(procType, "max") == 0)
+                procDataMethod = 2;
+            else if (strcmp(procType, "min") == 0)
+                procDataMethod = 3;
+            else
+                opserr << "unrecognized element result process method: " << procType << endln;
+        }
+#endif // _CSS
         else {
             // first unknown string then is assumed to start 
             // element response request
@@ -277,6 +293,9 @@ OPS_ElementRecorder()
         return 0;
     ElementRecorder* recorder = new ElementRecorder(&elements,
         data, nargrem, echoTimeFlag, *domain, *theOutputStream,
+#ifdef _CSS
+        procDataMethod,
+#endif // _CSS
         dT, &dofs);
 
     return recorder;
@@ -299,13 +318,19 @@ ElementRecorder::ElementRecorder(const ID *ele,
 				 bool echoTime, 
 				 Domain &theDom, 
 				 OPS_Stream &theOutput,
-				 double dT,
+#ifdef _CSS
+             int procDataMethod,
+#endif // _CSS
+             double dT,
 				 const ID *theDOFs)
 :Recorder(RECORDER_TAGS_ElementRecorder),
  numEle(0), numDOF(0), eleID(0), dof(0), theResponses(0), 
  theDomain(&theDom), theOutputHandler(&theOutput),
  echoTimeFlag(echoTime), deltaT(dT), nextTimeStampToRecord(0.0), data(0),
  initializationDone(false), responseArgs(0), numArgs(0), addColumnInfo(0)
+#ifdef _CSS
+ , procDataMethod(procDataMethod)
+#endif // _CSS
 {
 
   if (ele != 0) {
@@ -384,66 +409,112 @@ ElementRecorder::~ElementRecorder()
 int 
 ElementRecorder::record(int commitTag, double timeStamp)
 {
-  // 
-  // check that initialization has been done
-  //
-
-  if (initializationDone == false) {
-    if (this->initialize() != 0) {
-      opserr << "ElementRecorder::record() - failed to initialize\n";
-      return -1;
-    }
-  }
-  
-  int result = 0;
-  if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
-
-    if (deltaT != 0.0) 
-      nextTimeStampToRecord = timeStamp + deltaT;
-
-    int loc = 0;
-	if (echoTimeFlag == true)
-	{
-		(*data)(loc++) = timeStamp;
-	}
-    
+    // 
+    // check that initialization has been done
     //
-    // for each element if responses exist, put them in response vector
-    //
-    for (int i=0; i< numEle; i++) {
-      if (theResponses[i] != 0) {
-	// ask the element for the reponse
-	int res;
-	if (( res = theResponses[i]->getResponse()) < 0)
-	  result += res;
-	else {
-	  Information &eleInfo = theResponses[i]->getInformation();
-	  const Vector &eleData = eleInfo.getData();
-	  if (numDOF == 0) {
-	    for (int j=0; j<eleData.Size(); j++)
-	      (*data)(loc++) = eleData(j);
-	  } else {
-	    int dataSize = data->Size();
-	    for (int j=0; j<numDOF; j++) {
-	      int index = (*dof)(j);
-	      if (index >= 0 && index < dataSize)
-		(*data)(loc++) = eleData(index);		
-	      else
-		(*data)(loc++) = 0.0;		
-	    }
-	  }
-	}
-      }
+
+    if (initializationDone == false) {
+        if (this->initialize() != 0) {
+            opserr << "ElementRecorder::record() - failed to initialize\n";
+            return -1;
+        }
     }
 
-    //
-    // send the response vector to the output handler for o/p
-    //
-    theOutputHandler->write(*data);
-  }
-  
-  // succesfull completion - return 0
-  return result;
+    int result = 0;
+    if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
+
+        if (deltaT != 0.0)
+            nextTimeStampToRecord = timeStamp + deltaT;
+
+        int loc = 0;
+        if (echoTimeFlag == true)
+        {
+            (*data)(loc++) = timeStamp;
+        }
+#ifdef _CSS
+        if (procDataMethod != 0)
+        {
+            int respSize = numDOF;
+            for (int i = 0; i < numEle; i++) {
+                if (theResponses[i] == 0)
+                    continue;
+                // ask the element for the reponse
+                result += theResponses[i]->getResponse();
+                if (numDOF == 0)
+                {
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    int sz = eleData.Size();
+                    if (sz > respSize)
+                        respSize = sz;
+                }
+            }
+            for (int j = 0; j < respSize; j++)
+            {
+                double val = 0;
+                for (int i = 0; i < numEle; i++) {
+                    if (theResponses[i] == 0)
+                        continue;
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    int index = j;
+                    if (numDOF != 0)
+                        index = (*dof)(j);
+                    if (index >= eleData.Size())
+                        continue;
+                    if (procDataMethod == 1)
+                        val += eleData(index);
+                    else if (procDataMethod == 2)
+                        if (val < eleData(index))
+                            val = eleData(index);
+                    else //if (procDataMethod == 3)
+                        if (val > eleData(index))
+                            val = eleData(index);
+                }
+                (*data)(loc++) = val;
+            }
+        }
+        else
+#endif // _CSS
+
+        //
+        // for each element if responses exist, put them in response vector
+        //
+        for (int i = 0; i < numEle; i++) {
+            if (theResponses[i] != 0) {
+                // ask the element for the reponse
+                int res;
+                if ((res = theResponses[i]->getResponse()) < 0)
+                    result += res;
+                else {
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    if (numDOF == 0) {
+                        for (int j = 0; j < eleData.Size(); j++)
+                            (*data)(loc++) = eleData(j);
+                    }
+                    else {
+                        int dataSize = data->Size();
+                        for (int j = 0; j < numDOF; j++) {
+                            int index = (*dof)(j);
+                            if (index >= 0 && index < dataSize)
+                                (*data)(loc++) = eleData(index);
+                            else
+                                (*data)(loc++) = 0.0;
+                        }
+                    }
+                }
+            }
+        }
+
+        //
+        // send the response vector to the output handler for o/p
+        //
+        theOutputHandler->write(*data);
+    }
+
+    // succesfull completion - return 0
+    return result;
 }
 
 int
@@ -766,148 +837,192 @@ ElementRecorder::initialize(void)
 
   if (eleID != 0) {
 
-    //
-    // if we have an eleID we know Reponse size so allocate Response holder & loop over & ask each element
-    //
+      //
+      // if we have an eleID we know Reponse size so allocate Response holder & loop over & ask each element
+      //
 
-    int eleCount = 0;
-    int responseCount = 0;
+      int eleCount = 0;
+      int responseCount = 0;
 
-    if (echoTimeFlag == true && addColumnInfo == 1) {
-      xmlOrder[0] = 0;
-      responseOrder[0] = 0;
-      eleCount = 1;
-      responseCount =1;
-    }
-
-
-    // loop over ele & set Reponses
-    for (i=0; i<numEle; i++) {
-      Element *theEle = theDomain->getElement((*eleID)(i));
-      if (theEle != 0) {
-	xmlOrder[eleCount] = i+1;
-	eleCount++;
+      if (echoTimeFlag == true && addColumnInfo == 1) {
+          xmlOrder[0] = 0;
+          responseOrder[0] = 0;
+          eleCount = 1;
+          responseCount = 1;
       }
-    }
-
-    theOutputHandler->setOrder(xmlOrder);
-
-    //
-    // do time
-    //
-
-    if (echoTimeFlag == true) {
-      theOutputHandler->tag("TimeOutput");
-      theOutputHandler->tag("ResponseType", "time");
-      theOutputHandler->endTag(); // TimeOutput
-      numDbColumns += 1;
-    }
 
 
-
-    //
-    // if we have an eleID we know Reponse size so allocate Response holder & loop over & ask each element
-    //
-
-    // allocate memory for Reponses & set to 0
-    theResponses = new Response *[numEle];
-    if (theResponses == 0) {
-      opserr << "ElementRecorder::initialize() - out of memory\n";
-      return -1;
-    }
-
-    for (int k=0; k<numEle; k++)
-      theResponses[k] = 0;
-
-    // loop over ele & set Reponses
-    for (i=0; i<numEle; i++) {
-      Element *theEle = theDomain->getElement((*eleID)(i));
-      if (theEle == 0) {
-	theResponses[i] = 0;
-      } else {
-	theResponses[i] = theEle->setResponse((const char **)responseArgs, numArgs, *theOutputHandler);
-	if (theResponses[i] != 0) {
-	  // from the response type determine no of cols for each
-	  Information &eleInfo = theResponses[i]->getInformation();
-	  const Vector &eleData = eleInfo.getData();
-	  int dataSize = eleData.Size();
-	  if (numDOF == 0)
-	    numDbColumns += dataSize;
-	  else
-	    numDbColumns += numDOF;
-
-	  if (addColumnInfo == 1) {
-	    if (numDOF == 0)
-	      for (int j=0; j<dataSize; j++)
-		responseOrder[responseCount++] = i+1;
-	    else
-	      for (int j=0; j<numDOF; j++)
-		responseOrder[responseCount++] = i+1;
-	  }
-	}
+      // loop over ele & set Reponses
+      for (i = 0; i < numEle; i++) {
+          Element* theEle = theDomain->getElement((*eleID)(i));
+          if (theEle != 0) {
+              xmlOrder[eleCount] = i + 1;
+              eleCount++;
+          }
       }
-    }
 
-    theOutputHandler->setOrder(responseOrder);
+      theOutputHandler->setOrder(xmlOrder);
 
-  } else {
+      //
+      // do time
+      //
 
-    if (echoTimeFlag == true) {
-      theOutputHandler->tag("TimeOutput");
-      theOutputHandler->tag("ResponseType", "time");
-      theOutputHandler->endTag(); // TimeOutput
-      numDbColumns += 1;
-    }
-
-    //
-    // if no eleID we don't know response size so make initial guess & loop over & ask ele
-    // if guess to small, we enlarge
-    //
-
-    // initial size & allocation
-    int numResponse = 0;
-    numEle = 12;
-    theResponses = new Response *[numEle];
-
-    if (theResponses == 0) {
-      opserr << "ElementRecorder::initialize() - out of memory\n";
-      return -1;
-    }
-
-    for (int k=0; k<numEle; k++)
-      theResponses[k] = 0;
-
-    // loop over ele & set Reponses
-    ElementIter &theElements = theDomain->getElements();
-    Element *theEle;
-
-    while ((theEle = theElements()) != 0) {
-      Response *theResponse = theEle->setResponse((const char **)responseArgs, numArgs, *theOutputHandler);
-      if (theResponse != 0) {
-	if (numResponse == numEle) {
-	  // Why is this created locally and not used? -- MHS
-	  Response **theNextResponses = new Response *[numEle*2];
-	  if (theNextResponses != 0) {
-	    for (int i=0; i<numEle; i++)
-	      theNextResponses[i] = theResponses[i];
-	    for (int j=numEle; j<2*numEle; j++)
-	      theNextResponses[j] = 0;
-	  }
-	  numEle = 2*numEle;
-	  delete [] theNextResponses;
-	}
-	theResponses[numResponse] = theResponse;
-
-	// from the response type determine no of cols for each
-	Information &eleInfo = theResponses[numResponse]->getInformation();
-	const Vector &eleData = eleInfo.getData();
-	numDbColumns += eleData.Size();
-
-	numResponse++;
-
+      if (echoTimeFlag == true) {
+          theOutputHandler->tag("TimeOutput");
+          theOutputHandler->tag("ResponseType", "time");
+          theOutputHandler->endTag(); // TimeOutput
+          numDbColumns += 1;
       }
-    }
-    numEle = numResponse;
+
+
+
+      //
+      // if we have an eleID we know Reponse size so allocate Response holder & loop over & ask each element
+      //
+
+      // allocate memory for Reponses & set to 0
+      theResponses = new Response * [numEle];
+      if (theResponses == 0) {
+          opserr << "ElementRecorder::initialize() - out of memory\n";
+          return -1;
+      }
+
+      for (int k = 0; k < numEle; k++)
+          theResponses[k] = 0;
+
+      // loop over ele & set Reponses
+#ifdef _CSS
+      if (procDataMethod != 0)
+      {
+          int dataSize = 0;
+          for (i = 0; i < numEle; i++) {
+              Element* theEle = theDomain->getElement((*eleID)(i));
+              if (theEle == 0) {
+                  theResponses[i] = 0;
+                  continue;
+              }
+              theResponses[i] = theEle->setResponse((const char**)responseArgs, numArgs, *theOutputHandler);
+              if (theResponses[i] == 0)
+                  continue;
+              Information& eleInfo = theResponses[i]->getInformation();
+              const Vector& eleData = eleInfo.getData();
+              int size = eleData.Size();
+              if (numDOF == 0 && size != dataSize)
+              {
+                  opserr << "incompatible response size encountered for element: " << theEle->getTag() << " combining the results may lead to errors" << endln;
+                  if (size > dataSize)
+                      dataSize = size;
+              }
+          }
+          if (numDOF == 0)
+              numDbColumns += dataSize;
+          else
+              numDbColumns += numDOF;
+          if (addColumnInfo == 1) {
+              for (int j = 0; j < numDbColumns; j++)
+                  responseOrder[responseCount++] = 1;
+          }
+      }
+      else
+#endif // _CSS
+      for (i = 0; i < numEle; i++) {
+          Element* theEle = theDomain->getElement((*eleID)(i));
+          if (theEle == 0) {
+              theResponses[i] = 0;
+          }
+          else {
+              theResponses[i] = theEle->setResponse((const char**)responseArgs, numArgs, *theOutputHandler);
+              if (theResponses[i] != 0) {
+                  // from the response type determine no of cols for each
+                  Information& eleInfo = theResponses[i]->getInformation();
+                  const Vector& eleData = eleInfo.getData();
+                  int dataSize = eleData.Size();
+                      if (numDOF == 0)
+                          numDbColumns += dataSize;
+                      else
+                          numDbColumns += numDOF;
+
+                  if (addColumnInfo == 1) {
+                      if (numDOF == 0)
+                          for (int j = 0; j < dataSize; j++)
+                              responseOrder[responseCount++] = i + 1;
+                      else
+                          for (int j = 0; j < numDOF; j++)
+                              responseOrder[responseCount++] = i + 1;
+                  }
+              }
+          }
+      }
+
+      theOutputHandler->setOrder(responseOrder);
+
+  }
+  else {
+#ifdef _CSS
+      if (procDataMethod != 0)
+      {
+          opserr << "Combining element responses is not currently supported for empty input elements" << endln;
+          initializationDone = false;
+          return -1;
+      }
+#endif // _CSS
+
+      if (echoTimeFlag == true) {
+          theOutputHandler->tag("TimeOutput");
+          theOutputHandler->tag("ResponseType", "time");
+          theOutputHandler->endTag(); // TimeOutput
+          numDbColumns += 1;
+      }
+
+      //
+      // if no eleID we don't know response size so make initial guess & loop over & ask ele
+      // if guess to small, we enlarge
+      //
+
+      // initial size & allocation
+      int numResponse = 0;
+      numEle = 12;
+      theResponses = new Response * [numEle];
+
+      if (theResponses == 0) {
+          opserr << "ElementRecorder::initialize() - out of memory\n";
+          return -1;
+      }
+
+      for (int k = 0; k < numEle; k++)
+          theResponses[k] = 0;
+
+      // loop over ele & set Reponses
+      ElementIter& theElements = theDomain->getElements();
+      Element* theEle;
+      
+      while ((theEle = theElements()) != 0) {
+          Response* theResponse = theEle->setResponse((const char**)responseArgs, numArgs, *theOutputHandler);
+          if (theResponse != 0) {
+              if (numResponse == numEle) {
+                  // Why is this created locally and not used? -- MHS
+                  Response** theNextResponses = new Response * [numEle * 2];
+                  if (theNextResponses != 0) {
+                      for (int i = 0; i < numEle; i++)
+                          theNextResponses[i] = theResponses[i];
+                      for (int j = numEle; j < 2 * numEle; j++)
+                          theNextResponses[j] = 0;
+                  }
+                  numEle = 2 * numEle;
+                  delete[] theNextResponses;
+              }
+              theResponses[numResponse] = theResponse;
+
+              // from the response type determine no of cols for each
+              Information& eleInfo = theResponses[numResponse]->getInformation();
+              const Vector& eleData = eleInfo.getData();
+              numDbColumns += eleData.Size();
+
+              numResponse++;
+
+          }
+      }
+      numEle = numResponse;
   }
 
   // create the vector to hold the data

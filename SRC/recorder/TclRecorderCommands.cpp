@@ -168,7 +168,10 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 		 ) {
 
 
-       int numEle = 0;
+#ifdef _CSS
+			int procDataMethod = 0;
+#endif // _CSS
+				 int numEle = 0;
        int endEleIDs = 2;
        double dT = 0.0;
        bool echoTime = false;
@@ -222,7 +225,22 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	     loc++;
 	   }
 
-	 } else if (strcmp(argv[loc],"-eleRange") == 0) {
+	 }
+#ifdef _CSS
+	 else if (strcmp(argv[loc], "-process") == 0) {
+		  const char* procType = argv[loc + 1];
+		  if (strcmp(procType, "sum") == 0)
+				procDataMethod = 1;
+		  else if (strcmp(procType, "max") == 0)
+				procDataMethod = 2;
+		  else if (strcmp(procType, "min") == 0)
+				procDataMethod = 3;
+		  else
+				opserr << "unrecognized element result process method: " << procType << endln;
+		  loc += 2;
+	 }
+#endif // _CSS
+	 else if (strcmp(argv[loc],"-eleRange") == 0) {
 
 	   // ensure no segmentation fault if user messes up
 	   if (argc < loc+3) {
@@ -477,6 +495,9 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 					      echoTime, 
 					      theDomain, 
 					      *theOutputStream,
+#ifdef _CSS
+							procDataMethod,
+#endif // _CSS
 					      dT,
 					      specificIndices);
 

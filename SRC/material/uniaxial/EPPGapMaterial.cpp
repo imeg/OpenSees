@@ -100,6 +100,9 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 :UniaxialMaterial(tag,MAT_TAG_EPPGap),
  commitStrain(0.0), trialStrain(0.0), E(e), fy(fyl), gap(gap0), eta(eta0),
  minElasticYieldStrain(gap0),damage(accum), parameterID(0), SHVs(0)
+#ifdef _CSS
+, EnergyP(0), commitStress(0), trialStress(0), trialTangent(0)
+#endif
 {
 	if (E == 0.0) {
 	  opserr << "EPPGapMaterial::EPPGapMaterial -- E is zero, continuing with E = fy/0.002\n";
@@ -134,6 +137,9 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 EPPGapMaterial::EPPGapMaterial()
 :UniaxialMaterial(0,MAT_TAG_EPPGap),
  E(0.0), fy(0.0), gap(0.0), eta(0.0), minElasticYieldStrain(0.0), damage(0), parameterID(0), SHVs(0)
+#ifdef _CSS
+    , EnergyP(0), commitStress(0), trialStress(0), trialTangent(0)
+#endif
 {
 
 }
