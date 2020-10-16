@@ -155,10 +155,13 @@ class ZeroLength : public Element
 
     void onActivate();
     void onDeactivate();
+#ifdef _CSS
+    virtual int setRayleighDampingFactors(double alphaM, double betaK, double betaK0, double betaKc);
+#endif //_CSS
 
 
   protected:
-    
+
   private:
     Etype elemType;
 

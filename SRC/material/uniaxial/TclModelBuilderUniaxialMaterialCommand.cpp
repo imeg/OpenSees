@@ -79,6 +79,7 @@ extern void *OPS_SPSW02(void);		// SAJalali
 #ifdef _CSS
 extern void *OPS_Steel05(void);		// SAJalali
 extern void * OPS_BucklingStrut(void);		// SAJalali
+extern void * OPS_BucklingMaterial(void);		// SAJalali
 #endif
 extern void *OPS_ElasticMaterial(void);
 extern void *OPS_ElasticPPMaterial(void);
@@ -278,6 +279,13 @@ TclModelBuilderUniaxialMaterialCommand (ClientData clientData, Tcl_Interp *inter
 	 }
 	else if (strcmp(argv[1], "BucklingStrut") == 0) {
 		  void* theMat = OPS_BucklingStrut();
+		  if (theMat != 0)
+				theMaterial = (UniaxialMaterial*)theMat;
+		  else
+				return TCL_ERROR;
+	 }
+	else if (strcmp(argv[1], "BucklingMaterial") == 0) {
+		  void* theMat = OPS_BucklingMaterial();
 		  if (theMat != 0)
 				theMaterial = (UniaxialMaterial*)theMat;
 		  else

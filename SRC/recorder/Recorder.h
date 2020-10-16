@@ -63,8 +63,12 @@ class Recorder: public MovableObject, public TaggedObject
 		return 0;
 	}
 #endif
-    virtual void Print(OPS_Stream &s, int flag); 
+   virtual void Print(OPS_Stream &s, int flag); 
 	virtual double getRecordedValue(int clmnId, int rowOffset, bool reset) { return 0; } //added by SAJalali
+
+#ifdef _CSS
+   virtual int getModified() { return 0; }
+#endif // _CSS
 
   protected:
     

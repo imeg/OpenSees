@@ -58,11 +58,12 @@ ResidDriftRecorder::ResidDriftRecorder(int ni,
 					     int dirn,
 					     Domain &theDom, 
 					     OPS_Stream &theCurrentDataOutputHandler,
+                    int procMethod,
 					     bool timeFlag)
   :Recorder(RECORDER_TAGS_ResidDriftRecorder),
    ndI(0), ndJ(0), theNodes(0), dof(df), perpDirn(dirn), oneOverL(0),
    theDomain(&theDom), theOutputHandler(&theCurrentDataOutputHandler), data(0),
-   initializationDone(false), numNodes(0), echoTimeFlag(timeFlag)
+   initializationDone(false), numNodes(0), echoTimeFlag(timeFlag), procDataMethod(procMethod)
 {
   ndI = new ID(1);
   ndJ = new ID (1);
@@ -80,11 +81,12 @@ ResidDriftRecorder::ResidDriftRecorder(const ID &nI,
 					     int dirn,
 					     Domain &theDom, 
 					     OPS_Stream &theDataOutputHandler,
+                    int procMethod,
 					     bool timeFlag)
   :Recorder(RECORDER_TAGS_ResidDriftRecorder),
    ndI(0), ndJ(0), theNodes(0), dof(df), perpDirn(dirn), oneOverL(0),
    theDomain(&theDom), theOutputHandler(&theDataOutputHandler), data(0),
-   initializationDone(false), numNodes(0), echoTimeFlag(timeFlag)
+   initializationDone(false), numNodes(0), echoTimeFlag(timeFlag), procDataMethod(procMethod)
 {
   ndI = new ID(nI);
   ndJ = new ID (nJ);
@@ -152,6 +154,41 @@ ResidDriftRecorder::record(int commitTag, double timeStamp)
 	  iStart = 1;
 	  (*data)(0,0) = timeStamp;
   }
+  if (procDataMethod)
+  {
+      double val = 0, val1 = 0;
+      for (int i = 0; i < numNodes; i++) {
+          Node* nodeI = theNodes[2 * i];
+          Node* nodeJ = theNodes[2 * i + 1];
+
+          if ((*oneOverL)(i) != 0.0) {
+              const Vector& dispI = nodeI->getTrialDisp();
+              const Vector& dispJ = nodeJ->getTrialDisp();
+
+              double dx = dispJ(dof) - dispI(dof);
+
+              val1 = dx * (*oneOverL)(i);
+
+          }
+          else
+              val1 = 0.0;
+          if (i == 0 && procDataMethod != 1)
+              val = fabs(val1);
+          if (procDataMethod == 1)
+              val += val1;
+          else if (procDataMethod == 2 && val1 > val)
+              val = val1;
+          else if (procDataMethod == 3 && val1 < val)
+              val = val1;
+          else if (procDataMethod == 4 && fabs(val1) > val)
+              val = fabs(val1);
+          else if (procDataMethod == 5 && fabs(val1) < val)
+              val = fabs(val1);
+      }
+      (*data)(0, iStart) = val;
+  }
+  else
+
   for (int i=0; i<numNodes; i++) {
     Node *nodeI = theNodes[2*i];
     Node *nodeJ = theNodes[2*i+1];

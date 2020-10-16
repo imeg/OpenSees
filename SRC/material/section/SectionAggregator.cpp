@@ -1006,7 +1006,7 @@ SectionAggregator::getResponse(int responseID, Information &sectInfo)
 			res(i) = theAdditions[i]->getDuctility();
 		sec = (FiberSection2d*)theSection;
 		if (sec != 0)
-			res(numMats) = sec->getMuMax();
+			res(numMats) = sec->getMaxDuctility();
 		//opserr << "ductVect=" << res << "\n";
 		sectInfo.setVector(res);
 	}

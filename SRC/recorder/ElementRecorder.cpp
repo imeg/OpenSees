@@ -319,7 +319,7 @@ ElementRecorder::ElementRecorder(const ID *ele,
 				 Domain &theDom, 
 				 OPS_Stream &theOutput,
 #ifdef _CSS
-             int procDataMethod,
+             int procMethod,
 #endif // _CSS
              double dT,
 				 const ID *theDOFs)
@@ -329,7 +329,7 @@ ElementRecorder::ElementRecorder(const ID *ele,
  echoTimeFlag(echoTime), deltaT(dT), nextTimeStampToRecord(0.0), data(0),
  initializationDone(false), responseArgs(0), numArgs(0), addColumnInfo(0)
 #ifdef _CSS
- , procDataMethod(procDataMethod)
+ , procDataMethod(procMethod)
 #endif // _CSS
 {
 
@@ -451,7 +451,7 @@ ElementRecorder::record(int commitTag, double timeStamp)
             }
             for (int j = 0; j < respSize; j++)
             {
-                double val = 0;
+                double val = 0, val1 = 0;
                 for (int i = 0; i < numEle; i++) {
                     if (theResponses[i] == 0)
                         continue;
@@ -462,14 +462,20 @@ ElementRecorder::record(int commitTag, double timeStamp)
                         index = (*dof)(j);
                     if (index >= eleData.Size())
                         continue;
+                    val1 = eleData(index);
+
+                    if (i == 0 && procDataMethod != 1)
+                        val = fabs(val1);
                     if (procDataMethod == 1)
-                        val += eleData(index);
-                    else if (procDataMethod == 2)
-                        if (val < eleData(index))
-                            val = eleData(index);
-                    else //if (procDataMethod == 3)
-                        if (val > eleData(index))
-                            val = eleData(index);
+                        val += val1;
+                    else if (procDataMethod == 2 && val1 > val)
+                        val = val1;
+                    else if (procDataMethod == 3 && val1 < val)
+                        val = val1;
+                    else if (procDataMethod == 4 && fabs(val1) > val)
+                        val = fabs(val1);
+                    else if (procDataMethod == 5 && fabs(val1) < val)
+                        val = fabs(val1);
                 }
                 (*data)(loc++) = val;
             }
@@ -909,7 +915,8 @@ ElementRecorder::initialize(void)
               int size = eleData.Size();
               if (numDOF == 0 && size != dataSize)
               {
-                  opserr << "incompatible response size encountered for element: " << theEle->getTag() << " combining the results may lead to errors" << endln;
+                  if (dataSize != 0)
+                      opserr << "incompatible response size encountered for element: " << theEle->getTag() << " combining the results may lead to errors" << endln;
                   if (size > dataSize)
                       dataSize = size;
               }

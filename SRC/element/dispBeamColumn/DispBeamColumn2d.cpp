@@ -1632,6 +1632,13 @@ DispBeamColumn2d::setResponse(const char **argv, int argc,
   {
   return new ElementResponse(this, 10, 0.0);
   }
+#ifdef _CSS
+  else if (strcmp(argv[0], "maxDuctility") == 0 || strcmp(argv[0], "MaxDuctility") == 0) //by SAJalali
+  {
+  return new ElementResponse(this, 11, 0.0);
+  }
+
+#endif // _CSS
 
   output.endTag();
 
@@ -1775,8 +1782,18 @@ DispBeamColumn2d::getResponse(int responseID, Information &eleInfo)
 	  }
 	  return eleInfo.setDouble(energy);
   }
-
-  else
+#ifdef _CSS
+  else if (responseID == 11) {
+  double max = 0;
+	  for (int i = 0; i < numSections; i++) {
+		  double mu = theSections[i]->getMaxDuctility();
+        if (mu > max)
+            max = mu;
+	  }
+	  return eleInfo.setDouble(max);
+  }
+ #endif // _CSS
+ else
     return Element::getResponse(responseID, eleInfo);
 }
 

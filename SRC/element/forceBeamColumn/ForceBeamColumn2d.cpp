@@ -2750,7 +2750,12 @@ ForceBeamColumn2d::setResponse(const char **argv, int argc, OPS_Stream &output)
   {
 	  return new ElementResponse(this, 14, 0.0);
   }
-
+#ifdef _CSS
+  else if (strcmp(argv[0], "maxDuctility") == 0 || strcmp(argv[0], "MaxDuctility") == 0)
+  {
+	  return new ElementResponse(this, 15, 0.0);
+  }
+#endif
   output.endTag(); // ElementOutput
 
   return theResponse;
@@ -3003,6 +3008,17 @@ ForceBeamColumn2d::getResponse(int responseID, Information &eleInfo)
 	  }
 	  return eleInfo.setDouble(energy);
   }
+#ifdef _CSS
+  else if (responseID == 15) {
+  double max = 0;
+  for (int i = 0; i < numSections; i++) {
+      double mu = sections[i]->getMaxDuctility();
+      if (mu > max)
+          max = mu;
+  }
+  return eleInfo.setDouble(max);
+  }
+#endif // _CSS
 
   else
     return -1;

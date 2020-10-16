@@ -36,14 +36,15 @@ using namespace std;
 static int numBilinMaterials = 0;
 
 
-static int numCastMaterials = 0;
+static int numBraceMaterials = 0;
 
 void *
-OPS_Cast(void)
+OPS_BraceMaterial(void)
 {
-  if (numCastMaterials == 0) {
-    numCastMaterials++;
-    opserr << "Cast Fuse uniaxial material - Written by Dimitrios G. Lignos, Ph.D.\n";
+  if (numBraceMaterials == 0) {
+      numBraceMaterials++;
+      opserr << "BraceMaterial uniaxial material - Written by Chuang-Sheng Yang (Walter) see:ANALYTICAL AND EXPERIMENTAL STUDY OF\n";
+      opserr << "CONCENTRICALLY BRACED FRAMES WITH ZIPPER STRUTS\n";
   }
   
   // Pointer to a uniaxial material that will be returned
@@ -59,9 +60,9 @@ OPS_Cast(void)
   }
   
   int numRemaining = OPS_GetNumRemainingInputArgs();
-  if (numRemaining != 17 || numRemaining != 13) {
+  if (numRemaining == 17 || numRemaining == 13) {
     if (OPS_GetDoubleInput(&numRemaining, dData) != 0) {
-      opserr << "Invalid Args want: uniaxialMaterial CastFuse tag? NLegs? bo? h? Fy? E? L? b? R0? cR1? cR2? a1? a2? a3? a4?";
+      opserr << "Invalid Args want: uniaxialMaterial BraceMaterial tag? m1p r1p m2p r2p <m3p r3p> m1n r1n m2n r2n <m3n r3n> px py d1 d2 b";
       return 0;	
     }
     
@@ -320,162 +321,168 @@ BraceMaterial::positiveIncrement(double dStrain)
 void
 BraceMaterial::negativeIncrement(double dStrain)
 {
-  // double kn = pow(CrotMin/rot1n,beta);
-  double kn = 1.0;
-  // kn = (kn < 1.0) ? 1.0 : 1.0/kn;
-  // double kp = pow(CrotMax/rot1p,beta);
-  double kp = 1.0;
-  // kp = (kp < 1.0) ? 1.0 : 1.0/kp;
-  // cout << "Hello: negative Increment" << endl;
-  // cout << "Tidtime: " << Tidtime << endl;
-  
-  if (TloadIndicator == 1) {
-    //TloadIndicator = 2;
-    if (Cstress >= 0.0) {
-      TrotPu = Cstrain - Cstress/(Eup*kp);
-      double energy = CenergyD - 0.5*Cstress/(Eup*kp)*Cstress;
-      double damfc = 0.0;
-      if (CrotMax > rot1p) {
-	damfc = damfc2*energy/energyA;
-	damfc += damfc1*(CrotMax-rot1p)/rot1p;
-      }
-      
-      TrotMin = CrotMin*(1.0+damfc);
-      
+    // double kn = pow(CrotMin/rot1n,beta);
+    double kn = 1.0;
+    // kn = (kn < 1.0) ? 1.0 : 1.0/kn;
+    // double kp = pow(CrotMax/rot1p,beta);
+    double kp = 1.0;
+    // kp = (kp < 1.0) ? 1.0 : 1.0/kp;
+    // cout << "Hello: negative Increment" << endl;
+    // cout << "Tidtime: " << Tidtime << endl;
+
+    if (TloadIndicator == 1) {
+        //TloadIndicator = 2;
+        if (Cstress >= 0.0) {
+            TrotPu = Cstrain - Cstress / (Eup * kp);
+            double energy = CenergyD - 0.5 * Cstress / (Eup * kp) * Cstress;
+            double damfc = 0.0;
+            if (CrotMax > rot1p) {
+                damfc = damfc2 * energy / energyA;
+                damfc += damfc1 * (CrotMax - rot1p) / rot1p;
+            }
+
+            TrotMin = CrotMin * (1.0 + damfc);
+
+        }
     }
-  }
-  //TrotMin = (TrotMin < rot1n) ? TrotMin : rot1n;
-  //printf("\nTrotMin2= %f",TrotMin);
-  if ( Tidtime == 1 && TrotMin > rot2n ) {
-    double minmom = negEnvlpStress(TrotMin);
-    if ( TloadIndicator == 1 ) {
-      TmomPu = Cstress;
+    //TrotMin = (TrotMin < rot1n) ? TrotMin : rot1n;
+    //printf("\nTrotMin2= %f",TrotMin);
+    if (Tidtime == 1 && TrotMin > rot2n) {
+        double minmom = negEnvlpStress(TrotMin);
+        if (TloadIndicator == 1) {
+            TmomPu = Cstress;
+        }
+        if (Tidtime1 == 1) {
+            if (TmomPu >= mom3n) {
+                if (Cstress > mom3n) {
+                    TrotPu = Cstrain - Cstress / (E1p * kp) + mom3n / (E1p * kp);
+                }
+                if (Tstrain > TrotPu) {
+                    Ttangent = E1p * kp;
+                    Tstress = Cstress + Ttangent * dStrain;
+                    //printf("\nTNstress1= %f",Tstress);
+                    if (Tstress <= mom2n) {
+                        Tstress = mom2n;
+                        Ttangent = E1p * 1.0e-9;
+                        //printf("\nTNstress2= %f",Tstress);
+                    }
+                }
+                else {
+                    Ttangent = (minmom - mom3n) / (TrotMin - TrotPu);
+                    Tstress = mom3n + Ttangent * (Tstrain - TrotPu);
+                    //printf("\nTNstress3= %f",Tstress);
+                    if (Tstress <= minmom) {
+                        Tstress = minmom;
+                        Ttangent = Ttangent * 1.0e-6;
+                        //printf("\nTNstress4= %f",Tstress);
+                        Tidtime1 = 0;
+                    }
+                }
+            }
+            else {
+                if (Tstrain >= TrotNu) {
+                    Ttangent = (TmomNu - Cstress) / (TrotNu - Cstrain);
+                    Tstress = Cstress + Ttangent * dStrain;
+                    //printf("\nTNstress5= %f",Tstress);
+                    if (Tstress <= TmomNu) {
+                        Tstress = TmomNu;
+                        Ttangent = Ttangent * 1.0e-6;
+                        //printf("\nTNstress6= %f",Tstress);
+                    }
+                }
+                {
+                    Ttangent = (minmom - mom2n) / (TrotMin - TrotPu);
+                    Tstress = mom2n + Ttangent * (Tstrain - TrotPu);
+                    //printf("\nTNstress7= %f",Tstress);
+                    if (Tstress <= minmom) {
+                        Tstress = minmom;
+                        Ttangent = Ttangent * 1.0e-6;
+                        Tidtime1 = 0;
+                        //printf("\nTNstress8= %f",Tstress);
+                    }
+                }
+            }
+        }
+        else {
+            Ttangent = (minmom - Cstress) / (TrotMin - Cstrain);
+            Tstress = Cstress + Ttangent * dStrain;
+            //printf("\nTNstress9= %f",Tstress);
+            if (Tstress <= minmom) {
+                Tstress = minmom;
+                Ttangent = Ttangent * 1.0e-6;
+                //printf("\nTNstress10= %f",Tstress);
+                Tidtime1 = 0;
+            }
+        }
     }
-    if ( Tidtime1 == 1) {
-      if ( TmomPu >= mom3n ) {
-	if ( Cstress > mom3n ) {
-	  TrotPu = Cstrain - Cstress/(E1p*kp) + mom3n/(E1p*kp);
-	}
-	if ( Tstrain > TrotPu ) {
-	  Ttangent = E1p*kp;
-	  Tstress = Cstress + Ttangent*dStrain;
-	  //printf("\nTNstress1= %f",Tstress);
-	  if ( Tstress <= mom2n ) {
-	    Tstress = mom2n;
-	    Ttangent = E1p*1.0e-9;
-	    //printf("\nTNstress2= %f",Tstress);
-	  }
-	}
-	else {
-	  Ttangent = (minmom-mom3n)/(TrotMin-TrotPu);
-	  Tstress = mom3n + Ttangent*(Tstrain-TrotPu);
-	  //printf("\nTNstress3= %f",Tstress);
-	  if ( Tstress <= minmom ) {
-	    Tstress = minmom;
-	    Ttangent = Ttangent*1.0e-6;
-	    //printf("\nTNstress4= %f",Tstress);
-	    Tidtime1 = 0;
-	  }
-	}
-      }
-      else {
-	if ( Tstrain >= TrotNu ) {
-	  Ttangent = (TmomNu-Cstress)/(TrotNu-Cstrain);
-	  Tstress = Cstress + Ttangent*dStrain;
-	  //printf("\nTNstress5= %f",Tstress);
-	  if ( Tstress <= TmomNu ) {
-	    Tstress = TmomNu;
-	    Ttangent = Ttangent*1.0e-6;
-	    //printf("\nTNstress6= %f",Tstress);
-	  }
-	}
-	{
-	  Ttangent = (minmom-mom2n)/(TrotMin-TrotPu);
-	  Tstress = mom2n + Ttangent*(Tstrain-TrotPu);
-	  //printf("\nTNstress7= %f",Tstress);
-	  if ( Tstress <= minmom ) {
-	    Tstress = minmom;
-	    Ttangent = Ttangent*1.0e-6;
-	    Tidtime1 = 0;
-	    //printf("\nTNstress8= %f",Tstress);
-	  }
-	}
-      }
+    TloadIndicator = 2;
+    if (Tidtime == 0) {
+        Ttangent = E1p * kp;
+        Tstress = Cstress + Ttangent * dStrain;
+        if (Cstress* Tstress < 0)
+        {
+            rot1n = mom1n / (E1p * kp) + Cstrain - Cstress / (E1p * kp);
+            rot2n = rot1n + (mom2n - mom1n) / E2n;
+            rot3n = rot2n + (mom3n - mom2n) / E3n;
+        }
+        if (TrotMax > rot1p) {
+            TrotMin = (TrotMin < rot1n) ? TrotMin : rot1n;
+        }
+        //printf("\nTNstress11= %f",Tstress);
+        if (Tstress <= mom1n) {
+            TrotPu = Cstrain - Cstress / (E1p * kp);
+            // rot1n = rot1n + TrotPu;
+            //rot1n = mom1n/(E1p*kp) + Cstrain - Cstress/(E1p*kp);
+            //rot2n = rot1n + (mom2n-mom1n)/E2n;
+            //rot3n = rot2n + (mom3n-mom2n)/E3n;
+            Tidtime = 1;
+            //TrotMin = Tstrain;
+            // cout << "Tstrain: " << Tstrain << endl;
+            // cout << "rot1n: " << rot1n << endl;
+            // cout << "rot2n: " << rot2n << endl;
+            if (Tstrain > rot1n) {
+                Tstress = mom1n;
+                Ttangent = E1p * 1.0e-9;
+                //printf("\nTNstress12= %f",Tstress);
+            }
+            if (Tstrain <= rot1n && Tstrain < rot2n) {
+                Tstress = mom1n + E2n * (Tstrain - rot1n);
+                Ttangent = E2n;
+                //printf("\nTNstress13= %f",Tstress);
+                // cout << "Tstress: " << Tstress << endl;
+            }
+            if (Tstrain <= rot3n) {
+                Tstress = mom2n + E3n * (Tstrain - rot2n);
+                Ttangent = E3n;
+                //printf("\nTNstress14= %f",Tstress);
+
+            }
+        }
     }
-    else {
-      Ttangent = (minmom-Cstress)/(TrotMin-Cstrain);
-      Tstress = Cstress + Ttangent*dStrain;
-      //printf("\nTNstress9= %f",Tstress);
-      if ( Tstress <= minmom ) {
-	Tstress = minmom;
-	Ttangent = Ttangent*1.0e-6;
-	//printf("\nTNstress10= %f",Tstress);
-	Tidtime1 = 0;
-      }
+    if (Tidtime >= 1 && TrotMin <= rot2n) {
+        Ttangent = E1p * kp;
+        Tstress = Cstress + Ttangent * dStrain;
+        //printf("\nTNstress15= %f",Tstress);
+        if (Tstress <= mom3n) {
+            double minmom = negEnvlpStress(TrotMin);
+            Ttangent = (minmom - Cstress) / (TrotMin - Cstrain);
+            Tstress = Cstress + Ttangent * (Tstrain - Cstrain);
+            Tidtime = 2;
+            //printf("\nTNstress16= %f",Tstress);
+            //if ( Tstrain > rot3n ) {
+            //Ttangent = E1p*1.0e-9;
+            //Tstress = mom3n;
+            //printf("\nTstress17=%f",Tstress);
+            //}
+            if (Tstrain < rot3n) {
+                Ttangent = E1p * 1.0e-4;
+                //Tstress = mom3n;
+                //Ttangent = E3n;
+                Tstress = mom3n;
+                //printf("\nTNstress17= %f",Tstress);
+            }
+        }
     }
-  }
-  TloadIndicator = 2;
-  if ( Tidtime == 0 ) {
-    if ( TrotMax > rot1p ) {
-      TrotMin = (TrotMin < rot1n) ? TrotMin : rot1n;
-    }
-    Ttangent = E1p*kp;
-    Tstress = Cstress + Ttangent*dStrain;
-    //printf("\nTNstress11= %f",Tstress);
-    if ( Tstress <= mom1n ) {
-      TrotPu = Cstrain - Cstress/(E1p*kp);
-      // rot1n = rot1n + TrotPu;
-      rot1n = mom1n/(E1p*kp) + Cstrain - Cstress/(E1p*kp);
-      rot2n = rot1n + (mom2n-mom1n)/E2n;
-      rot3n = rot2n + (mom3n-mom2n)/E3n;
-      Tidtime = 1;
-      //TrotMin = Tstrain;
-      // cout << "Tstrain: " << Tstrain << endl;
-      // cout << "rot1n: " << rot1n << endl;
-      // cout << "rot2n: " << rot2n << endl;
-      if (Tstrain > rot1n) {
-	Tstress = mom1n;
-	Ttangent = E1p*1.0e-9;
-	//printf("\nTNstress12= %f",Tstress);
-      }
-      if (Tstrain <= rot1n && Tstrain < rot2n) {
-	Tstress = mom1n + E2n*(Tstrain-rot1n);
-	Ttangent = E2n;
-	//printf("\nTNstress13= %f",Tstress);
-	// cout << "Tstress: " << Tstress << endl;
-      }
-      if (Tstrain <= rot3n) {
-	Tstress = mom2n + E3n*(Tstrain-rot2n);
-	Ttangent = E3n;
-	//printf("\nTNstress14= %f",Tstress);
-	
-      }
-    }
-  }
-  if ( Tidtime >= 1 && TrotMin <= rot2n ) {
-    Ttangent = E1p*kp;
-    Tstress = Cstress + Ttangent*dStrain;
-    //printf("\nTNstress15= %f",Tstress);
-    if (Tstress <= mom3n) {
-      double minmom = negEnvlpStress(TrotMin);
-      Ttangent = (minmom-Cstress)/(TrotMin-Cstrain);
-      Tstress = Cstress + Ttangent*(Tstrain-Cstrain);
-      Tidtime = 2;
-      //printf("\nTNstress16= %f",Tstress);
-      //if ( Tstrain > rot3n ) {
-      //Ttangent = E1p*1.0e-9;
-      //Tstress = mom3n;
-      //printf("\nTstress17=%f",Tstress);
-      //}
-      if ( Tstrain < rot3n ) {
-	Ttangent = E1p*1.0e-4;
-	//Tstress = mom3n;
-	//Ttangent = E3n;
-	Tstress = mom3n;
-	//printf("\nTNstress17= %f",Tstress);
-      }
-    }
-  }
 }
 int
 BraceMaterial::commitState(void)

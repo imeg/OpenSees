@@ -900,7 +900,7 @@ ElasticBeam2d::addInertiaLoadToUnbalance(const Vector &accel)
 
 const Vector &
 ElasticBeam2d::getResistingForceIncInertia()
-{	
+{
   P = this->getResistingForce();
   
   // subtract external load P = P - Q

@@ -1410,6 +1410,14 @@ TclCommand_addPatch(ClientData clientData, Tcl_Interp *interp, int argc,
       }
       //opserr << "\n\tnumSubdivJK: " << numSubdivJK;
 
+#ifdef _CSS
+		if (numSubdivJK < 1 || numSubdivIJ < 1)
+		{
+			 opserr << "WARNING invalid numSubdivIJ: " << numSubdivIJ << "or numSubdivJK: " << numSubdivJK << "for section with tag: " << currentSectionTag <<"\n";
+			 return TCL_ERROR;
+		}
+#endif // _CSS
+
       for (j=0; j < 4; j++)
       {
          //opserr << "\n\tVertexCoord: " << j;

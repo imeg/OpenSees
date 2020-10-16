@@ -47,10 +47,13 @@
  #include <EnvelopeNodeRecorder.h>
  #include <PatternRecorder.h>
  #include <DriftRecorder.h>
-#ifdef _CSS
-#include <ResidDriftRecorder.h>		//by SAJalali
-#include <ResidElementRecorder.h>		//by SAJalali
-#include <ResidNodeRecorder.h>		//by SAJalali
+#ifdef _CSS //by SAJalali
+#include <ResidDriftRecorder.h>		
+#include <ResidElementRecorder.h>
+#include <ResidNodeRecorder.h>		
+#include <ConditionalNodeRecorder.h>		
+#include <ConditionalDriftRecorder.h>		
+#include <ConditionalElementRecorder.h>		
 #endif // _CSS
 
  #include <EnvelopeDriftRecorder.h>
@@ -159,12 +162,14 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	 || (strcmp(argv[1],"NormElement") == 0) || (strcmp(argv[1],"NormEnvelopeElement") == 0)
 #ifdef _CSS
 	|| strcmp(argv[1], "ResidElement") == 0
+	|| strcmp(argv[1], "ConditionalElement") == 0
 #endif // _CSS
 		 ) {
 
 
 #ifdef _CSS
 			int procDataMethod = 0;
+			int cntrlRcrdrTag = 0;
 #endif // _CSS
 				 int numEle = 0;
        int endEleIDs = 2;
@@ -222,6 +227,14 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 
 	 }
 #ifdef _CSS
+	 else if (strcmp(argv[loc], "-controlRecorder") == 0) {
+		  loc ++;
+		  if (Tcl_GetInt(interp, argv[loc], &cntrlRcrdrTag) != TCL_OK) {
+				opserr << "WARNING recorder ConditionalElement -controlRecorder $ntrlRcrdrTag - invalid ntrlRcrdrTag " << argv[loc] << endln;
+				return TCL_ERROR;
+		  }
+		  loc++;
+	 }
 	 else if (strcmp(argv[loc], "-process") == 0) {
 		  const char* procType = argv[loc + 1];
 		  if (strcmp(procType, "sum") == 0)
@@ -230,6 +243,10 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 				procDataMethod = 2;
 		  else if (strcmp(procType, "min") == 0)
 				procDataMethod = 3;
+		  else if (strcmp(procType, "maxAbs") == 0)
+				procDataMethod = 4;
+		  else if (strcmp(procType, "minAbs") == 0)
+				procDataMethod = 5;
 		  else
 				opserr << "unrecognized element result process method: " << procType << endln;
 		  loc += 2;
@@ -503,6 +520,9 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 						      argc-eleData, 
 						      theDomain, 
 						      *theOutputStream,
+#ifdef _CSS
+							procDataMethod,
+#endif // _CSS
 						      dT, 
 						      echoTime,
 						      specificIndices);
@@ -520,7 +540,6 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 
        }
 #ifdef _CSS
-	   //by SA Jalali
 	   else if (strcmp(argv[1], "ResidElement") == 0) {
 
 		   (*theRecorder) = new ResidElementRecorder(eleIDs,
@@ -528,9 +547,22 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 			   argc - eleData,
 			   theDomain,
 			   *theOutputStream,
-			   echoTime,
+				 procDataMethod,
+				 echoTime,
 			   specificIndices);
 
+	   }
+	   else if (strcmp(argv[1], "ConditionalElement") == 0) {
+
+		   (*theRecorder) = new ConditionalElementRecorder(eleIDs,
+			   data,
+			   argc - eleData,
+			   theDomain,
+			   *theOutputStream,
+				 cntrlRcrdrTag,
+				 procDataMethod,
+				 echoTime,
+			   specificIndices);
 	   }
 #endif // _CSS
 
@@ -1092,6 +1124,7 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	      || (strcmp(argv[1],"NodeEnvelope") == 0)
 #ifdef _CSS
 		  || (strcmp(argv[1], "ResidNode") == 0)
+		  || (strcmp(argv[1], "ConditionalNode") == 0)
 #endif // _CSS
 
 		  ) {	
@@ -1113,6 +1146,10 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
        outputMode eMode = STANDARD_STREAM;
 
        int pos = 2;
+#ifdef _CSS
+		 int procDataMethod = 0;
+		 int cntrlRcrdrTag = 0;
+#endif // _CSS
 
        bool echoTimeFlag = false;
        int flags = 0;
@@ -1137,12 +1174,38 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 
        while (flags == 0 && pos < argc) {
 
-	 //	 opserr << "argv[pos]: " << argv[pos] << " " << pos << endln;
+	 	 //opserr << "argv[" << pos<<"]: " << argv[pos] << endln;
 
 	 if (strcmp(argv[pos],"-time") == 0) {
 	   echoTimeFlag = true;
 	   pos++;
 	 }
+#ifdef _CSS
+	 else if (strcmp(argv[pos], "-controlRecorder") == 0) {
+		  pos++;
+		  if (Tcl_GetInt(interp, argv[pos], &cntrlRcrdrTag) != TCL_OK) {
+				opserr << "WARNING recorder ConditionalNode -controlRecorder $ntrlRcrdrTag - invalid ntrlRcrdrTag " << argv[pos] << endln;
+				return TCL_ERROR;
+		  }
+		  pos++;
+	 }
+	 else if (strcmp(argv[pos], "-process") == 0) {
+		  const char* procType = argv[pos+1];
+		  if (strcmp(procType, "sum") == 0)
+				procDataMethod = 1;
+		  else if (strcmp(procType, "max") == 0)
+				procDataMethod = 2;
+		  else if (strcmp(procType, "min") == 0)
+				procDataMethod = 3;
+		  else if (strcmp(procType, "maxAbs") == 0)
+				procDataMethod = 4;
+		  else if (strcmp(procType, "minAbs") == 0)
+				procDataMethod = 5;
+		  else
+				opserr << "unrecognized element result process method: " << procType << endln;
+		  pos += 2;
+	 }
+#endif // _CSS
 
 	 else if (strcmp(argv[pos],"-load") == 0) {
 	   echoTimeFlag = true;      
@@ -1438,7 +1501,20 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 			   responseID,
 			   theDomain,
 			   *theOutputStream,
-			   echoTimeFlag,
+				 procDataMethod,
+				 echoTimeFlag,
+			   theTimeSeries);
+
+	   } else if (strcmp(argv[1], "ConditionalNode") == 0) {
+
+		   (*theRecorder) = new ConditionalNodeRecorder(theDofs,
+			   theNodes,
+			   responseID,
+			   theDomain,
+			   *theOutputStream,
+				 cntrlRcrdrTag,
+				 procDataMethod,
+				 echoTimeFlag,
 			   theTimeSeries);
 
 	   } else
@@ -1452,6 +1528,9 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 					   responseID, 
 					   theDomain, 
 					   *theOutputStream, 
+#ifdef _CSS
+	   			 procDataMethod,
+#endif // _CSS
 					   dT, 
 					   echoTimeFlag,
 					   theTimeSeries);
@@ -1463,6 +1542,9 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 						   responseID, 
 						   theDomain,
 						   *theOutputStream,
+#ifdef _CSS
+				 procDataMethod,
+#endif // _CSS
 						   dT, 
 						   echoTimeFlag,
 						   theTimeSeries);
@@ -1499,6 +1581,7 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
      else if ((strcmp(argv[1],"Drift") == 0) || (strcmp(argv[1],"EnvelopeDrift") == 0)
 #ifdef _CSS
 	 || (strcmp(argv[1], "ResidDrift") == 0)
+	 || (strcmp(argv[1], "ConditionalDrift") == 0)
 #endif // _CSS
 
 	 ) {
@@ -1515,6 +1598,10 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
        int precision = 6;
        bool doScientific = false;
        bool closeOnWrite = false;
+#ifdef _CSS
+		 int cntrlRcrdrTag = 0;
+		 int procDataMethod = 0;
+#endif // _CSS
 
        while (pos < argc) {
 
@@ -1532,7 +1619,32 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 	     pos +=1;
 	   }
 	 }
-
+#ifdef _CSS
+	 else if (strcmp(argv[pos], "-controlRecorder") == 0) {
+		  pos++;
+		  if (Tcl_GetInt(interp, argv[pos], &cntrlRcrdrTag) != TCL_OK) {
+				opserr << "WARNING recorder ConditionalNode -controlRecorder $ntrlRcrdrTag - invalid ntrlRcrdrTag " << argv[pos] << endln;
+				return TCL_ERROR;
+		  }
+		  pos++;
+	 }
+	 else if (strcmp(argv[pos], "-process") == 0) {
+		  const char* procType = argv[pos + 1];
+		  if (strcmp(procType, "sum") == 0)
+				procDataMethod = 1;
+		  else if (strcmp(procType, "max") == 0)
+				procDataMethod = 2;
+		  else if (strcmp(procType, "min") == 0)
+				procDataMethod = 3;
+		  else if (strcmp(procType, "maxAbs") == 0)
+				procDataMethod = 4;
+		  else if (strcmp(procType, "minAbs") == 0)
+				procDataMethod = 5;
+		  else
+				opserr << "unrecognized element result process method: " << procType << endln;
+		  pos += 2;
+	 }
+#endif // _CSS
 	 else if (strcmp(argv[pos],"-fileCSV") == 0) {
 	   fileName = argv[pos+1];
 	   eMode = DATA_STREAM_CSV;
@@ -1677,16 +1789,32 @@ enum outputMode  {STANDARD_STREAM, DATA_STREAM, XML_STREAM, DATABASE_STREAM, BIN
 #ifdef _CSS
 	   if (strcmp(argv[1], "ResidDrift") == 0)
 		   (*theRecorder) = new ResidDriftRecorder(iNodes, jNodes, dof - 1, perpDirn - 1,
-			   theDomain, *theOutputStream, echoTimeFlag);
+			   theDomain, *theOutputStream,
+				 procDataMethod,
+				 echoTimeFlag);
+	   else if (strcmp(argv[1], "ConditionalDrift") == 0)
+		   (*theRecorder) = new ConditionalDriftRecorder(iNodes, jNodes, dof - 1, perpDirn - 1,
+			   theDomain, *theOutputStream, cntrlRcrdrTag,
+				 procDataMethod,
+				 echoTimeFlag);
 	   else
 #endif // _CSS
 
        if (strcmp(argv[1],"Drift") == 0) 
 	 (*theRecorder) = new DriftRecorder(iNodes, jNodes, dof-1, perpDirn-1,
-					    theDomain, *theOutputStream, echoTimeFlag, dT);
+					    theDomain, *theOutputStream,
+#ifdef _CSS
+		  procDataMethod,
+#endif // _CSS
+
+		  echoTimeFlag, dT);
        else
 	 (*theRecorder) = new EnvelopeDriftRecorder(iNodes, jNodes, dof-1, perpDirn-1,
-						    theDomain, *theOutputStream, echoTimeFlag);
+						    theDomain, *theOutputStream,
+#ifdef _CSS
+		  procDataMethod,
+#endif // _CSS
+		  echoTimeFlag);
 
      }
 

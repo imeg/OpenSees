@@ -45,12 +45,18 @@ class DriftRecorder: public Recorder
   DriftRecorder(int ndI, int ndJ, int dof, int perpDirn,
 		Domain &theDomain, 
 		OPS_Stream &theHandler,
+#ifdef _CSS
+		int procDataMethod = 0,
+#endif // _CSS
 		bool echoTime = false,
 		double dT = 0.0);
 
   DriftRecorder(const ID &ndI, const ID &ndJ, int dof, int perpDirn,
 		Domain &theDomain, 
 		OPS_Stream &theHandler,
+#ifdef _CSS
+		int procDataMethod = 0,
+#endif // _CSS
 		bool echoTime = false,
 		double dT = 0.0);
   
@@ -69,7 +75,15 @@ class DriftRecorder: public Recorder
  protected:
   
  private:	
-  int initialize(void);
+#ifdef _CSS
+	  int procDataMethod;  //flag to indicate element group processing method:
+								  //0: no processing, print separate results
+								  //1: sum of results
+								  //2: maximum of results
+								  //3: minimum of results
+								  //4: maximum absolute of results
+#endif // _CSS
+	  int initialize(void);
 
   ID *ndI;
   ID *ndJ;

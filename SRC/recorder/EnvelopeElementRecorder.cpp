@@ -53,6 +53,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#ifndef _CSS
 void*
 OPS_EnvelopeElementRecorder()
 {
@@ -278,6 +279,7 @@ OPS_EnvelopeElementRecorder()
 
     return recorder;
 }
+#endif // !_CSS
 
 
 EnvelopeElementRecorder::EnvelopeElementRecorder()
@@ -296,6 +298,9 @@ EnvelopeElementRecorder::EnvelopeElementRecorder(const ID *ele,
 							 int argc,
 							 Domain &theDom, 
 							 OPS_Stream &theOutputHandler,
+#ifdef _CSS
+                      int procMethod,
+#endif // _CSS
 							 double dT, 
 							 bool echoTime,
 							 const ID *indexValues)
@@ -304,6 +309,9 @@ EnvelopeElementRecorder::EnvelopeElementRecorder(const ID *ele,
   theHandler(&theOutputHandler), deltaT(dT), nextTimeStampToRecord(0.0), 
   data(0), currentData(0), first(true),
   initializationDone(false), responseArgs(0), numArgs(0), echoTimeFlag(echoTime), addColumnInfo(0)
+#ifdef _CSS
+    , procDataMethod(procMethod), Modified(0)
+#endif // _CSS
 {
 
   if (ele != 0) {
@@ -400,127 +408,211 @@ EnvelopeElementRecorder::~EnvelopeElementRecorder()
 int 
 EnvelopeElementRecorder::record(int commitTag, double timeStamp)
 {
-  // 
-  // check that initialization has been done
-  //
+    // 
+    // check that initialization has been done
+    //
 
-  if (initializationDone == false) {
-    if (this->initialize() != 0) {
-      opserr << "ElementRecorder::record() - failed to initialize\n";
-      return -1;
-    }
-  }
-
-  int result = 0;
-  if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
-      
-    if (deltaT != 0.0) 
-      nextTimeStampToRecord = timeStamp + deltaT;
-    
-    int loc = 0;
-    // for each element do a getResponse() & put the result in current data
-    for (int i=0; i< numEle; i++) {
-      if (theResponses[i] != 0) {
-	// ask the element for the reponse
-	int res;
-	if (( res = theResponses[i]->getResponse()) < 0)
-	  result += res;
-	else {
-	  // from the response determine no of cols for each
-	  Information &eleInfo = theResponses[i]->getInformation();
-	  const Vector &eleData = eleInfo.getData();
-	  //	  for (int j=0; j<eleData.Size(); j++) 
-	  //	    (*currentData)(loc++) = eleData(j);
-	  if (numDOF == 0) {
-	    for (int j=0; j<eleData.Size(); j++)
-	      (*currentData)(loc++) = eleData(j);
-	  } else {
-	    int dataSize = eleData.Size();
-	    for (int j=0; j<numDOF; j++) {
-	      int index = (*dof)(j);
-	      if (index >= 0 && index < dataSize)
-		(*currentData)(loc++) = eleData(index);		
-	      else
-		(*currentData)(loc++) = 0.0;		
-	    }
-	  }
-	}
-      }
+    if (initializationDone == false) {
+        if (this->initialize() != 0) {
+            opserr << "ElementRecorder::record() - failed to initialize\n";
+            return -1;
+        }
     }
 
-    int sizeData = currentData->Size();
-    if (echoTimeFlag == false) {
+    int result = 0;
+    if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
 
-      bool writeIt = false;
-      if (first == true) {
-	for (int i=0; i<sizeData; i++) {
-	  (*data)(0,i) = (*currentData)(i);
-	  (*data)(1,i) = (*currentData)(i);
-	  (*data)(2,i) = fabs((*currentData)(i));
-	  first = false;
-	  writeIt = true;
-	} 
-      } else {
-	for (int i=0; i<sizeData; i++) {
-	  double value = (*currentData)(i);
-	  if ((*data)(0,i) > value) {
-	    (*data)(0,i) = value;
-	    double absValue = fabs(value);
-	    if ((*data)(2,i) < absValue) 
-	      (*data)(2,i) = absValue;
-	    writeIt = true;
-	  } else if ((*data)(1,i) < value) {
-	    (*data)(1,i) = value;
-	    double absValue = fabs(value);
-	    if ((*data)(2,i) < absValue) 
-	      (*data)(2,i) = absValue;
-	    writeIt = true;
-	  }
-	}
-      }
-    } else {
-      sizeData /= 2;
-      bool writeIt = false;
-      if (first == true) {
-	for (int i=0; i<sizeData; i++) {
-	  
-	  (*data)(0,i*2) = timeStamp;
-	  (*data)(1,i*2) = timeStamp;
-	  (*data)(2,i*2) = timeStamp;
-	  (*data)(0,i*2+1) = (*currentData)(i);
-	  (*data)(1,i*2+1) = (*currentData)(i);
-	  (*data)(2,i*2+1) = fabs((*currentData)(i));
-	  first = false;
-	  writeIt = true;
-	} 
-      } else {
-	for (int i=0; i<sizeData; i++) {
-	  double value = (*currentData)(i);
-	  if ((*data)(0,2*i+1) > value) {
-	    (*data)(0,i*2) = timeStamp;
-	    (*data)(0,i*2+1) = value;
-	    double absValue = fabs(value);
-	    if ((*data)(2,i*2+1) < absValue) {
-	      (*data)(2,i*2+1) = absValue;
-	      (*data)(2,i*2) = timeStamp;
-	    }
-	    writeIt = true;
-	  } else if ((*data)(1,i*2+1) < value) {
-	    (*data)(1,i*2) = timeStamp;
-	    (*data)(1,i*2+1) = value;
-	    double absValue = fabs(value);
-	    if ((*data)(2,i*2+1) < absValue) { 
-	      (*data)(2,i*2) = timeStamp;
-	      (*data)(2,i*2+1) = absValue;
-	    }
-	    writeIt = true;
-	  }
-	}
-      }
+        if (deltaT != 0.0)
+            nextTimeStampToRecord = timeStamp + deltaT;
+
+        int loc = 0;
+#ifdef _CSS
+        Modified = 0;
+        if (procDataMethod != 0)
+        {
+            int respSize = numDOF;
+            for (int i = 0; i < numEle; i++) {
+                if (theResponses[i] == 0)
+                    continue;
+                // ask the element for the reponse
+                result += theResponses[i]->getResponse();
+                if (numDOF == 0)
+                {
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    int sz = eleData.Size();
+                    if (sz > respSize)
+                        respSize = sz;
+                }
+            }
+            for (int j = 0; j < respSize; j++)
+            {
+                double val = 0, val1;
+                for (int i = 0; i < numEle; i++) {
+                    if (theResponses[i] == 0)
+                        continue;
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    int index = j;
+                    if (numDOF != 0)
+                        index = (*dof)(j);
+                    if (index >= eleData.Size())
+                        continue;
+                    val1 = eleData(index);
+
+                    if (i == 0 && procDataMethod != 1)
+                        val = fabs(val1);
+                    if (procDataMethod == 1)
+                        val += val1;
+                    else if (procDataMethod == 2 && val1 > val)
+                        val = val1;
+                    else if (procDataMethod == 3 && val1 < val)
+                        val = val1;
+                    else if (procDataMethod == 4 && fabs(val1) > val)
+                        val = fabs(val1);
+                    else if (procDataMethod == 5 && fabs(val1) < val)
+                        val = fabs(val1);
+                }
+                (*currentData)(loc++) = val;
+            }
+        }
+        else
+#endif // _CSS
+        // for each element do a getResponse() & put the result in current data
+        for (int i = 0; i < numEle; i++) {
+            if (theResponses[i] != 0) {
+                // ask the element for the reponse
+                int res;
+                if ((res = theResponses[i]->getResponse()) < 0)
+                    result += res;
+                else {
+                    // from the response determine no of cols for each
+                    Information& eleInfo = theResponses[i]->getInformation();
+                    const Vector& eleData = eleInfo.getData();
+                    //	  for (int j=0; j<eleData.Size(); j++) 
+                    //	    (*currentData)(loc++) = eleData(j);
+                    if (numDOF == 0) {
+                        for (int j = 0; j < eleData.Size(); j++)
+                            (*currentData)(loc++) = eleData(j);
+                    }
+                    else {
+                        int dataSize = eleData.Size();
+                        for (int j = 0; j < numDOF; j++) {
+                            int index = (*dof)(j);
+                            if (index >= 0 && index < dataSize)
+                                (*currentData)(loc++) = eleData(index);
+                            else
+                                (*currentData)(loc++) = 0.0;
+                        }
+                    }
+                }
+            }
+        }
+
+        int sizeData = currentData->Size();
+        if (echoTimeFlag == false) {
+
+            bool writeIt = false;
+            if (first == true) {
+                for (int i = 0; i < sizeData; i++) {
+                    (*data)(0, i) = (*currentData)(i);
+                    (*data)(1, i) = (*currentData)(i);
+                    (*data)(2, i) = fabs((*currentData)(i));
+                    first = false;
+                    writeIt = true;
+#ifdef _CSS
+                    Modified = 1;
+#endif // _CSS
+                }
+            }
+            else {
+                for (int i = 0; i < sizeData; i++) {
+                    double value = (*currentData)(i);
+                    if ((*data)(0, i) > value) {
+                        (*data)(0, i) = value;
+                        double absValue = fabs(value);
+                        if ((*data)(2, i) < absValue)
+#ifdef _CSS
+                        {
+                            Modified = 1;
+                            (*data)(2, i) = absValue;
+                        }
+#else
+                            (*data)(2, i) = absValue;
+#endif // _CSS
+                        writeIt = true;
+                    }
+                    else if ((*data)(1, i) < value) {
+                        (*data)(1, i) = value;
+                        double absValue = fabs(value);
+                        if ((*data)(2, i) < absValue)
+#ifdef _CSS
+                        {
+                            Modified = 1;
+                            (*data)(2, i) = absValue;
+                        }
+#else
+                            (*data)(2, i) = absValue;
+#endif // _CSS
+                        writeIt = true;
+                    }
+                }
+            }
+        }
+        else {
+            sizeData /= 2;
+            bool writeIt = false;
+            if (first == true) {
+                for (int i = 0; i < sizeData; i++) {
+
+                    (*data)(0, i * 2) = timeStamp;
+                    (*data)(1, i * 2) = timeStamp;
+                    (*data)(2, i * 2) = timeStamp;
+                    (*data)(0, i * 2 + 1) = (*currentData)(i);
+                    (*data)(1, i * 2 + 1) = (*currentData)(i);
+                    (*data)(2, i * 2 + 1) = fabs((*currentData)(i));
+                    first = false;
+                    writeIt = true;
+#ifdef _CSS
+                    Modified = 1;
+#endif // _CSS
+                }
+            }
+            else {
+                for (int i = 0; i < sizeData; i++) {
+                    double value = (*currentData)(i);
+                    if ((*data)(0, 2 * i + 1) > value) {
+                        (*data)(0, i * 2) = timeStamp;
+                        (*data)(0, i * 2 + 1) = value;
+                        double absValue = fabs(value);
+                        if ((*data)(2, i * 2 + 1) < absValue) {
+                            (*data)(2, i * 2 + 1) = absValue;
+                            (*data)(2, i * 2) = timeStamp;
+#ifdef _CSS
+                            Modified = 1;
+#endif // _CSS
+                        }
+                        writeIt = true;
+                    }
+                    else if ((*data)(1, i * 2 + 1) < value) {
+                        (*data)(1, i * 2) = timeStamp;
+                        (*data)(1, i * 2 + 1) = value;
+                        double absValue = fabs(value);
+                        if ((*data)(2, i * 2 + 1) < absValue) {
+                            (*data)(2, i * 2) = timeStamp;
+                            (*data)(2, i * 2 + 1) = absValue;
+ #ifdef _CSS
+                            Modified = 1;
+#endif // _CSS
+                       }
+                        writeIt = true;
+                    }
+                }
+            }
+        }
     }
-  }    
-  // succesfull completion - return 0
-  return result;
+    // succesfull completion - return 0
+    return result;
 }
 
 int
@@ -868,55 +960,92 @@ EnvelopeElementRecorder::initialize(void)
       return -1;
     }
 
+#ifdef _CSS
+    if (procDataMethod != 0)
+    {
+        int dataSize = 0;
+        for (i = 0; i < numEle; i++) {
+            Element* theEle = theDomain->getElement((*eleID)(i));
+            if (theEle == 0) {
+                theResponses[i] = 0;
+                continue;
+            }
+            theResponses[i] = theEle->setResponse((const char**)responseArgs, numArgs, *theHandler);
+            if (theResponses[i] == 0)
+                continue;
+            Information& eleInfo = theResponses[i]->getInformation();
+            const Vector& eleData = eleInfo.getData();
+            int size = eleData.Size();
+            if (numDOF == 0 && size != dataSize)
+            {
+                if (dataSize != 0)
+                    opserr << "incompatible response size encountered for element: " << theEle->getTag() << " combining the results may lead to errors" << endln;
+                if (size > dataSize)
+                    dataSize = size;
+            }
+        }
+        if (numDOF == 0)
+            numDbColumns += dataSize;
+        else
+            numDbColumns += numDOF;
+        if (addColumnInfo == 1) {
+            for (int j = 0; j < numDbColumns; j++)
+                responseOrder[responseCount++] = 1;
+        }
+    }
+    else
+#endif // _CSS
 
-    for (int ii=0; ii<numEle; ii++) {
-      Element *theEle = theDomain->getElement((*eleID)(ii));
-      if (theEle == 0) {
-	theResponses[ii] = 0;
-      } else {
-	if (echoTimeFlag == true) 
-	  theHandler->tag("EnvelopeElementOutput");	  
-	
-	theResponses[ii] = theEle->setResponse((const char **)responseArgs, numArgs, *theHandler);
-	if (theResponses[ii] != 0) {
-	  // from the response type determine no of cols for each      
-	  Information &eleInfo = theResponses[ii]->getInformation();
-	  const Vector &eleData = eleInfo.getData();
-	  int dataSize = eleData.Size();
-	  //	  numDbColumns += dataSize;
-	  if (numDOF == 0)
-	    numDbColumns += dataSize;
-	  else
-	    numDbColumns += numDOF;
-	
-	  if (addColumnInfo == 1) {
-	    if (echoTimeFlag == true) {
-	      if (numDOF == 0) 
-		for (int j=0; j<2*dataSize; j++)
-		  responseOrder[responseCount++] = i+1;
-	      else
-		for (int j=0; j<2*numDOF; j++)
-		  responseOrder[responseCount++] = i+1;
-	    } else {
-	      if (numDOF == 0) 
-		for (int j=0; j<dataSize; j++)
-		  responseOrder[responseCount++] = i+1;
-	      else
-		for (int j=0; j<numDOF; j++)
-		  responseOrder[responseCount++] = i+1;	      
-	    }
-	  }
-	  
-	  if (echoTimeFlag == true) {
-	    for (int i=0; i<eleData.Size(); i++) {
-	      theHandler->tag("TimeOutput");
-	      theHandler->tag("ResponseType", "time");
-	      theHandler->endTag();
-	    }
-	    theHandler->endTag();
-	  }
-	}
-      }
+    for (int ii = 0; ii < numEle; ii++) {
+        Element* theEle = theDomain->getElement((*eleID)(ii));
+        if (theEle == 0) {
+            theResponses[ii] = 0;
+        }
+        else {
+            if (echoTimeFlag == true)
+                theHandler->tag("EnvelopeElementOutput");
+
+            theResponses[ii] = theEle->setResponse((const char**)responseArgs, numArgs, *theHandler);
+            if (theResponses[ii] != 0) {
+                // from the response type determine no of cols for each      
+                Information& eleInfo = theResponses[ii]->getInformation();
+                const Vector& eleData = eleInfo.getData();
+                int dataSize = eleData.Size();
+                //	  numDbColumns += dataSize;
+                if (numDOF == 0)
+                    numDbColumns += dataSize;
+                else
+                    numDbColumns += numDOF;
+
+                if (addColumnInfo == 1) {
+                    if (echoTimeFlag == true) {
+                        if (numDOF == 0)
+                            for (int j = 0; j < 2 * dataSize; j++)
+                                responseOrder[responseCount++] = i + 1;
+                        else
+                            for (int j = 0; j < 2 * numDOF; j++)
+                                responseOrder[responseCount++] = i + 1;
+                    }
+                    else {
+                        if (numDOF == 0)
+                            for (int j = 0; j < dataSize; j++)
+                                responseOrder[responseCount++] = i + 1;
+                        else
+                            for (int j = 0; j < numDOF; j++)
+                                responseOrder[responseCount++] = i + 1;
+                    }
+                }
+
+                if (echoTimeFlag == true) {
+                    for (int i = 0; i < eleData.Size(); i++) {
+                        theHandler->tag("TimeOutput");
+                        theHandler->tag("ResponseType", "time");
+                        theHandler->endTag();
+                    }
+                    theHandler->endTag();
+                }
+            }
+        }
     }
     
     theHandler->setOrder(responseOrder);
@@ -927,6 +1056,14 @@ EnvelopeElementRecorder::initialize(void)
     // if no eleID we don't know response size so make initial guess & loop over & ask ele
     // if guess to small, we enlarge
     //
+#ifdef _CSS
+    if (procDataMethod != 0)
+    {
+        opserr << "Combining element responses is not currently supported for empty input elements" << endln;
+        initializationDone = false;
+        return -1;
+    }
+#endif // _CSS
 
 
     // initial size & allocation
@@ -990,7 +1127,6 @@ EnvelopeElementRecorder::initialize(void)
   if (echoTimeFlag == true) {
     numDbColumns *= 2;
   }
-
   data = new Matrix(3, numDbColumns);
   currentData = new Vector(numDbColumns);
   if (data == 0 || currentData == 0) {

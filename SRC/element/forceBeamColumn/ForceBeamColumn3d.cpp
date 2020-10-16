@@ -2597,8 +2597,14 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
   Response*
   ForceBeamColumn3d::setResponse(const char **argv, int argc, OPS_Stream &output)
   {
-    Response *theResponse = 0;
-    
+#ifdef _CSS
+      Response* theResponse = Element::setResponse(argv, argc, output);
+      if (theResponse != 0)
+          return theResponse;
+#else
+      Response* theResponse = 0;
+#endif // _CSS
+
     output.tag("ElementOutput");
     output.attr("eleType","ForceBeamColumn3d");
     output.attr("eleTag",this->getTag());
@@ -2797,7 +2803,12 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
 	{
 		return new ElementResponse(this, 13, 0.0);
 	}
-
+#ifdef _CSS
+	else if (strcmp(argv[0], "maxDuctility") == 0 || strcmp(argv[0], "MaxDuctility") == 0)
+	{
+		return new ElementResponse(this, 14, 0.0);
+	}
+#endif
     output.endTag();
 
     return theResponse;
@@ -2806,7 +2817,11 @@ ForceBeamColumn3d::getInitialDeformations(Vector &v0)
 int 
 ForceBeamColumn3d::getResponse(int responseID, Information &eleInfo)
 {
-  static Vector vp(6);
+#ifdef _CSS
+    if (Element::getResponse(responseID, eleInfo) == 0)
+        return 0;
+#endif // _CSS
+    static Vector vp(6);
   static Matrix fe(6,6);
 
   if (responseID == 1)
@@ -3218,6 +3233,17 @@ ForceBeamColumn3d::getResponse(int responseID, Information &eleInfo)
 	  }
 	  return eleInfo.setDouble(energy);
   }
+#ifdef _CSS
+  else if (responseID == 14) {
+  double max = 0;
+  for (int i = 0; i < numSections; i++) {
+      double mu = sections[i]->getMaxDuctility();
+      if (mu > max)
+          max = mu;
+  }
+  return eleInfo.setDouble(max);
+  }
+#endif // _CSS
 
   else
     return -1;

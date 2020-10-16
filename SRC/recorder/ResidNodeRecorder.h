@@ -57,6 +57,9 @@ class ResidNodeRecorder: public Recorder
 			 const char *dataToStore,
 			 Domain &theDomain,
 			 OPS_Stream &theOutputHandler,
+#ifdef _CSS
+          int procDataMethod = 0,
+#endif // _CSS
 			 bool echoTimeFlag = false,
 			 TimeSeries **theTimeSeries =0); 
     
@@ -73,7 +76,15 @@ class ResidNodeRecorder: public Recorder
   protected:
     
   private:	
-    int initialize(void);
+#ifdef _CSS
+      int numDOF;
+      int procDataMethod;  //flag to indicate element group processing method:
+                           //0: no processing, print separate results
+                           //1: summate results
+                           //2: maximize results
+                           //3: minimize results
+#endif // _CSS
+      int initialize(void);
 
     ID *theDofs;
     ID *theNodalTags;

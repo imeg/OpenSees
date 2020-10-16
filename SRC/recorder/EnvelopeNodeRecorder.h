@@ -57,7 +57,10 @@ class EnvelopeNodeRecorder: public Recorder
 			 const char *dataToStore,
 			 Domain &theDomain,
 			 OPS_Stream &theOutputHandler,
-			 double deltaT = 0.0,
+#ifdef _CSS
+          int procDataMethod = 0,
+#endif // _CSS
+        double deltaT = 0.0,
 			 bool echoTimeFlag = false,
 			 TimeSeries **theTimeSeries =0); 
     
@@ -76,6 +79,16 @@ class EnvelopeNodeRecorder: public Recorder
   protected:
     
   private:	
+#ifdef _CSS
+     int numDOF;
+     int procDataMethod;  //flag to indicate element group processing method:
+                          //0: no processing, print separate results
+                          //1: summate results
+                          //2: maximize results
+                          //3: minimize results
+     virtual int getModified() { return Modified; }
+     int Modified;
+#endif // _CSS
     int initialize(void);
 
     ID *theDofs;

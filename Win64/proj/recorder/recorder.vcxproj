@@ -191,6 +191,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\SRC\recorder\AlgorithmIncrements.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalDriftRecorder.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalElementRecorder.cpp" />
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalNodeRecorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\DamageRecorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\DatastoreRecorder.cpp" />
     <ClCompile Include="..\..\..\SRC\recorder\DriftRecorder.cpp" />
@@ -224,6 +227,9 @@
     <ClCompile Include="..\..\..\SRC\recorder\VTK_Recorder.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalDriftRecorder.h" />
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalElementRecorder.h" />
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalNodeRecorder.h" />
     <ClInclude Include="..\..\..\SRC\recorder\DamageRecorder.h" />
     <ClInclude Include="..\..\..\SRC\recorder\ElementRecorderRMS.h" />
     <ClInclude Include="..\..\..\SRC\recorder\EnvelopeDriftRecorder.h" />

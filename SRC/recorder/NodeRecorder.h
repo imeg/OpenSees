@@ -55,7 +55,10 @@ class NodeRecorder: public Recorder
 		 const char *dataToStore,
 		 Domain &theDomain,
 		 OPS_Stream &theOutputHandler,
-		 double deltaT = 0.0,
+#ifdef _CSS
+        int procDataMethod = 0,
+#endif // _CSS
+        double deltaT = 0.0,
 		 bool echoTimeFlag = true,
 		 TimeSeries **timeSeries = 0); 
     
@@ -81,8 +84,13 @@ class NodeRecorder: public Recorder
 
   private:	
 #ifdef _CSS
-	  TimeSeries** velTimeSeries, ** accelTimeSeries, ** dispTimeSeries;
-	  double prevT;
+     int numDOF;
+     int procDataMethod;  //flag to indicate element group processing method:
+                          //0: no processing, print separate results
+                          //1: sum of results
+                          //2: maximum of results
+                          //3: minimum of results
+                          //4: maximum absolute of results
 #endif // _CSS
 
     int initialize(void);

@@ -960,10 +960,17 @@ void Joint2D::setDomain(Domain* theDomain)
   else {
 
     TheDomain = theDomain;
+#ifdef _CSS
+    for (int i = 0; i < 5; i++)
+        if (theNodes[i] == 0)  theNodes[i] = TheDomain->getNode(ExternalNodes(i));
+    this->DomainComponent::setDomain(theDomain);
+#else
     this->DomainComponent::setDomain(theDomain);
 
     for (int i = 0; i < 5; i++)
       if (theNodes[i] == 0)  theNodes[i] = TheDomain->getNode(ExternalNodes(i));
+#endif // _CSS
+
   }
 
 }//setDomain
@@ -1298,6 +1305,12 @@ int Joint2D::displaySelf(Renderer& theViewer, int displayMode, float fact, const
 //most-probably requires to be overridden
 Response* Joint2D::setResponse(const char** argv, int argc, OPS_Stream& output)
 {
+#ifdef _CSS
+    Response* theResponse = Element::setResponse(argv, argc, output);
+    if (theResponse != 0)
+        return theResponse;
+#endif // _CSS
+
   //
   // we compare argv[0] for known response types for the Truss
   //
@@ -1356,7 +1369,11 @@ Response* Joint2D::setResponse(const char** argv, int argc, OPS_Stream& output)
 
 int Joint2D::getResponse(int responseID, Information& eleInformation)
 {
-	switch (responseID) {
+#ifdef _CSS
+    if (Element::getResponse(responseID, eleInformation) == 0)
+        return 0;
+#endif // _CSS
+    switch (responseID) {
 	case -1:
 		return -1;
 	

@@ -1220,7 +1220,7 @@ FiberSection3d::setResponse(const char **argv, int argc, OPS_Stream &output)
   }
   else if ((strcmp(argv[0], "maxDuctility") == 0) || (strcmp(argv[0], "MaxDuctility") == 0)) {
 
-  return theResponse = new MaterialResponse(this, 9, getMuMax());
+  return theResponse = new MaterialResponse(this, 9, getMaxDuctility());
   }
 
 #endif // _CSS
@@ -1375,7 +1375,7 @@ FiberSection3d::getResponse(int responseID, Information &sectInfo)
   }
   else  if (responseID == 9) {
 
-	  return sectInfo.setDouble(getMuMax());
+	  return sectInfo.setDouble(getMaxDuctility());
   }
 #endif // _CSS
 
@@ -1680,7 +1680,7 @@ double FiberSection3d::getDmax()
 	return dMax;
 }
 
-double FiberSection3d::getMuMax()
+double FiberSection3d::getMaxDuctility() const 
 {
 
 	double d0 = e(0);

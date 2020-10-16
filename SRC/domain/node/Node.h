@@ -170,11 +170,14 @@ class Node : public DomainComponent
     virtual void setCrds(const Vector &);
 
 #ifdef _CSS
-	Vector getKineticEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT);
-	Vector getMotionEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT);
-	Vector getDampEnergy(TimeSeries** velSeries, TimeSeries** dispSeries, double t, double prevT);
-	const Vector& getLastCommitDisp() { return *lastCommitDisp; }
-	void addDampingForce(const Vector& add);
+   double prevT, curT;
+   TimeSeries** theAccelSeries;
+	double getKineticEnergy();
+	double getMotionEnergy(TimeSeries** accelSeries);
+	double getDampEnergy();
+   void computeDampEnergy();
+   void computeMotionEnergy();
+	const Vector& getLastCommitDisp() { return lastCommitDisp; }
    void addEleConnect(Element* pEle);
    int getEleConnects(Element**& list) const {
        list = theEleConnects;
@@ -204,7 +207,8 @@ class Node : public DomainComponent
     Vector *incrDisp;
     Vector *incrDeltaDisp;
 #ifdef _CSS
-	Vector* kineticEnergy, *dampEnergy, *motionEnergy, *lastCommitAccel, *lastCommitVel, *lastCommitDisp, *unbalDampForce;
+    double kineticEnergy, dampEnergy, motionEnergy;
+    Vector lastCommitAccel, lastCommitVel, lastCommitDisp;
    Element** theEleConnects;
    int numEleConnects;
 #endif // _CSS

@@ -44,12 +44,14 @@ class ResidDriftRecorder: public Recorder
   ResidDriftRecorder(int ndI, int ndJ, int dof, int perpDirn,
 			Domain &theDomain, 
 			OPS_Stream &theHandler,
-			bool echoTime = false);
+		  int dataProcMethod,
+		bool echoTime = false);
   
   ResidDriftRecorder(const ID &ndI, const ID &ndJ, int dof, int perpDirn,
 			Domain &theDomain, 
 			OPS_Stream &theHandler,
-			bool echoTime = false);
+		int dataProcMethod,
+		bool echoTime = false);
   
   ~ResidDriftRecorder();
   
@@ -64,7 +66,16 @@ class ResidDriftRecorder: public Recorder
  protected:
   
  private:	
-  int initialize(void);
+#ifdef _CSS
+	  int procDataMethod;  //flag to indicate element group processing method:
+								  //0: no processing, print separate results
+								  //1: sum of results
+								  //2: maximum of results
+								  //3: minimum of results
+								  //4: maximum absolute of results
+								  //5: minimum absolute of results
+#endif // _CSS
+	  int initialize(void);
 
   ID *ndI;
   ID *ndJ;

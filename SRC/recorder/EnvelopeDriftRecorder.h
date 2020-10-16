@@ -45,11 +45,17 @@ class EnvelopeDriftRecorder: public Recorder
   EnvelopeDriftRecorder(int ndI, int ndJ, int dof, int perpDirn,
 			Domain &theDomain, 
 			OPS_Stream &theHandler,
+#ifdef _CSS
+        int procDataMethod = 0,
+#endif // _CSS
 			bool echoTime = false);
   
   EnvelopeDriftRecorder(const ID &ndI, const ID &ndJ, int dof, int perpDirn,
 			Domain &theDomain, 
 			OPS_Stream &theHandler,
+#ifdef _CSS
+        int procDataMethod = 0,
+#endif // _CSS
 			bool echoTime = false);
   
   ~EnvelopeDriftRecorder();
@@ -66,6 +72,17 @@ class EnvelopeDriftRecorder: public Recorder
  protected:
   
  private:	
+#ifdef _CSS
+	  int procDataMethod;  //flag to indicate element group processing method:
+								  //0: no processing, print separate results
+								  //1: sum of results
+								  //2: maximum of results
+								  //3: minimum of results
+								  //4: maximum absolute of results
+								  //5: minimum absolute of results
+	  virtual int getModified() { return Modified; }
+	  int Modified;
+#endif // _CSS
   int initialize(void);
 
   ID *ndI;

@@ -652,7 +652,7 @@ FatigueMaterial::commitState(void)
   if (!Cfailed)
   {
 	  double TStress = getStress();
-	  energy += 0.5*(trialStrain - PS)*(TStress + CStress);
+	  energy += 0.5*(trialStrain - EP)*(TStress + CStress);
 	  CStress = TStress;
   }
 

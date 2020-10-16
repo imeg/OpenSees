@@ -1055,6 +1055,9 @@
 #define RECORDER_TAGS_ResidElementRecorder	23		//by SAJalali
 #define RECORDER_TAGS_ResidDriftRecorder	24		//by SAJalali
 #define RECORDER_TAGS_ResidNodeRecorder	25			//by SAJalali
+#define RECORDER_TAGS_ConditionalElementRecorder	28		//by SAJalali
+#define RECORDER_TAGS_ConditionalDriftRecorder	29		//by SAJalali
+#define RECORDER_TAGS_ConditionalNodeRecorder	30			//by SAJalali
 #endif // _CSS
 #define RECORDER_TAGS_NodeRecorderRMS               26
 #define RECORDER_TAGS_ElementRecorderRMS               27

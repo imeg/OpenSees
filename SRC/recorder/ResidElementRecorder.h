@@ -51,6 +51,9 @@ class ResidElementRecorder: public Recorder
 			    int argc,
 			    Domain &theDomain, 
 			    OPS_Stream &theOutputHandler,
+#ifdef _CSS
+          int procMethod = 0,
+#endif // _CSS
 			    bool echoTimeFlag = true,
 			    const ID *dof =0); 
 
@@ -66,6 +69,11 @@ class ResidElementRecorder: public Recorder
 		 FEM_ObjectBroker &theBroker);
 #ifdef _CSS
 	virtual int removeComponentResponse(int compTag);
+   int procDataMethod;  //flag to indicate element group processing method:
+                        //0: no processing, print separate results
+                        //1: summate results
+                        //2: maximize results
+                        //3: minimize results
 #endif // _CSS
 
   protected:

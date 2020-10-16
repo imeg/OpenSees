@@ -139,13 +139,14 @@ protected:
     static Vector ** theVectors2; 
     static int numMatrices;
 #ifdef _CSS
-	Vector getDampingEnergies();
+	double getDampingEnergy();
+	void computeDampingEnergy();
 #endif
    bool is_this_element_active;
   private:
 #ifdef _CSS
-	  Vector* prevDampingForces;
-	  Vector* dampingEnergies;
+	  Vector prevDampingForces;
+	  double dampingEnergy;
 #endif // _CSS
 
 };

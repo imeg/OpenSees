@@ -94,7 +94,7 @@ class FiberSection2d : public SectionForceDeformation
 #ifdef _CSS
 	//by SAJalali
 	double getDmax();
-	double getMuMax();
+   virtual double getMaxDuctility() const;
 
 #endif // _CSS
 

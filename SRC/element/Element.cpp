@@ -61,7 +61,7 @@ Element::Element(int tag, int cTag)
       Kc(0), previousK(0), numPreviousK(0), index(-1), nodeIndex(-1),
       is_this_element_active(true)
 #ifdef _CSS
-    , prevDampingForces(0), dampingEnergies(0)
+    , dampingEnergy(0), prevDampingForces(0)
 #endif // _CSS
 {
   // does nothing
@@ -78,13 +78,6 @@ Element::~Element()
       delete previousK[i];
     delete [] previousK;
   }
-#ifdef _CSS
-  if (prevDampingForces != 0)
-	  delete prevDampingForces;
-  if (dampingEnergies != 0)
-	  delete dampingEnergies;
-#endif // _CSS
-
 }
 
 int
@@ -93,13 +86,9 @@ Element::commitState(void)
   if (Kc != 0)
     *Kc = this->getTangentStiff();
 #ifdef _CSS
-  Node** theNodes = this->getNodePtrs();
-  int numNodes = this->getNumExternalNodes();
-  for (int i = 0; i < numNodes; i++)
-	  theNodes[i]->addDampingForce(getRayleighDampingForces());
-
+  computeDampingEnergy();
 #endif // _CSS
-
+  double t = this->getDomain()->getCurrentTime();
   return 0;
 }
 
@@ -485,13 +474,8 @@ Element::setResponse(const char **argv, int argc, OPS_Stream &output)
   }
 #ifdef _CSS
   else if (strcmp(argv[0], "dampingEnergy") == 0 || strcmp(argv[0], "DampingEnergy") == 0) {
-	  const Vector& force = this->getResistingForce();
-	  int size = force.Size();
-	  for (int i = 0; i < size; i++) {
-		  sprintf(nodeData, "P%d", i + 1);
-		  output.tag("ResponseType", nodeData);
-	  }
-	  theResponse = new ElementResponse(this, 555555, this->getResistingForce());
+      output.tag("ResponseType", "dampingEnergy");
+      theResponse = new ElementResponse(this, 555555, 0.0);
   }
 
 #endif // _CSS
@@ -513,9 +497,10 @@ Element::getResponse(int responseID, Information &eleInfo)
     return eleInfo.setVector(this->getResistingForceIncInertia());
   case 444444:
     return eleInfo.setVector(this->getResistingForceIncInertia()-this->getRayleighDampingForces()-this->getResistingForce());
+#ifdef _CSS
   case 555555:
-    return eleInfo.setVector(this->getDampingEnergies());
-
+    return eleInfo.setDouble(this->getDampingEnergy());
+#endif
   default:
     return -1;
   }
@@ -853,15 +838,16 @@ bool  Element::isActive()
 }
 
 #ifdef _CSS
-Vector Element::getDampingEnergies()
+double Element::getDampingEnergy()
+{
+    return dampingEnergy;
+}
+void Element::computeDampingEnergy()
 {
     const Vector& thisF = getRayleighDampingForces();
     int numDof = thisF.Size();
-    if (prevDampingForces == 0)
-        prevDampingForces = new Vector(numDof);
-    if (dampingEnergies == 0)
-        dampingEnergies = new Vector(numDof);
-    Vector* theVector2 = theVectors1[index];
+    if (prevDampingForces.Size() == 0)
+        prevDampingForces = Vector(numDof);
     Node** theNodes = this->getNodePtrs();
     int numNodes = this->getNumExternalNodes();
     int loc = 0;
@@ -869,9 +855,11 @@ Vector Element::getDampingEnergies()
         const Vector& prevDisp = theNodes[i]->getLastCommitDisp();
         const Vector& thisDisp = theNodes[i]->getDisp();
         for (int j = 0; j < prevDisp.Size(); j++) {
-            (*dampingEnergies)(loc++) = 0.5 * ((*prevDampingForces)(j) + thisF(j)) * (thisDisp[j] - prevDisp[j]);
+            dampingEnergy += 0.5 * (prevDampingForces(loc) + thisF(loc)) * (thisDisp[j] - prevDisp[j]);
+            //opserr <<loc << " " << dampingEnergy << " " << prevDampingForces(loc) << " " << thisF(loc) << " " << thisDisp[j] << " " << prevDisp[j] << "\n";
+            loc++;
         }
     }
-    return *dampingEnergies;
+    prevDampingForces = thisF;
 }
 #endif

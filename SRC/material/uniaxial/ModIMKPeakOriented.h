@@ -83,7 +83,12 @@ class ModIMKPeakOriented : public UniaxialMaterial
     Response *setResponse (const char **argv, int argc, OPS_Stream &theOutputStream);
     int getResponse (int responseID, Information &matInformation);    
 
-   
+#ifdef _CSS
+    //by SAJalali
+    virtual double getEnergy(void) { return CEnrgtot; } //by SAJalali
+    virtual double getInitYieldStrain() { return My_pos / Ke0; }
+#endif // _CSS
+
   protected:
    
   private:

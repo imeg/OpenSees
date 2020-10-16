@@ -55,11 +55,17 @@ EnvelopeDriftRecorder::EnvelopeDriftRecorder(int ni,
 					     int dirn,
 					     Domain &theDom, 
 					     OPS_Stream &theCurrentDataOutputHandler,
+#ifdef _CSS
+                    int procMethod,
+#endif // _CSS
 					     bool timeFlag)
   :Recorder(RECORDER_TAGS_EnvelopeDriftRecorder),
    ndI(0), ndJ(0), theNodes(0), dof(df), perpDirn(dirn), oneOverL(0), currentData(0),
    theDomain(&theDom), theOutputHandler(&theCurrentDataOutputHandler),
    initializationDone(false), numNodes(0), echoTimeFlag(timeFlag)
+#ifdef _CSS
+    , procDataMethod(procMethod), Modified(0)
+#endif // _CSS
 {
   ndI = new ID(1);
   ndJ = new ID (1);
@@ -77,11 +83,17 @@ EnvelopeDriftRecorder::EnvelopeDriftRecorder(const ID &nI,
 					     int dirn,
 					     Domain &theDom, 
 					     OPS_Stream &theDataOutputHandler,
+#ifdef _CSS
+                    int procMethod,
+#endif // _CSS
 					     bool timeFlag)
   :Recorder(RECORDER_TAGS_EnvelopeDriftRecorder),
    ndI(0), ndJ(0), theNodes(0), dof(df), perpDirn(dirn), oneOverL(0), currentData(0),
    theDomain(&theDom), theOutputHandler(&theDataOutputHandler),
    initializationDone(false), numNodes(0), echoTimeFlag(timeFlag)
+#ifdef _CSS
+    , procDataMethod(procMethod), Modified(0)
+#endif // _CSS
 {
   ndI = new ID(nI);
   ndJ = new ID (nJ);
@@ -129,114 +141,184 @@ EnvelopeDriftRecorder::~EnvelopeDriftRecorder()
 int 
 EnvelopeDriftRecorder::record(int commitTag, double timeStamp)
 {
-  
-  if (theDomain == 0 || ndI == 0 || ndJ == 0) {
-    return 0;
-  }
-  
-  if (theOutputHandler == 0) {
-    opserr << "EnvelopeDriftRecorder::record() - no DataOutputHandler has been set\n";
-    return -1;
-  }
-  
-  if (initializationDone != true) 
-    if (this->initialize() != 0) {
-      opserr << "EnvelopeDriftRecorder::record() - failed in initialize()\n";
-      return -1;
-    }
-  
-  if (numNodes == 0 || currentData == 0)
-    return 0;
 
-  for (int i=0; i<numNodes; i++) {
-    Node *nodeI = theNodes[2*i];
-    Node *nodeJ = theNodes[2*i+1];
-    
-    if ((*oneOverL)(i) != 0.0) {
-      const Vector &dispI = nodeI->getTrialDisp();
-      const Vector &dispJ = nodeJ->getTrialDisp();
-      
-      double dx = dispJ(dof)-dispI(dof);
-      
-      (*currentData)(i) =  dx* (*oneOverL)(i);
-      
+    if (theDomain == 0 || ndI == 0 || ndJ == 0) {
+        return 0;
+    }
+
+    if (theOutputHandler == 0) {
+        opserr << "EnvelopeDriftRecorder::record() - no DataOutputHandler has been set\n";
+        return -1;
+    }
+
+    if (initializationDone != true)
+        if (this->initialize() != 0) {
+            opserr << "EnvelopeDriftRecorder::record() - failed in initialize()\n";
+            return -1;
+        }
+
+    if (numNodes == 0 || currentData == 0)
+        return 0;
+
+#ifdef _CSS
+    Modified = 0;
+    if (procDataMethod)
+    {
+        double val = 0, val1 = 0;
+        for (int i = 0; i < numNodes; i++) {
+            Node* nodeI = theNodes[2 * i];
+            Node* nodeJ = theNodes[2 * i + 1];
+
+            if ((*oneOverL)(i) != 0.0) {
+                const Vector& dispI = nodeI->getTrialDisp();
+                const Vector& dispJ = nodeJ->getTrialDisp();
+
+                double dx = dispJ(dof) - dispI(dof);
+
+                val1 = dx * (*oneOverL)(i);
+
+            }
+            else
+                val1 = 0.0;
+
+            if (i == 0 && procDataMethod != 1)
+                val = fabs(val1);
+            if (procDataMethod == 1)
+                val += val1;
+            else if (procDataMethod == 2 && val1 > val)
+                val = val1;
+            else if (procDataMethod == 3 && val1 < val)
+                val = val1;
+            else if (procDataMethod == 4 && fabs(val1) > val)
+                val = fabs(val1);
+            else if (procDataMethod == 5 && fabs(val1) < val)
+                val = fabs(val1);
+        }
+        (*currentData)(0) = val;
     }
     else
-      (*currentData)(i) = 0.0;
-  }
-  
-  // check if currentData modifies the saved data
-  int sizeData = currentData->Size();
-  if (echoTimeFlag == false) {
+#endif // _CSS
+        for (int i = 0; i < numNodes; i++) {
+            Node* nodeI = theNodes[2 * i];
+            Node* nodeJ = theNodes[2 * i + 1];
 
-    bool writeIt = false;
-    if (first == true) {
-      for (int i=0; i<sizeData; i++) {
-	(*data)(0,i) = (*currentData)(i);
-	(*data)(1,i) = (*currentData)(i);
-	(*data)(2,i) = fabs((*currentData)(i));
-	first = false;
-	writeIt = true;
-      } 
-    } else {
-      for (int i=0; i<sizeData; i++) {
-	double value = (*currentData)(i);
-	if ((*data)(0,i) > value) {
-	  (*data)(0,i) = value;
-	  double absValue = fabs(value);
-	  if ((*data)(2,i) < absValue) 
-	    (*data)(2,i) = absValue;
-	  writeIt = true;
-	} else if ((*data)(1,i) < value) {
-	  (*data)(1,i) = value;
-	  double absValue = fabs(value);
-	  if ((*data)(2,i) < absValue) 
-	    (*data)(2,i) = absValue;
-	  writeIt = true;
-	}
-      }
-    }
-  } else {
-    sizeData /= 2;
-    bool writeIt = false;
-    if (first == true) {
-      for (int i=0; i<sizeData; i++) {
+            if ((*oneOverL)(i) != 0.0) {
+                const Vector& dispI = nodeI->getTrialDisp();
+                const Vector& dispJ = nodeJ->getTrialDisp();
 
-	(*data)(0,i*2) = timeStamp;
-	(*data)(1,i*2) = timeStamp;
-	(*data)(2,i*2) = timeStamp;
-	(*data)(0,i*2+1) = (*currentData)(i);
-	(*data)(1,i*2+1) = (*currentData)(i);
-	(*data)(2,i*2+1) = fabs((*currentData)(i));
-	first = false;
-	writeIt = true;
-      } 
-    } else {
-      for (int i=0; i<sizeData; i++) {
-	double value = (*currentData)(i);
-	if ((*data)(0,2*i+1) > value) {
-	  (*data)(0,i*2) = timeStamp;
-	  (*data)(0,i*2+1) = value;
-	  double absValue = fabs(value);
-	  if ((*data)(2,i*2+1) < absValue) {
-	    (*data)(2,i*2+1) = absValue;
-	    (*data)(2,i*2) = timeStamp;
-	  }
-	  writeIt = true;
-	} else if ((*data)(1,i*2+1) < value) {
-	  (*data)(1,i*2) = timeStamp;
-	  (*data)(1,i*2+1) = value;
-	  double absValue = fabs(value);
-	  if ((*data)(2,i*2+1) < absValue) { 
-	    (*data)(2,i*2) = timeStamp;
-	    (*data)(2,i*2+1) = absValue;
-	  }
-	  writeIt = true;
-	}
-      }
+                double dx = dispJ(dof) - dispI(dof);
+
+                (*currentData)(i) = dx * (*oneOverL)(i);
+
+            }
+            else
+                (*currentData)(i) = 0.0;
+        }
+
+    // check if currentData modifies the saved data
+    int sizeData = currentData->Size();
+    if (echoTimeFlag == false) {
+
+        bool writeIt = false;
+        if (first == true) {
+            for (int i = 0; i < sizeData; i++) {
+                (*data)(0, i) = (*currentData)(i);
+                (*data)(1, i) = (*currentData)(i);
+                (*data)(2, i) = fabs((*currentData)(i));
+                first = false;
+                writeIt = true;
+#ifdef _CSS
+                Modified = 1;
+#endif // _CSS
+
+            }
+        }
+        else {
+            for (int i = 0; i < sizeData; i++) {
+                double value = (*currentData)(i);
+                if ((*data)(0, i) > value) {
+                    (*data)(0, i) = value;
+                    double absValue = fabs(value);
+                    if ((*data)(2, i) < absValue)
+#ifdef _CSS
+                    {
+                        Modified = 1;
+                        (*data)(2, i) = absValue;
+                    }
+#else
+                        (*data)(2, i) = absValue;
+#endif // _CSS
+                    writeIt = true;
+                }
+                else if ((*data)(1, i) < value) {
+                    (*data)(1, i) = value;
+                    double absValue = fabs(value);
+                    if ((*data)(2, i) < absValue)
+#ifdef _CSS
+                    {
+                        Modified = 1;
+                        (*data)(2, i) = absValue;
+                    }
+#else
+                        (*data)(2, i) = absValue;
+#endif // _CSS
+                    writeIt = true;
+                }
+            }
+        }
     }
-  }
-  return 0;
+    else {
+        sizeData /= 2;
+        bool writeIt = false;
+        if (first == true) {
+            for (int i = 0; i < sizeData; i++) {
+
+                (*data)(0, i * 2) = timeStamp;
+                (*data)(1, i * 2) = timeStamp;
+                (*data)(2, i * 2) = timeStamp;
+                (*data)(0, i * 2 + 1) = (*currentData)(i);
+                (*data)(1, i * 2 + 1) = (*currentData)(i);
+                (*data)(2, i * 2 + 1) = fabs((*currentData)(i));
+                first = false;
+                writeIt = true;
+#ifdef _CSS
+                Modified = 1;
+#endif // _CSS
+            }
+        }
+        else {
+            for (int i = 0; i < sizeData; i++) {
+                double value = (*currentData)(i);
+                if ((*data)(0, 2 * i + 1) > value) {
+                    (*data)(0, i * 2) = timeStamp;
+                    (*data)(0, i * 2 + 1) = value;
+                    double absValue = fabs(value);
+                    if ((*data)(2, i * 2 + 1) < absValue) {
+                        (*data)(2, i * 2 + 1) = absValue;
+                        (*data)(2, i * 2) = timeStamp;
+#ifdef _CSS
+                        Modified = 1;
+#endif // _CSS
+                    }
+                    writeIt = true;
+                }
+                else if ((*data)(1, i * 2 + 1) < value) {
+                    (*data)(1, i * 2) = timeStamp;
+                    (*data)(1, i * 2 + 1) = value;
+                    double absValue = fabs(value);
+                    if ((*data)(2, i * 2 + 1) < absValue) {
+                        (*data)(2, i * 2) = timeStamp;
+                        (*data)(2, i * 2 + 1) = absValue;
+#ifdef _CSS
+                        Modified = 1;
+#endif // _CSS
+                    }
+                    writeIt = true;
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 int
@@ -439,14 +521,35 @@ EnvelopeDriftRecorder::initialize(void)
   //
   // allocate memory
   //
-
+#ifdef _CSS
+  if (procDataMethod)
+  {
+      if (echoTimeFlag)
+      {
+          data = new Matrix(3, 2);
+          currentData = new Vector(2); // additional data allocated for time 
+      }
+      else
+      {
+          data = new Matrix(3, 1);
+          currentData = new Vector(1); // additional data allocated for time  
+      }
+  }
+  else if (echoTimeFlag == true) {
+    currentData = new Vector(numNodes*2); // additional data allocated for time  
+    data = new Matrix(3, numNodes*2);
+  }
+#else
   if (echoTimeFlag == true) {
     currentData = new Vector(numNodes*2); // additional data allocated for time  
     data = new Matrix(3, numNodes*2);
-  } else {
+  }
+#endif // _CSS
+  else {
     currentData = new Vector(numNodes); // data(0) allocated for time  
     data = new Matrix(3, numNodes);
   }
+
   data->Zero();
   theNodes = new Node *[2*numNodes];
   oneOverL = new Vector(numNodes);

@@ -65,8 +65,9 @@ DomainComponent::setDomain(Domain *model)
     {
         int n = pEle->getNumExternalNodes();
         Node** nodes = pEle->getNodePtrs();
-        for (int i = 0; i < n; i++)
-            nodes[i]->addEleConnect(pEle);
+        if (nodes != 0)
+            for (int i = 0; i < n; i++)
+                nodes[i]->addEleConnect(pEle);
     }
 #endif // _CSS
 

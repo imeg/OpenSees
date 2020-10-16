@@ -110,6 +110,15 @@
     <ClCompile Include="..\..\..\SRC\recorder\NodeRecorderRMS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalNodeRecorder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalDriftRecorder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\SRC\recorder\ConditionalElementRecorder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\SRC\recorder\AlgorithmIncrements.h">
@@ -203,6 +212,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\SRC\recorder\NodeRecorderRMS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalNodeRecorder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalElementRecorder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\recorder\ConditionalDriftRecorder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

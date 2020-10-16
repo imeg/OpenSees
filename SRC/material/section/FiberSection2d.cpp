@@ -1016,7 +1016,7 @@ FiberSection2d::getResponse(int responseID, Information &sectInfo)
   }
   else if (responseID == 10) {
 
-	  return sectInfo.setDouble(getMuMax());
+	  return sectInfo.setDouble(getMaxDuctility());
   }
 #endif // _CSS
 
@@ -1372,7 +1372,7 @@ double FiberSection2d::getDmax()
 }
 
 
-double FiberSection2d::getMuMax()
+double FiberSection2d::getMaxDuctility() const 
 {
 	double d0 = e(0);
 	double d1 = e(1);

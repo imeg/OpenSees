@@ -54,9 +54,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#ifdef _CSS
-#include <TrapezoidalTimeSeriesIntegrator.h>
-#endif // _CSS
 
 void*
 OPS_NodeRecorder()
@@ -81,7 +78,10 @@ OPS_NodeRecorder()
     const int DATA_STREAM_ADD = 7;
     
     int eMode = STANDARD_STREAM;
-    
+#ifdef _CSS
+    int procDataMethod = 0;
+#endif // _CSS
+
     bool echoTimeFlag = false;
     double dT = 0.0;
     bool doScientific = false;
@@ -267,6 +267,19 @@ OPS_NodeRecorder()
                 dofs[numDOF++] = dof - 1;
             }
         }
+#ifdef _CSS
+        else if (strcmp(option, "-process") == 0) {
+        const char* procType = OPS_GetString();
+        if (strcmp(procType, "sum") == 0)
+            procDataMethod = 1;
+        else if (strcmp(procType, "max") == 0)
+            procDataMethod = 2;
+        else if (strcmp(procType, "min") == 0)
+            procDataMethod = 3;
+        else
+            opserr << "unrecognized element result process method: " << procType << endln;
+        }
+#endif // _CSS
     }
     
     // data handler
@@ -294,6 +307,9 @@ OPS_NodeRecorder()
         return 0;
     NodeRecorder* recorder = new NodeRecorder(dofs, &nodes, gradIndex,
         responseID, *domain, *theOutputStream,
+#ifdef _CSS
+        procDataMethod,
+#endif // _CSS
         dT, echoTimeFlag, theTimeSeries);
     
     return recorder;
@@ -308,9 +324,6 @@ NodeRecorder::NodeRecorder()
  deltaT(0), nextTimeStampToRecord(0.0), 
  gradIndex(-1),
  initializationDone(false), numValidNodes(0), addColumnInfo(0), theTimeSeries(0), timeSeriesValues(0)
-#ifdef _CSS
-	, velTimeSeries(0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
-#endif // _CSS
 {
 
 }
@@ -322,7 +335,10 @@ NodeRecorder::NodeRecorder(const ID &dofs,
 			   const char *dataToStore,
 			   Domain &theDom,
 			   OPS_Stream &theOutput,
-			   double dT,
+#ifdef _CSS
+            int procMethod,
+#endif // _CSS
+    double dT,
 			   bool timeFlag,
 			   TimeSeries **theSeries)
 :Recorder(RECORDER_TAGS_NodeRecorder),
@@ -334,7 +350,7 @@ NodeRecorder::NodeRecorder(const ID &dofs,
 	gradIndex(pgradIndex),
 	theTimeSeries(theSeries), timeSeriesValues(0)
 #ifdef _CSS
-	, velTimeSeries (0), accelTimeSeries(0), dispTimeSeries(0), prevT(0)
+	, procDataMethod(procMethod)
 #endif // _CSS
 
 {
@@ -342,24 +358,29 @@ NodeRecorder::NodeRecorder(const ID &dofs,
   // store copy of dof's to be recorder, verifying dof are valid, i.e. >= 0
   //
 
-  int numDOF = dofs.Size();
+#ifndef _CSS
+    int numDOF = dofs.Size();
+#else
+  numDOF = dofs.Size();
+#endif // !_CSS
 
   if (numDOF != 0) {
-    
-    theDofs = new ID(numDOF);
-    
-    int count = 0;
-    int i;
-    for (i=0; i<numDOF; i++) {
-      int dof = dofs(i);
-      if (dof >= 0) {
-	(*theDofs)[count] = dof;
-	count++;
-      } else {
-	opserr << "NodeRecorder::NodeRecorder - invalid dof  " << dof;
-	opserr << " will be ignored\n";
+
+      theDofs = new ID(numDOF);
+
+      int count = 0;
+      int i;
+      for (i = 0; i < numDOF; i++) {
+          int dof = dofs(i);
+          if (dof >= 0) {
+              (*theDofs)[count] = dof;
+              count++;
+          }
+          else {
+              opserr << "NodeRecorder::NodeRecorder - invalid dof  " << dof;
+              opserr << " will be ignored\n";
+          }
       }
-    }
   }
 
   // 
@@ -376,12 +397,13 @@ NodeRecorder::NodeRecorder(const ID &dofs,
     }
   } 
 
-
+#ifndef _CSS
   if (theTimeSeries != 0) {
     timeSeriesValues = new double [numDOF];
     for (int i=0; i<numDOF; i++)
       timeSeriesValues[i] = 0.0;
   }
+#endif // !_CSS
 
   //
   // set the data flag used as a switch to get the response in a record
@@ -467,12 +489,15 @@ NodeRecorder::NodeRecorder(const ID &dofs,
 #ifdef _CSS
   else if ((strcmp(dataToStore, "motionEnergy") == 0) || (strcmp(dataToStore, "MotionEnergy") == 0)) {
 	  dataFlag = 999997;
+     numDOF = 1;
   }
   else if ((strcmp(dataToStore, "kineticEnergy") == 0) || (strcmp(dataToStore, "KineticEnergy") == 0)) {
 	  dataFlag = 999998;
+     numDOF = 1;
   }
   else if ((strcmp(dataToStore, "dampingEnergy") == 0) || (strcmp(dataToStore, "DampingEnergy") == 0)) {
 	  dataFlag = 999999;
+     numDOF = 1;
   }
 #endif _CSS
   else {
@@ -487,6 +512,15 @@ NodeRecorder::NodeRecorder(const ID &dofs,
     else
       theOutputHandler->setAddCommon(1);
   }
+
+#ifdef _CSS
+  if (theTimeSeries != 0) {
+      timeSeriesValues = new double[numDOF];
+      for (int i = 0; i < numDOF; i++)
+          timeSeriesValues[i] = 0.0;
+  }
+#endif // !_CSS
+
 }
 
 
@@ -497,11 +531,17 @@ NodeRecorder::~NodeRecorder()
     delete theOutputHandler;
   }
 
+#ifdef _CSS
+  if (theDofs != 0) {
+      delete theDofs;
+  }
+#else
   int numDOF;
   if (theDofs != 0) {
     numDOF = theDofs->Size();
     delete theDofs;
   }
+#endif // _CSS
   
   if (timeSeriesValues != 0) 
     delete [] timeSeriesValues;
@@ -517,481 +557,448 @@ NodeRecorder::~NodeRecorder()
       delete theTimeSeries[i];
     delete [] theTimeSeries;
   }
-#ifdef _CSS
-  if (velTimeSeries != 0) {
-	  for (int i = 0; i < numDOF; i++)
-		  delete velTimeSeries[i];
-	  delete[] velTimeSeries;
-  }
-  if (dispTimeSeries != 0) {
-	  for (int i = 0; i < numDOF; i++)
-		  delete dispTimeSeries[i];
-	  delete[] dispTimeSeries;
-  }
-  if (accelTimeSeries != 0) {
-	  delete[] accelTimeSeries;
-  }
-#endif // _CSS
-
 }
 
 
 int 
 NodeRecorder::record(int commitTag, double timeStamp)
 {
-  if (theDomain == 0 || theDofs == 0) {
-    return 0;
-  }
-
-  if (theOutputHandler == 0) {
-    opserr << "NodeRecorder::record() - no DataOutputHandler has been set\n";
-    return -1;
-  }
-  
-  if (initializationDone == false) {
-    if (this->initialize() != 0) {
-      opserr << "NodeRecorder::record() - failed in initialize()\n";
-      return -1;
-    }
-  }
-
-  int numDOF = theDofs->Size();
-  
-  if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
-
-    if (deltaT != 0.0) 
-      nextTimeStampToRecord = timeStamp + deltaT;
-
-    //
-    // if need nodal reactions get the domain to calculate them
-    // before we iterate over the nodes
-    //
-
-    if (dataFlag == 7)
-      theDomain->calculateNodalReactions(0);
-    else if (dataFlag == 8)
-      theDomain->calculateNodalReactions(1);
-    if (dataFlag == 9)
-      theDomain->calculateNodalReactions(2);
-
-    //
-    // add time information if requested
-    //
-
-    int timeOffset = 0;
-    if (echoTimeFlag == true) {
-      timeOffset = 1;
-      response(0) = timeStamp;
-    }
-
-    double timeSeriesTerm = 0.0;
-
-    if (theTimeSeries != 0) {
-      for (int i=0; i<numDOF; i++) {
-		  
-	if (theTimeSeries[i] != 0) 
-	  timeSeriesValues[i] = theTimeSeries[i]->getFactor(timeStamp);
-      }
-	  
-    }
-
-    //
-    // now we go get the responses from the nodes & place them in disp vector
-    //
-
-    if (dataFlag != 10) {
-
-      for (int i=0; i<numValidNodes; i++) {
-
-	int cnt = i*numDOF + timeOffset; 
-	if (dataFlag == 10000 || dataFlag == 10002)
-	  cnt = i + timeOffset;
-
-	Node *theNode = theNodes[i];
-	if (dataFlag == 0) {
-
-	  // AddingSensitivity:BEGIN ///////////////////////////////////
-	  if (gradIndex < 0) {
-	    const Vector &theResponse = theNode->getTrialDisp();
-	    for (int j=0; j<numDOF; j++) {
-
-	      if (theTimeSeries != 0) {
-		timeSeriesTerm = timeSeriesValues[j];
-	      }
-
-	      int dof = (*theDofs)(j);
-	      if (theResponse.Size() > dof) {
-		response(cnt) = theResponse(dof)  + timeSeriesTerm;
-	      }
-	      else {
-		response(cnt) = 0.0 + timeSeriesTerm;
-	      }
-	      cnt++;
-	    }
-	  }
-	  else {
-	    for (int j=0; j<numDOF; j++) {
-	      int dof = (*theDofs)(j);
-	      
-	      response(cnt) = theNode->getDispSensitivity(dof+1, gradIndex);
-	      cnt++;
-	    }
-	  }
-	  
-	  // AddingSensitivity:END /////////////////////////////////////
-	} else if (dataFlag == 1) {
-
-	  const Vector &theResponse = theNode->getTrialVel();
-	  for (int j=0; j<numDOF; j++) {
-
-	    if (theTimeSeries != 0) {
-	      timeSeriesTerm = timeSeriesValues[j];
-	    }
-	    
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof) + timeSeriesTerm;    
-	    } else 
-	      response(cnt) = 0.0 + timeSeriesTerm;    
-	    
-	    cnt++;
-	  }
-
-
-	} else if (dataFlag == 10000) {
-	  const Vector &theResponse = theNode->getTrialDisp();
-	  double sum = 0.0;
-
-	  for (int j=0; j<numDOF; j++) {
-
-	    if (theTimeSeries != 0) {
-	      timeSeriesTerm = timeSeriesValues[j];
-	    }
-
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      sum += (theResponse(dof) + timeSeriesTerm) * (theResponse(dof) + timeSeriesTerm);    
-	    } else 
-	      sum += timeSeriesTerm * timeSeriesTerm;    
-	  }
-
-	  response(cnt) = sqrt(sum);
-	  cnt++;
-
-	} else if (dataFlag == 10002) {
-
-	    if (theTimeSeries != 0) {
-		timeSeriesTerm = timeSeriesValues[0];
-	    }
-	    
-	    // get node pressure
-	    double pressure = timeSeriesTerm;
-	    Pressure_Constraint* pc = theDomain->getPressure_Constraint(theNode->getTag());
-	    if (pc != 0) {
-		pressure += pc->getPressure();
-	    }
-
-	    response(cnt) = pressure;
-	    cnt++;
-
-	} else if (dataFlag == 2) {
-
-	  const Vector &theResponse = theNode->getTrialAccel();
-	  for (int j=0; j<numDOF; j++) {
-
-	    if (theTimeSeries != 0) {
-	      timeSeriesTerm = timeSeriesValues[j];
-	    }
-
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof) + timeSeriesTerm;    
-	    } else 
-	      response(cnt) = 0.0 + timeSeriesTerm;    
-
-	    cnt++;
-	  }
-
-	} else if (dataFlag == 3) {
-	  const Vector &theResponse = theNode->getIncrDisp();
-	  for (int j=0; j<numDOF; j++) {
-
-	    if (theTimeSeries != 0) {
-	      timeSeriesTerm = timeSeriesValues[j];
-	    }
-
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof);    
-	    } else 
-	      response(cnt) = 0.0;    
-	    
-	    cnt++;
-	  }
-	} else if (dataFlag == 4) {
-	  const Vector &theResponse = theNode->getIncrDeltaDisp();
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof);    
-	    } else 
-	      response(cnt) = 0.0;    
-	    
-	    cnt++;
-	  }
-	} else if (dataFlag == 5) {
-	  const Vector &theResponse = theNode->getUnbalancedLoad();
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof);
-	    } else 
-	      response(cnt) = 0.0;
-	    
-	    cnt++;
-	  }
-	  
-	} else if (dataFlag == 6) {
-	  const Vector &theResponse = theNode->getUnbalancedLoadIncInertia();
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof);
-	    } else 
-	      response(cnt) = 0.0;
-	    
-	    cnt++;
-	  }
-
-	} else if (dataFlag == 10001) {
-	  const Vector *theResponse = theNode->getResponse(RayleighForces);
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    if (theResponse->Size() > dof) {
-	      response(cnt) = (*theResponse)(dof);
-	    } else 
-	      response(cnt) = 0.0;
-	    cnt++;
-	  }
-	  
-	} else if (dataFlag == 7 || dataFlag == 8 || dataFlag == 9) {
-	  const Vector &theResponse = theNode->getReaction();
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    if (theResponse.Size() > dof) {
-	      response(cnt) = theResponse(dof);
-	    } else 
-	      response(cnt) = 0.0;
-	    cnt++;
-	  }
-	  
-	} else if (10 <= dataFlag  && dataFlag < 1000) {
-	  int mode = dataFlag - 10;
-	  int column = mode - 1;
-	  
-	  const Matrix &theEigenvectors = theNode->getEigenvectors();
-	  if (theEigenvectors.noCols() > column) {
-	    int noRows = theEigenvectors.noRows();
-	    for (int j=0; j<numDOF; j++) {
-	      int dof = (*theDofs)(j);
-	      if (noRows > dof) {
-		response(cnt) = theEigenvectors(dof,column);
-	      } else 
-		response(cnt) = 0.0;
-	      cnt++;		
-	    }
-	  }
-	  
-	} else if (dataFlag  >= 1000 && dataFlag < 2000) {
-	  int grad = dataFlag - 1000;
-	  
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
-	    // his code!!
-	    response(cnt) = theNode->getDispSensitivity(dof, grad-1);  // Quan May 2009, the one above is not my comment! 
-	    cnt++;
-	  }
-	  
-	} else if (dataFlag  >= 2000 && dataFlag < 3000) {
-	  int grad = dataFlag - 2000;
-	  
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
-	    // his code!!
-	    response(cnt) = theNode->getVelSensitivity(dof, grad-1); // Quan May 2009
-	    cnt++;
-	  }
-	  
-	  
-	}
 #ifdef _CSS
-	else if (dataFlag == 999997) {
-		if (accelTimeSeries == 0 && theTimeSeries != 0)
-		{
-			int numNodeDof = theNode->getNumberDOF();
-			accelTimeSeries = new TimeSeries * [numNodeDof];
-			velTimeSeries = new TimeSeries * [numNodeDof];
-			dispTimeSeries = new TimeSeries * [numNodeDof];
-			for (int j = 0; j < numNodeDof; j++)
-			{
-				accelTimeSeries[j] = 0;
-				velTimeSeries[j] = 0;
-				dispTimeSeries[j] = 0;
-			}
-					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
-			for (int j = 0; j < numDOF; j++)
-			{
-				int dof = (*theDofs)[j];
-				accelTimeSeries[dof] = theTimeSeries[j];
-				if (accelTimeSeries[dof] != 0)
-				{
-					velTimeSeries[dof] = integ.integrate(accelTimeSeries[dof], 0.01);
-					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
-				}
-			}
-		}
-		const Vector& theResponse = theNode->getMotionEnergy(accelTimeSeries, dispTimeSeries, timeStamp, prevT);
-		for (int j = 0; j < numDOF; j++) {
-			int dof = (*theDofs)(j);
-			if (theResponse.Size() > dof) {
-				response(cnt) = theResponse(dof);
-			}
-			else
-				response(cnt) = 0.0;
-			cnt++;
-		}
-		prevT = timeStamp;
-	}
-	else if (dataFlag == 999998) {
-		if (accelTimeSeries == 0 && theTimeSeries != 0)
-		{
-			int numNodeDof = theNode->getNumberDOF();
-			accelTimeSeries = new TimeSeries * [numNodeDof];
-			velTimeSeries = new TimeSeries * [numNodeDof];
-			dispTimeSeries = new TimeSeries * [numNodeDof];
-			for (int j = 0; j < numNodeDof; j++)
-			{
-				accelTimeSeries[j] = 0;
-				velTimeSeries[j] = 0;
-				dispTimeSeries[j] = 0;
-			}
-					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
-			for (int j = 0; j < numDOF; j++)
-			{
-				int dof = (*theDofs)[j];
-				accelTimeSeries[dof] = theTimeSeries[j];
-				if (accelTimeSeries[dof] != 0)
-				{
-					velTimeSeries[dof] = integ.integrate(accelTimeSeries[dof], 0.01);
-					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
-				}
-			}
-		}
-		const Vector& theResponse = theNode->getKineticEnergy(accelTimeSeries, dispTimeSeries, timeStamp, prevT);
-		for (int j = 0; j < numDOF; j++) {
-			int dof = (*theDofs)(j);
-			if (theResponse.Size() > dof) {
-				response(cnt) = theResponse(dof);
-			}
-			else
-				response(cnt) = 0.0;
-			cnt++;
-		}
-		prevT = timeStamp;
-	}
-	else if (dataFlag == 999999) {
-		if (velTimeSeries == 0 && theTimeSeries != 0)
-		{
-			int numNodeDof = theNode->getNumberDOF();
-			velTimeSeries = new TimeSeries * [numNodeDof];
-			dispTimeSeries = new TimeSeries * [numNodeDof];
-			for (int j = 0; j < numNodeDof; j++)
-			{
-				velTimeSeries[j] = 0;
-				dispTimeSeries[j] = 0;
-			}
-					TrapezoidalTimeSeriesIntegrator integ = TrapezoidalTimeSeriesIntegrator();
-			for (int j = 0; j < numDOF; j++)
-			{
-				if (theTimeSeries[j] != 0)
-				{
-					int dof = (*theDofs)(j);
-					velTimeSeries[dof] = integ.integrate(theTimeSeries[j], 0.01);
-					dispTimeSeries[dof] = integ.integrate(velTimeSeries[dof], 0.01);
-				}
-			}
-		}
-		const Vector& theResponse = theNode->getDampEnergy(velTimeSeries, dispTimeSeries, timeStamp, prevT);
-		for (int j = 0; j < numDOF; j++) {
-			int dof = (*theDofs)(j);
-			if (theResponse.Size() > dof) {
-				response(cnt) = theResponse(dof) + timeSeriesTerm;
-			}
-			else
-				response(cnt) = 0.0;
-			cnt++;
-		}
-		prevT = timeStamp;
-	}
+    if (theDomain == 0) {
+        return 0;
+    }
+#else
+    if (theDomain == 0 || theDofs == 0) {
+        return 0;
+    }
 #endif // _CSS
 
-	else if (dataFlag  >= 3000) {
-	  int grad = dataFlag - 3000;
-	  
-	  for (int j=0; j<numDOF; j++) {
-	    int dof = (*theDofs)(j);
-	    dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
-	    // his code!!
-	    response(cnt) = theNode->getAccSensitivity(dof, grad-1);// Quan May 2009
-	    cnt++;
-	  }
-	}
-	
-	else {
-	  // unknown response
-	  for (int j=0; j<numDOF; j++) {
-	    response(cnt) = 0.0;
-	  }
-	}
-      }
-      
-      // insert the data into the database
-      theOutputHandler->write(response);
-    
-    } else { // output all eigenvalues
-
-      Node *theNode = theNodes[0];
-      const Matrix &theEigenvectors = theNode->getEigenvectors();
-      int numValidModes = theEigenvectors.noCols();     
-
-      for (int mode=0; mode<numValidModes; mode++) {
-	
-	for (int i=0; i<numValidNodes; i++) {
-	  int cnt = i*numDOF + timeOffset; 
-	  theNode = theNodes[i];
-	  int column = mode;
-	  
-	  const Matrix &theEigenvectors = theNode->getEigenvectors();
-	  if (theEigenvectors.noCols() > column) {
-	    int noRows = theEigenvectors.noRows();
-	    for (int j=0; j<numDOF; j++) {
-	      int dof = (*theDofs)(j);
-	      if (noRows > dof) {
-		response(cnt) = theEigenvectors(dof,column);
-	      } else 
-		response(cnt) = 0.0;
-	      cnt++;		
-	    }
-	  }
-	}
-	theOutputHandler->write(response);
-      }
+    if (theOutputHandler == 0) {
+        opserr << "NodeRecorder::record() - no DataOutputHandler has been set\n";
+        return -1;
     }
-  }
-  
-  return 0;
+
+    if (initializationDone == false) {
+        if (this->initialize() != 0) {
+            opserr << "NodeRecorder::record() - failed in initialize()\n";
+            return -1;
+        }
+    }
+
+#ifndef _CSS
+    int numDOF = theDofs->Size();
+#endif // !_CSS
+
+    if (deltaT == 0.0 || timeStamp >= nextTimeStampToRecord) {
+
+        if (deltaT != 0.0)
+            nextTimeStampToRecord = timeStamp + deltaT;
+
+        //
+        // if need nodal reactions get the domain to calculate them
+        // before we iterate over the nodes
+        //
+
+        if (dataFlag == 7)
+            theDomain->calculateNodalReactions(0);
+        else if (dataFlag == 8)
+            theDomain->calculateNodalReactions(1);
+        if (dataFlag == 9)
+            theDomain->calculateNodalReactions(2);
+
+        //
+        // add time information if requested
+        //
+
+        int timeOffset = 0;
+        if (echoTimeFlag == true) {
+            timeOffset = 1;
+            response(0) = timeStamp;
+        }
+
+        double timeSeriesTerm = 0.0;
+
+        if (theTimeSeries != 0) {
+            for (int i = 0; i < numDOF; i++) {
+
+                if (theTimeSeries[i] != 0)
+                    timeSeriesValues[i] = theTimeSeries[i]->getFactor(timeStamp);
+            }
+
+        }
+
+        //
+        // now we go get the responses from the nodes & place them in disp vector
+        //
+
+        if (dataFlag != 10) {
+#ifdef _CSS
+            if (procDataMethod != 0)
+            {
+                double val = 0, val1 = 0;
+                for (int j = 0; j < numDOF; j++) {
+                    int dof = 0;
+                    if (theDofs != 0)
+                        dof = (*theDofs)(j);
+                    int cnt = j + timeOffset;
+                    for (int i = 0; i < numValidNodes; i++) {
+                        Node* theNode = theNodes[i];
+                        if (dataFlag == 7 || dataFlag == 8 || dataFlag == 9) {
+                            const Vector& theResponse = theNode->getReaction();
+                            if (theResponse.Size() > dof) {
+                                val1 = theResponse(dof);
+                            }
+                            else
+                                val1 = 0.0;
+                        }
+                        else if (dataFlag == 999997) {
+                            if (theTimeSeries == 0)
+                            {
+                                opserr << "WARNING! NodeRecorder::motionEnergy: the timeSeries tag is missing. Please use the -TimeSeries option\n";
+                            }
+                            val1 = theNode->getMotionEnergy(theTimeSeries);
+                        }
+                        else if (dataFlag == 999998)
+                            val1 = theNode->getKineticEnergy();
+                        else if (dataFlag == 999999)
+                            val1 = theNode->getDampEnergy();
+
+                        if (i == 0 && procDataMethod != 1)
+                            val = fabs(val1);
+                        if (procDataMethod == 1)
+                            val += val1;
+                        else if (procDataMethod == 2 && val1 > val)
+                            val = val1;
+                        else if (procDataMethod == 3 && val1 < val)
+                            val = val1;
+                        else if (procDataMethod == 4 && fabs(val1) > val)
+                            val = fabs(val1);
+                        else if (procDataMethod == 5 && fabs(val1) < val)
+                            val = fabs(val1);
+                    }
+                    response(cnt) = val;
+                }
+            }
+            else
+#endif //_CSS
+            for (int i = 0; i < numValidNodes; i++) {
+
+                int cnt = i * numDOF + timeOffset;
+                if (dataFlag == 10000 || dataFlag == 10002)
+                    cnt = i + timeOffset;
+
+                Node* theNode = theNodes[i];
+                if (dataFlag == 0) {
+
+                    // AddingSensitivity:BEGIN ///////////////////////////////////
+                    if (gradIndex < 0) {
+                        const Vector& theResponse = theNode->getTrialDisp();
+                        for (int j = 0; j < numDOF; j++) {
+
+                            if (theTimeSeries != 0) {
+                                timeSeriesTerm = timeSeriesValues[j];
+                            }
+
+                            int dof = (*theDofs)(j);
+                            if (theResponse.Size() > dof) {
+                                response(cnt) = theResponse(dof) + timeSeriesTerm;
+                            }
+                            else {
+                                response(cnt) = 0.0 + timeSeriesTerm;
+                            }
+                            cnt++;
+                        }
+                    }
+                    else {
+                        for (int j = 0; j < numDOF; j++) {
+                            int dof = (*theDofs)(j);
+
+                            response(cnt) = theNode->getDispSensitivity(dof + 1, gradIndex);
+                            cnt++;
+                        }
+                    }
+
+                    // AddingSensitivity:END /////////////////////////////////////
+                }
+                else if (dataFlag == 1) {
+
+                    const Vector& theResponse = theNode->getTrialVel();
+                    for (int j = 0; j < numDOF; j++) {
+
+                        if (theTimeSeries != 0) {
+                            timeSeriesTerm = timeSeriesValues[j];
+                        }
+
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof) + timeSeriesTerm;
+                        }
+                        else
+                            response(cnt) = 0.0 + timeSeriesTerm;
+
+                        cnt++;
+                    }
+
+
+                }
+                else if (dataFlag == 10000) {
+                    const Vector& theResponse = theNode->getTrialDisp();
+                    double sum = 0.0;
+
+                    for (int j = 0; j < numDOF; j++) {
+
+                        if (theTimeSeries != 0) {
+                            timeSeriesTerm = timeSeriesValues[j];
+                        }
+
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            sum += (theResponse(dof) + timeSeriesTerm) * (theResponse(dof) + timeSeriesTerm);
+                        }
+                        else
+                            sum += timeSeriesTerm * timeSeriesTerm;
+                    }
+
+                    response(cnt) = sqrt(sum);
+                    cnt++;
+
+                }
+                else if (dataFlag == 10002) {
+
+                    if (theTimeSeries != 0) {
+                        timeSeriesTerm = timeSeriesValues[0];
+                    }
+
+                    // get node pressure
+                    double pressure = timeSeriesTerm;
+                    Pressure_Constraint* pc = theDomain->getPressure_Constraint(theNode->getTag());
+                    if (pc != 0) {
+                        pressure += pc->getPressure();
+                    }
+
+                    response(cnt) = pressure;
+                    cnt++;
+
+                }
+                else if (dataFlag == 2) {
+
+                    const Vector& theResponse = theNode->getTrialAccel();
+                    for (int j = 0; j < numDOF; j++) {
+
+                        if (theTimeSeries != 0) {
+                            timeSeriesTerm = timeSeriesValues[j];
+                        }
+
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof) + timeSeriesTerm;
+                        }
+                        else
+                            response(cnt) = 0.0 + timeSeriesTerm;
+
+                        cnt++;
+                    }
+
+                }
+                else if (dataFlag == 3) {
+                    const Vector& theResponse = theNode->getIncrDisp();
+                    for (int j = 0; j < numDOF; j++) {
+
+                        if (theTimeSeries != 0) {
+                            timeSeriesTerm = timeSeriesValues[j];
+                        }
+
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+
+                        cnt++;
+                    }
+                }
+                else if (dataFlag == 4) {
+                    const Vector& theResponse = theNode->getIncrDeltaDisp();
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+
+                        cnt++;
+                    }
+                }
+                else if (dataFlag == 5) {
+                    const Vector& theResponse = theNode->getUnbalancedLoad();
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+
+                        cnt++;
+                    }
+
+                }
+                else if (dataFlag == 6) {
+                    const Vector& theResponse = theNode->getUnbalancedLoadIncInertia();
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+
+                        cnt++;
+                    }
+
+                }
+                else if (dataFlag == 10001) {
+                    const Vector* theResponse = theNode->getResponse(RayleighForces);
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        if (theResponse->Size() > dof) {
+                            response(cnt) = (*theResponse)(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+                        cnt++;
+                    }
+
+                }
+                else if (dataFlag == 7 || dataFlag == 8 || dataFlag == 9) {
+                    const Vector& theResponse = theNode->getReaction();
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        if (theResponse.Size() > dof) {
+                            response(cnt) = theResponse(dof);
+                        }
+                        else
+                            response(cnt) = 0.0;
+                        cnt++;
+                    }
+
+                }
+                else if (10 <= dataFlag && dataFlag < 1000) {
+                    int mode = dataFlag - 10;
+                    int column = mode - 1;
+
+                    const Matrix& theEigenvectors = theNode->getEigenvectors();
+                    if (theEigenvectors.noCols() > column) {
+                        int noRows = theEigenvectors.noRows();
+                        for (int j = 0; j < numDOF; j++) {
+                            int dof = (*theDofs)(j);
+                            if (noRows > dof) {
+                                response(cnt) = theEigenvectors(dof, column);
+                            }
+                            else
+                                response(cnt) = 0.0;
+                            cnt++;
+                        }
+                    }
+
+                }
+                else if (dataFlag >= 1000 && dataFlag < 2000) {
+                    int grad = dataFlag - 1000;
+
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
+                        // his code!!
+                        response(cnt) = theNode->getDispSensitivity(dof, grad - 1);  // Quan May 2009, the one above is not my comment! 
+                        cnt++;
+                    }
+
+                }
+                else if (dataFlag >= 2000 && dataFlag < 3000) {
+                    int grad = dataFlag - 2000;
+
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
+                        // his code!!
+                        response(cnt) = theNode->getVelSensitivity(dof, grad - 1); // Quan May 2009
+                        cnt++;
+                    }
+
+
+                }
+#ifdef _CSS
+                else if (dataFlag == 999997) {
+                    if (theTimeSeries == 0)
+                    {
+                        opserr << "WARNING! NodeRecorder::motionEnergy: the timeSeries tag is missing. Please use the -TimeSeries option\n";
+                    }
+                    response(cnt++) = theNode->getMotionEnergy(theTimeSeries);
+                }
+                else if (dataFlag == 999998)
+                    response(cnt++) = theNode->getKineticEnergy();
+                else if (dataFlag == 999999)
+                    response(cnt++) = theNode->getDampEnergy();
+#endif // _CSS
+
+                else if (dataFlag >= 3000) {
+                    int grad = dataFlag - 3000;
+
+                    for (int j = 0; j < numDOF; j++) {
+                        int dof = (*theDofs)(j);
+                        dof += 1; // Terje uses 1 through DOF for the dof indexing; the fool then subtracts 1 
+                        // his code!!
+                        response(cnt) = theNode->getAccSensitivity(dof, grad - 1);// Quan May 2009
+                        cnt++;
+                    }
+                }
+
+                else {
+                    // unknown response
+                    for (int j = 0; j < numDOF; j++) {
+                        response(cnt) = 0.0;
+                    }
+                }
+            }
+
+            // insert the data into the database
+            theOutputHandler->write(response);
+
+        }
+        else { // output all eigenvalues
+
+            Node* theNode = theNodes[0];
+            const Matrix& theEigenvectors = theNode->getEigenvectors();
+            int numValidModes = theEigenvectors.noCols();
+
+            for (int mode = 0; mode < numValidModes; mode++) {
+
+                for (int i = 0; i < numValidNodes; i++) {
+                    int cnt = i * numDOF + timeOffset;
+                    theNode = theNodes[i];
+                    int column = mode;
+
+                    const Matrix& theEigenvectors = theNode->getEigenvectors();
+                    if (theEigenvectors.noCols() > column) {
+                        int noRows = theEigenvectors.noRows();
+                        for (int j = 0; j < numDOF; j++) {
+                            int dof = (*theDofs)(j);
+                            if (noRows > dof) {
+                                response(cnt) = theEigenvectors(dof, column);
+                            }
+                            else
+                                response(cnt) = 0.0;
+                            cnt++;
+                        }
+                    }
+                }
+                theOutputHandler->write(response);
+            }
+        }
+    }
+    return 0;
 }
 
 
@@ -1239,10 +1246,18 @@ NodeRecorder::domainChanged(void)
 int
 NodeRecorder::initialize(void)
 {
+#ifdef _CSS
+    if (theDomain == 0) {
+        opserr << "NodeRecorder::initialize() - either nodes or domain has not been set\n";
+        return -1;
+    }
+#else
   if (theDofs == 0 || theDomain == 0) {
     opserr << "NodeRecorder::initialize() - either nodes, dofs or domain has not been set\n";
     return -1;
   }
+#endif // _CSS
+
 
   //
   // create & set nodal array pointer
@@ -1296,8 +1311,14 @@ NodeRecorder::initialize(void)
   int timeOffset = 0;
   if (echoTimeFlag == true)
     timeOffset = 1;
-
-  int numValidResponse = numValidNodes*theDofs->Size() + timeOffset;
+#ifdef _CSS
+  int numValidResponse = numValidNodes * numDOF + timeOffset;
+  if (procDataMethod)
+      numValidResponse = numDOF + timeOffset;
+#else
+  int numDOF = theDofs->Size();
+  int numValidResponse = numValidNodes * numDOF + timeOffset;
+#endif // _CSS
   if (dataFlag == 10000 || dataFlag == 10002) {
       numValidResponse = numValidNodes + timeOffset;
   }
@@ -1360,7 +1381,6 @@ NodeRecorder::initialize(void)
       dataFlag = 6;
 
   ***********************************************************/
-  int numDOF = theDofs->Size();
   
   // write out info to handler if parallel execution
   //  
@@ -1433,7 +1453,7 @@ NodeRecorder::initialize(void)
 	theOutputHandler->attr(nodeCrdData, 0.0);      
     }
 
-    for (int k=0; k<theDofs->Size(); k++) {
+    for (int k=0; k<numDOF; k++) {
       sprintf(outputData, "%s%d", dataType, k+1);
       theOutputHandler->tag("ResponseType",outputData);
     }

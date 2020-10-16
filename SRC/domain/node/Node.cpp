@@ -220,7 +220,7 @@ Node::Node(int theClassTag)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+	, prevT(0), curT(0), theAccelSeries(0) , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 
 {
@@ -247,7 +247,7 @@ Node::Node(int tag, int theClassTag)
   R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-	, kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // for subclasses - they must implement all the methods with
@@ -273,7 +273,7 @@ Node::Node(int tag, int ndof, double Crd1, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -291,21 +291,6 @@ Node::Node(int tag, int ndof, double Crd1, Vector *dLoc)
   if (dLoc != 0) {
     displayLocation = new Vector(*dLoc);
   }
-#ifdef _CSS
-  kineticEnergy = new Vector(numberDOF);
-  dampEnergy = new Vector(numberDOF);
-  motionEnergy = new Vector(numberDOF);
-  lastCommitAccel = new Vector(numberDOF);
-  lastCommitVel = new Vector(numberDOF);
-  lastCommitDisp = new Vector(numberDOF);
-  unbalDampForce = new Vector(numberDOF);
-  if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || lastCommitDisp == 0 || motionEnergy == 0 || unbalDampForce == 0)
-  {
-	  opserr << "Node::tag="<< tag <<"Failed to initiate Energy Vector; ran out of memory" << endln;
-	  exit(-1);
-  }
-#endif // _CSS
-
   index = -1;
 }
 
@@ -322,7 +307,7 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
 #ifdef _CSS
-    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -342,20 +327,6 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
     displayLocation = new Vector(*dLoc);
   }
   
-#ifdef _CSS
-  kineticEnergy = new Vector(numberDOF);
-  dampEnergy = new Vector(numberDOF);
-  motionEnergy = new Vector(numberDOF);
-  lastCommitAccel = new Vector(numberDOF);
-  lastCommitVel = new Vector(numberDOF);
-  lastCommitDisp = new Vector(numberDOF);
-  unbalDampForce = new Vector(numberDOF);
-  if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || lastCommitDisp == 0 || motionEnergy == 0 || unbalDampForce == 0)
-  {
-	  opserr << "Node::tag=" << tag << "Failed to initiate Energy Vector; ran out of memory" << endln;
-	  exit(-1);
-  }
-#endif // _CSS
   index = -1;
 }
 
@@ -373,7 +344,7 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
 #ifdef _CSS
-     , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+     , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
  {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -393,20 +364,6 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
   if (dLoc != 0) {
     displayLocation = new Vector(*dLoc);
   }
-#ifdef _CSS
-  kineticEnergy = new Vector(numberDOF);
-  dampEnergy = new Vector(numberDOF);
-  motionEnergy = new Vector(numberDOF);
-  lastCommitAccel = new Vector(numberDOF);
-  lastCommitVel = new Vector(numberDOF);
-  lastCommitDisp = new Vector(numberDOF);
-  unbalDampForce = new Vector(numberDOF);
-  if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || lastCommitDisp == 0 || motionEnergy == 0 || unbalDampForce == 0)
-  {
-	  opserr << "Node::tag=" << tag << "Failed to initiate Energy Vector; ran out of memory" << endln;
-	  exit(-1);
-  }
-#endif // _CSS
 
   index = -1;
 }
@@ -425,7 +382,7 @@ Node::Node(const Node &otherNode, bool copyMass)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
    reaction(0), displayLocation(0)
 #ifdef _CSS
-    , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), unbalDampForce(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -501,18 +458,12 @@ Node::Node(const Node &otherNode, bool copyMass)
   }
 #ifdef _CSS
   if (otherNode.kineticEnergy != 0)
-  kineticEnergy = new Vector(*otherNode.kineticEnergy);
-  dampEnergy = new Vector(*otherNode.dampEnergy);
-  motionEnergy = new Vector(*otherNode.dampEnergy);
-  lastCommitAccel = new Vector(*otherNode.lastCommitAccel);
-  lastCommitVel = new Vector(*otherNode.lastCommitVel);
-  lastCommitDisp = new Vector(*otherNode.lastCommitDisp);
-  unbalDampForce = new Vector(*otherNode.unbalDampForce);
-  if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || lastCommitDisp == 0 || motionEnergy == 0 || unbalDampForce == 0)
-  {
-	  opserr << "Node:: copy constructor: Failed to initiate Energy Vector; ran out of memory" << endln;
-	  exit(-1);
-  }
+  kineticEnergy = otherNode.kineticEnergy;
+  dampEnergy = otherNode.dampEnergy;
+  motionEnergy = otherNode.dampEnergy;
+  lastCommitAccel = otherNode.lastCommitAccel;
+  lastCommitVel = otherNode.lastCommitVel;
+  lastCommitDisp = otherNode.lastCommitDisp;
 #endif // _CSS
 
 
@@ -527,20 +478,6 @@ Node::~Node()
 {
     // delete anything that we created with new
 #ifdef _CSS
-	if (kineticEnergy != 0)
-		delete kineticEnergy;
-	if (dampEnergy != 0)
-		delete dampEnergy;
-	if (motionEnergy != 0)
-		delete motionEnergy;
-	if (lastCommitAccel != 0)
-		delete lastCommitAccel;
-	if (lastCommitVel != 0)
-		delete lastCommitVel;
-	if (lastCommitDisp != 0)
-		delete lastCommitDisp;
-	if (unbalDampForce != 0)
-		delete unbalDampForce;
    if (theEleConnects != 0)
        delete theEleConnects;
 #endif // _CSS
@@ -1151,6 +1088,9 @@ int
 Node::commitState()
 {
     // check disp exists, if does set commit = trial, incr = 0.0
+#ifdef _CSS
+    lastCommitDisp = *commitDisp;
+#endif // _CSS
     if (trialDisp != 0) {
       for (int i=0; i<numberDOF; i++) {
 	disp[i+numberDOF] = disp[i];  
@@ -1162,7 +1102,7 @@ Node::commitState()
     // check vel exists, if does set commit = trial    
     if (trialVel != 0) {
 #ifdef _CSS
-		*lastCommitVel = *commitVel;
+		lastCommitVel = *commitVel;
 #endif // _CSS
 		for (int i=0; i<numberDOF; i++)
 	vel[i+numberDOF] = vel[i];
@@ -1171,12 +1111,18 @@ Node::commitState()
     // check accel exists, if does set commit = trial        
     if (trialAccel != 0) {
 #ifdef _CSS
-		*lastCommitAccel = *commitAccel;
+		lastCommitAccel = *commitAccel;
 #endif // _CSS
 		for (int i=0; i<numberDOF; i++)
 	accel[i+numberDOF] = accel[i];
     }
 
+#ifdef _CSS
+    prevT = curT;
+    curT = ops_TheActiveDomain->getCurrentTime();
+    computeDampEnergy();
+    computeMotionEnergy();
+#endif // _CSS
     // if we get here we are done
     return 0;
 }
@@ -1504,12 +1450,7 @@ Node::sendSelf(int cTag, Channel &theChannel)
 {
     int dataTag = this->getDbTag();
 
-#ifdef _CSS
-	ID data(15);
-#else
 	ID data(14);
-#endif // _CSS
-
     data(0) = this->getTag(); 
     data(1) = numberDOF; 
     
@@ -1542,9 +1483,6 @@ Node::sendSelf(int cTag, Channel &theChannel)
     data(10) = dbTag3;
     data(11) = dbTag4;
 
-#ifdef _CSS
-	data[14] = kineticEnergy == 0 ? 1 : 0;
-#endif // _CSS
     int res = 0;
 
     res = theChannel.sendID(dataTag, cTag, data);
@@ -1608,20 +1546,19 @@ Node::sendSelf(int cTag, Channel &theChannel)
     }
 
 #ifdef _CSS
-	if (kineticEnergy != 0)
-	{
-		res = theChannel.sendVector(dataTag, cTag, *kineticEnergy);
-		res += theChannel.sendVector(dataTag, cTag, *dampEnergy);
-		res += theChannel.sendVector(dataTag, cTag, *motionEnergy);
-		res += theChannel.sendVector(dataTag, cTag, *lastCommitAccel);
-		res += theChannel.sendVector(dataTag, cTag, *lastCommitVel);
-		res += theChannel.sendVector(dataTag, cTag, *lastCommitDisp);
-		res += theChannel.sendVector(dataTag, cTag, *unbalDampForce);
-		if (res < 0) {
-			opserr << " Node::sendSelf() - failed to send energy data\n";
-			return res;
-		}
-	}
+    Vector energy(3);
+    energy(0) = kineticEnergy;
+    energy(1) = dampEnergy;
+    energy(2) = motionEnergy;
+	 res = theChannel.sendVector(dbTag4, cTag, energy);
+	 res += theChannel.sendVector(dbTag4, cTag, lastCommitAccel);
+	 res += theChannel.sendVector(dbTag4, cTag, lastCommitVel);
+	 res += theChannel.sendVector(dbTag4, cTag, lastCommitDisp);
+	 if (res < 0) {
+	 	opserr << " Node::sendSelf() - failed to send energy data\n";
+	 	return res;
+	 }
+	
 #endif // _CSS
 
     // if get here succesfull
@@ -1635,12 +1572,7 @@ Node::recvSelf(int cTag, Channel &theChannel,
     int res = 0;
     int dataTag = this->getDbTag();
 
-#ifdef _CSS
-	ID data(15);
-#else
     ID data(14);
-#endif // _CSS
-
     res = theChannel.recvID(dataTag, cTag, data);
     if (res < 0) {
       opserr << "Node::recvSelf() - failed to receive ID data\n";
@@ -1775,35 +1707,6 @@ Node::recvSelf(int cTag, Channel &theChannel,
       }
     }        
 
-#ifdef _CSS
-	if (data(14) == 0) {
-		// create a vector for kineticEnergy
-		if (kineticEnergy == 0) {
-			kineticEnergy = new Vector(numberDOF);
-			dampEnergy = new Vector(numberDOF);
-			motionEnergy = new Vector(numberDOF);
-			lastCommitAccel = new Vector(numberDOF);
-			lastCommitVel = new Vector(numberDOF);
-			lastCommitDisp = new Vector(numberDOF);
-			unbalDampForce = new Vector(numberDOF);
-			if (kineticEnergy == 0 || dampEnergy == 0 || lastCommitAccel == 0 || lastCommitVel == 0 || motionEnergy == 0 || unbalDampForce == 0) {
-				opserr << "Node::recvData -- ran out of memory\n";
-				return -11;
-			}
-		}
-		res = theChannel.recvVector(dbTag4, cTag, *kineticEnergy);
-		res += theChannel.recvVector(dbTag4, cTag, *dampEnergy);
-		res += theChannel.recvVector(dbTag4, cTag, *motionEnergy);
-		res += theChannel.recvVector(dbTag4, cTag, *lastCommitAccel);
-		res += theChannel.recvVector(dbTag4, cTag, *lastCommitVel);
-		res += theChannel.recvVector(dbTag4, cTag, *lastCommitDisp);
-		res += theChannel.recvVector(dbTag4, cTag, *unbalDampForce);
-		if (res < 0) {
-			opserr << "Node::recvSelf() - failed to receive energy data\n";
-			return res;
-		}
-	}
-#endif // _CSS
 
   index = -1;
   if (numMatrices != 0) {
@@ -1833,6 +1736,25 @@ Node::recvSelf(int cTag, Channel &theChannel,
     numMatrices++;
     theMatrices = nextMatrices;
   }
+#ifdef _CSS
+
+  Vector energy(3);
+  res = theChannel.recvVector(dbTag4, cTag, energy);
+  kineticEnergy = energy(0);
+  dampEnergy = energy(1);
+  motionEnergy = energy(2);
+  lastCommitAccel = Vector(numberDOF);
+  lastCommitVel = Vector(numberDOF);
+  lastCommitDisp = Vector(numberDOF);
+  res += theChannel.recvVector(dbTag4, cTag, lastCommitAccel);
+  res += theChannel.recvVector(dbTag4, cTag, lastCommitVel);
+  res += theChannel.recvVector(dbTag4, cTag, lastCommitDisp);
+  if (res < 0) {
+      opserr << "Node::recvSelf() - failed to receive energy data\n";
+      return res;
+  }
+
+#endif // _CSS
 
   return 0;
 }
@@ -2528,105 +2450,66 @@ void Node::addEleConnect(Element* pEle)
     if (oldCncts != 0)
         delete oldCncts;
 }
-Vector Node::getKineticEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT)
+double Node::getKineticEnergy()
 {
-	if (kineticEnergy == 0)
-	{
-		opserr << "Node::getEnergy(): energy is not initiated for node with tag: " << this->getTag() << endln;
-		exit(-1);
-	}
-	if (trialAccel != 0 && mass != 0) {
-		for (int i = 0; i < numberDOF; i++)
-		{
-			double prevAccel = (*lastCommitAccel)[i];
-			double thisAccel = (*commitAccel)[i];
-			if (accelSeries[i] != 0)
-			{
-				prevAccel += accelSeries[i]->getFactor(prevT);
-				thisAccel += accelSeries[i]->getFactor(t);
-			}
-			double prevDisp = (*commitDisp)[i];
-			double thisDisp = (*lastCommitDisp)[i];
-			if (dispSeries[i] != 0)
-			{
-				prevDisp += dispSeries[i]->getFactor(prevT);
-				thisDisp += dispSeries[i]->getFactor(t);
-			}
-			(*kineticEnergy)[i] += 0.5 * (*mass)(i, i) * (prevAccel + thisAccel) * (thisDisp - prevDisp);
-		}
-	}
+    kineticEnergy = 0;
+    if (mass == 0)
+        return 0;
+    const Vector& vel = this->getVel();
+    double v = 0;
+    for (int i = 0; i < numberDOF; i++)
+    {
+        v = vel(i);
+        kineticEnergy += 0.5 * v * v * (*mass)(i, i);
+    }
+    return kineticEnergy;
+}
+double Node::getMotionEnergy(TimeSeries** accelSeries)
+{
+    if (theAccelSeries == 0)
+    {
+        theAccelSeries = accelSeries;
+        computeMotionEnergy();
+    }
+    return motionEnergy;
+}
 
-	return *kineticEnergy;
-}
-Vector Node::getMotionEnergy(TimeSeries** accelSeries, TimeSeries** dispSeries, double t, double prevT)
+void Node::computeMotionEnergy()
 {
-	if (motionEnergy == 0)
-	{
-		opserr << "Node::getEnergy(): energy is not initiated for node with tag: " << this->getTag() << endln;
-		exit(-1);
-	}
-	if (mass != 0 && accelSeries != 0) {
-		for (int i = 0; i < numberDOF; i++)
-		{
-			double prevAccel = 0;
-			double thisAccel = 0;
-			if (accelSeries[i] != 0)
-			{
-				prevAccel = accelSeries[i]->getFactor(prevT);
-				thisAccel = accelSeries[i]->getFactor(t);
-			}
-			double prevDisp = (*commitDisp)[i];
-			double thisDisp = (*lastCommitDisp)[i];
-			if (dispSeries[i] != 0)
-			{
-				prevDisp += dispSeries[i]->getFactor(prevT);
-				thisDisp += dispSeries[i]->getFactor(t);
-			}
-			(*motionEnergy)[i] += 0.5 * (*mass)(i, i) * (prevAccel + thisAccel) * (thisDisp - prevDisp);
-		}
-	}
+    if (mass == 0 || theAccelSeries == 0)
+        return;
 
-	return *motionEnergy;
+    for (int i = 0; i < numberDOF; i++)
+    {
+        if (theAccelSeries[i] == 0)
+            continue;
+        double prevAccel = theAccelSeries[i]->getFactor(prevT);
+        double thisAccel = theAccelSeries[i]->getFactor(curT);
+        double thisD = this->getDisp()(i);
+        double prevD = lastCommitDisp(i);
+        motionEnergy -= 0.5 * (*mass)(i, i) * (prevAccel + thisAccel) * (thisD - prevD);
+        //opserr << prevAccel << " " << thisAccel << " " << prevD << " " << thisD << " " << (*mass)(i, i) << " " << motionEnergy << "\n";
+    }
 }
-Vector Node::getDampEnergy(TimeSeries** velSeries, TimeSeries** dispSeries, double t, double prevT)
+double Node::getDampEnergy()
 {
-	if (dampEnergy == 0)
-	{
-		opserr << "Node::getDampEnergy(): dampEnergy is not initiated for node with tag: " << this->getTag() << endln;
-		exit(-1);
-	}
-	if (trialVel != 0 && mass != 0 && alphaM != 0.0) {
-		static Vector thisVel(numberDOF);
-		static Vector prevVel(numberDOF);
-		thisVel = *commitVel;
-		prevVel = *lastCommitVel;
-		for (int i = 0; i < numberDOF; i++)
-		{
-			if (velSeries[i] != 0)
-			{
-				thisVel[i] += velSeries[i]->getFactor(t);
-				prevVel[i] += velSeries[i]->getFactor(prevT);
-			}
-		}
-		thisVel.addVector(-0.5 * alphaM, prevVel, -0.5 * alphaM);
-		unbalDampForce->addMatrixVector(1, *mass, thisVel, 1);
-		for (int i = 0; i < numberDOF; i++)
-		{
-			double prevDisp = (*commitDisp)[i];
-			double thisDisp = (*lastCommitDisp)[i];
-			if (dispSeries[i] != 0)
-			{
-				prevDisp += dispSeries[i]->getFactor(prevT);
-				thisDisp += dispSeries[i]->getFactor(t);
-			}
-			(*dampEnergy)[i] += (*unbalDampForce)(i) * (thisDisp - prevDisp);
-		}
-	}
-	unbalDampForce->Zero();
-	return *dampEnergy;
+    return dampEnergy;
 }
-void Node::addDampingForce(const Vector& add)
+void Node::computeDampEnergy()
 {
-	unbalDampForce->addVector(1, add, 1);
+    if (trialVel == 0 || mass == 0 || alphaM == 0.0)
+        return;
+    const Vector& thisVel = this->getVel();
+    const Vector& prevVel = lastCommitVel;
+    for (int i = 0; i < numberDOF; i++)
+    {
+        const double& thisDisp = (*commitDisp)[i];
+        const double& prevDisp = lastCommitDisp[i];
+        const double& thisV = thisVel(i);
+        const double& prevV = prevVel(i);
+        double force = (*mass)(i, i) * 0.5 * alphaM * (thisV + prevV);
+        dampEnergy += force * (thisDisp - prevDisp);
+        //opserr << force << " " << thisV << " " << prevV << " " << thisDisp << " " << prevDisp << "\n";
+    }
 }
 #endif // _CSS

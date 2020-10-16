@@ -1710,3 +1710,18 @@ ZeroLength::onDeactivate()
 {
 
 }
+
+#ifdef _CSS
+int ZeroLength::setRayleighDampingFactors(double alphaM, double betaK, double betaK0, double betaKc)
+{
+    int res = Element::setRayleighDampingFactors(alphaM, betaK, betaK0, betaKc);
+    if (useRayleighDamping == 0)
+    {
+        Element::alphaM = 0;
+        Element::betaK = 0;
+        Element::betaK0 = 0;
+        Element::betaKc = 0;
+    }
+    return res;
+}
+#endif //_CSS

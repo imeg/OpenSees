@@ -63,6 +63,9 @@ ResidNodeRecorder::ResidNodeRecorder(const ID &dofs,
 					   const char *dataToStore,
 					   Domain &theDom,
 					   OPS_Stream &theOutputHandler,
+#ifdef _CSS
+                  int procMethod,
+#endif // _CSS
 					   bool echoTime,
 					   TimeSeries **theSeries)
 :Recorder(RECORDER_TAGS_ResidNodeRecorder),
@@ -71,10 +74,17 @@ ResidNodeRecorder::ResidNodeRecorder(const ID &dofs,
  theDomain(&theDom), theHandler(&theOutputHandler),
  initializationDone(false), numValidNodes(0), echoTimeFlag(echoTime), 
  addColumnInfo(0), theTimeSeries(theSeries), timeSeriesValues(0)
+#ifdef _CSS
+    , procDataMethod(procMethod)
+#endif // _CSS
 {
   // verify dof are valid 
-  int numDOF = dofs.Size();
-  theDofs = new ID(0, numDOF);
+#ifndef _CSS
+    int numDOF = dofs.Size();
+#else
+    numDOF = dofs.Size();
+#endif // !_CSS
+    theDofs = new ID(0, numDOF);
 
   int count = 0;
   int i;
@@ -99,16 +109,18 @@ ResidNodeRecorder::ResidNodeRecorder(const ID &dofs,
     if (numNode != 0) {
       theNodalTags = new ID(*nodes);
       if (theNodalTags == 0 || theNodalTags->Size() != nodes->Size()) {
-	opserr << "NodeRecorder::NodeRecorder - out of memory\n";
+	opserr << "ResidNodeRecorder::ResidNodeRecorder - out of memory\n";
       }
     }
   } 
 
+#ifndef _CSS
   if (theTimeSeries != 0) {
     timeSeriesValues = new double [numDOF];
     for (int i=0; i<numDOF; i++)
       timeSeriesValues[i] = 0.0;
   }
+#endif // !_CSS
 
   //
   // set the data flag used as a switch to get the response in a record
@@ -167,12 +179,33 @@ ResidNodeRecorder::ResidNodeRecorder(const ID &dofs,
       dataFlag = 3000 + grad;
     else
       dataFlag = 10;
+  }
+#ifdef _CSS
+  else if ((strcmp(dataToStore, "motionEnergy") == 0) || (strcmp(dataToStore, "MotionEnergy") == 0)) {
+      dataFlag = 999997;
+      numDOF = 1;
+  }
+  else if ((strcmp(dataToStore, "kineticEnergy") == 0) || (strcmp(dataToStore, "KineticEnergy") == 0)) {
+      dataFlag = 999998;
+      numDOF = 1;
+  }
+  else if ((strcmp(dataToStore, "dampingEnergy") == 0) || (strcmp(dataToStore, "DampingEnergy") == 0)) {
+      dataFlag = 999999;
+      numDOF = 1;
+#endif _CSS
 
   } else {
     dataFlag = 10;
-    opserr << "ResidNodeRecorder::NodeRecorder - dataToStore " << dataToStore;
+    opserr << "ResidNodeRecorder::ResidNodeRecorder - dataToStore " << dataToStore;
     opserr << "not recognized (disp, vel, accel, incrDisp, incrDeltaDisp)\n";
   }
+#ifdef _CSS
+  if (theTimeSeries != 0) {
+      timeSeriesValues = new double[numDOF];
+      for (int i = 0; i < numDOF; i++)
+          timeSeriesValues[i] = 0.0;
+  }
+#endif // !_CSS
 }
 
 
@@ -200,10 +233,17 @@ ResidNodeRecorder::~ResidNodeRecorder()
   // clean up the memory
   //
 
-  int numDOF = theDofs->Size();
-
-  if (theDofs != 0)
-    delete theDofs;
+#ifdef _CSS
+  if (theDofs != 0) {
+      delete theDofs;
+  }
+#else
+  int numDOF;
+  if (theDofs != 0) {
+      numDOF = theDofs->Size();
+      delete theDofs;
+  }
+#endif // _CSS
 
   if (theNodalTags != 0)
     delete theNodalTags;
@@ -227,9 +267,15 @@ ResidNodeRecorder::~ResidNodeRecorder()
 int 
 ResidNodeRecorder::record(int commitTag, double timeStamp)
 {
-  if (theDomain == 0 || theDofs == 0) {
-    return 0;
-  }
+#ifdef _CSS
+    if (theDomain == 0) {
+        return 0;
+    }
+#else
+    if (theDomain == 0 || theDofs == 0) {
+        return 0;
+    }
+#endif // _CSS
 
 
   if (theHandler == 0) {
@@ -261,7 +307,9 @@ ResidNodeRecorder::record(int commitTag, double timeStamp)
     }
 
 
+#ifndef _CSS
   int numDOF = theDofs->Size();
+#endif // !_CSS
 
 double timeSeriesTerm = 0.0;
 
@@ -284,7 +332,54 @@ else if (dataFlag == 8)
 if (dataFlag == 9)
     theDomain->calculateNodalReactions(2);
 
-    
+#ifdef _CSS
+if (procDataMethod != 0)
+{
+    double val = 0, val1 = 0;
+    for (int j = 0; j < numDOF; j++) {
+        int dof = (*theDofs)(j);
+        int cnt = j + iCnt;
+        for (int i = 0; i < numValidNodes; i++) {
+            Node* theNode = theNodes[i];
+            if (dataFlag == 7 || dataFlag == 8 || dataFlag == 9) {
+                const Vector& theResponse = theNode->getReaction();
+                if (theResponse.Size() > dof) {
+                    val1 = theResponse(dof);
+                }
+                else
+                    val1 = 0.0;
+            }
+            else if (dataFlag == 999997) {
+                if (theTimeSeries == 0)
+                {
+                    opserr << "WARNING! NodeRecorder::motionEnergy: the timeSeries tag is missing. Please use the -TimeSeries option\n";
+                }
+                val1 = theNode->getMotionEnergy(theTimeSeries);
+            }
+            else if (dataFlag == 999998)
+                val1 = theNode->getKineticEnergy();
+            else if (dataFlag == 999999)
+                val1 = theNode->getDampEnergy();
+
+            if (i == 0 && procDataMethod != 1)
+                val = fabs(val1);
+            if (procDataMethod == 1)
+                val += val1;
+            else if (procDataMethod == 2 && val1 > val)
+                val = val1;
+            else if (procDataMethod == 3 && val1 < val)
+                val = val1;
+            else if (procDataMethod == 4 && fabs(val1) > val)
+                val = fabs(val1);
+            else if (procDataMethod == 5 && fabs(val1) < val)
+                val = fabs(val1);
+        }
+        (*data)(0, cnt) = val;
+    }
+}
+else
+#endif //_CSS
+
 for (int i=0; i<numValidNodes; i++) {
     int cnt = i*numDOF + iCnt;
 
@@ -417,8 +512,20 @@ for (int i=0; i<numValidNodes; i++) {
 	  
 			cnt++;
 		}
-
-    } else if (dataFlag > 10) {
+#ifdef _CSS
+    } else if (dataFlag == 999997) {
+    if (theTimeSeries == 0)
+    {
+        opserr << "WARNING! ResidNodeRecorder::motionEnergy: the timeSeries tag is missing. Please use the -TimeSeries option\n";
+    }
+    (*data)(0, cnt++) = theNode->getMotionEnergy(theTimeSeries);
+                }
+    else if (dataFlag == 999998)
+    (*data)(0, cnt++) = theNode->getKineticEnergy();
+    else if (dataFlag == 999999)
+    (*data)(0, cnt++) = theNode->getDampEnergy();
+#endif // _CSS
+    else if (dataFlag > 10) {
 		int mode = dataFlag - 10;
 		int column = mode - 1;
 		const Matrix &theEigenvectors = theNode->getEigenvectors();
@@ -666,10 +773,10 @@ ResidNodeRecorder::recvSelf(int commitTag, Channel &theChannel,
 int
 ResidNodeRecorder::initialize(void)
 {
-  if (theDofs == 0 || theDomain == 0) {
-    opserr << "ResidNodeRecorder::initialize() - either nodes, dofs or domain has not been set\n";
-    return -1;
-  }
+    if (theDomain == 0) {
+        opserr << "ResidNodeRecorder::initialize() - either nodes or domain has not been set\n";
+        return -1;
+    }
 
   //
   // create & set nodal array pointer
@@ -703,7 +810,7 @@ ResidNodeRecorder::initialize(void)
       theNodes = new Node *[numNodes];
       
       if (theNodes == 0) {
-	opserr << "NodeRecorder::domainChanged - out of memory\n";
+	opserr << "ResidNodeRecorder::domainChanged - out of memory\n";
 	return -1;
       }
       NodeIter &theDomainNodes = theDomain->getNodes();
@@ -758,8 +865,14 @@ ResidNodeRecorder::initialize(void)
   // resize the output matrix
   //
 
+#ifdef _CSS
+  int numValidResponse = numValidNodes * numDOF;
+  if (procDataMethod)
+      numValidResponse = numDOF;
+#else
   int numDOF = theDofs->Size();
   int numValidResponse = numValidNodes*numDOF;
+#endif // _CSS
 
   if (dataFlag == 10000)
     numValidResponse = numValidNodes;  
