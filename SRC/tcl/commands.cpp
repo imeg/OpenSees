@@ -1516,6 +1516,11 @@ int OPS_recorderValue(ClientData clientData, Tcl_Interp *interp, int argc, TCL_C
 	if (theRecorder != 0)
 	{
 		double res = theRecorder->getRecordedValue(dof, rowOffset, reset);
+        //check result limit to prevent buffer overrun:
+        if (res > 1.e20)
+            res = 1.e20;
+        if (res < -1.e20)
+            res = -1.e20;
 		// now we copy the value to the tcl string that is returned
 		char buffer[40];
 		sprintf(buffer, "%35.8f", res);
