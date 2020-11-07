@@ -170,9 +170,6 @@ class Node : public DomainComponent
     virtual void setCrds(const Vector &);
 
 #ifdef _CSS
-   double prevT, curT;
-   TimeSeries** theAccelSeries;
-   TimeSeries** theVelocSeries;
 	double getKineticEnergy(TimeSeries** velocSeries);
 	double getMotionEnergy(TimeSeries** accelSeries);
 	double getDampEnergy();
@@ -184,6 +181,15 @@ class Node : public DomainComponent
        list = theEleConnects;
        return numEleConnects;
    }
+   void resetTimeSeries()
+   {
+       theAccelSeries = 0;
+       theVelocSeries = 0;
+   }
+   private:
+   double prevT, curT;
+   TimeSeries** theAccelSeries;
+   TimeSeries** theVelocSeries;
 #endif // _CSS
 
   protected:
