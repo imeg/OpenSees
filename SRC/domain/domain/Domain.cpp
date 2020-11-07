@@ -971,6 +971,16 @@ Domain::clearAll(void) {
 		thePattern->clearAll();
 
 	// clean out the containers
+#ifdef _CSS
+	// remove the recorders
+	int i;
+	for (i = 0; i < numRecorders; i++)
+		if (theRecorders[i] != 0)
+			delete theRecorders[i];
+	numRecorders = 0;
+
+#endif // _CSS
+
 	theElements->clearAll();
 	theNodes->clearAll();
 	theSPs->clearAll();
@@ -979,6 +989,7 @@ Domain::clearAll(void) {
 	theLoadPatterns->clearAll();
 	theParameters->clearAll();
 	numParameters = 0;
+#ifndef _CSS
 
 	// remove the recorders
 	int i;
@@ -986,6 +997,8 @@ Domain::clearAll(void) {
 		if (theRecorders[i] != 0)
 			delete theRecorders[i];
 	numRecorders = 0;
+
+#endif // !_CSS
 
 	if (theRecorders != 0) {
 		delete[] theRecorders;
