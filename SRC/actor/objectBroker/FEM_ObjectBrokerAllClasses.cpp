@@ -59,44 +59,45 @@
 #ifdef _CSS
 #include <Steel05.h>
 #endif // _CSS
-#include <BoucWenMaterial.h>		//SAJalali
-#include <SPSW02.h>			//SAJalali
-#include <ElasticMaterial.h>
-#include <ElasticMultiLinear.h>
-#include <ElasticPowerFunc.h>
-#include <Elastic2Material.h>
-#include <ElasticPPMaterial.h>
-#include <ParallelMaterial.h>
-#include <Concrete01.h>
-#include <Concrete02.h>
-#include <Concrete04.h>
-#include <Concrete06.h> 
-#include <Concrete07.h>
-#include <ConcretewBeta.h>
-#include <OriginCentered.h>
-#include <Steel01.h>
-#include <Steel02.h>
-#include <Steel2.h>
-#include <FatigueMaterial.h>
-#include <ReinforcingSteel.h>
-#include <HardeningMaterial.h>
-#include <HystereticMaterial.h>
-#include <EPPGapMaterial.h>
-#include <ViscousMaterial.h>
-#include <ViscousDamper.h>
-#include <PathIndependentMaterial.h>
-#include <SeriesMaterial.h>
-#include <CableMaterial.h>
-#include <ENTMaterial.h>
-#include <MinMaxMaterial.h>
-#include <ModIMKPeakOriented.h>
-#include <Clough.h>
-#include <LimitStateMaterial.h>
-#include <InitStressMaterial.h>
-#include <InitStrainMaterial.h>
-#include <Bond_SP01.h>
-#include <SimpleFractureMaterial.h>
-#include <ConfinedConcrete01.h>
+#include "BoucWenMaterial.h"		//SAJalali
+#include "SPSW02.h"			//SAJalali
+#include "ElasticMaterial.h"
+#include "ElasticMultiLinear.h"
+#include "ElasticPowerFunc.h"
+#include "Elastic2Material.h"
+#include "ElasticPPMaterial.h"
+#include "ParallelMaterial.h"
+#include "Concrete01.h"
+#include "Concrete02.h"
+#include "Concrete04.h"
+#include "Concrete06.h" 
+#include "Concrete07.h"
+#include "ConcretewBeta.h"
+#include "OriginCentered.h"
+#include "Steel01.h"
+#include "Steel02.h"
+#include "Steel2.h"
+#include "Steel4.h"
+#include "FatigueMaterial.h"
+#include "ReinforcingSteel.h"
+#include "HardeningMaterial.h"
+#include "HystereticMaterial.h"
+#include "EPPGapMaterial.h"
+#include "ViscousMaterial.h"
+#include "ViscousDamper.h"
+#include "PathIndependentMaterial.h"
+#include "SeriesMaterial.h"
+#include "CableMaterial.h"
+#include "ENTMaterial.h"
+#include "MinMaxMaterial.h"
+#include "ModIMKPeakOriented.h"
+#include "snap/Clough.h"
+#include "limitState/LimitStateMaterial.h"
+#include "InitStressMaterial.h"
+#include "InitStrainMaterial.h"
+#include "Bond_SP01.h"
+#include "SimpleFractureMaterial.h"
+#include "ConfinedConcrete01.h"
 
 //PY springs: RWBoulanger and BJeremic
 #include "PY/PySimple1.h"
@@ -1131,6 +1132,9 @@ FEM_ObjectBrokerAllClasses::getNewUniaxialMaterial(int classTag)
 
 	case MAT_TAG_Steel2:  
 	     return new Steel2();
+
+	case MAT_TAG_Steel4:  
+	     return new Steel4();	     
 
 	case MAT_TAG_OriginCentered:  
 	     return new OriginCentered();
