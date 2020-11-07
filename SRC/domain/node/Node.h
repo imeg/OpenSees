@@ -172,7 +172,8 @@ class Node : public DomainComponent
 #ifdef _CSS
    double prevT, curT;
    TimeSeries** theAccelSeries;
-	double getKineticEnergy();
+   TimeSeries** theVelocSeries;
+	double getKineticEnergy(TimeSeries** velocSeries);
 	double getMotionEnergy(TimeSeries** accelSeries);
 	double getDampEnergy();
    void computeDampEnergy();

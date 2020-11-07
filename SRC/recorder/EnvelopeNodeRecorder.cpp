@@ -628,7 +628,7 @@ EnvelopeNodeRecorder::record(int commitTag, double timeStamp)
                         val1 = theNode->getMotionEnergy(theTimeSeries);
                     }
                     else if (dataFlag == 999998)
-                        val1 = theNode->getKineticEnergy();
+                        val1 = theNode->getKineticEnergy(theTimeSeries);
                     else if (dataFlag == 999999)
                         val1 = theNode->getDampEnergy();
 
@@ -811,7 +811,7 @@ EnvelopeNodeRecorder::record(int commitTag, double timeStamp)
                     (*currentData)(cnt++) = theNode->getMotionEnergy(theTimeSeries);
                 }
                 else if (dataFlag == 999998)
-                    (*currentData)(cnt++) = theNode->getKineticEnergy();
+                    (*currentData)(cnt++) = theNode->getKineticEnergy(theTimeSeries);
                 else if (dataFlag == 999999)
                     (*currentData)(cnt++) = theNode->getDampEnergy();
 #endif // _CSS

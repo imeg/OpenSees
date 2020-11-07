@@ -332,7 +332,7 @@ BucklingMaterial::positiveIncrement(double dStrain)
 		}
 	}
 
-	else if (Tstrain >= TrotNu && Tstrain < rotch) {
+	else if (Tstrain < rotch) {
 		if (Tstrain <= rotrel) {
 			Tstress = 0.0;
 			Ttangent = Eup*1.0e-9;

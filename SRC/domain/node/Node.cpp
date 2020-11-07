@@ -220,7 +220,7 @@ Node::Node(int theClassTag)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-	, prevT(0), curT(0), theAccelSeries(0) , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+	, prevT(0), curT(0), theAccelSeries(0) , theVelocSeries(0) , kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 
 {
@@ -247,7 +247,7 @@ Node::Node(int tag, int theClassTag)
   R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), theVelocSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // for subclasses - they must implement all the methods with
@@ -273,7 +273,7 @@ Node::Node(int tag, int ndof, double Crd1, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0), 
  index(-1), reaction(0), displayLocation(0)
 #ifdef _CSS
-    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), theVelocSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -307,7 +307,7 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
 #ifdef _CSS
-    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), theVelocSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -344,7 +344,7 @@ Node::Node(int tag, int ndof, double Crd1, double Crd2, Vector *dLoc)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
  reaction(0), displayLocation(0)
 #ifdef _CSS
-     , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+     , prevT(0), curT(0), theAccelSeries(0), theVelocSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
  {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -382,7 +382,7 @@ Node::Node(const Node &otherNode, bool copyMass)
  R(0), mass(0), unbalLoadWithInertia(0), alphaM(0.0), theEigenvectors(0),
    reaction(0), displayLocation(0)
 #ifdef _CSS
-    , prevT(0), curT(0), theAccelSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
+    , prevT(0), curT(0), theAccelSeries(0), theVelocSeries(0), kineticEnergy(0), dampEnergy(0), motionEnergy(0), lastCommitAccel(0), lastCommitVel(0), lastCommitDisp(0), theEleConnects(0), numEleConnects(0)
 #endif // _CSS
 {
   // AddingSensitivity:BEGIN /////////////////////////////////////////
@@ -1551,9 +1551,17 @@ Node::sendSelf(int cTag, Channel &theChannel)
     energy(1) = dampEnergy;
     energy(2) = motionEnergy;
 	 res = theChannel.sendVector(dbTag4, cTag, energy);
-	 res += theChannel.sendVector(dbTag4, cTag, lastCommitAccel);
-	 res += theChannel.sendVector(dbTag4, cTag, lastCommitVel);
-	 res += theChannel.sendVector(dbTag4, cTag, lastCommitDisp);
+     ID flags(3);
+     flags(0) = lastCommitAccel != 0;
+     flags(1) = lastCommitVel != 0;
+     flags(2) = lastCommitDisp != 0;
+     res += theChannel.sendID(dbTag4, cTag, flags);
+     if (flags(0))
+         res += theChannel.sendVector(dbTag4, cTag, lastCommitAccel);
+     if (flags(1))
+         res += theChannel.sendVector(dbTag4, cTag, lastCommitVel);
+     if (flags(2))
+         res += theChannel.sendVector(dbTag4, cTag, lastCommitDisp);
 	 if (res < 0) {
 	 	opserr << " Node::sendSelf() - failed to send energy data\n";
 	 	return res;
@@ -1743,12 +1751,23 @@ Node::recvSelf(int cTag, Channel &theChannel,
   kineticEnergy = energy(0);
   dampEnergy = energy(1);
   motionEnergy = energy(2);
-  lastCommitAccel = Vector(numberDOF);
-  lastCommitVel = Vector(numberDOF);
-  lastCommitDisp = Vector(numberDOF);
-  res += theChannel.recvVector(dbTag4, cTag, lastCommitAccel);
-  res += theChannel.recvVector(dbTag4, cTag, lastCommitVel);
-  res += theChannel.recvVector(dbTag4, cTag, lastCommitDisp);
+  ID flags(3);
+  res = theChannel.recvID(dbTag4, cTag, flags);
+  if (flags(0))
+  {
+      lastCommitAccel = Vector(numberDOF);
+      res += theChannel.recvVector(dbTag4, cTag, lastCommitAccel);
+  }
+  if (flags(1))
+  {
+      lastCommitVel = Vector(numberDOF);
+      res += theChannel.recvVector(dbTag4, cTag, lastCommitVel);
+  }
+  if (flags(2))
+  {
+      lastCommitDisp = Vector(numberDOF);
+      res += theChannel.recvVector(dbTag4, cTag, lastCommitDisp);
+  }
   if (res < 0) {
       opserr << "Node::recvSelf() - failed to receive energy data\n";
       return res;
@@ -2450,16 +2469,20 @@ void Node::addEleConnect(Element* pEle)
     if (oldCncts != 0)
         delete oldCncts;
 }
-double Node::getKineticEnergy()
+double Node::getKineticEnergy(TimeSeries** velocSeries)
 {
     kineticEnergy = 0;
     if (mass == 0)
         return 0;
+    if (theVelocSeries == 0)
+        theVelocSeries = velocSeries;
     const Vector& vel = this->getVel();
     double v = 0;
     for (int i = 0; i < numberDOF; i++)
     {
         v = vel(i);
+        if (theVelocSeries[i] != 0)
+            v += theVelocSeries[i]->getFactor(curT);
         kineticEnergy += 0.5 * v * v * (*mass)(i, i);
     }
     return kineticEnergy;

@@ -659,7 +659,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
                             val1 = theNode->getMotionEnergy(theTimeSeries);
                         }
                         else if (dataFlag == 999998)
-                            val1 = theNode->getKineticEnergy();
+                            val1 = theNode->getKineticEnergy(theTimeSeries);
                         else if (dataFlag == 999999)
                             val1 = theNode->getDampEnergy();
 
@@ -938,7 +938,7 @@ NodeRecorder::record(int commitTag, double timeStamp)
                     response(cnt++) = theNode->getMotionEnergy(theTimeSeries);
                 }
                 else if (dataFlag == 999998)
-                    response(cnt++) = theNode->getKineticEnergy();
+                    response(cnt++) = theNode->getKineticEnergy(theTimeSeries);
                 else if (dataFlag == 999999)
                     response(cnt++) = theNode->getDampEnergy();
 #endif // _CSS
