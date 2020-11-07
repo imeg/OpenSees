@@ -237,6 +237,11 @@ ResidNodeRecorder::~ResidNodeRecorder()
   if (theDofs != 0) {
       delete theDofs;
   }
+  if (theTimeSeries != 0 && theNodes != 0)
+  {
+      for (int i = 0; i < numValidNodes; i++)
+          theNodes[i]->resetTimeSeries();
+  }
 #else
   int numDOF;
   if (theDofs != 0) {
