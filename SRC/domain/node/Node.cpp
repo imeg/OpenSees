@@ -2474,14 +2474,14 @@ double Node::getKineticEnergy(TimeSeries** velocSeries)
     kineticEnergy = 0;
     if (mass == 0)
         return 0;
-    if (theVelocSeries == 0)
+    if (theVelocSeries == 0 && velocSeries != 0)
         theVelocSeries = velocSeries;
     const Vector& vel = this->getVel();
     double v = 0;
     for (int i = 0; i < numberDOF; i++)
     {
         v = vel(i);
-        if (theVelocSeries[i] != 0)
+        if (theVelocSeries != 0 && theVelocSeries[i] != 0)
             v += theVelocSeries[i]->getFactor(curT);
         kineticEnergy += 0.5 * v * v * (*mass)(i, i);
     }

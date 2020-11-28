@@ -58,6 +58,7 @@
 // uniaxial material model header files
 #ifdef _CSS
 #include <Steel05.h>
+#include <IMKJ.h>
 #endif // _CSS
 #include "BoucWenMaterial.h"		//SAJalali
 #include "SPSW02.h"			//SAJalali
@@ -1082,6 +1083,8 @@ FEM_ObjectBrokerAllClasses::getNewUniaxialMaterial(int classTag)
 #ifdef _CSS
 	case MAT_TAG_Steel05:
 		return new Steel05(); // SAJalali
+	case MAT_TAG_IMKJ:
+		return new IMKJ(); // SAJalali
 #endif // _CSS
 
 	case MAT_TAG_SPSW02:

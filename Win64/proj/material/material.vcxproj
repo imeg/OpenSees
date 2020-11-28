@@ -319,6 +319,7 @@
     <ClCompile Include="..\..\..\SRC\material\uniaxial\HyperbolicGapMaterial.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\HystereticMaterial.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\IMKBilin.cpp" />
+    <ClCompile Include="..\..\..\SRC\material\uniaxial\IMKJ.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\IMKPeakOriented.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\IMKPinching.cpp" />
     <ClCompile Include="..\..\..\SRC\material\uniaxial\ImpactMaterial.cpp" />
@@ -741,6 +742,7 @@
     <ClInclude Include="..\..\..\SRC\material\uniaxial\HyperbolicGapMaterial.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\HystereticMaterial.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\IMKBilin.h" />
+    <ClInclude Include="..\..\..\SRC\material\uniaxial\IMKJ.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\IMKPeakOriented.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\IMKPinching.h" />
     <ClInclude Include="..\..\..\SRC\material\uniaxial\ImpactMaterial.h" />

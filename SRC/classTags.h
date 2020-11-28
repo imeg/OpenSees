@@ -231,6 +231,7 @@
 #define MAT_TAG_PlateBearingConnectionThermal 215
 #ifdef _CSS
 #define MAT_TAG_Steel05                    216	//SAJalali
+#define MAT_TAG_IMKJ								  217	//SAJalali
 #endif
 
 #define MAT_TAG_FedeasMaterial    1000

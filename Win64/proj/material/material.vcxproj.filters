@@ -1374,6 +1374,9 @@
     <ClCompile Include="..\..\..\SRC\material\uniaxial\BucklingMaterial.cpp">
       <Filter>uniaxial</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\SRC\material\uniaxial\IMKJ.cpp">
+      <Filter>uniaxial</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\SRC\material\uniaxial\AxialSp.h">
@@ -2570,6 +2573,9 @@
       <Filter>nD\UWmaterials</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\SRC\material\uniaxial\BucklingMaterial.h">
+      <Filter>uniaxial</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\SRC\material\uniaxial\IMKJ.h">
       <Filter>uniaxial</Filter>
     </ClInclude>
   </ItemGroup>

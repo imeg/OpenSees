@@ -79,7 +79,13 @@ class ElasticMaterial : public UniaxialMaterial
     double getInitialTangentSensitivity(int gradIndex);
     int commitSensitivity(double strainGradient, int gradIndex, int numGrads);
     // AddingSensitivity:END ///////////////////////////////////////////
-
+#ifdef _CSS
+    virtual double getEnergy(void) {
+        double E = committedStrain >= 0 ? Epos : Eneg;
+        double energy = 0.5 * committedStrain * committedStrain * E;
+        return energy; 
+    }
+#endif
   protected:
     
   private:

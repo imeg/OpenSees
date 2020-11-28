@@ -59,11 +59,14 @@ class Concrete07 : public UniaxialMaterial
 	  	 FEM_ObjectBroker &theBroker);    
     
 		void Print(OPS_Stream &s, int flag =0);
-	
-	protected:
+#ifdef _CSS
+		double getEnergy() { return EnergyP; }
+		double EnergyP;
+#endif
+protected:
 
 	private:
-      /*** Material Properties ***/
+		 /*** Material Properties ***/
       double fpc;				// Compressive strength
       double epsc0;				// Strain at compressive strength
 	  double Ec;				// Initial Young's modulus;

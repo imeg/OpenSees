@@ -1402,6 +1402,10 @@ ElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 		  }
 	  }
   }
+  else if (strcmp(argv[0], "energy") == 0) //by SAJalali
+  {
+      return new ElementResponse(this, 7, 0.0);
+  }
 #endif // _CSS
 
   output.endTag(); // ElementOutput
@@ -1459,6 +1463,17 @@ ElasticBeam2d::getResponse (int responseID, Information &eleInfo)
 	  computeSectionForces(force, L);
 	  eleInfo.setVector(force);
 	  break;
+  case 7:
+      N = 0;    //the elastic strain energy
+
+      for (int i = 0; i < 3; i++)
+      {
+          N += theNodes[0]->getDisp()[i] * P(i);
+          N += theNodes[1]->getDisp()[i] * P(i + 3);
+      }
+      N *= 0.5;
+      eleInfo.setDouble(N);
+      break;
 #endif // _CSS
   default:
     return -1;
