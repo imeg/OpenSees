@@ -708,6 +708,7 @@ MATERIAL_LIBS   =  $(FE)/material/Material.o \
 	$(FE)/material/uniaxial/ParallelMaterial.o \
 	$(FE)/material/uniaxial/SeriesMaterial.o \
 	$(FE)/material/uniaxial/Neoprene.o \
+	$(FE)/material/uniaxial/ASD_SMA_3K.o \
 	$(FE)/material/uniaxial/Concrete01.o \
 	$(FE)/material/uniaxial/Concrete02.o \
 	$(FE)/material/uniaxial/Concrete02IS.o \
@@ -1238,6 +1239,7 @@ ANALYSIS_LIBS = $(FE)/analysis/analysis/Analysis.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/BFGS.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/KrylovNewton.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/PeriodicNewton.o \
+	$(FE)/analysis/algorithm/equiSolnAlgo/ExpressNewton.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/LineSearch.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/BisectionLineSearch.o \
 	$(FE)/analysis/algorithm/equiSolnAlgo/SecantLineSearch.o \

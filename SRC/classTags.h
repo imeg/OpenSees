@@ -229,11 +229,11 @@
 #define MAT_TAG_SteelBRB                     213
 #define MAT_TAG_PySimple3                    214
 #define MAT_TAG_PlateBearingConnectionThermal 215
+#define MAT_TAG_ASD_SMA_3K                    216
 #ifdef _CSS
-#define MAT_TAG_Steel05                    216	//SAJalali
-#define MAT_TAG_IMKJ								  217	//SAJalali
+#define MAT_TAG_Steel05                    217	//SAJalali
+#define MAT_TAG_IMKJ								  218	//SAJalali
 #endif
-
 #define MAT_TAG_FedeasMaterial    1000
 #define MAT_TAG_FedeasBond1       1001
 #define MAT_TAG_FedeasBond2       1002
@@ -890,6 +890,7 @@
 #define EquiALGORITHM_TAGS_InitialNewton          13
 #define EquiALGORITHM_TAGS_ElasticAlgorithm 14
 #define EquiALGORITHM_TAGS_NewtonHallM 15
+#define EquiALGORITHM_TAGS_ExpressNewton 16
 
 #define ACCELERATOR_TAGS_Krylov		1
 #define ACCELERATOR_TAGS_Secant		2

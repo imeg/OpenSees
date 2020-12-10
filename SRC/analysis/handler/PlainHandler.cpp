@@ -82,51 +82,49 @@ PlainHandler::handle(const ID* nodesLast)
 		return -1;
 	}
 
-	// get all SPs
-	std::multimap<int, SP_Constraint*> allSPs;
-	SP_ConstraintIter& theSPs = theDomain->getDomainAndLoadPatternSPs();
-	SP_Constraint* theSP;
-	while ((theSP = theSPs()) != 0) {
-		if (theSP->isHomogeneous() == false) {
-			opserr << "WARNING PlainHandler::handle() - ";
-			opserr << " non-homogeneos constraint";
-			opserr << " for node " << theSP->getNodeTag();
-			opserr << " homo assumed\n";
-		}
-		allSPs.insert(std::make_pair(theSP->getNodeTag(), theSP));
+    // get all SPs
+    std::multimap<int,SP_Constraint*> allSPs;
+    SP_ConstraintIter &theSPs = theDomain->getDomainAndLoadPatternSPs();
+    SP_Constraint *theSP; 
+    while ((theSP = theSPs()) != 0) {
+	if (theSP->isHomogeneous() == false) {
+	    opserr << "WARNING PlainHandler::handle() - ";
+	    opserr << " non-homogeneos constraint";
+	    opserr << " for node " << theSP->getNodeTag();
+	    opserr << " homo assumed\n";
 	}
-
+	allSPs.insert(std::make_pair(theSP->getNodeTag(),theSP));
+    }
 #ifdef _CSS
-	std::multimap<int, MP_Constraint*> allMPs;
-	MP_ConstraintIter& theMPs = theDomain->getMPs();
-	MP_Constraint* mpPtr;
-	while ((mpPtr = theMPs()) != 0)
-	{
-		int nodeID = mpPtr->getNodeConstrained();
-		if (mpPtr->isTimeVarying() == true) {
-			opserr << "WARNING PlainHandler::handle() - ";
-			opserr << " time-varying constraint";
-			opserr << " for node " << nodeID;
-			opserr << " non-varyng assumed\n";
-		}
-		const Matrix& C = mpPtr->getConstraint();
-		if (!C.isDiagonal() || C.noRows() != C.noCols()) {
-			opserr << "WARNING PlainHandler::handle() - ";
-			opserr << " constraint matrix not diagonal, ignoring constraint";
-			opserr << " for node " << nodeID << endln;
-			continue;
-		}
-		allMPs.insert(std::make_pair(nodeID, mpPtr));
-	}
+	 std::multimap<int, MP_Constraint*> allMPs;
+	 MP_ConstraintIter& theMPs = theDomain->getMPs();
+	 MP_Constraint* mpPtr;
+	 while ((mpPtr = theMPs()) != 0)
+	 {
+		  int nodeID = mpPtr->getNodeConstrained();
+		  if (mpPtr->isTimeVarying() == true) {
+				opserr << "WARNING PlainHandler::handle() - ";
+				opserr << " time-varying constraint";
+				opserr << " for node " << nodeID;
+				opserr << " non-varyng assumed\n";
+		  }
+		  const Matrix& C = mpPtr->getConstraint();
+		  if (!C.isDiagonal() || C.noRows() != C.noCols()) {
+				opserr << "WARNING PlainHandler::handle() - ";
+				opserr << " constraint matrix not diagonal, ignoring constraint";
+				opserr << " for node " << nodeID << endln;
+				continue;
+		  }
+		  allMPs.insert(std::make_pair(nodeID, mpPtr));
+	 }
 
 #endif // _CSS
-
-	// initialise the DOF_Groups and add them to the AnalysisModel.
-	//    : must of course set the initial IDs
-	NodeIter& theNod = theDomain->getNodes();
-	Node* nodPtr;
-	SP_Constraint* spPtr;
-	DOF_Group* dofPtr;
+    // initialise the DOF_Groups and add them to the AnalysisModel.
+    //    : must of course set the initial IDs
+    NodeIter &theNod = theDomain->getNodes();
+    Node *nodPtr;
+    SP_Constraint *spPtr;
+    DOF_Group *dofPtr;
 
 	int numDOF = 0;
 	int count3 = 0;
