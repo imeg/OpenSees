@@ -644,6 +644,10 @@ ElasticBeam3d::addLoad(ElementalLoad *theLoad, double loadFactor)
     double wz = data(1)*loadFactor;  // Transverse
     double wx = data(2)*loadFactor;  // Axial (+ve from node I to J)
 
+    this->wx += wx;
+    this->wy += wy;
+    this->wz += wz;    
+    
     double Vy = 0.5*wy*L;
     double Mz = Vy*L/6.0; // wy*L*L/12
     double Vz = 0.5*wz*L;
@@ -1379,6 +1383,21 @@ ElasticBeam3d::setResponse(const char **argv, int argc, OPS_Stream &output)
     theResponse = new ElementResponse(this, 5, Vector(6));
   }
 
+  else if (strcmp(argv[0],"sectionX") == 0) {
+    if (argc > 2) {
+      float xL = atof(argv[1]);
+      if (xL < 0.0)
+	xL = 0.0;
+      if (xL > 1.0)
+	xL = 1.0;
+      if (strcmp(argv[2],"forces") == 0) {
+	theResponse = new ElementResponse(this,6,Vector(6));
+	Information &info = theResponse->getInformation();
+	info.theDouble = xL;
+      }
+    }   
+  }
+  
   else if (strcmp(argv[0],"xaxis") == 0 || strcmp(argv[0],"xlocal") == 0)
     theResponse = new ElementResponse(this, 201, Vector(3));
   
@@ -1437,7 +1456,8 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
   double oneOverL = 1.0/L;
   static Vector Res(12);
   Res = this->getResistingForce();
-
+  static Vector s(6);
+  
   switch (responseID) {
   case 1: // stiffness
     return eleInfo.setMatrix(this->getTangentStiff());
