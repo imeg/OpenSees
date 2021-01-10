@@ -1419,14 +1419,13 @@ ElasticBeam2d::getResponse (int responseID, Information &eleInfo)
 #ifdef _CSS
 	if (Element::getResponse(responseID, eleInfo) == 0)
 		return 0;
+  static Vector force(3);//SAJalali
+  const Vector& v = theCoordTransf->getBasicTrialDisp();
 #endif // _CSS
 
   double N, M1, M2, V;
   double L = theCoordTransf->getInitialLength();
   this->getResistingForce();
-#ifdef _CSS
-  static Vector force(3);//SAJalali
-#endif // _CSS
 
   switch (responseID) {
   case 1: // stiffness
@@ -1465,11 +1464,9 @@ ElasticBeam2d::getResponse (int responseID, Information &eleInfo)
 	  break;
   case 7:
       N = 0;    //the elastic strain energy
-
       for (int i = 0; i < 3; i++)
       {
-          N += theNodes[0]->getDisp()[i] * P(i);
-          N += theNodes[1]->getDisp()[i] * P(i + 3);
+          N -= v[i] * q(i);
       }
       N *= 0.5;
       eleInfo.setDouble(N);

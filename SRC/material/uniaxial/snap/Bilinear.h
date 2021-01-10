@@ -90,6 +90,10 @@ class Bilinear : public UniaxialMaterial
 	double getRhoSensitivity        (int gradNumber);
 	int    commitSensitivity        (double strainGradient, int gradNumber, int numGrads);
   */
+#ifdef _CSS
+	double getEnergy();
+	double getInitYieldStrain() { return fyieldPos / elstk; }
+#endif // _CSS
 
  protected:
 	void envelPosCap( double ekelstk, double fy, double ekhard, double dcap,
@@ -115,6 +119,9 @@ class Bilinear : public UniaxialMaterial
 	// Sensitivity related variables
     int parameterID;
 	Matrix *SHVs;
+#ifdef _CSS
+	double Energy;
+#endif // _CSS
 };
 
 #endif

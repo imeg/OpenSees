@@ -254,11 +254,11 @@ UniaxialMaterial::setResponse(const char** argv, int argc,
 		(strstr(argv[0], "strainSensitivity") != 0) ||
 		(strstr(argv[0], "TempElong") != 0)
 		//by SAJalali
-		|| (strstr(argv[0], "energy") != 0) ||
-		(strstr(argv[0], "Energy") != 0)
+		|| (strstr(argv[0], "energy") == 0) ||
+		(strstr(argv[0], "Energy") == 0)
 #ifdef _CSS
-		|| (strstr(argv[0], "ductility") != 0) ||
-		(strstr(argv[0], "Ductility") != 0)
+		|| (strstr(argv[0], "ductility") == 0) ||
+		(strstr(argv[0], "Ductility") == 0)
 #endif // _CSS
 
 		) {

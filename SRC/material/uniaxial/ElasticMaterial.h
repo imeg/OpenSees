@@ -81,8 +81,8 @@ class ElasticMaterial : public UniaxialMaterial
     // AddingSensitivity:END ///////////////////////////////////////////
 #ifdef _CSS
     virtual double getEnergy(void) {
-        double E = committedStrain >= 0 ? Epos : Eneg;
-        double energy = 0.5 * committedStrain * committedStrain * E;
+        double s = getStress();
+        double energy = 0.5 * committedStrain * s;
         return energy; 
     }
 #endif

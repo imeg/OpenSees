@@ -2816,7 +2816,7 @@ TwentyEightNodeBrickUP::Jacobian3d(int gaussPoint, double& xsj, int mode)
 
 	if (xsj<=0) {
 
-		opserr <<"TwentyEightNodeBrickUP::Jacobian3d - Non-positive Jacobian: " << xsj << "\n";
+		opserr <<"TwentyEightNodeBrickUP::Jacobian3d with tag: " << getTag() << " - Non-positive Jacobian: " << xsj << "\n";
 
 		for( i = 0; i < nen; i++ ) {
 

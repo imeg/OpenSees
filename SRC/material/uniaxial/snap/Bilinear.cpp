@@ -251,6 +251,9 @@ int Bilinear::revertToStart()
 		if ( StfDamage != NULL ) fprintf( OutputFile , "\t%d" , StfDamage->getDamage() );		// debugging
 		if ( CapDamage != NULL ) fprintf( OutputFile , "\t%d\n" , CapDamage->getDamage() );		// debugging
     }
+#ifdef _CSS
+	Energy = 0;
+#endif
 
 	return 0;
 }
@@ -287,6 +290,16 @@ int Bilinear::commitState()
 {
 	if ( DEBG ==1 ) fprintf( OutputFile , "Commit state\n" );	// debugging
 	
+#ifdef _CSS
+
+	double sig1, sig2, eps1, eps2;
+	sig1 = hsCommit[1];
+	sig2 = hsTrial[1];
+	eps1 = hsCommit[0];
+	eps2 = hsTrial[0];
+	Energy += 0.5 * (sig1 + sig2) * (eps2 - eps1);
+
+#endif // _CSS
 	for(int i=0; i<17; i++) {
 		hsLastCommit[i] = hsCommit[i];
 		hsCommit[i] = hsTrial[i];
@@ -547,6 +560,11 @@ Response*
 Bilinear::setResponse(const char **argv, int argc, OPS_Stream &theOutput)
 {
   Response *theResponse = 0;
+#ifdef _CSS
+  theResponse = UniaxialMaterial::setResponse(argv, argc, theOutput);
+  if (theResponse != 0)
+		return theResponse;
+#endif // _CSS
 
   if ( argv == NULL || argc == 0 ) {
     opserr << "Error: Bilinear::setResponse  : No argument specified\n" << "\a";
@@ -599,7 +617,11 @@ Bilinear::setResponse(const char **argv, int argc, OPS_Stream &theOutput)
 
 int Bilinear::getResponse(int responseID, Information &matInfo)
 {
-  switch (responseID) {
+#ifdef _CSS
+	 if(UniaxialMaterial::getResponse(responseID, matInfo) == 0)
+		  return 0;
+#endif // _CSS
+	 switch (responseID) {
     case 1:
 		return matInfo.setDouble( hsTrial[1] );
 			
@@ -1036,3 +1058,10 @@ BoucWenMaterial::commitSensitivity(double TstrainSensitivity, int gradNumber, in
 }
 
 */
+#ifdef _CSS
+
+double Bilinear::getEnergy() {
+	 return Energy;
+}
+
+#endif // _CSS

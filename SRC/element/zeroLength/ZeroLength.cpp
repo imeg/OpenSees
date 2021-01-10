@@ -1343,6 +1343,13 @@ ZeroLength::setResponse(const char **argv, int argc, OPS_Stream &output)
 	  theResponse =  theMaterial1d[matNum-1]->setResponse(&argv[2], argc-2, output);
       }
     }
+#ifdef _CSS
+    else if (strcmp(argv[0], "Energy") == 0 || strcmp(argv[0], "energy") == 0) {
+        output.tag("ResponseType", "Energy");
+        theResponse = new ElementResponse(this, 5, 0.0);
+    }
+
+#endif // _CSS
 
     if ((strcmp(argv[0],"dampingForces") == 0) || (strcmp(argv[0],"rayleighForces") == 0)) {
             theResponse = new ElementResponse(this, 15, Vector(numDOF));
@@ -1362,6 +1369,7 @@ ZeroLength::getResponse(int responseID, Information &eleInformation)
 #ifdef _CSS
 	if (Element::getResponse(responseID, eleInformation) == 0)
 		return 0;
+   double val;
 #endif // _CSS
 
     const Vector& disp1 = theNodes[0]->getTrialDisp();
@@ -1422,7 +1430,16 @@ ZeroLength::getResponse(int responseID, Information &eleInformation)
             }
         }
         return 0;      
-
+#ifdef _CSS
+    case 5:
+        val = 0;
+        for (int mat = 0; mat < numMaterials1d; mat++)
+        {
+            val += theMaterial1d[mat]->getEnergy();
+        }
+        eleInformation.setDouble(val);
+        return 0;      
+#endif
     default:
         return -1;
     }

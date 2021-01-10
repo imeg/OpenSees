@@ -1428,6 +1428,8 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
 #ifdef _CSS
 	if (Element::getResponse(responseID, eleInfo) == 0)
 		return 0;
+  static Vector force(6);//SAJalali
+  const Vector& v = theCoordTransf->getBasicTrialDisp();
 #endif // _CSS
 
   double N, V, M1, M2, T;
@@ -1435,9 +1437,6 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
   double oneOverL = 1.0/L;
   static Vector Res(12);
   Res = this->getResistingForce();
-#ifdef _CSS
-  static Vector force(6);//SAJalali
-#endif // _CSS
 
   switch (responseID) {
   case 1: // stiffness
@@ -1496,8 +1495,7 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
 
       for (int i = 0; i < 6; i++)
       {
-          N += theNodes[0]->getDisp()[i] * Res(i);
-          N += theNodes[1]->getDisp()[i] * Res(i + 6);
+          N -= v[i] * q(i);
       }
       N *= 0.5;
       eleInfo.setDouble(N);

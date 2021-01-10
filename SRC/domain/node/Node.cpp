@@ -2492,6 +2492,7 @@ double Node::getMotionEnergy(TimeSeries** accelSeries)
     if (theAccelSeries == 0)
     {
         theAccelSeries = accelSeries;
+        prevT = 0;
         computeMotionEnergy();
     }
     return motionEnergy;
