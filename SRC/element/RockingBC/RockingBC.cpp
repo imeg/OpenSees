@@ -69,6 +69,8 @@
 #include <string.h>
 #include <fstream>
 
+#ifndef _CSS
+
 #ifdef _USRDLL
 //#define ELE_TAG_RockingBC                 210
 #define RockingBC_dll 1
@@ -81,6 +83,8 @@
 #define OPS_Export extern "C"
 #define RockingBC_dll 0
 #endif
+
+#endif // !_CSS
 
 //OPS_Export void* OPS_RockingBC() //CHANGE FOR DLL CREATION
 void* OPS_RockingBC()

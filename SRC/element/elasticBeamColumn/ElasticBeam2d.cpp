@@ -1466,7 +1466,7 @@ ElasticBeam2d::getResponse (int responseID, Information &eleInfo)
       N = 0;    //the elastic strain energy
       for (int i = 0; i < 3; i++)
       {
-          N -= v[i] * q(i);
+          N += v[i] * q(i);
       }
       N *= 0.5;
       eleInfo.setDouble(N);

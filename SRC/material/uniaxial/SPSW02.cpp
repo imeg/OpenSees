@@ -262,6 +262,10 @@ SPSW02::SPSW02(int tag, double _fpy, double _E0, double _b, double _t, double _h
 	UniaxialMaterial(tag, MAT_TAG_SPSW02), fpy(_fpy), E0(_E0), b(_b), t(_t), hs(_hs), l(_l),
 	R(_R), epsPCFac(_epsPCFac), pstcpEFac(_pstCapEFac), gama(_gama), c(_c), resFac(_resFac)
 {
+#ifdef _CSS
+	 energy = 0;
+#endif // _CSS
+
 	givenParams = false;
 	excurEnerg = totalEnerg = beta = 0;
 	excurEnergP = totalEnergP = betaP = 0;
@@ -297,7 +301,10 @@ SPSW02::SPSW02(int tag, double _E0, double _b, double _FTS, double _FCS, double 
 		sigTEFac(_sigTEFac), sigTFfac(_sigTFfac), epsTFfac(_epsTFfac),
 		R(_R), epsPCFac(_epsPCFac), pstcpEFac(_pstCapEFac), gama(_gama), c(_c), resFac(_resFac)
 {
-	givenParams = true;
+#ifdef _CSS
+	 energy = 0;
+#endif // _CSS
+	 givenParams = true;
 	excurEnerg = totalEnerg = beta = 0;
 	excurEnergP = totalEnergP = betaP = 0;
 	Fts = FTS;
@@ -324,6 +331,9 @@ SPSW02::SPSW02():
 	UniaxialMaterial(0, MAT_TAG_SPSW02)
 {
 	konP = 0;
+#ifdef _CSS
+	energy = 0;
+#endif // _CSS
 }
 
 SPSW02::~SPSW02()
@@ -612,6 +622,9 @@ int SPSW02::commitState()
 	konP = kon;
 
 	this->updateDamage();
+#ifdef _CSS
+	energy += 0.5 * (sig + sigP) * (eps - epsP);
+#endif // _CSS
 	eP = e;
 	sigP = sig;
 	epsP = eps;
@@ -835,7 +848,3 @@ void SPSW02::MenegottoPinto(double epsc, double E2, double R, double & sigc, dou
 	ec *= (sigs0 - sigr) / (epss0 - epsr);
 }
 
-double SPSW02::getEnergy()
-{
-	return totalEnergP;
-}

@@ -70,6 +70,11 @@
 #include <Nine_Four_Node_QuadUP.h>
 #include <FluidSolidPorousMaterial.h>
 #include <PressureDependMultiYield.h>
+#ifdef _CSS
+	 #include <Twenty_Eight_Node_BrickUP.h>
+	 #include <SSPbrickUP.h>
+	 #include <PressureDependMultiYield02.h>
+#endif // _CSS
 
 // Controls on internal iteration between spring components
 const int PYmaxIterations = 20;
@@ -423,13 +428,21 @@ PyLiq1::getEffectiveStress(void)
 		// Check that the class tags for the solid elements are either for a FourNodeQuad object, a FourNodeQuadUP object, 
 		// a 9_4_QuadUP object, a SSPquadUP object, or a SSPquad object
 		if(theElement1->getClassTag()!=ELE_TAG_FourNodeQuad && theElement1->getClassTag()!=ELE_TAG_FourNodeQuadUP && 
+#ifdef _CSS
+			 theElement1->getClassTag() != ELE_TAG_Twenty_Eight_Node_BrickUP &&
+			 theElement1->getClassTag() != ELE_TAG_SSPbrickUP &&
+#endif
 		   theElement1->getClassTag()!=ELE_TAG_Nine_Four_Node_QuadUP && theElement1->getClassTag()!=ELE_TAG_SSPquadUP && theElement1->getClassTag()!=ELE_TAG_SSPquad)
 		{
 			opserr << "Element: " << theElement1->getTag() << " cannot be used to read effective stress for a PyLiq1 material." << endln;
 			exit(-1);
 		}
 		if(theElement2->getClassTag()!=ELE_TAG_FourNodeQuad && theElement2->getClassTag()!=ELE_TAG_FourNodeQuadUP && 
-		   theElement2->getClassTag()!=ELE_TAG_Nine_Four_Node_QuadUP && theElement2->getClassTag()!=ELE_TAG_SSPquadUP && theElement2->getClassTag()!=ELE_TAG_SSPquad)
+#ifdef _CSS
+			 theElement2->getClassTag() != ELE_TAG_Twenty_Eight_Node_BrickUP &&
+			 theElement2->getClassTag() != ELE_TAG_SSPbrickUP &&
+#endif
+			 theElement2->getClassTag()!=ELE_TAG_Nine_Four_Node_QuadUP && theElement2->getClassTag()!=ELE_TAG_SSPquadUP && theElement2->getClassTag()!=ELE_TAG_SSPquad)
 		{
 			opserr << "Element: " << theElement2->getTag() << " cannot be used to read effective stress for a PyLiq1 material." << endln;
 			exit(-1);
@@ -626,7 +639,50 @@ PyLiq1::getEffectiveStress(void)
 			FluidSolidPorousMaterial *theFSPM = (FluidSolidPorousMaterial *)(NDM);
 			meanStress += 1.0/2.0*(2.0/3.0*(NDM->getStress())[0] + 1.0/3.0*(NDM->getStress())[1] - theFSPM->trialExcessPressure);
 		}
-		
+
+#ifdef _CSS
+		if (theElement1->getClassTag() == ELE_TAG_Twenty_Eight_Node_BrickUP || theElement1->getClassTag() == ELE_TAG_SSPbrickUP) {
+			 if (theElement2->getClassTag() != ELE_TAG_Twenty_Eight_Node_BrickUP && theElement2->getClassTag() != ELE_TAG_SSPbrickUP)
+			 {
+				  opserr << "PyLiq1::ERROR: Different element types set as the connections" << endln;
+				  exit(-1);
+			 }
+			 meanStress = 0.0;
+			 int nPnts = 0;
+			 for (int iEle = 0; iEle <= 1; iEle++)
+			 {
+				  NDMaterial** NDMs = 0;
+				  int nIntegPnts = 0;
+				  Element* pEle = iEle == 0 ? theElement1 : theElement2;
+				  if (theElement1->getClassTag() == ELE_TAG_Twenty_Eight_Node_BrickUP)
+				  {
+						TwentyEightNodeBrickUP* pEle1 = (TwentyEightNodeBrickUP*)(pEle);
+						NDMs = pEle1->materialPointers;
+						nIntegPnts = pEle1->nintu;
+				  }
+				  else {
+						//SSPbrickUP
+						SSPbrickUP* pEle1 = (SSPbrickUP*)(pEle);
+						NDMs = &(pEle1->theMaterial);
+						nIntegPnts = 1;
+				  }
+				  nPnts += nIntegPnts;
+				  for (int i = 0; i < nIntegPnts; i++)
+				  {
+						PressureDependMultiYield02* theFSPM = (PressureDependMultiYield02*)(NDMs[i]);
+						if (theFSPM == 0)
+						{
+							 opserr << "PyLiq1::ERROR: Only PressureDependMultiYield02 is supported for the connected BrickUP elements" << endln;
+							 exit(-1);
+						}
+						meanStress += (NDMs[i]->getStress()[0] + NDMs[i]->getStress()[1] + NDMs[i]->getStress()[2])/3.0;
+				  }
+			 }
+			 meanStress /= nPnts;
+		}
+
+#endif // _CSS
+
 	}
 
 	return meanStress;
@@ -659,6 +715,9 @@ PyLiq1::updateParameter(int snum,Information &eleInformation)
 	//              so excess pore pressure should be zero.
 	// If snum = 1; running plastic soil element behavior,
 	//              so this marks the end of the "consol" gravity loading.
+#ifdef _CSS
+	 snum = eleInformation.theInt;
+#endif // _CSS
 
 	if(snum !=0 && snum !=1){
 		opserr << "WARNING updateMaterialStage for PyLiq1 material must be 0 or 1";

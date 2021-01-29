@@ -761,7 +761,10 @@ double ModIMKPeakOriented::getStrainRate(void)
 int ModIMKPeakOriented::commitState(void)
 {
   commitCalledOnce = 1;		// Updated: Filipe Ribeiro and Andre Barbosa
-  
+#ifdef _CSS
+  energy +=  0.5*(fP + Cstress)*(dP - Cstrain);
+#endif // _CSS
+
   Cstrain = dP;
   Cstress = fP;
   Ctangent = Tangent;
@@ -899,6 +902,10 @@ int ModIMKPeakOriented::revertToLastCommit(void)
 
 int ModIMKPeakOriented::revertToStart(void)
 {
+#ifdef _CSS
+    energy = 0;
+#endif // _CSS
+
   commitCalledOnce = 0;		// Updated: Filipe Ribeiro and Andre Barbosa
   
   // Initialize state variables

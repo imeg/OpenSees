@@ -78,10 +78,12 @@ class Clough : public UniaxialMaterial
   
   void recordInfo(int cond =0);
   
-  //by SAJalali
-  double getEnergy();
 #ifdef _CSS
+  double Energy;
+  //by SAJalali
+  double Clough::getEnergy()  {return Energy;}
   double getInitYieldStrain() { return fyieldPos / elstk; } //SAJalali
+  virtual void resetEnergy(void) { Energy = 0; }
 #endif // _CSS
 
  private:
@@ -96,8 +98,6 @@ class Clough : public UniaxialMaterial
   
   double hsTrial[24], /*hsCommit[24],*/ hsLastCommit[24];
   
-  //by SAJalali
-  double Energy;
 
 };
 

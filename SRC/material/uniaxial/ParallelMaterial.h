@@ -74,6 +74,7 @@ class ParallelMaterial : public UniaxialMaterial
 #ifdef _CSS
     virtual double getInitYieldStrain();
     virtual double getEnergy();
+    virtual void resetEnergy(void);
 #endif // _CSS
 
   protected:

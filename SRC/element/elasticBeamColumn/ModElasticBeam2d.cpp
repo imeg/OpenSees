@@ -850,7 +850,13 @@ Response*
 ModElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 {
 
-  Response *theResponse = 0;
+#ifdef _CSS
+    Response* theResponse = Element::setResponse(argv, argc, output);
+    if (theResponse != 0)
+        return theResponse;
+#else
+    Response* theResponse = 0;
+#endif // _CSS
 
   output.tag("ElementOutput");
   output.attr("eleType","ModElasticBeam2d");
@@ -892,6 +898,12 @@ ModElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
     
     theResponse = new ElementResponse(this, 4, Vector(3));
   }  
+#ifdef _CSS
+  else if (strcmp(argv[0], "energy") == 0)
+  {
+      return new ElementResponse(this, 7, 0.0);
+  }
+#endif // _CSS
 
   output.endTag(); // ElementOutput
 
@@ -901,7 +913,12 @@ ModElasticBeam2d::setResponse(const char **argv, int argc, OPS_Stream &output)
 int
 ModElasticBeam2d::getResponse (int responseID, Information &eleInfo)
 {
-  double N, M1, M2, V;
+#ifdef _CSS
+    if (Element::getResponse(responseID, eleInfo) == 0)
+        return 0;
+    const Vector& v = theCoordTransf->getBasicTrialDisp();
+#endif // _CSS
+    double N, M1, M2, V;
   double L = theCoordTransf->getInitialLength();
 
   switch (responseID) {
@@ -929,7 +946,17 @@ ModElasticBeam2d::getResponse (int responseID, Information &eleInfo)
     
   case 4: // basic forces
     return eleInfo.setVector(q);
-
+  #ifdef _CSS
+  case 7:
+      N = 0;    //the elastic strain energy
+      for (int i = 0; i < 3; i++)
+      {
+          N += v[i] * q(i);
+      }
+      N *= 0.5;
+      eleInfo.setDouble(N);
+      break;
+#endif // _CSS
   default:
     return -1;
   }

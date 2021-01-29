@@ -540,6 +540,11 @@ NodeRecorder::~NodeRecorder()
       for (int i = 0; i < numValidNodes; i++)
           theNodes[i]->resetTimeSeries();
   }
+  if (dataFlag == 999997 || dataFlag == 999999)
+  {
+      for (int i = 0; i < numValidNodes; i++)
+          theNodes[i]->resetEnergies();
+  }
 #else
   int numDOF;
   if (theDofs != 0) {

@@ -1515,7 +1515,7 @@ ElasticBeam3d::getResponse (int responseID, Information &eleInfo)
 
       for (int i = 0; i < 6; i++)
       {
-          N -= v[i] * q(i);
+          N += v[i] * q(i);
       }
       N *= 0.5;
       eleInfo.setDouble(N);

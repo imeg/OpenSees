@@ -68,7 +68,7 @@ Response(val), theMaterial(mat), responseID(id)
 
 MaterialResponse::~MaterialResponse()
 {
-
+    theMaterial->resetResponse(responseID, &myInfo);
 }
 
 int

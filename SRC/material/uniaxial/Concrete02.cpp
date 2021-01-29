@@ -93,6 +93,10 @@ Concrete02::Concrete02(int tag, double _fc, double _epsc0, double _fcu,
   UniaxialMaterial(tag, MAT_TAG_Concrete02),
   fc(_fc), epsc0(_epsc0), fcu(_fcu), epscu(_epscu), rat(_rat), ft(_ft), Ets(_Ets)
 {
+#ifdef _CSS
+    EnergyP = 0;
+#endif // _CSS
+
   ecminP = 0.0;
   deptP = 0.0;
 
@@ -107,7 +111,10 @@ Concrete02::Concrete02(int tag, double _fc, double _epsc0, double _fcu,
 Concrete02::Concrete02(void):
   UniaxialMaterial(0, MAT_TAG_Concrete02)
 {
- 
+#ifdef _CSS
+    EnergyP = 0;
+#endif // _CSS
+
 }
 
 Concrete02::~Concrete02(void)
@@ -255,7 +262,10 @@ Concrete02::commitState(void)
 {
   ecminP = ecmin;
   deptP = dept;
-  
+#ifdef _CSS
+  EnergyP += 0.5 * (sigP + sig) * (eps - epsP);
+#endif // _CSS
+
   eP = e;
   sigP = sig;
   epsP = eps;
@@ -277,7 +287,10 @@ Concrete02::revertToLastCommit(void)
 int 
 Concrete02::revertToStart(void)
 {
-  ecminP = 0.0;
+#ifdef _CSS
+    EnergyP = 0;
+#endif // _CSS
+    ecminP = 0.0;
   deptP = 0.0;
 
   eP = 2.0*fc/epsc0;
@@ -293,7 +306,11 @@ Concrete02::revertToStart(void)
 int 
 Concrete02::sendSelf(int commitTag, Channel &theChannel)
 {
-  static Vector data(13);
+#ifdef _CSS
+    static Vector data(14);
+#else
+    static Vector data(13);
+#endif // _CSS
   data(0) =fc;    
   data(1) =epsc0; 
   data(2) =fcu;   
@@ -307,7 +324,9 @@ Concrete02::sendSelf(int commitTag, Channel &theChannel)
   data(10) =sigP; 
   data(11) =eP;   
   data(12) = this->getTag();
-
+#ifdef _CSS
+  data(13) = EnergyP;
+#endif
   if (theChannel.sendVector(this->getDbTag(), commitTag, data) < 0) {
     opserr << "Concrete02::sendSelf() - failed to sendSelf\n";
     return -1;
@@ -320,7 +339,11 @@ Concrete02::recvSelf(int commitTag, Channel &theChannel,
 	     FEM_ObjectBroker &theBroker)
 {
 
-  static Vector data(13);
+#ifdef _CSS
+    static Vector data(14);
+#else
+    static Vector data(13);
+#endif // _CSS
 
   if (theChannel.recvVector(this->getDbTag(), commitTag, data) < 0) {
     opserr << "Concrete02::recvSelf() - failed to recvSelf\n";
@@ -344,7 +367,10 @@ Concrete02::recvSelf(int commitTag, Channel &theChannel,
   e = eP;
   sig = sigP;
   eps = epsP;
-  
+#ifdef _CSS
+  EnergyP = data(13);
+#endif
+
   return 0;
 }
 

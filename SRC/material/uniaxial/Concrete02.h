@@ -72,7 +72,14 @@ class Concrete02 : public UniaxialMaterial
     void Print(OPS_Stream &s, int flag =0);
 
     int getVariable(const char *variable, Information &);
-    
+#ifdef _CSS
+    //by SAJalali
+    double EnergyP;
+    double getEnergy() { return EnergyP; }
+    double getInitYieldStrain() { return epsc0/2; }
+    virtual void resetEnergy(void) { EnergyP = 0; }
+#endif // _CSS
+
  protected:
     
  private:

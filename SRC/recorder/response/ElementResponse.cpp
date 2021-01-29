@@ -74,7 +74,7 @@ ElementResponse::ElementResponse(Element *ele, int id, const Vector &val1, const
 
 ElementResponse::~ElementResponse()
 {
-
+    theElement->resetDampingEnergy();
 }
 
 int

@@ -380,9 +380,6 @@
     <ClCompile Include="..\..\..\SRC\analysis\integrator\StagedNewmark.cpp">
       <Filter>integrator</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\ExpressNewton.cpp">
-      <Filter>algorithm</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\SRC\analysis\analysis\Analysis.h">
@@ -723,9 +720,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\SRC\analysis\integrator\StagedNewmark.h">
       <Filter>integrator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\ExpressNewton.h">
-      <Filter>algorithm</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

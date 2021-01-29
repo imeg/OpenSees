@@ -96,6 +96,14 @@ class UniaxialMaterial : public Material
 	//by SAJalali
 	virtual double getEnergy(void) { return 0; }
 #ifdef _CSS
+   virtual void resetEnergy(void) { return; }
+   virtual void resetResponse(int responseID, Information* myInfo) { 
+       if (responseID == 9)
+           resetEnergy();
+   };
+#endif // _CSS
+
+#ifdef _CSS
 	//by SAJalali
 	virtual double getInitYieldStrain() { return 0; }
 	virtual double getDuctility(void);

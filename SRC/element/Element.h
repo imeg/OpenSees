@@ -121,6 +121,9 @@ class Element : public DomainComponent
     bool isActive();
 
 
+#ifdef _CSS
+    void resetDampingEnergy() { dampingEnergy = 0; }
+#endif // _CSS
 
 protected:
 #if !_DLL

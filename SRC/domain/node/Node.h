@@ -186,6 +186,11 @@ class Node : public DomainComponent
        theAccelSeries = 0;
        theVelocSeries = 0;
    }
+   void resetEnergies()
+   {
+       dampEnergy = 0;
+       motionEnergy = 0;
+   }
    private:
    double prevT, curT;
    TimeSeries** theAccelSeries;

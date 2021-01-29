@@ -98,6 +98,10 @@ class SSPbrickUP : public Element
 	// public methods for material stage update
 	int setParameter(const char **argv, int argc, Parameter &param);
     int updateParameter(int parameterID, Information &info);
+#ifdef _CSS
+	 friend class PyLiq1;
+	 friend class TzLiq1;
+#endif // _CSS
 
   protected:
 

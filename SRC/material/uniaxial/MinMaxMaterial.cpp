@@ -173,8 +173,12 @@ MinMaxMaterial::setTrialStrain(double strain, double temp, double strainRate)
 double 
 MinMaxMaterial::getStress(void)
 {
-  if (Tfailed)
+    if (Tfailed)
+#ifdef _CSS
+        return 1.0e-11 * theMaterial->getInitialTangent();
+#else
     return 0.0;
+#endif // _CSS
   else
     return theMaterial->getStress();
 }

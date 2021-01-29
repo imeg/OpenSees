@@ -1159,6 +1159,9 @@ Bilin::commitState(void)
   commitCalledOnce = 1;
   
   //commit trial  variables
+#ifdef _CSS
+  energy +=  0.5*(fP + CfP)*(U - CU);
+#endif // _CSS
    CU=U;
    CTangent=Tangent;
 
@@ -1313,7 +1316,10 @@ int
 Bilin::revertToStart(void)
 {
 //initially I zero everything
-   U=CU=0.0;
+#ifdef _CSS
+    energy = 0;
+#endif // _CSS
+    U=CU=0.0;
    Tangent=CTangent=0.0;
    commitCalledOnce = 0;
 

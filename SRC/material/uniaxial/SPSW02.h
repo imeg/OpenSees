@@ -28,8 +28,17 @@ public:
     //virtual Response *setResponse (const char **argv, int argc, 
 				//   OPS_Stream &theOutputStream);
     //virtual int getResponse (int responseID, Information &matInformation);
-	virtual double getEnergy();
 	virtual double getInitYieldStrain() {return FTS/E0;}
+#ifdef _CSS
+	double energy;	  //energy saved during a given course of action
+	double SPSW02::getEnergy()
+	{
+		 return energy;
+	}
+	virtual void resetEnergy(void) { energy = 0; }
+
+#endif // _CSS
+
 
 private:
 	void updateDamage();
@@ -86,7 +95,6 @@ private:
 	double excurEnerg, totalEnerg, beta;
 	//commit version:
 	double excurEnergP, totalEnergP, betaP;
-
 	bool givenParams;
 
 	//behavior parameters

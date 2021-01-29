@@ -64,13 +64,13 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\lib\debug\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug-dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\lib\debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\analysis\debug\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\analysis\debug-dll\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">.\..\..\obj\analysis\debug\</IntDir>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\lib\release\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release-dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\lib\release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\analysis\release\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\analysis\release-dll\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release.DLL|x64'">.\..\..\obj\analysis\release\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -83,7 +83,7 @@
       <AssemblerListingLocation>.\..\..\obj\analysis\debug/</AssemblerListingLocation>
       <ObjectFileName>.\..\..\obj\analysis\debug/</ObjectFileName>
       <ProgramDataBaseFileName>.\..\..\obj\analysis\debug/</ProgramDataBaseFileName>
-      <BrowseInformation>false</BrowseInformation>
+      <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -100,9 +100,6 @@
     <BuildLog>
       <Path>.\..\..\obj\analysis\debug\$(MSBuildProjectName).log</Path>
     </BuildLog>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.DLL|x64'">
     <ClCompile>
@@ -122,7 +119,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\debug-dll\analysis.lib</OutputFile>
+      <OutputFile>.\..\..\lib\debug\analysis.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <ResourceCompile>
@@ -186,7 +183,7 @@
       <CompileAs>Default</CompileAs>
     </ClCompile>
     <Lib>
-      <OutputFile>.\..\..\lib\release-dll\analysis.lib</OutputFile>
+      <OutputFile>.\..\..\lib\release\analysis.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <ResourceCompile>
@@ -198,7 +195,6 @@
     </BuildLog>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\ExpressNewton.cpp" />
     <ClCompile Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\NewtonHallM.cpp" />
     <ClCompile Include="..\..\..\SRC\analysis\analysis\Analysis.cpp" />
     <ClCompile Include="..\..\..\SRC\analysis\analysis\DirectIntegrationAnalysis.cpp" />
@@ -314,7 +310,6 @@
     <ClCompile Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\SecantLineSearch.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\ExpressNewton.h" />
     <ClInclude Include="..\..\..\SRC\analysis\algorithm\equiSolnAlgo\NewtonHallM.h" />
     <ClInclude Include="..\..\..\SRC\analysis\analysis\Analysis.h" />
     <ClInclude Include="..\..\..\SRC\analysis\analysis\DirectIntegrationAnalysis.h" />

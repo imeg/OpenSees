@@ -91,6 +91,7 @@ class Steel02 : public UniaxialMaterial
 #ifdef _CSS
 	//by SAJalali
 	double getInitYieldStrain() { return Fy / E0; }
+   virtual void resetEnergy(void) { EnergyP = 0; }
 #endif // _CSS
 
 protected:

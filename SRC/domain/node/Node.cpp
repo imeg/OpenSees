@@ -2533,7 +2533,8 @@ void Node::computeDampEnergy()
         const double& prevV = prevVel(i);
         double force = (*mass)(i, i) * 0.5 * alphaM * (thisV + prevV);
         dampEnergy += force * (thisDisp - prevDisp);
-        //opserr << force << " " << thisV << " " << prevV << " " << thisDisp << " " << prevDisp << "\n";
+        /*if (this->getTag() == 1103 && i == 0)
+            opserr << force << " " << thisV << " " << prevV << " " << thisDisp << " " << prevDisp << "\n";*/
     }
 }
 #endif // _CSS

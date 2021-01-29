@@ -984,6 +984,9 @@ TwentyEightNodeBrickUP::update()
 
 	}
 
+#ifdef _CSS
+	computeResistingForce();
+#endif // _CSS
 
 
 	return ret;
@@ -1623,6 +1626,195 @@ TwentyEightNodeBrickUP::addInertiaLoadToUnbalance(const Vector &accel)
 
 //get residual
 
+#ifdef _CSS
+void TwentyEightNodeBrickUP::computeResistingForce()
+
+{
+
+	 int i, j, jk, k, k1;
+
+	 double xsj;
+
+	 static Matrix B(6, 3);
+
+	 double volume = 0.;
+
+
+
+	 //	printf("calling getResistingForce()\n");
+
+	 resid.Zero();
+
+
+
+	 //compute basis vectors and local nodal coordinates
+
+
+	 //printf("volume = %f\n", volume);
+
+	 //volume = 0.;
+
+	 for (i = 0; i < nintp; i++) {
+
+		  // compute Jacobian and global shape functions
+
+		  Jacobian3d(i, xsj, 1);
+
+		  //volume element to also be saved
+
+		  dvolp[i] = wp[i] * xsj;
+
+		  volume += dvolp[i];
+
+	 } // end for i
+
+	 //printf("volume = %f\n", volume);
+
+
+
+	 // Loop over the integration points
+
+	 for (i = 0; i < nintu; i++) {
+
+
+
+		  // Get material stress response
+
+		  const Vector& sigma = materialPointers[i]->getStress();
+
+
+
+		  // Perform numerical integration on internal force
+
+		  //P = P + (B^ sigma) * intWt(i)*intWt(j) * detJ;
+
+		  //P.addMatrixTransposeVector(1.0, B, sigma, intWt(i)*intWt(j)*detJ);
+
+		  for (j = 0; j < nenu; j++) {
+
+				if (j < nenp)
+
+					 jk = j * 4;
+
+				else
+
+					 jk = nenp * 4 + (j - nenp) * 3;
+
+
+
+				B(0, 0) = shgu[0][j][i];
+
+				B(0, 1) = 0.;
+
+				B(0, 2) = 0.;
+
+				B(1, 0) = 0.;
+
+				B(1, 1) = shgu[1][j][i];
+
+				B(1, 2) = 0.;
+
+				B(2, 0) = 0.;
+
+				B(2, 1) = 0.;
+
+				B(2, 2) = shgu[2][j][i];
+
+				B(3, 0) = shgu[1][j][i];
+
+				B(3, 1) = shgu[0][j][i];
+
+				B(3, 2) = 0.;
+
+				B(4, 0) = 0.;
+
+				B(4, 1) = shgu[2][j][i];
+
+				B(4, 2) = shgu[1][j][i];
+
+				B(5, 0) = shgu[2][j][i];
+
+				B(5, 1) = 0.;
+
+				B(5, 2) = shgu[0][j][i];
+
+
+
+
+
+				for (k = 0; k < 3; k++) {
+
+					 for (k1 = 0; k1 < 6; k1++)
+
+						  resid(jk + k) += dvolu[i] * (B(k1, k) * sigma(k1));
+
+				}
+
+				// Subtract equiv. body forces from the nodes
+
+				//P = P - (N^ b) * intWt(i)*intWt(j) * detJ;
+
+				//P.addMatrixTransposeVector(1.0, N, b, -intWt(i)*intWt(j)*detJ);
+
+				double r = mixtureRho(i);
+
+				if (applyLoad == 0) {
+					 resid(jk) -= dvolu[i] * (shgu[3][j][i] * r * b[0]);
+					 resid(jk + 1) -= dvolu[i] * (shgu[3][j][i] * r * b[1]);
+					 resid(jk + 2) -= dvolu[i] * (shgu[3][j][i] * r * b[2]);
+				}
+				else {
+					 resid(jk) -= dvolu[i] * (shgu[3][j][i] * r * appliedB[0]);
+					 resid(jk + 1) -= dvolu[i] * (shgu[3][j][i] * r * appliedB[1]);
+					 resid(jk + 2) -= dvolu[i] * (shgu[3][j][i] * r * appliedB[2]);
+				}
+
+		  }
+
+	 }
+
+
+
+	 // Subtract fluid body force
+
+	 for (j = 0; j < nenp; j++) {
+
+		  jk = j * 4 + 3;
+
+		  for (i = 0; i < nintp; i++) {
+
+				if (applyLoad == 0) {
+					 resid(jk) += dvolp[i] * rho * (perm[0] * b[0] * shgp[0][j][i] +
+						  perm[1] * b[1] * shgp[1][j][i] + perm[2] * b[2] * shgp[2][j][i]);
+				}
+				else {
+					 resid(jk) += dvolp[i] * rho * (perm[0] * appliedB[0] * shgp[0][j][i] +
+						  perm[1] * appliedB[1] * shgp[1][j][i] + perm[2] * appliedB[2] * shgp[2][j][i]);
+				}
+
+		  }
+
+	 }
+
+
+
+	 // Subtract other external nodal loads ... P_res = P_int - P_ext
+
+ //	opserr<<"resid before:"<<resid<<endln;
+
+
+
+	 if (load != 0)
+
+		  resid -= *load;
+
+}
+const Vector& TwentyEightNodeBrickUP::getResistingForce()
+{
+	 return resid;
+}
+#else
+
 const Vector&  TwentyEightNodeBrickUP::getResistingForce( )
 
 {
@@ -1829,6 +2021,7 @@ const Vector&  TwentyEightNodeBrickUP::getResistingForce( )
 
 }
 
+#endif // _CSS
 
 
 

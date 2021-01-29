@@ -303,6 +303,15 @@ ParallelMaterial::commitState(void)
   return 0;    
 }
 
+#ifdef _CSS
+void ParallelMaterial::resetEnergy(void)
+{
+    // invoke commitState() on each of local MaterialModel objects
+    for (int i = 0; i < numMaterials; i++)
+        theModels[i]->resetEnergy();
+}
+#endif // _CSS
+
 int 
 ParallelMaterial::revertToLastCommit(void)
 {

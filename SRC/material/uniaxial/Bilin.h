@@ -74,10 +74,12 @@ class Bilin : public UniaxialMaterial
  
   void Print(OPS_Stream &s, int flag =0);
   
-  virtual double getEnergy(void) { return CEnrgtot; } //by SAJalali
 #ifdef _CSS
   //by SAJalali
+  double energy;
+  virtual double getEnergy(void) { return energy; } //by SAJalali
   virtual double getInitYieldStrain() { return My_pos / Ke0; }
+  virtual void resetEnergy(void) { energy = 0; }
 #endif // _CSS
 
  protected:
