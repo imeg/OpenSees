@@ -1,0 +1,577 @@
+﻿  b64.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  blas.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(25,1): warning C4267: '=': conversion from 'size_t' to 'char', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(25,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(26,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(26,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(27,1): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(27,1): warning C4244: 'initializing': conversion from 'double' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(28,1): warning C4244: 'initializing': conversion from 'double' to 'int64_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(29,1): warning C4244: 'initializing': conversion from 'double' to 'ssize_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c(32,1): warning C4244: 'initializing': conversion from 'double' to 'gk_idx_t', possible loss of data
+  csr.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(470,21): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(487,41): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(512,18): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(562,25): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(794,55): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(811,46): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(837,55): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(854,47): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(945,44): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(953,44): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(988,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(995,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1187,39): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1277,34): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1294,30): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1302,36): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1343,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1345,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1370,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1372,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1408,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1410,72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1413,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1423,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1425,72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1428,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1440,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1453,74): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1466,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1466,30): warning C4305: 'function': truncation from 'double' to 'float'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1466,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1479,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1479,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1492,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1492,30): warning C4305: 'function': truncation from 'double' to 'float'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1492,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1505,87): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1534,71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1566,65): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1571,91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1707,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1708,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1718,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1719,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1763,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1765,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1796,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1828,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c(1990,12): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+  error.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  evaluate.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c(34,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c(73,53): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c(101,18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c(115,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c(131,30): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  fkvkselect.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fkvkselect.c(27,13): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fkvkselect.c(29,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fkvkselect.c(91,13): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fkvkselect.c(93,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  fs.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  getopt.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(769,19): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(769,32): warning C4028: formal parameter 2 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(833,25): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(833,38): warning C4028: formal parameter 2 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(849,29): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c(849,42): warning C4028: formal parameter 2 different from declaration
+  gkregex.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(2287,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(3166,19): warning C4018: '<=': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(3334,54): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(3434,7): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(3435,10): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(4102,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(4986,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(5089,74): warning C4312: 'type cast': conversion from 'long' to 'void *' of greater size
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(6301,31): warning C4311: 'type cast': pointer truncation from 'void *' to 'long'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(6607,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(6822,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(6888,11): warning C4018: '>': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(6913,13): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7012,77): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7042,76): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7796,70): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7813,51): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7826,49): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c(7840,49): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+  htable.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(64,66): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(143,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(150,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(173,39): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(185,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(210,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c(220,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+  io.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  itemsets.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c(53,11): warning C4101: 'i': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c(107,43): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c(110,52): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c(149,74): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c(169,29): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+  mcore.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\mcore.c(208,29): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\mcore.c(349,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\mcore.c(377,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  memory.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(25,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(26,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(27,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(28,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(29,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(30,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(31,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(32,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(34,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(35,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(36,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(37,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(38,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(39,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(40,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(41,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(42,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(63,14): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c(87,14): warning C4018: '<': signed/unsigned mismatch
+  omp.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  pdb.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  pqueue.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(19,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(20,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(21,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(22,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(23,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c(24,1): warning C4018: '<': signed/unsigned mismatch
+  random.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  rw.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\rw.c(96,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\rw.c(31,17): warning C4101: 'k': unreferenced local variable
+  seq.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c(56,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c(68,30): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c(107,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c(131,23): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c(150,17): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  sort.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  string.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(46,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(47,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(49,15): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(162,18): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(165,21): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(181,21): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(262,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(299,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(378,27): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(435,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c(436,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  timers.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  tokenizer.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\tokenizer.c(28,22): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  auxapi.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  balance.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(23,56): warning C4244: 'function': conversion from 'real_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(68,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(94,62): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(136,44): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(143,44): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(43,65): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(43,59): warning C4101: 'pass': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(196,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(218,38): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(256,40): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(171,65): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(171,59): warning C4101: 'pass': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(315,46): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(377,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(441,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(284,9): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c(283,68): warning C4101: 'pass': unreferenced local variable
+  bucketsort.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  checkgraph.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\checkgraph.c(178,18): warning C4101: 'l': unreferenced local variable
+  coarsen.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(38,59): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(101,59): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(151,23): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(151,16): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(151,27): warning C4101: 'jjinc': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(305,38): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(278,23): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(278,16): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(278,27): warning C4101: 'jjinc': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(440,27): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(440,16): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(533,27): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(540,42): warning C4267: 'function': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(548,53): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(519,20): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(782,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(624,23): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(913,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(1077,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c(935,26): warning C4101: 'l': unreferenced local variable
+  compress.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\compress.c(154,28): warning C4101: 'padjwgt': unreferenced local variable
+  contig.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(35,19): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(35,12): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(270,52): warning C4101: 'wgt': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(455,41): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(338,23): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(338,58): warning C4101: 'other': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(534,24): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(534,31): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(605,24): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c(605,47): warning C4101: 'me': unreferenced local variable
+  debug.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(50,18): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(197,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(257,15): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(257,18): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(342,50): warning C4101: 'bndind': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(341,42): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(341,50): warning C4101: 'minvol': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(342,59): warning C4101: 'bndptr': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(342,34): warning C4101: 'pwgts': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(341,26): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c(341,36): warning C4101: 'nbnd': unreferenced local variable
+  fm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(56,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(59,48): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(88,81): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(143,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(150,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(31,65): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(243,46): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(248,33): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(293,26): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(366,34): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(378,34): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c(210,9): warning C4101: 'me': unreferenced local variable
+  fortran.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  frename.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  gklib.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(18,1): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(18,1): warning C4244: 'initializing': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(19,1): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(24,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(25,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(26,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(27,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(33,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c(34,1): warning C4018: '<': signed/unsigned mismatch
+  initpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(136,62): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(118,26): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(117,52): warning C4101: 'from': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(117,19): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(118,20): warning C4101: 'icut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(117,58): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(117,16): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(213,61): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(214,67): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(194,36): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(194,9): warning C4101: 'from': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(196,28): warning C4101: 'gain': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(194,30): warning C4101: 'icut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(194,15): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(352,44): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(328,52): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(328,35): warning C4101: 'from': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(328,19): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(328,16): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,48): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,31): warning C4101: 'from': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,15): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,9): warning C4101: 'i': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(388,25): warning C4101: 'ncon': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(453,54): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(454,60): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(437,48): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(437,21): warning C4101: 'from': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(439,28): warning C4101: 'gain': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(437,42): warning C4101: 'icut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(437,27): warning C4101: 'me': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(573,36): warning C4101: 'mincut': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c(573,15): warning C4101: 'k': unreferenced local variable
+  kmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kmetis.c(108,7): warning C4101: 'status': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kmetis.c(105,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kmetis.c(174,12): warning C4101: 'ntrials': unreferenced local variable
+  kwayfm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(102,49): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(103,68): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(104,74): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(182,38): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(322,1): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(64,27): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(409,49): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(410,68): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(411,74): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(374,27): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(748,78): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(750,68): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(824,38): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(978,1): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(688,27): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(1087,78): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(1089,68): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(1030,27): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c(1465,35): warning C4101: 'l': unreferenced local variable
+  kwayrefine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c(54,55): warning C4305: 'function': truncation from 'double' to 'real_t'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c(69,41): warning C4305: 'function': truncation from 'double' to 'real_t'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c(151,18): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c(564,22): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c(564,51): warning C4101: 'pid': unreferenced local variable
+  Generating Code...
+  Compiling...
+  mcutil.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  mesh.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  meshpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\meshpart.c(200,37): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\meshpart.c(182,15): warning C4101: 'k': unreferenced local variable
+  minconn.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c(256,82): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c(203,1): warning C4305: 'initializing': truncation from 'double' to 'real_t'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c(480,19): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c(480,26): warning C4101: 'l': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c(564,19): warning C4101: 'jj': unreferenced local variable
+  mincover.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  mmd.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  ometis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(109,42): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(186,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(239,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(367,52): warning C4244: 'function': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(555,44): warning C4101: 'mypart': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c(657,12): warning C4101: 'j': unreferenced local variable
+  options.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\options.c(69,72): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\options.c(100,46): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\options.c(112,68): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\options.c(116,36): warning C4305: '+=': truncation from 'double' to 'real_t'
+  parmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(108,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(164,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(164,9): warning C4101: 'i': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(296,60): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(300,29): warning C4267: '=': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(384,53): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(390,55): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(521,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(522,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(526,85): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(612,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(632,58): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c(638,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+  pmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\pmetis.c(179,39): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\pmetis.c(201,33): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\pmetis.c(202,46): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\pmetis.c(160,12): warning C4101: 'j': unreferenced local variable
+  refine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  separator.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\separator.c(23,15): warning C4101: 'k': unreferenced local variable
+  sfm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(55,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(75,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(76,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(159,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(179,58): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(185,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(294,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(316,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(394,70): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(399,54): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(497,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(523,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(592,51): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(597,52): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c(479,38): warning C4101: 'pass': unreferenced local variable
+  srefine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\srefine.c(139,12): warning C4101: 'j': unreferenced local variable
+  stat.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(23,15): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(24,59): warning C4101: 'tmpptr': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(140,70): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(148,90): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(129,10): warning C4101: 'balance': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c(171,85): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  timing.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+  wspace.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\wspace.c(184,35): warning C4267: 'return': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\wspace.c(212,35): warning C4267: 'return': conversion from 'size_t' to 'idx_t', possible loss of data
+  Generating Code...
+  graph.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(131,23): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(161,37): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(195,18): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(463,10): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(608,28): warning C4244: '=': conversion from 'ssize_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(613,23): warning C4244: '=': conversion from 'ssize_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(625,15): warning C4244: '=': conversion from 'ssize_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(630,25): warning C4244: '=': conversion from 'ssize_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(635,24): warning C4244: '=': conversion from 'ssize_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(574,21): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(574,14): warning C4101: 'ii': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(801,35): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(943,35): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(891,10): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(890,14): warning C4101: 'jj': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(1115,38): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(1119,21): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(1156,36): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c(1160,21): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+  util.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(26,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(27,15): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(30,14): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(68,14): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(72,3): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(73,14): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(74,29): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(88,13): warning C4244: 'return': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c(106,25): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  graph.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c(51,73): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c(21,11): warning C4101: 'nvwgt': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c(20,18): warning C4101: 'sum': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c(20,15): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c(110,73): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  util.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\util.c(54,18): warning C4267: 'return': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\util.c(85,14): warning C4267: 'return': conversion from 'size_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\util.c(115,14): warning C4267: 'return': conversion from 'size_t' to 'idx_t', possible loss of data
+  metis.vcxproj -> F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\Release\metis.lib

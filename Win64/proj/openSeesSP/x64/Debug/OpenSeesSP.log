@@ -1,0 +1,96 @@
+﻿  socket.c
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(98,15): warning C4996: 'gethostbyname': Use getaddrinfo() or GetAddrInfoW() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(174,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(226,40): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(172,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(173,3): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\actor\channel\socket.c(213,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  myCommands.cpp
+  TclModelBuilder.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(984,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1193,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1275,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1294,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1309,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1353,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1398,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1434,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1511,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1525,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1541,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1563,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1568,3): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1588,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1605,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1622,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1638,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1653,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1672,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1675,3): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1692,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1721,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1733,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(1990,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3341,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3398,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3425,3): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3447,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3450,4): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3467,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3530,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3593,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3655,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3754,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3852,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3928,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(3940,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4030,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4041,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4076,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4131,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4157,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4186,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4229,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4409,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4410,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4411,16): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4414,11): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4416,7): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4437,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4577,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4578,2): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4579,11): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4582,13): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4584,2): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4608,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4620,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4632,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4644,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4657,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4676,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4693,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4710,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4727,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4748,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4770,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4791,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4808,2): error C3861: 'printArgv': identifier not found
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclModelBuilder.cpp(4818,2): error C3861: 'printArgv': identifier not found
+  TclSectionTester.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclSectionTester.cpp(200,7): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclSectionTester.cpp(221,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TclUniaxialMaterialTester.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclUniaxialMaterialTester.cpp(216,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\modelbuilder\tcl\TclUniaxialMaterialTester.cpp(235,5): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  commands.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\commands.cpp(38,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  mpiMain.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\mpiMain.cpp(182,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  TclFeViewer.cpp
+  tclMain.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\tclMain.cpp(291,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TclVideoPlayer.cpp
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\TclVideoPlayer.cpp(96,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\TclVideoPlayer.cpp(147,7): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+F:\Omran Elm Afzar\OpenSees.NET new\SRC\tcl\TclVideoPlayer.cpp(203,7): warning C4101: 'mode': unreferenced local variable
+  Generating Code...

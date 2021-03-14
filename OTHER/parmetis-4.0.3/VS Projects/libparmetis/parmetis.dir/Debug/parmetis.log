@@ -1,0 +1,160 @@
+﻿  Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/libparmetis/CMakeLists.txt
+  akwayfm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  ametis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  balancemylink.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  comm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  csrmatch.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  ctrl.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  debug.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  diffutil.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  frename.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  gkmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  gkmpi.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  graph.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  initbalance.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  initmsection.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  initpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  kmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  kwayrefine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  match.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  mdiffusion.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  mesh.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  Generating Code...
+  Compiling...
+  mmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  move.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  msetup.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  node_refine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  ometis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  pspases.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  redomylink.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  remap.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  renumber.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  rmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  selectq.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  serial.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  stat.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  timer.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  util.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  wave.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  weird.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  wspace.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  xyzpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib\gk_arch.h(69): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include\parmetis.h(17,10): fatal error C1083: Cannot open include file: 'mpi.h': No such file or directory
+  Generating Code...

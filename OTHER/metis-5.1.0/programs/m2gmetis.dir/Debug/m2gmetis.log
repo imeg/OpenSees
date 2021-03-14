@@ -1,0 +1,30 @@
+﻿  Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/programs/CMakeLists.txt
+  m2gmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(31,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(34,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(46,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(72,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(83,5): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(85,5): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(125,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\m2gmetis.c(129,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+  cmdline_m2gmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_m2gmetis.c(105,39): warning C4047: 'function': 'int *(__cdecl *)()' differs in levels of indirection from 'int'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_m2gmetis.c(105,35): warning C4024: 'gk_getopt_long_only': different types for formal and actual parameter 1
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_m2gmetis.c(105,45): warning C4047: 'function': 'char ***(__cdecl *)()' differs in levels of indirection from 'char **'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_m2gmetis.c(105,41): warning C4024: 'gk_getopt_long_only': different types for formal and actual parameter 2
+  io.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(214,16): warning C4018: '>': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(288,54): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(381,38): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(389,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  Generating Code...

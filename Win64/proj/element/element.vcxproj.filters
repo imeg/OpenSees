@@ -911,8 +911,8 @@
     <ClCompile Include="..\..\..\SRC\element\fourNodeQuad\SixNodeTri.cpp">
       <Filter>triangle</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\SRC\element\RockingBC\RockingBC.cpp">
-      <Filter>RockingBC</Filter>
+    <ClCompile Include="..\..\..\SRC\element\RockingBC\RockingBC.h">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1623,9 +1623,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\SRC\element\fourNodeQuad\SixNodeTri.h">
       <Filter>triangle</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\SRC\element\RockingBC\RockingBC.h">
-      <Filter>RockingBC</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

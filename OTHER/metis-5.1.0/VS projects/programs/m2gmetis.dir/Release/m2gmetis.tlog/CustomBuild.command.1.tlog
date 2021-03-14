@@ -1,0 +1,10 @@
+^F:\OMRANELMAFZAR\OPENSEES\OTHER\METIS-5.1.0\PROGRAMS\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0 "-BF:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

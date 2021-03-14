@@ -183,7 +183,7 @@ extern void *OPS_RJWatsonEQS2d(void);
 extern void *OPS_RJWatsonEQS3d(void);
 //extern void* OPS_GradientInelasticBeamColumn2d();
 //extern void* OPS_GradientInelasticBeamColumn3d();
-extern void *OPS_RockingBC(void);
+//extern void *OPS_RockingBC(void);
 
 extern void* OPS_LehighJoint2d(void);
 
@@ -1390,7 +1390,7 @@ TclModelBuilderElementCommand(ClientData clientData, Tcl_Interp *interp,
   }
   }
   
-  else if ((strcmp(argv[1],"RockingBC") == 0)) {
+  /*else if ((strcmp(argv[1],"RockingBC") == 0)) {
     void *theEle = OPS_RockingBC();
     if (theEle != 0) 
       theElement = (Element *)theEle;
@@ -1398,7 +1398,7 @@ TclModelBuilderElementCommand(ClientData clientData, Tcl_Interp *interp,
       opserr << "TclElementCommand -- unable to create element of type : " << argv[1] << endln;
       return TCL_ERROR;
     }
-  }
+  }*/
 
   // if one of the above worked
   if (theElement != 0) {

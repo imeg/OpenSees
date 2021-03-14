@@ -1,0 +1,512 @@
+﻿  Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/libmetis/CMakeLists.txt
+  b64.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  blas.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(25,1): warning C4267: '=': conversion from 'size_t' to 'char', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(25,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(26,1): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(26,1): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(27,1): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(27,1): warning C4244: 'initializing': conversion from 'double' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(28,1): warning C4244: 'initializing': conversion from 'double' to 'int64_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(29,1): warning C4244: 'initializing': conversion from 'double' to 'ssize_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\blas.c(32,1): warning C4244: 'initializing': conversion from 'double' to 'gk_idx_t', possible loss of data
+  csr.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(470,21): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(487,41): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(512,18): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(562,25): warning C4267: '=': conversion from 'size_t' to 'int32_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(794,55): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(811,46): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(837,55): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(854,47): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(945,44): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(953,44): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(988,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(995,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1187,39): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1277,34): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1294,30): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1302,36): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1343,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1345,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1370,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1372,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1408,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1410,72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1413,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1423,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1425,72): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1428,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1440,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1453,74): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1466,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1466,30): warning C4305: 'function': truncation from 'double' to 'float'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1466,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1479,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1479,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1492,30): warning C4244: 'function': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1492,30): warning C4305: 'function': truncation from 'double' to 'float'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1492,73): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1505,87): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1534,71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1566,65): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1571,91): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1707,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1708,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1718,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1719,48): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1763,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1765,68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1796,66): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1828,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\csr.c(1990,12): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+  error.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  evaluate.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\evaluate.c(34,42): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\evaluate.c(73,53): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\evaluate.c(101,18): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\evaluate.c(115,23): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\evaluate.c(131,30): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  fkvkselect.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\fkvkselect.c(27,13): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\fkvkselect.c(29,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\fkvkselect.c(91,13): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\fkvkselect.c(93,20): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  fs.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  getopt.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(769,19): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(769,32): warning C4028: formal parameter 2 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(833,25): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(833,38): warning C4028: formal parameter 2 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(849,29): warning C4028: formal parameter 1 different from declaration
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\getopt.c(849,42): warning C4028: formal parameter 2 different from declaration
+  gkregex.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(2287,26): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(3166,19): warning C4018: '<=': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(3334,54): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(3434,7): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(3435,10): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(4102,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(4986,33): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(5089,74): warning C4312: 'type cast': conversion from 'long' to 'void *' of greater size
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(6301,31): warning C4311: 'type cast': pointer truncation from 'void *' to 'long'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(6607,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(6822,30): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(6888,11): warning C4018: '>': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(6913,13): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7012,77): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7042,76): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7796,70): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7813,51): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7826,49): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gkregex.c(7840,49): warning C4267: 'function': conversion from 'size_t' to 'int', possible loss of data
+  htable.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(64,66): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(143,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(150,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(173,39): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(185,37): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(210,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\htable.c(220,35): warning C4244: 'return': conversion from 'ssize_t' to 'int', possible loss of data
+  io.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  itemsets.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\itemsets.c(107,43): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\itemsets.c(110,52): warning C4244: 'function': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\itemsets.c(149,74): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\itemsets.c(169,29): warning C4244: '=': conversion from 'ssize_t' to 'int', possible loss of data
+  mcore.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\mcore.c(208,29): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\mcore.c(349,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\mcore.c(377,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  memory.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(25,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(26,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(27,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(28,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(29,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(30,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(31,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(32,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(34,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(35,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(36,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(37,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(38,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(39,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(40,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(41,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(42,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(63,14): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\memory.c(87,14): warning C4018: '<': signed/unsigned mismatch
+  omp.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  pdb.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  pqueue.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(19,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(20,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(21,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(22,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(23,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\pqueue.c(24,1): warning C4018: '<': signed/unsigned mismatch
+  random.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  rw.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\rw.c(96,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  seq.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\seq.c(56,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\seq.c(68,30): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\seq.c(107,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\seq.c(131,23): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\seq.c(150,17): warning C4244: '=': conversion from 'gk_idx_t' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  sort.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  string.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(46,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(47,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(49,15): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(162,18): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(165,21): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(181,21): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(262,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(299,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(378,27): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(435,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\string.c(436,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  timers.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  tokenizer.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\tokenizer.c(28,22): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  auxapi.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  balance.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(23,56): warning C4244: 'function': conversion from 'real_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(68,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(70,38): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(94,62): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(136,44): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(143,44): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(196,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(198,38): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(218,38): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(256,40): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(315,46): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(377,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\balance.c(441,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+  bucketsort.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  checkgraph.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  coarsen.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(38,59): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(101,59): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(305,38): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(460,52): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(470,52): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(544,57): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(555,16): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(563,21): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(782,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(913,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\coarsen.c(1077,76): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  compress.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  contig.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\contig.c(455,41): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+  debug.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  fm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(56,41): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(59,48): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(68,37): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(76,38): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(88,81): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(102,54): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(103,55): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(105,42): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(143,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(150,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(243,46): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(248,33): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(293,26): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(366,34): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\fm.c(378,34): warning C4244: '=': conversion from 'idx_t' to 'real_t', possible loss of data
+  fortran.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  frename.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  gklib.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(18,1): warning C4244: 'initializing': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(24,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(25,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(26,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(27,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(33,1): warning C4018: '<': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\gklib.c(34,1): warning C4018: '<': signed/unsigned mismatch
+  initpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\initpart.c(136,62): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\initpart.c(213,61): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\initpart.c(214,67): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\initpart.c(453,54): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\initpart.c(454,60): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+  kmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kmetis.c(57,21): warning C4244: 'function': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kmetis.c(187,68): warning C4244: 'function': conversion from 'idx_t' to 'double', possible loss of data
+  kwayfm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(102,49): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(103,68): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(104,74): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(181,69): warning C4244: 'function': conversion from 'idx_t' to 'double', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(182,38): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(322,1): warning C4244: 'function': conversion from 'idx_t' to 'double', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(322,1): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(409,49): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(410,68): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(411,74): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(748,78): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(750,68): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(823,69): warning C4244: 'function': conversion from 'idx_t' to 'double', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(824,38): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(978,1): warning C4244: 'function': conversion from 'idx_t' to 'double', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(978,1): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(1087,78): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayfm.c(1089,68): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+  kwayrefine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayrefine.c(54,55): warning C4305: 'function': truncation from 'double' to 'real_t'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\kwayrefine.c(69,41): warning C4305: 'function': truncation from 'double' to 'real_t'
+  Generating Code...
+  Compiling...
+  mcutil.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  mesh.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  meshpart.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\meshpart.c(40,59): warning C4244: '=': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\meshpart.c(41,70): warning C4244: '=': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\meshpart.c(110,59): warning C4244: '=': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\meshpart.c(111,70): warning C4244: '=': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\meshpart.c(200,37): warning C4244: '=': conversion from 'real_t' to 'idx_t', possible loss of data
+  minconn.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\minconn.c(256,82): warning C4244: '=': conversion from 'double' to 'idx_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\minconn.c(203,1): warning C4305: 'initializing': truncation from 'double' to 'real_t'
+  mincover.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\mincover.c(189,38): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\mincover.c(189,73): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+  mmd.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  ometis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\ometis.c(109,42): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\ometis.c(367,52): warning C4244: 'function': conversion from 'double' to 'idx_t', possible loss of data
+  options.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\options.c(69,72): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\options.c(100,46): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\options.c(112,68): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\options.c(116,36): warning C4305: '+=': truncation from 'double' to 'real_t'
+  parmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(296,60): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(311,36): warning C4244: 'function': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(336,88): warning C4244: 'function': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(384,53): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(390,55): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(521,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(522,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(526,85): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(540,36): warning C4244: 'function': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(583,90): warning C4244: 'function': conversion from 'idx_t' to 'int', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(612,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(632,58): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\parmetis.c(638,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+  pmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\pmetis.c(179,39): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\pmetis.c(201,33): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\pmetis.c(202,46): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+  refine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  separator.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  sfm.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(55,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(75,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(76,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(88,37): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(129,91): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(159,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(179,58): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(185,61): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(294,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(316,59): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(329,37): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(346,91): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(394,70): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(399,54): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(497,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(502,29): warning C4244: 'function': conversion from 'idx_t' to 'long', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(523,57): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(592,51): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\sfm.c(597,52): warning C4244: 'function': conversion from 'idx_t' to 'real_t', possible loss of data
+  srefine.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  stat.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\stat.c(140,70): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\stat.c(148,90): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\stat.c(171,85): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  timing.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+  wspace.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(67): message : see previous definition of 'INFINITY'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(532,44): error C2059: syntax error: '('
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\wspace.c(177,26): warning C4018: '>=': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\libmetis\wspace.c(205,26): warning C4018: '>=': signed/unsigned mismatch
+  Generating Code...

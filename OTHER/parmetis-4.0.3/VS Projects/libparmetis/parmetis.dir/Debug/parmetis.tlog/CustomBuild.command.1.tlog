@@ -1,0 +1,10 @@
+^F:\OMRANELMAFZAR\OPENSEES\OTHER\PARMETIS-4.0.3\LIBPARMETIS\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3 "-BF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libparmetis/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

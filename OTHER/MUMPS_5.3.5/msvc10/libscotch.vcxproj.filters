@@ -1,0 +1,824 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{RN6TUU2A-YFJ5-PTKP-WURH-AIA1XR30}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx</Extensions>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{3H8CCCXK-PGWN-XITX-VFHH-VUAKZP4R}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx</Extensions>
+    </Filter>
+    <Filter Include="last_resort">
+      <UniqueIdentifier>{00fea53a-f17c-4664-a82f-b3b488489403}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_build.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmplt.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmpltw.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_deco.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_hcub.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_mesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_tleaf.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_torus.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vcmplt.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vhcub.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_bd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_df.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ex.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_fm.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gg.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ml.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_zr.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_store.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file_compress.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file_uncompress.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_integer.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_memory.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_stub.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_compress.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_uncompress.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_integer.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_memory.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_stub.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_string.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\dummysizes.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\gain.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\geom.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_base.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_coarsen.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_induce.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_chac.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_habo.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_mmkt.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_scot.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_list.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hf.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hx.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_induce.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_bl.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_cp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_gp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hf.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hx.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_nd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_si.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_hgraph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_induce.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_mesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_bl.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_cp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gr.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hf.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hx.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_nd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_si.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_map.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_part.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_build.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_build_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_geom.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_geom_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_base.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_base_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_check_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_chac.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_chac_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_habo.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_habo_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_mmkt.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_mmkt_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_scot.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_scot_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_order.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_order_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_graph_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_habo.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_habo_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_scot.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_scot_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_order.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_order_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_parser.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_parser_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_random.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_random_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping_io.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_coarsen.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_induce_sepa.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io_habo.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io_scot.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order_io.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_bd.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_es.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_fm.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gg.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gp.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_ml.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_th.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_vw.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_zr.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_store.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_check.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_fm.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gg.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gr.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_ml.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_st.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_zr.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_store.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_ll.c">
+      <Filter>last_resort</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_yy.c">
+      <Filter>last_resort</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_build.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmplt.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmpltw.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_deco.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_hcub.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_mesh.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_tleaf.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_torus.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vcmplt.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vhcub.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_bd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_df.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ex.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_fm.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gg.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ml.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_zr.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_compress.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\gain.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\geom.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_coarsen.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_induce.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_habo.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_mmkt.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_scot.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_list.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hf.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hx.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_induce.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_bl.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_cp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_gp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hf.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hx.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_nd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_si.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_hgraph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_induce.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_bl.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_cp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gr.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hf.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hx.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_nd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_si.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_map.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_part.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mapping.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_order.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\libraryf.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping_io.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_coarsen.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_graph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_induce_sepa.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\module.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser_ll.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser_yy.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_bd.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_es.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_fm.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gg.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gp.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_ml.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_th.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_vw.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_zr.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_fm.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gg.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gr.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_ml.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_st.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_zr.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_ly.h">
+      <Filter>last_resort</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

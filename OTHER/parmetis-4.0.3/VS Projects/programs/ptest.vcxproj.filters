@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\programs\ptest.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\programs\io.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\programs\adaptgraph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\programs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4671BED0-BA62-3354-98E6-D16D218139CA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

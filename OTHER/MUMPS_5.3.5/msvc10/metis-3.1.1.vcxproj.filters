@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\balance.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\bucketsort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\ccgraph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\checkgraph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\coarsen.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\compress.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\debug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\estmem.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\fm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\fortran.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\frename.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\graph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\initpart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kvmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kwayfm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kwayrefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kwayvolfm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\kwayvolrefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\match.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mbalance.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mbalance2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mcoarsen.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mesh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\meshpart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mfm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mfm2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mincover.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\minitpart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\minitpart2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mkmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mkwayfmh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mkwayrefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mmatch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mmd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mpmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mrefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mrefine2.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\mutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\myqsort.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\ometis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\parmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\pmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\pqueue.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\refine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\separator.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\sfm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\srefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\stat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\stats.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\subdomains.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\timing.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\macros.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\metis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\proto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\rename.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\stdheaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="$(FFTTOP)\external\parmetis-3.1.1\METISLib\struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

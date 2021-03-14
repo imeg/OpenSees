@@ -454,7 +454,6 @@
     <ClCompile Include="..\..\..\SRC\element\HUelements\MultipleNormalSpring.cpp" />
     <ClCompile Include="..\..\..\SRC\element\HUelements\MultipleShearSpring.cpp" />
     <ClCompile Include="..\..\..\SRC\element\HUelements\YamamotoBiaxialHDR.cpp" />
-    <ClCompile Include="..\..\..\SRC\element\RockingBC\RockingBC.cpp" />
     <ClCompile Include="..\..\..\SRC\element\NewElement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -693,7 +692,6 @@
     <ClInclude Include="..\..\..\SRC\element\HUelements\MultipleNormalSpring.h" />
     <ClInclude Include="..\..\..\SRC\element\HUelements\MultipleShearSpring.h" />
     <ClInclude Include="..\..\..\SRC\element\HUelements\YamamotoBiaxialHDR.h" />
-    <ClCompile Include="..\..\..\SRC\element\RockingBC\RockingBC.h" />
     <ClInclude Include="..\..\..\SRC\element\NewElement.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

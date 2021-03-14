@@ -1,0 +1,7 @@
+CMAKE_C_COMPILER
+C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Tools/MSVC/14.28.29333/bin/Hostx64/x64/cl.exe
+C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe
+
+CMAKE_Fortran_COMPILER
+C:/Program Files (x86)/IntelSWTools/compilers_and_libraries_2020/windows/bin/intel64/ifort.exe
+C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gfortran.exe

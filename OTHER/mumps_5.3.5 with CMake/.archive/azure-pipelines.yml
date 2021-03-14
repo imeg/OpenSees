@@ -1,0 +1,137 @@
+variables:
+  cmake_version: 3.15.1
+
+jobs:
+- job: Ubuntu_CMake
+  pool:
+    vmImage: ubuntu-latest
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      addToPath: true
+  - script: |
+      sudo apt update -q > /dev/null
+      sudo apt install -yq --no-install-recommends gfortran liblapack-dev libblacs-mpi-dev libscalapack-mpi-dev libopenmpi-dev
+    displayName: 'Install Linux prereqs'
+  - script: |
+      python -m pip install cmakeutils
+      cmake_setup $(cmake_version) --prefix $(HOME)/.local
+      echo '##vso[task.setvariable variable=CMAKE_PATH]$(HOME)/.local/cmake-$(cmake_version)-Linux-x86_64/bin'
+    displayName: 'install modern CMake'
+  - script: $(CMAKE_PATH)/cmake -B build
+    env:
+      FC: gfortran
+    displayName: 'CMake Configure'
+  - script: $(CMAKE_PATH)/cmake --build build --parallel
+    displayName: 'CMake build'
+  - script: $(CMAKE_PATH)/ctest --parallel -V
+    workingDirectory: build
+    displayName: CTest
+  - publish: build/CMakeFiles/CMakeError.log
+    condition: failed()
+    artifact: LinuxCMakeTestLog
+
+- job: Ubuntu_Meson
+  pool:
+    vmImage: ubuntu-latest
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      addToPath: true
+  - script: |
+      sudo apt update -q
+      sudo apt install -yq --no-install-recommends gfortran liblapack-dev libblacs-mpi-dev libscalapack-mpi-dev libopenmpi-dev openmpi-bin
+    displayName: 'Install Linux prereqs'
+  - script: |
+      python -m pip install meson
+      curl -Ls https://github.com/ninja-build/ninja/releases/download/v1.9.0/ninja-linux.zip -o ninja-linux.zip
+      sudo unzip ninja-linux.zip -d /usr/local/bin/
+    displayName: 'install Meson'
+  - script: meson setup build
+    env:
+      FC: gfortran
+    displayName: 'Meson Configure and Generate'
+  - script: meson test -C build
+    displayName: 'Meson build and test'
+  - publish: build/meson-logs/testlog.txt
+    condition: failed()
+    artifact: TestLog_Ubuntu_Meson
+
+- job: subproject_scalapack_lapack_blas
+  pool:
+    vmImage: ubuntu-latest
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      addToPath: true
+  - script: |
+      sudo apt update -q
+      sudo apt install -yq --no-install-recommends gfortran libopenmpi-dev openmpi-bin
+    displayName: 'Install Linux prereqs'
+  - script: |
+      python -m pip install meson
+      curl -Ls https://github.com/ninja-build/ninja/releases/download/v1.9.0/ninja-linux.zip -o ninja-linux.zip
+      sudo unzip ninja-linux.zip -d /usr/local/bin/
+    displayName: 'install Meson'
+  - script: meson setup build
+    env:
+      FC: gfortran
+    displayName: 'Meson Configure and Generate'
+  - script: meson test -C build
+    displayName: 'Meson build and test'
+  - publish: build/meson-logs/testlog.txt
+    condition: failed()
+    artifact: TestLog_subproject_scalapack_lapack_blas
+
+- job: MacOS_CMake
+  pool:
+    vmImage: macOS-latest
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      addToPath: true
+  - script: brew install gcc lapack cmake open-mpi scalapack
+    displayName: 'Install Prereqs'
+  - script: cmake -B build
+    env:
+      FC: gfortran
+    displayName: 'CMake configure and generate'
+  - script: cmake --build build --parallel
+    displayName: 'CMake build'
+  - script: ctest --parallel -V
+    workingDirectory: build
+    displayName: CTest
+  - publish: build/CMakeFiles/CMakeError.log
+    condition: failed()
+    artifact: MacCMakeTestLog
+
+- job: MacOS_Meson
+  pool:
+    vmImage: macOS-latest
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.6'
+      addToPath: true
+  - script: |
+      brew install gcc ninja open-mpi
+      python -m pip install meson
+    displayName: 'Install Prereqs'
+  - script: meson setup build
+    env:
+      FC: gfortran
+    displayName: 'Meson Configure and Generate'
+  - script: meson test -C build
+    displayName: 'Meson build and test'
+  - publish: build/meson-logs/testlog.txt
+    condition: failed()
+    artifact: TestLog_Mac_Meson

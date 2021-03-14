@@ -1,0 +1,9 @@
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/CMakeFiles/ALL_BUILD.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/CMakeFiles/ZERO_CHECK.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/libmetis/CMakeFiles/metis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/gpmetis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/ndmetis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/mpmetis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/m2gmetis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/graphchk.dir
+F:/OmranElmAfzar/OpenSees/OTHER/metis-5.1.0/VS projects/programs/CMakeFiles/cmpfillin.dir

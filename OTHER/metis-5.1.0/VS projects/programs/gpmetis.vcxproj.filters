@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\gpmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_gpmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\stat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C88646EA-7684-331A-B346-CD80F373B533}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

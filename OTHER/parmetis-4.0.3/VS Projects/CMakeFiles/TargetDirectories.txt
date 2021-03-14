@@ -1,0 +1,13 @@
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/CMakeFiles/INSTALL.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/CMakeFiles/ALL_BUILD.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/CMakeFiles/ZERO_CHECK.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/metis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/INSTALL.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/include/CMakeFiles/INSTALL.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libparmetis/CMakeFiles/parmetis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libparmetis/CMakeFiles/INSTALL.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/programs/CMakeFiles/parmetis_prog.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/programs/CMakeFiles/ptest.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/programs/CMakeFiles/mtest.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/programs/CMakeFiles/pometis.dir
+F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/programs/CMakeFiles/INSTALL.dir

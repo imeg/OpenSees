@@ -1,0 +1,36 @@
+﻿  mpmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(33,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(42,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(65,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(81,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(93,7): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(95,7): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(172,3): warning C4244: '-=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\mpmetis.c(179,3): warning C4244: '+=': conversion from 'double' to 'real_t', possible loss of data
+  cmdline_mpmetis.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(239,39): warning C4047: 'function': 'int *(__cdecl *)()' differs in levels of indirection from 'int'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(239,35): warning C4024: 'gk_getopt_long_only': different types for formal and actual parameter 1
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(239,45): warning C4047: 'function': 'char ***(__cdecl *)()' differs in levels of indirection from 'char **'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(239,41): warning C4024: 'gk_getopt_long_only': different types for formal and actual parameter 2
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(196,13): warning C4101: 'k': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\cmdline_mpmetis.c(196,10): warning C4101: 'j': unreferenced local variable
+  io.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(24,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(214,16): warning C4018: '>': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(180,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(288,54): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(381,38): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(389,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  stat.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\stat.c(55,70): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\stat.c(57,66): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  Generating Code...
+  mpmetis.vcxproj -> F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\VS projects\programs\Release\mpmetis.exe

@@ -460,7 +460,7 @@ Node::Node(const Node &otherNode, bool copyMass)
   if (otherNode.kineticEnergy != 0)
   kineticEnergy = otherNode.kineticEnergy;
   dampEnergy = otherNode.dampEnergy;
-  motionEnergy = otherNode.dampEnergy;
+  motionEnergy = otherNode.motionEnergy;
   lastCommitAccel = otherNode.lastCommitAccel;
   lastCommitVel = otherNode.lastCommitVel;
   lastCommitDisp = otherNode.lastCommitDisp;

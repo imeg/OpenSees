@@ -292,7 +292,7 @@
 #include "frictionBearing/TripleFrictionPendulum.h"
 
 #include "PFEMElement/PFEMElement2D.h"
-#include "RockingBC/RockingBC.h"
+//#include "RockingBC/RockingBC.h"
 
 #include "LinearCrdTransf2d.h"
 #include "LinearCrdTransf3d.h"
@@ -858,8 +858,8 @@ FEM_ObjectBrokerAllClasses::getNewElement(int classTag)
     case ELE_TAG_PFEMElement2D:
       return new PFEMElement2D();
 
-    case ELE_TAG_RockingBC:
-      return new RockingBC();
+    /*case ELE_TAG_RockingBC:
+      return new RockingBC();*/
 
     default:
       opserr << "FEM_ObjectBrokerAllClasses::getNewElement - ";

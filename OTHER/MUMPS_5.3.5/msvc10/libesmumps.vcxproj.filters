@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{R9RM3DWN-KSWT-75SF-XNGY-2KM8EW02}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx</Extensions>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{AACVMMXN-ENF4-3SHJ-ALFB-5Z1FQG0C}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\dof.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\esmumps.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\esmumps_f.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\esmumps_strats.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\graph_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\main_esmumps.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\order.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\order_scotch_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\symbol.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\symbol_fax.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\scotch_6.1.0\src\esmumps\symbol_fax_graph.c">
+      <Filter>sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\dof.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\esmumps.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\fax.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\graph.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\module.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\order.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\symbol.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\scotch_6.1.0\src\esmumps\symbol_fax.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

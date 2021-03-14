@@ -13,7 +13,7 @@
 ############################################################################
 
 
-include Makefile.def
+include makes/Makefile.def
 
 
 ############################################################################
@@ -39,19 +39,16 @@ include Makefile.def
 #  To just build the interpreter type
 #	make OpenSees
 ############################################################################
-
+$(info $(SHELL))
 all: 
 ifdef MKDIR
 	$(MKDIR) $(HOME)/bin
 	$(MKDIR) $(HOME)/lib
 endif
-	@( \
-	for f in $(DIRS); \
-	do \
-		$(CD) $$f; \
-		$(MAKE); \
-		$(CD) ..; \
-	done );
+	echo hello1
+	$(CD) $(BLASdir) && \
+	$(MAKE) && \
+	$(CD) .. && \
 	@$(ECHO) LIBRARIES BUILT ... NOW LINKING OpenSees PROGRAM;
 	@$(CD) $(FE)/tcl; $(MAKE) tcl;
 	@$(CD) $(FE)/modelbuilder/tcl;  $(MAKE) tcl;

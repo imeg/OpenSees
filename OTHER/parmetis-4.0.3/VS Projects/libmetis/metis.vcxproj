@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DD2089C3-C859-39DC-BD08-089EBD0EDBF6}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>metis</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metis.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">metis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metis.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">metis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">metis.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">metis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">metis.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">metis</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>
+      </ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;MSC;_CRT_SECURE_NO_DEPRECATE;USE_GKREGEX;NDEBUG;NDEBUG2;__thread=__declspec(thread);CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\GKlib;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\METIS\include;F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\CMakeLists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/metis/libmetis/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3 "-BF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/metis/libmetis/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3 "-BF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/metis/libmetis/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3 "-BF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/metis/libmetis/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3 "-BF:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects" --check-stamp-file "F:/OmranElmAfzar/OpenSees/OTHER/parmetis-4.0.3/VS Projects/libmetis/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\libmetis\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\b64.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\blas.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\csr.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\error.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\evaluate.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fkvkselect.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\fs.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\getopt.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\gkregex.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\graph.c">
+      <ObjectFileName>$(IntDir)/__/GKlib/graph.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\htable.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\io.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\itemsets.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\mcore.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\memory.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\omp.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pdb.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\pqueue.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\random.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\rw.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\seq.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\sort.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\string.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\timers.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\tokenizer.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\GKlib\util.c">
+      <ObjectFileName>$(IntDir)/__/GKlib/util.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\auxapi.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\balance.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\bucketsort.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\checkgraph.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\coarsen.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\compress.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\contig.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\debug.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fm.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\fortran.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\frename.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\gklib.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\graph.c">
+      <ObjectFileName>$(IntDir)/graph.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\initpart.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kmetis.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayfm.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\kwayrefine.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\mcutil.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\mesh.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\meshpart.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\minconn.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\mincover.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\mmd.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\ometis.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\options.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\parmetis.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\pmetis.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\refine.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\separator.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\sfm.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\srefine.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\stat.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\timing.c" />
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\util.c">
+      <ObjectFileName>$(IntDir)/util.c.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\metis\libmetis\wspace.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\VS Projects\ZERO_CHECK.vcxproj">
+      <Project>{2D5D6FC9-2959-3D66-904A-770BA87062F5}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

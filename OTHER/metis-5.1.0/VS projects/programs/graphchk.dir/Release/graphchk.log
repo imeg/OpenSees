@@ -1,0 +1,16 @@
+﻿  graphchk.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\graphchk.c(26,9): warning C4101: 'wgtflag': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\graphchk.c(25,8): warning C4101: 'filename': unreferenced local variable
+  io.c
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\corecrt_math.h(90,1): warning C4005: 'INFINITY': macro redefinition
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\GKlib\gk_arch.h(68): message : see previous definition of 'INFINITY'
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(24,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(214,16): warning C4018: '>': signed/unsigned mismatch
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(180,12): warning C4101: 'j': unreferenced local variable
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(288,54): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(381,38): warning C4244: 'function': conversion from 'double' to 'real_t', possible loss of data
+F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\programs\io.c(389,32): warning C4244: '=': conversion from 'double' to 'real_t', possible loss of data
+  Generating Code...
+  graphchk.vcxproj -> F:\OmranElmAfzar\OpenSees\OTHER\metis-5.1.0\VS projects\programs\Release\graphchk.exe

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\akwayfm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\ametis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\balancemylink.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\comm.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\csrmatch.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\ctrl.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\debug.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\diffutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\frename.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\gkmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\gkmpi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\graph.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\initbalance.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\initmsection.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\initpart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\kmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\kwayrefine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\match.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\mdiffusion.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\mesh.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\mmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\move.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\msetup.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\node_refine.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\ometis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\pspases.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\redomylink.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\remap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\renumber.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\rmetis.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\selectq.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\serial.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\stat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\timer.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\util.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\wave.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\weird.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\wspace.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\xyzpart.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\OmranElmAfzar\OpenSees\OTHER\parmetis-4.0.3\libparmetis\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4671BED0-BA62-3354-98E6-D16D218139CA}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

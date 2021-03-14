@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|Win32">
+      <Configuration>Profile</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Profile|x64">
+      <Configuration>Profile</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C7974AC9-C0C0-43FA-A2A5-CE8EDB889C17}</ProjectGuid>
+    <RootNamespace>dmumps_c_rootnamespace</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(FFTTOP)\bin\scotch-esmumps-5.1.12b\$(Configuration)/$(Platform)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">$(DOTOP)/$(ProjectName)/$(Configuration)/$(Platform)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;_DEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;NDEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <DisableLanguageExtensions>false</DisableLanguageExtensions>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
+    <PreBuildEvent>
+      <Command>"$(DOTOP)\dummysizes\$(Configuration)\$(Platform)\dummysizes.exe" $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h $(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h</Command>
+      <Command>"$(FFTTOP)\external\mumps-4.9.x\WinMumps-4.9\msvc10\windows_scotch_prebuild_event.bat"</Command>
+    </PreBuildEvent>
+    <Midl>
+      <TargetEnvironment>X64</TargetEnvironment>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch;$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\scotch;$(FFTTOP)\bin\zlib-1.2.5\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN64;NDEBUG;_LIB;UPPER;NOMINMAX;restrict=;SCOTCH_VERSION=5.1;COMMON_FILE_COMPRESS_GZ;COMMON_RANDOM_FIXED_SEED;SCOTCH_RENAME;COMMON_RANDOM_RAND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level2</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsC</CompileAs>
+    </ClCompile>
+    <PreLinkEvent>
+      <Command>time /t</Command>
+    </PreLinkEvent>
+    <PostBuildEvent>
+      <Command>time /t</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_build.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmplt.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmpltw.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_deco.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_hcub.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_mesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_tleaf.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_torus.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vcmplt.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vhcub.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_bd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_df.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ex.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_fm.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gg.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ml.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_zr.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_store.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file_compress.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_file_uncompress.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_integer.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_memory.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common2_stub.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_compress.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_uncompress.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_integer.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_memory.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_stub.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_string.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\dummysizes.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\gain.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\geom.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_base.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_coarsen.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_induce.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_chac.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_habo.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_mmkt.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_scot.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_list.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hf.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hx.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_induce.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_bl.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_cp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_gp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hf.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hx.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_nd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_si.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_hgraph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_induce.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_mesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_bl.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_cp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gr.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hf.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hx.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_nd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_si.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_map.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_part.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_build.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_build_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_arch_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_geom.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_geom_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_base.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_base_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_check_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_chac.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_chac_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_habo.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_habo_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_mmkt.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_mmkt_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_scot.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_io_scot_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_order.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_order_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_graph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_graph_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_habo.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_habo_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_scot.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_io_scot_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_order.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mesh_order_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_parser.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_parser_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_random.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_random_f.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping_io.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_coarsen.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_graph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_induce_sepa.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io_habo.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io_scot.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order_io.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_bd.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_es.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_fm.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gg.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gp.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_ml.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_th.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_vw.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_zr.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_store.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_check.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_fm.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gg.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gr.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_ml.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_st.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_zr.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_store.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_ll.c" />
+    <ClCompile Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_yy.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_build.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmplt.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_cmpltw.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_deco.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_hcub.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_mesh.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_tleaf.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_torus.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vcmplt.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\arch_vhcub.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_bd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_df.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ex.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_fm.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gg.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_gp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_ml.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\bgraph_bipart_zr.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\common_file_compress.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\gain.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\geom.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_coarsen.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_induce.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_habo.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_mmkt.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_io_scot.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\graph_list.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hf.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hall_order_hx.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_induce.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_bl.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_cp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_gp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hf.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_hx.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_nd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_si.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hgraph_order_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_hgraph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_induce.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_bl.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_cp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_gr.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hf.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_hx.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_nd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_si.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\hmesh_order_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_map.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_rb_part.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\kgraph_map_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_graph_map_view.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_mapping.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\library_order.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\libraryf.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mapping_io.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_coarsen.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_graph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_induce_sepa.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\mesh_io.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\module.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\order.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser_ll.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\parser_yy.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\scotch.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_bd.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_es.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_fm.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gg.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_gp.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_ml.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_th.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_vw.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vgraph_separate_zr.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_fm.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gg.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_gr.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_ml.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_st.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\vmesh_separate_zr.h" />
+    <ClInclude Include="$(FFTTOP)\external\scotch-esmumps-5.1.12b\src\libscotch\last_resort\parser_ly.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="dummysizes.vcxproj">
+      <Project>{00000009-0000-0000-0000-000000000000}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
