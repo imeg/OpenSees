@@ -287,7 +287,7 @@ Matrix::resize(int rows, int cols) {
 
   int newSize = rows*cols;
 
-  if (newSize <= 0) {
+  if (newSize < 0) {
     opserr << "Matrix::resize) - rows " << rows << " or cols " << cols << " specified <= 0\n";
     return -1;
   }

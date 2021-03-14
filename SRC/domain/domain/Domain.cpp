@@ -85,7 +85,7 @@
 #include <EnvelopeElementRecorder.h>
 #include <ResidElementRecorder.h>
 #endif // _CSS
-
+#include <DomainModalProperties.h>
 //
 // global variables
 //
@@ -96,17 +96,18 @@ bool          ops_InitialStateAnalysis = false;
 int           ops_Creep = 0;
 
 Domain::Domain()
-	:theRecorders(0), numRecorders(0),
-	currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
-	hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
-	dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
-	eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0),
-	theElementGraph(0),
-	theRegions(0), numRegions(0), commitTag(0),
-	theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0),
-	theModalDampingFactors(0), inclModalMatrix(false),
-	lastChannel(0),
-	paramIndex(0), paramSize(0), numParameters(0)
+:theRecorders(0), numRecorders(0),
+ currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
+ hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
+ dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
+ eleGraphBuiltFlag(false),  nodeGraphBuiltFlag(false), theNodeGraph(0), 
+ theElementGraph(0), 
+ theRegions(0), numRegions(0), commitTag(0),
+ theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0), 
+ theModalProperties(0),
+ theModalDampingFactors(0), inclModalMatrix(false),
+ lastChannel(0),
+ paramIndex(0), paramSize(0), numParameters(0)
 {
 
 	// init the arrays for storing the domain components
@@ -150,17 +151,18 @@ Domain::Domain()
 
 
 Domain::Domain(int numNodes, int numElements, int numSPs, int numMPs,
-	int numLoadPatterns)
-	:theRecorders(0), numRecorders(0),
-	currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
-	hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
-	dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
-	eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0),
-	theElementGraph(0),
-	theRegions(0), numRegions(0), commitTag(0),
-	theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0),
-	theModalDampingFactors(0), inclModalMatrix(false),
-	lastChannel(0), paramIndex(0), paramSize(0), numParameters(0)
+	       int numLoadPatterns)
+:theRecorders(0), numRecorders(0),
+ currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
+ hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
+ dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
+ eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0), 
+ theElementGraph(0),
+ theRegions(0), numRegions(0), commitTag(0),
+ theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0), 
+ theModalProperties(0),
+ theModalDampingFactors(0), inclModalMatrix(false),
+ lastChannel(0), paramIndex(0), paramSize(0), numParameters(0)
 {
 	// init the arrays for storing the domain components
 	theElements = new MapOfTaggedObjects();
@@ -201,26 +203,27 @@ Domain::Domain(int numNodes, int numElements, int numSPs, int numMPs,
 }
 
 
-Domain::Domain(TaggedObjectStorage& theNodesStorage,
-	TaggedObjectStorage& theElementsStorage,
-	TaggedObjectStorage& theMPsStorage,
-	TaggedObjectStorage& theSPsStorage,
-	TaggedObjectStorage& theLoadPatternsStorage)
-	:theRecorders(0), numRecorders(0),
-	currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
-	hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
-	dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
-	eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0),
-	theElementGraph(0),
-	theElements(&theElementsStorage),
-	theNodes(&theNodesStorage),
-	theSPs(&theSPsStorage),
-	theMPs(&theMPsStorage),
-	theLoadPatterns(&theLoadPatternsStorage),
-	theRegions(0), numRegions(0), commitTag(0),
-	theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0),
-	theModalDampingFactors(0), inclModalMatrix(false),
-	lastChannel(0), paramIndex(0), paramSize(0), numParameters(0)
+Domain::Domain(TaggedObjectStorage &theNodesStorage,
+	       TaggedObjectStorage &theElementsStorage,
+	       TaggedObjectStorage &theMPsStorage,
+	       TaggedObjectStorage &theSPsStorage,
+	       TaggedObjectStorage &theLoadPatternsStorage)
+:theRecorders(0), numRecorders(0),
+ currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
+ hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
+ dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
+ eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0), 
+ theElementGraph(0), 
+ theElements(&theElementsStorage),
+ theNodes(&theNodesStorage),
+ theSPs(&theSPsStorage),
+ theMPs(&theMPsStorage), 
+ theLoadPatterns(&theLoadPatternsStorage),
+ theRegions(0), numRegions(0), commitTag(0),
+ theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0), 
+ theModalProperties(0),
+ theModalDampingFactors(0), inclModalMatrix(false),
+ lastChannel(0),paramIndex(0), paramSize(0), numParameters(0)
 {
 	// init the arrays for storing the domain components
 	thePCs = new MapOfTaggedObjects();
@@ -268,17 +271,18 @@ Domain::Domain(TaggedObjectStorage& theNodesStorage,
 
 
 
-Domain::Domain(TaggedObjectStorage& theStorage)
-	:theRecorders(0), numRecorders(0),
-	currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
-	hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
-	dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
-	eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0),
-	theElementGraph(0),
-	theRegions(0), numRegions(0), commitTag(0),
-	theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0),
-	theModalDampingFactors(0), inclModalMatrix(false),
-	lastChannel(0), paramIndex(0), paramSize(0), numParameters(0)
+Domain::Domain(TaggedObjectStorage &theStorage)
+:theRecorders(0), numRecorders(0),
+ currentTime(0.0), committedTime(0.0), dT(0.0), currentGeoTag(0),
+ hasDomainChangedFlag(false), theDbTag(0), lastGeoSendTag(-1),
+ dbEle(0), dbNod(0), dbSPs(0), dbPCs(0), dbMPs(0), dbLPs(0), dbParam(0),
+ eleGraphBuiltFlag(false), nodeGraphBuiltFlag(false), theNodeGraph(0), 
+ theElementGraph(0), 
+ theRegions(0), numRegions(0), commitTag(0),
+ theBounds(6), theEigenvalues(0), theEigenvalueSetTime(0), 
+ theModalProperties(0),
+ theModalDampingFactors(0), inclModalMatrix(false),
+ lastChannel(0),paramIndex(0), paramSize(0), numParameters(0)
 {
 	// init the arrays for storing the domain components
 	theStorage.clearAll(); // clear the storage just in case populated
@@ -383,8 +387,11 @@ Domain::~Domain()
 	if (theEigenvalues != 0)
 		delete theEigenvalues;
 
-	if (theLoadPatternIter != 0)
-		delete theLoadPatternIter;
+  if (theModalProperties != 0)
+    delete theModalProperties;
+
+  if (theLoadPatternIter != 0)
+      delete theLoadPatternIter;
 
 	if (theModalDampingFactors != 0)
 		delete theModalDampingFactors;
@@ -2255,6 +2262,33 @@ double
 Domain::getTimeEigenvaluesSet(void)
 {
 	return theEigenvalueSetTime;
+}
+
+void Domain::setModalProperties(const DomainModalProperties& dmp)
+{
+    if (theModalProperties) {
+        *theModalProperties = dmp;
+    }
+    else {
+        theModalProperties = new DomainModalProperties(dmp);
+    }
+}
+
+void Domain::unsetModalProperties(void)
+{
+    if (theModalProperties) {
+        delete theModalProperties;
+        theModalProperties = nullptr;
+    }
+}
+
+const DomainModalProperties& Domain::getModalProperties(void) const
+{
+    if (theModalProperties == 0) {
+        opserr << "Domain::getModalProperties - DomainModalProperties were never set\n";
+        exit(-1);
+    }
+    return *theModalProperties;
 }
 
 int

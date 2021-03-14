@@ -88,11 +88,6 @@ void* OPS_EPPGapMaterial()
 	return 0;
     }
 
-    // if(OPS_addUniaxialMaterial(theMaterial) == false) {
-    // 	opserr<<"WARNING: failed to add elastic material\n";
-    // 	delete theMaterial;
-    // 	return 0;
-    // }
     return theMaterial;
 }
 
@@ -113,32 +108,34 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 	    exit(-1);
 	  }
 	}
-	else
-	  maxElasticYieldStrain = fy/E + gap;
 
 #ifdef _CSS
 	//eliminate unnecessary warning message
 #else
 	if (fy*gap<0) {
-	  opserr << "EPPGapMaterial::EPPGapMaterial -- Alternate signs on fy and E encountered, continuing anyway\n";
+	    opserr << "EPPGapMaterial::EPPGapMaterial -- Alternate signs on fy and gap encountered, continuing anyway\n";
 	}
 #endif // _CSS
         
-        if ( (eta >= 1) || (eta <= -1) ) {
-          opserr << "EPPGapMaterial::EPPGapMaterial -- value of eta must be -1 <= eta <= 1, setting eta to 0\n";
-          eta = 0;
-        }
-        
-        if ( (damage < 0) || (damage > 1) ) {
-	  opserr << "%s -- damage switch must be 0 or 1\n";
-	}
+    if ( (eta >= 1) || (eta <= -1) ) {
+        opserr << "EPPGapMaterial::EPPGapMaterial -- value of eta must be -1 <= eta <= 1, setting eta to 0\n";
+        eta = 0;
+    }
+
+    maxElasticYieldStrain = fy / E + gap;
+    //use setTrialStrain method to get trial stress and tangent. Save as committed. Added by ambaker1
+    this->setTrialStrain(trialStrain);
+    commitStress = trialStress;
+    commitTangent = trialTangent;
 }
 
 EPPGapMaterial::EPPGapMaterial()
 :UniaxialMaterial(0,MAT_TAG_EPPGap),
  E(0.0), fy(0.0), gap(0.0), eta(0.0), minElasticYieldStrain(0.0), damage(0), parameterID(0), SHVs(0)
+    trialStrain(0.0), trialStress(0.0), trialTangent(0.0),
+    commitStrain(0.0), commitStress(0.0), commitTangent(0.0)
 #ifdef _CSS
-    , EnergyP(0), commitStress(0), trialStress(0), trialTangent(0)
+    , EnergyP(0)
 #endif
 {
 
@@ -205,10 +202,10 @@ EPPGapMaterial::getTangent(void)
 double 
 EPPGapMaterial::getInitialTangent(void)
 {
-  if ((fy >= 0.0 && gap > 0.0) || (fy < 0.0 && gap < 0.0)) 
-    return 0.0; 
-  else 
-    return E;
+    if ((fy >= 0.0 && gap > 0.0) || (fy < 0.0 && gap < 0.0))
+        return 0.0;
+    else 
+        return E;
 }
 
 int 
@@ -241,9 +238,9 @@ EPPGapMaterial::commitState(void)
 	EnergyP += 0.5*(commitStress + trialStress)*(trialStrain - commitStrain);
 
 	commitStrain = trialStrain;
-
-	
 	commitStress = trialStress;	//added by SAJalali
+    commitTangent = trialTangent;//added by ambaker1
+
 	return 0;
 }
 
@@ -252,8 +249,8 @@ int
 EPPGapMaterial::revertToLastCommit(void)
 {
     trialStrain = commitStrain;
-	
 	trialStress = commitStress;	//added by SAJalali
+    trialTangent = commitTangent; //added by ambaker1
 
     return 0;
 }
@@ -262,13 +259,15 @@ EPPGapMaterial::revertToLastCommit(void)
 int 
 EPPGapMaterial::revertToStart(void)
 {
-    commitStrain = 0.0;
     trialStrain = 0.0;
     maxElasticYieldStrain = fy/E+gap;
     minElasticYieldStrain = gap;
 
-	//added by SAJalali
-	commitStress = 0;
+    //use setTrialStrain method to get trial stress and tangent. Save as committed. Added by ambaker1
+    this->setTrialStrain(trialStrain);
+    commitStrain = trialStrain;
+    commitStress = trialStress;
+    commitTangent = trialTangent;
 
 // AddingSensitivity:BEGIN /////////////////////////////////
     if (SHVs != 0) 
@@ -284,9 +283,14 @@ EPPGapMaterial::getCopy(void)
 {
     EPPGapMaterial *theCopy = new EPPGapMaterial(this->getTag(),E,fy,gap,eta,damage);
     theCopy->trialStrain = trialStrain;
+    theCopy->trialStress = trialStress;
+    theCopy->trialTangent = trialTangent;
+    theCopy->commitStrain = commitStrain;
+    theCopy->commitStress = commitStress;
+    theCopy->commitTangent = commitTangent;
     theCopy->maxElasticYieldStrain = maxElasticYieldStrain;
     theCopy->minElasticYieldStrain = minElasticYieldStrain;
-
+    theCopy->EnergyP = EnergyP;
     theCopy->parameterID = parameterID;
 
     return theCopy;
@@ -297,7 +301,7 @@ int
 EPPGapMaterial::sendSelf(int cTag, Channel &theChannel)
 {
   int res = 0;
-  static Vector data(11);	//editted by SAJalali for energy
+  static Vector data(12);	//editted by SAJalali for energy
   data(0) = this->getTag();
   data(1) = commitStrain;
   data(2) = E;
@@ -311,6 +315,8 @@ EPPGapMaterial::sendSelf(int cTag, Channel &theChannel)
   //SAJalali
   data(9) = commitStress;
   data(10) = EnergyP;
+  data(11) = commitTangent;
+
   res = theChannel.sendVector(this->getDbTag(), cTag, data);
   if (res < 0) 
     opserr << "EPPGapMaterial::sendSelf() - failed to send data\n";
@@ -323,13 +329,23 @@ EPPGapMaterial::recvSelf(int cTag, Channel &theChannel,
 				 FEM_ObjectBroker &theBroker)
 {
   int res = 0;
-  static Vector data(11);	//editted by SAJalali for energy
+  static Vector data(12);	//editted by SAJalali for energy
   res = theChannel.recvVector(this->getDbTag(), cTag, data);
   if (res < 0)
     opserr << "EPPGapMaterial::recvSelf() - failed to recv data\n";
   else {
     this->setTag((int)data(0));
-    commitStrain = data(1);
+    E = data(1);
+    fy = data(2);
+    gap = data(3);
+    eta = data(4);
+    maxElasticYieldStrain = data(5);
+    minElasticYieldStrain = data(6);
+    damage = (int)data(7);
+    commitStrain = data(8);
+    commitStress = data(9);
+    commitTangent = data(10);
+
     trialStrain = commitStrain;
     E = data(2);
     fy = data(3);
@@ -341,7 +357,10 @@ EPPGapMaterial::recvSelf(int cTag, Channel &theChannel,
 
 	//SAJalali
 	commitStress = data(9);
-	EnergyP = data(10);
+   EnergyP = data(10);
+   commitTangent = data(11);
+   trialStress = commitStress;
+   trialTangent = commitTangent;
   }
 
   return res;

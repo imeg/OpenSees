@@ -76,6 +76,7 @@ class Node : public DomainComponent
     // public methods for obtaining the nodal coordinates
     virtual const Vector &getCrds(void) const;
     virtual int getDisplayCrds(Vector &results, double fact, int displayMode=0);
+    virtual int getDisplayRots(Vector& results, double fact, int displayMode = 0);
     virtual int setDisplayCrds(const Vector &theCrds);
 
     // public methods for obtaining committed and trial 
@@ -132,7 +133,7 @@ class Node : public DomainComponent
     virtual int recvSelf(int commitTag, Channel &theChannel, 
 			 FEM_ObjectBroker &theBroker);
     virtual void Print(OPS_Stream &s, int flag = 0);
-    virtual int displaySelf(Renderer &theRenderer, int displayMode, float fact);
+    virtual int displaySelf(Renderer &theRenderer, int theEleMode, int theNodeMode, float fact);
 
     // AddingSensitivity:BEGIN /////////////////////////////////////////
     int addInertiaLoadSensitivityToUnbalance(const Vector &accel, 
