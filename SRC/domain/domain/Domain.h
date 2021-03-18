@@ -39,6 +39,7 @@
 
 #include <OPS_Stream.h>
 #include <Vector.h>
+class DomainModalProperties;
 
 class Element;
 class Node;

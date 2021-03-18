@@ -131,7 +131,7 @@ EPPGapMaterial::EPPGapMaterial(int tag, double e, double fyl, double gap0, doubl
 
 EPPGapMaterial::EPPGapMaterial()
 :UniaxialMaterial(0,MAT_TAG_EPPGap),
- E(0.0), fy(0.0), gap(0.0), eta(0.0), minElasticYieldStrain(0.0), damage(0), parameterID(0), SHVs(0)
+ E(0.0), fy(0.0), gap(0.0), eta(0.0), minElasticYieldStrain(0.0), damage(0), parameterID(0), SHVs(0),
     trialStrain(0.0), trialStress(0.0), trialTangent(0.0),
     commitStrain(0.0), commitStress(0.0), commitTangent(0.0)
 #ifdef _CSS

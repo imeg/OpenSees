@@ -260,7 +260,8 @@ LinearCrdTransf2d::computeElemtLengthAndOrient()
     
     if (L == 0.0) 
     {
-        opserr << "\nLinearCrdTransf2d::computeElemtLengthAndOrien: 0 length\n";
+        opserr << "\nLinearCrdTransf2d::computeElemtLengthAndOrien: 0 length for element connecting nodes "
+            << nodeIPtr->getTag() << "-" <<nodeJPtr->getTag() << "\n";
         return -2;  
     }
     
