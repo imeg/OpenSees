@@ -43,6 +43,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <MaterialResponse.h>
+#ifdef _CSS
+#include <math.h>
+#endif // _CSS
 
 #include <elementAPI.h>
 

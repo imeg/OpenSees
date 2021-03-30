@@ -1147,7 +1147,8 @@ ElasticBeam2d::recvSelf(int cTag, Channel &theChannel, FEM_ObjectBroker &theBrok
 			break;
 		}
 	}
-	res += theChannel.recvVector(this->getDbTag(), cTag, Vector(eleLoadFactors, numEleLoads));
+   Vector loadFacs(eleLoadFactors, numEleLoads);
+	res += theChannel.recvVector(this->getDbTag(), cTag, loadFacs);
 	if (res < 0) {
 		opserr << "ElasticBeam3d::recvSelf() - error reading elemental Load Data\n";
 		return res;

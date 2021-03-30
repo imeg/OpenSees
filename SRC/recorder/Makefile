@@ -23,7 +23,13 @@ OBJS       = Recorder.o \
 	RemoveRecorder.o \
 	DamageRecorder.o $(GRAPHIC_OBJECTS) \
 	PVDRecorder.o MPCORecorder.o GmshRecorder.o \
-	VTK_Recorder.o
+	VTK_Recorder.o \
+	ResidElementRecorder.o \
+	ResidNodeRecorder.o \
+	ResidDriftRecorder.o \
+	ConditionalElementRecorder.o \
+	ConditionalNodeRecorder.o \
+	ConditionalDriftRecorder.o
 
 
 # Compilation control

@@ -25,6 +25,8 @@
 //
 // University of Washington, UC. Los Angeles, U.C. Berkeley, 12, 2020
 
+#ifndef _CSS
+
 
 #include "PML2D.h"
 
@@ -539,3 +541,4 @@ PML2D::updateParameter(int parameterID, Information &info)
     return res;
 }
 
+#endif // !_CSS

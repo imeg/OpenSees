@@ -77,6 +77,7 @@ class FEM_ObjectBroker;
 
 class TaggedObjectStorage;
 
+#if _DLL
 typedef int(__stdcall* DomainEvent_AddNode) (Node* node);
 typedef int(__stdcall* DomainEvent_RemoveNode) (Node* node);
 typedef int(__stdcall* DomainEvent_AddElement) (Element* element);
@@ -90,6 +91,7 @@ typedef int(__stdcall* DomainEvent_RemoveLoadPattern) (LoadPattern* lp);
 typedef int(__stdcall* DomainEvent_AddRecorder) (Recorder* rec);
 typedef int(__stdcall* DomainEvent_RemoveRecorder) (Recorder* rec);
 typedef int(__stdcall* DomainEvent_ClearAll) ();
+#endif
 
 class Domain
 {

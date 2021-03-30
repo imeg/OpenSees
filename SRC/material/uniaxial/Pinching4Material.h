@@ -94,6 +94,14 @@ public :
 	int setParameter(const char** argv, int argc, Parameter& param);
 	int updateParameter(int parameterID, Information& info);
 
+#ifdef _CSS
+	//by SAJalali
+	double energy;
+	virtual double getEnergy(void) { return energy; } //by SAJalali
+	virtual double getInitYieldStrain() { return stress1p / strain1p; }
+	virtual void resetEnergy(void) { energy = 0; }
+#endif // _CSS
+
 protected:
 
 private:

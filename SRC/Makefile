@@ -423,6 +423,12 @@ RECORDER_LIBS = $(FE)/recorder/Recorder.o \
 	$(FE)/recorder/ElementRecorderRMS.o \
 	$(FE)/recorder/NodeRecorderRMS.o \
 	$(FE)/recorder/VTK_Recorder.o 
+	$(FE)/ResidElementRecorder.o \
+	$(FE)/ResidNodeRecorder.o \
+	$(FE)/ResidDriftRecorder.o \
+	$(FE)/ConditionalElementRecorder.o \
+	$(FE)/ConditionalNodeRecorder.o \
+	$(FE)/ConditionalDriftRecorder.o
 
 
 DATABASE_LIBS = $(FE)/database/FileDatastore.o \
@@ -956,6 +962,10 @@ MATERIAL_LIBS   =  $(FE)/material/Material.o \
 	$(FE)/material/nD/PlateRebarMaterial.o \
 	$(FE)/material/nD/stressDensityModel/stressDensity.o \
 	$(FE)/material/nD/stressDensityModel/SDM-UC.o
+	$(FE)/material/uniaxial/Steel05.o \
+	$(FE)/material/uniaxial/IMKJ.o \
+	$(FE)/material/uniaxial/BucklingStrut.o \
+	$(FE)/material/uniaxial/BucklingMaterial.o \
 
 FEDEAS_LIBS = $(FE)/material/uniaxial/FedeasMaterial.o \
 	$(FE)/material/uniaxial/fedeas/FedeasHardeningMaterial.o \

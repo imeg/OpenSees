@@ -146,6 +146,10 @@ Pinching4Material::Pinching4Material(int tag,
   rDispP(mdp), rForceP(mfp), uForceP(msp), rDispN(mdn), rForceN(mfn), uForceN(msn),
   state3Stress(4), state3Strain(4), state4Stress(4), state4Strain(4), 
   envlpPosDamgdStress(6), envlpNegDamgdStress(6)
+#ifdef _CSS
+	 ,energy(0)
+#endif // _CSS
+
 {
 	bool error = false;
 
@@ -215,6 +219,9 @@ Pinching4Material::Pinching4Material(int tag,
   rDispP(mdp), rForceP(mfp), uForceP(msp),
   state3Stress(4), state3Strain(4), state4Stress(4), state4Strain(4), 
   envlpPosDamgdStress(6), envlpNegDamgdStress(6)
+#ifdef _CSS
+	 , energy(0)
+#endif // _CSS
 
 {
 	bool error = false;
@@ -264,6 +271,9 @@ Pinching4Material::Pinching4Material():
   gammaD1(0.0), gammaD2(0.0), gammaD3(0.0), gammaDLimit(0.0),
   gammaF1(0.0), gammaF2(0.0), gammaF3(0.0), gammaFLimit(0.0), gammaE(0.0),
   rDispP(0.0), rForceP(0.0), uForceP(0.0), rDispN(0.0), rForceN(0.0), uForceN(0.0)
+#ifdef _CSS
+	 , energy(0)
+#endif // _CSS
 {
 
 }
@@ -386,6 +396,9 @@ int Pinching4Material::commitState(void)  {
 	CmaxStrainDmnd = TmaxStrainDmnd;
 	Cenergy = Tenergy;
 
+#ifdef _CSS
+	energy += 0.5 * (Cstress + Tstress) * (Tstrain - Cstrain);
+#endif // _CSS
 	Cstress = Tstress;
 	Cstrain = Tstrain;
 
@@ -439,7 +452,10 @@ int Pinching4Material::revertToLastCommit(void)
 
 int Pinching4Material::revertToStart(void)
 {
-    Cstate = 0;
+#ifdef _CSS
+	 energy = 0;
+#endif // _CSS
+	 Cstate = 0;
 	Cstrain = 0.0;
 	Cstress = 0.0;
 	CstrainRate = 0.0;
@@ -477,6 +493,9 @@ UniaxialMaterial* Pinching4Material::getCopy(void)
 		gammaKLimit,gammaD1,gammaD2,gammaD3,gammaD4,gammaDLimit,gammaF1,gammaF2,gammaF3,gammaF4,
 		gammaFLimit,gammaE,DmgCyc);
 	
+#ifdef _CSS
+	theCopy->energy = 0;
+#endif // _CSS
 	theCopy->rDispN = rDispN;
 	theCopy->rDispP = rDispP;
 	theCopy->rForceN = rForceN;

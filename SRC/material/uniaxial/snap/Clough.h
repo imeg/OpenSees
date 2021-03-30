@@ -81,7 +81,7 @@ class Clough : public UniaxialMaterial
 #ifdef _CSS
   double Energy;
   //by SAJalali
-  double Clough::getEnergy()  {return Energy;}
+  double getEnergy()  {return Energy;}
   double getInitYieldStrain() { return fyieldPos / elstk; } //SAJalali
   virtual void resetEnergy(void) { Energy = 0; }
 #endif // _CSS

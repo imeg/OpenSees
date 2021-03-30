@@ -31,7 +31,7 @@ public:
 	virtual double getInitYieldStrain() {return FTS/E0;}
 #ifdef _CSS
 	double energy;	  //energy saved during a given course of action
-	double SPSW02::getEnergy()
+	double getEnergy()
 	{
 		 return energy;
 	}

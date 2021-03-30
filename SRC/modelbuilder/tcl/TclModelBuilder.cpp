@@ -37,15 +37,6 @@
 //
 // What: "@(#) TclModelBuilder.cpp, revA"
 
-#ifdef _CSS
-//added by SAJalali
-#ifndef TCL_Char
-#define TCL_Char const char
-#endif
-struct Tcl_Interp;
-
-int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = false);
-#endif // _CSS
 
 #include <stdlib.h>
 #include <string.h>
@@ -103,6 +94,17 @@ int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = fal
 #include <TimeSeries.h>
 #include <PathTimeSeriesThermal.h>       //L.Jiang [SIF]
 #include <vector>						//L.Jiang [SIF] 
+
+#ifdef _CSS
+//added by SAJalali
+#ifndef TCL_Char
+#define TCL_Char const char
+#endif
+struct Tcl_Interp;
+
+int printArgv(Tcl_Interp* interp, int argc, TCL_Char** argv, bool hasBlock = false);
+#endif // _CSS
+
 using std::vector;							//L.Jiang [SIF]
 #include <SimulationInformation.h>				//L.Jiang [SIF]
 extern SimulationInformation simulationInfo;		//L.Jiang [SIF]

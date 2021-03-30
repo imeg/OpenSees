@@ -55,6 +55,9 @@
 #include <elementAPI.h>
 
 #include <string.h>
+#ifdef _CSS
+#include <math.h>
+#endif // _CSS
 
 void*
 OPS_ElementRecorder()

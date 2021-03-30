@@ -25,6 +25,7 @@
 
 #ifndef classTags_h
 #define classTags_h
+#define _CSS
 
 #define svnTest  0
 
