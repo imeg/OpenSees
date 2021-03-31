@@ -13,7 +13,7 @@
 ############################################################################
 
 
-include makes/Makefile.def
+include Makefile.def
 
 
 ############################################################################
@@ -39,16 +39,19 @@ include makes/Makefile.def
 #  To just build the interpreter type
 #	make OpenSees
 ############################################################################
-$(info $(SHELL))
+
 all: 
 ifdef MKDIR
 	$(MKDIR) $(HOME)/bin
 	$(MKDIR) $(HOME)/lib
 endif
-	echo hello1
-	$(CD) $(BLASdir) && \
-	$(MAKE) && \
-	$(CD) .. && \
+	@( \
+	for f in $(DIRS); \
+	do \
+		$(CD) $$f; \
+		$(MAKE); \
+		$(CD) ..; \
+	done );
 	@$(ECHO) LIBRARIES BUILT ... NOW LINKING OpenSees PROGRAM;
 	@$(CD) $(FE)/tcl; $(MAKE) tcl;
 	@$(CD) $(FE)/modelbuilder/tcl;  $(MAKE) tcl;
@@ -122,7 +125,7 @@ clean:
 		$(CD) ..; \
 	done );
 	@$(RM) $(RMFLAGS) *.o *~ core
-	@$(CD) $(FE)/../EXAMPLES;  $(MAKE) wipe;
+	@$(CD) $(HOME)/OpenSees/EXAMPLES;  $(MAKE) wipe;
 
 wipe: 
 	@( \
@@ -135,7 +138,7 @@ wipe:
 		$(CD) ..; \
 	done );
 	@$(RM) $(RMFLAGS) $(WIPE_LIBS) *.o *~ core 
-	@$(CD) $(FE)/../EXAMPLES;  $(MAKE) wipe;
+	@$(CD) $(HOME)/OpenSees/EXAMPLES;  $(MAKE) wipe;
 
 wipeall: 
 	@( \
@@ -147,7 +150,7 @@ wipeall:
 		$(CD) ..; \
 	done );
 	@$(RM) $(RMFLAGS) $(WIPE_LIBS) *.o *~ core
-	@$(CD) $(FE)/../EXAMPLES;  $(MAKE) wipe
+	@$(CD) $(HOME)/OpenSees/EXAMPLES;  $(MAKE) wipe
 	@$(RM) $(RMFLAGS) $(OpenSees_PROGRAM);
 
 help:

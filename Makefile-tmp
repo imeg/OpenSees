@@ -1,4 +1,0 @@
-include makes/Makefile.def
-all:
-	$(CD) F:/OmranElmAfzar/OpenSees/OTHER/BLAS && $(MAKE);
-	
