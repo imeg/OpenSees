@@ -756,7 +756,8 @@ int ElasticTimoshenkoBeam3d::recvSelf(int commitTag, Channel &rChannel,
 			break;
 		}
 	}
-	res += rChannel.recvVector(this->getDbTag(), commitTag, Vector(eleLoadFactors, numEleLoads));
+   Vector vec(eleLoadFactors, numEleLoads);
+	res += rChannel.recvVector(this->getDbTag(), commitTag, vec);
 	if (res < 0) {
 		opserr << "ElasticTimoshenkoBeam3d::recvSelf() - error reading elemental Load Data\n";
 		return res;
